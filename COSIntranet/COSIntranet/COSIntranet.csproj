@@ -64,7 +64,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Common\" />
     <Folder Include="Features\" />
+    <Folder Include="Infrastructure\ContentTypes\" />
+    <Folder Include="Infrastructure\Fields\" />
+    <Folder Include="Infrastructure\Lists\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
