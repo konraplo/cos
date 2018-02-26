@@ -6,8 +6,8 @@
     <ProjectGuid>{448B9039-A71C-4A06-AB2A-72DEB5D30A48}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>COSIntranet</RootNamespace>
-    <AssemblyName>COSIntranet</AssemblyName>
+    <RootNamespace>COS.Intranet</RootNamespace>
+    <AssemblyName>COS.Intranet</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <TargetOfficeVersion>16.0</TargetOfficeVersion>
     <FileAlignment>512</FileAlignment>
