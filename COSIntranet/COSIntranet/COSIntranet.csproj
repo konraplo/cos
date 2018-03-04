@@ -6,8 +6,8 @@
     <ProjectGuid>{448B9039-A71C-4A06-AB2A-72DEB5D30A48}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>COS.Intranet</RootNamespace>
-    <AssemblyName>COS.Intranet</AssemblyName>
+    <RootNamespace>Change.Intranet</RootNamespace>
+    <AssemblyName>Change.Intranet</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <TargetOfficeVersion>16.0</TargetOfficeVersion>
     <FileAlignment>512</FileAlignment>
@@ -52,6 +52,9 @@
     <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\ChangeComposedLook\ChangeComposedLook.EventReceiver.cs">
+      <DependentUpon>ChangeComposedLook.feature</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\COSIntranet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -60,6 +63,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ComposedLook\Theme\cos_pal005.spcolor" />
+    <None Include="ComposedLook\Theme\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{0c5a1f1c-450a-451d-9ffb-cdb58e264074}</SharePointProjectItemId>
+    </None>
+    <None Include="Features\ChangeWebTemplates\ChangeWebTemplates.feature">
+      <FeatureId>{e88eedf4-3e70-4006-aafd-56b45ce67aa9}</FeatureId>
+    </None>
+    <None Include="Features\ChangeComposedLook\ChangeComposedLook.feature">
+      <FeatureId>{38a0d90f-f468-4c6c-a42d-301f8cf347ee}</FeatureId>
+    </None>
     <None Include="key.snk" />
     <None Include="Package\Package.package">
       <PackageId>{6326d6d3-981a-48e9-b30e-0aeda6882d5b}</PackageId>
@@ -70,19 +83,30 @@
     <None Include="Resources\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{763a5394-7bcd-42f4-90a7-c8076339c2c8}</SharePointProjectItemId>
     </None>
+    <None Include="WebTemplates\ChangeSite\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{a2d7dca5-9a2c-4587-b900-b63db743ec0b}</SharePointProjectItemId>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
-    <Folder Include="Features\" />
     <Folder Include="Infrastructure\ContentTypes\" />
     <Folder Include="Infrastructure\Fields\" />
     <Folder Include="Infrastructure\Lists\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ComposedLook\Theme\Elements.xml" />
+    <Content Include="Features\ChangeWebTemplates\ChangeWebTemplates.Template.xml">
+      <DependentUpon>ChangeWebTemplates.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\ChangeComposedLook\ChangeComposedLook.Template.xml">
+      <DependentUpon>ChangeComposedLook.feature</DependentUpon>
+    </Content>
     <Content Include="Resources\COSIntranet.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>COSIntranet.Designer.cs</LastGenOutput>
     </Content>
+    <Content Include="WebTemplates\ChangeSite\Elements.xml" />
+    <Content Include="WebTemplates\ChangeSite\ONET.XML" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\COSIntranet.en-us.resx" />

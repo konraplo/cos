@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace COS.Intranet.Resources {
+namespace Change.Intranet.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace COS.Intranet.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("COS.Intranet.Resources.COSIntranet", typeof(COSIntranet).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Change.Intranet.Resources.COSIntranet", typeof(COSIntranet).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
