@@ -73,6 +73,45 @@
     <None Include="Features\ChangeComposedLook\ChangeComposedLook.feature">
       <FeatureId>{38a0d90f-f468-4c6c-a42d-301f8cf347ee}</FeatureId>
     </None>
+    <None Include="Features\ChangeListsForDivisions\ChangeListsForDivisions.feature">
+      <FeatureId>{8f6b972f-9877-48eb-8df8-f9bfb9280c99}</FeatureId>
+    </None>
+    <None Include="Infrastructure\Lists\DivisionLevel\ChangeAcademy\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{9b5d6fce-b6b7-45a6-8916-bff4fcef4c1c}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\DivisionLevel\DailyOperation\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{23766eea-8325-44f0-9579-e32842f62711}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\DivisionLevel\Finance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{d75341f4-eba0-4f76-8dee-8be79e89d331}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\DivisionLevel\HR\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{ecdcfd74-9369-4565-a402-15f7cd09b58c}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\DivisionLevel\IT\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{1bb96f2f-0f63-4d53-b16b-bed32acc25c1}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\DivisionLevel\Managers\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{c0e4d2bf-4f0e-4e30-a442-ab7c20a7be4a}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\DivisionLevel\Marketing\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{58f964d4-9be6-4520-8801-f234542b0d27}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\DivisionLevel\POSSystem\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{de87cc1f-a288-49d3-a488-b27c181dc8b2}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\DivisionLevel\PowerBI\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{b619d74a-1bf5-478a-a70f-652bcd8f499e}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\DivisionLevel\ProductRange\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{a294405d-6537-4361-b7a6-48d10ed1823e}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\DivisionLevel\VisualMerchandise\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{cf02bad8-7d6c-4cd1-beae-218b49247ee9}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\DivisionLevel\SalesTraining\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{e11a311d-f764-4ff6-a499-59c3ef996eae}</SharePointProjectItemId>
+    </None>
     <None Include="key.snk" />
     <None Include="Package\Package.package">
       <PackageId>{6326d6d3-981a-48e9-b30e-0aeda6882d5b}</PackageId>
@@ -83,6 +122,9 @@
     <None Include="Resources\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{763a5394-7bcd-42f4-90a7-c8076339c2c8}</SharePointProjectItemId>
     </None>
+    <None Include="WebTemplates\ChangeDivisionWeb\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{b2194afc-74d3-4f51-a2a2-4a1dccf5deb4}</SharePointProjectItemId>
+    </None>
     <None Include="WebTemplates\ChangeSite\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{a2d7dca5-9a2c-4587-b900-b63db743ec0b}</SharePointProjectItemId>
     </None>
@@ -91,7 +133,6 @@
     <Folder Include="Common\" />
     <Folder Include="Infrastructure\ContentTypes\" />
     <Folder Include="Infrastructure\Fields\" />
-    <Folder Include="Infrastructure\Lists\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ComposedLook\Theme\Elements.xml" />
@@ -101,10 +142,27 @@
     <Content Include="Features\ChangeComposedLook\ChangeComposedLook.Template.xml">
       <DependentUpon>ChangeComposedLook.feature</DependentUpon>
     </Content>
+    <Content Include="Features\ChangeListsForDivisions\ChangeListsForDivisions.Template.xml">
+      <DependentUpon>ChangeListsForDivisions.feature</DependentUpon>
+    </Content>
+    <Content Include="Infrastructure\Lists\DivisionLevel\ChangeAcademy\Elements.xml" />
+    <Content Include="Infrastructure\Lists\DivisionLevel\DailyOperation\Elements.xml" />
+    <Content Include="Infrastructure\Lists\DivisionLevel\Finance\Elements.xml" />
+    <Content Include="Infrastructure\Lists\DivisionLevel\HR\Elements.xml" />
+    <Content Include="Infrastructure\Lists\DivisionLevel\IT\Elements.xml" />
+    <Content Include="Infrastructure\Lists\DivisionLevel\Managers\Elements.xml" />
+    <Content Include="Infrastructure\Lists\DivisionLevel\Marketing\Elements.xml" />
+    <Content Include="Infrastructure\Lists\DivisionLevel\POSSystem\Elements.xml" />
+    <Content Include="Infrastructure\Lists\DivisionLevel\PowerBI\Elements.xml" />
+    <Content Include="Infrastructure\Lists\DivisionLevel\ProductRange\Elements.xml" />
+    <Content Include="Infrastructure\Lists\DivisionLevel\VisualMerchandise\Elements.xml" />
+    <Content Include="Infrastructure\Lists\DivisionLevel\SalesTraining\Elements.xml" />
     <Content Include="Resources\COSIntranet.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>COSIntranet.Designer.cs</LastGenOutput>
     </Content>
+    <Content Include="WebTemplates\ChangeDivisionWeb\Elements.xml" />
+    <Content Include="WebTemplates\ChangeDivisionWeb\ONET.XML" />
     <Content Include="WebTemplates\ChangeSite\Elements.xml" />
     <Content Include="WebTemplates\ChangeSite\ONET.XML" />
   </ItemGroup>

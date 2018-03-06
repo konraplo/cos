@@ -3,8 +3,8 @@
   <WebTemplate BaseConfigurationID="0"
                BaseTemplateID="1"
                BaseTemplateName="STS"
-               Description="Change of Scandinavia main site template"
-               Name="ChangeSite"
-               DisplayCategory="CHANGE" Title="Change of Scandinavia main site template" Subweb="FALSE">
+               Description="Change of Scandinavia division web template"
+               Name="ChangeDivisionWeb"
+               DisplayCategory="CHANGE" Title="Change of Scandinavia division web template" Subweb="TRUE">
   </WebTemplate>
 </Elements>

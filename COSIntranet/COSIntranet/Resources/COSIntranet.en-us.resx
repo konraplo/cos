@@ -117,6 +117,244 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ChangeFolderFolloupHSalaryUsage" xml:space="preserve">
+    <value>Follow up on hours- and salary usage</value>
+  </data>
+  <data name="ChangeFolderTitle4StepsSalesMethod" xml:space="preserve">
+    <value>Four steps sales method</value>
+  </data>
+  <data name="ChangeFolderTitleAcquisitions" xml:space="preserve">
+    <value>Acquisitions to the store</value>
+  </data>
+  <data name="ChangeFolderTitleAPV" xml:space="preserve">
+    <value>APV</value>
+  </data>
+  <data name="ChangeFolderTitleBasicCatalogue" xml:space="preserve">
+    <value>Basic catalogue</value>
+  </data>
+  <data name="ChangeFolderTitleBCVacationSchedule" xml:space="preserve">
+    <value>Contract and key receipt</value>
+  </data>
+  <data name="ChangeFolderTitleBlack riday" xml:space="preserve">
+    <value>Black Friday</value>
+  </data>
+  <data name="ChangeFolderTitleBuddyStores" xml:space="preserve">
+    <value>Buddy stores</value>
+  </data>
+  <data name="ChangeFolderTitleBookingOfCraftsmen" xml:space="preserve">
+    <value>Booking of craftsmen
+</value>
+  </data>
+  <data name="ChangeFolderTitleBookingOfCraftsmen1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ChangeFolderTitleBookingOfLights" xml:space="preserve">
+    <value>Booking of lights</value>
+  </data>
+  <data name="ChangeFolderTitleBuying" xml:space="preserve">
+    <value>Buying</value>
+  </data>
+  <data name="ChangeFolderTitleCashReconciliation" xml:space="preserve">
+    <value>Cash Reconciliation</value>
+  </data>
+  <data name="ChangeFolderTitleChristmas" xml:space="preserve">
+    <value>Christmas</value>
+  </data>
+  <data name="ChangeFolderTitleClaimeSheetMaterial" xml:space="preserve">
+    <value>Claime sheet marketing material</value>
+  </data>
+  <data name="ChangeFolderTitleCleaningMaintenance" xml:space="preserve">
+    <value>Cleaning and maintenance</value>
+  </data>
+  <data name="ChangeFolderTitleCompetitionsInternal" xml:space="preserve">
+    <value>Competitions - internal</value>
+  </data>
+  <data name="ChangeFolderTitleContentPlan" xml:space="preserve">
+    <value>Content plan
+</value>
+  </data>
+  <data name="ChangeFolderTitleCurrentCampaign" xml:space="preserve">
+    <value>Current campaign</value>
+  </data>
+  <data name="ChangeFolderTitleCustomerCounters" xml:space="preserve">
+    <value>Customer counters</value>
+  </data>
+  <data name="ChangeFolderTitleE-Learning" xml:space="preserve">
+    <value>E- Learning</value>
+  </data>
+  <data name="ChangeFolderTitleEaster" xml:space="preserve">
+    <value>Easter</value>
+  </data>
+  <data name="ChangeFolderTitleEDM" xml:space="preserve">
+    <value>EDM</value>
+  </data>
+  <data name="ChangeFolderTitleEvents" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="ChangeFolderTitleFashionCatalogue" xml:space="preserve">
+    <value>Fashion catalogue</value>
+  </data>
+  <data name="ChangeFolderTitleFeedbackOnFashionLine" xml:space="preserve">
+    <value>Feedback on fashion line</value>
+  </data>
+  <data name="ChangeFolderTitleFotoReports" xml:space="preserve">
+    <value>Foto reports 
+</value>
+  </data>
+  <data name="ChangeFolderTitleGenericInstore" xml:space="preserve">
+    <value>Generic instore 
+</value>
+  </data>
+  <data name="ChangeFolderTitleGiftCard" xml:space="preserve">
+    <value>Gift card</value>
+  </data>
+  <data name="ChangeFolderTitleHalloween" xml:space="preserve">
+    <value>Halloween</value>
+  </data>
+  <data name="ChangeFolderTitleHQ" xml:space="preserve">
+    <value>HQ</value>
+  </data>
+  <data name="ChangeFolderTitleHR" xml:space="preserve">
+    <value>HR</value>
+  </data>
+  <data name="ChangeFolderTitleJobAdvertisements" xml:space="preserve">
+    <value>Job advertisements</value>
+  </data>
+  <data name="ChangeFolderTitleLogin" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="ChangeFolderTitleLYOverviewTemplate" xml:space="preserve">
+    <value>Local yearly overview template 
+</value>
+  </data>
+  <data name="ChangeFolderTitleManuals" xml:space="preserve">
+    <value>Manuals for assembling inventory
+</value>
+  </data>
+  <data name="ChangeFolderTitleManualsToPOS" xml:space="preserve">
+    <value>Manuals to POS</value>
+  </data>
+  <data name="ChangeFolderTitleMarketingPckgSize" xml:space="preserve">
+    <value>Sizes of marketing packages</value>
+  </data>
+  <data name="ChangeFolderTitleMaterialForWindows" xml:space="preserve">
+    <value>Material for windows
+</value>
+  </data>
+  <data name="ChangeFolderTitleMoneyBank" xml:space="preserve">
+    <value>Money handling and bank</value>
+  </data>
+  <data name="ChangeFolderTitleMountingOfFoil" xml:space="preserve">
+    <value>Mounting of foil 
+</value>
+  </data>
+  <data name="ChangeFolderTitleObjectiveTools" xml:space="preserve">
+    <value>Objective tools</value>
+  </data>
+  <data name="ChangeFolderTitleOpenByNight" xml:space="preserve">
+    <value>Open by night</value>
+  </data>
+  <data name="ChangeFolderTitleOtherStoresItems" xml:space="preserve">
+    <value>Items for other stores</value>
+  </data>
+  <data name="ChangeFolderTitleOtherStoresProducts" xml:space="preserve">
+    <value>Products to other stores</value>
+  </data>
+  <data name="ChangeFolderTitlePersonnel" xml:space="preserve">
+    <value>Personnel</value>
+  </data>
+  <data name="ChangeFolderTitlePersonnelHandbook" xml:space="preserve">
+    <value>Personnel Handbook</value>
+  </data>
+  <data name="ChangeFolderTitlePersonnelHandbook1" xml:space="preserve">
+    <value>BC vacation schedule</value>
+  </data>
+  <data name="ChangeFolderTitlePersonnelMeetings" xml:space="preserve">
+    <value>Personnel meetings</value>
+  </data>
+  <data name="ChangeFolderTitlePhone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="ChangeFolderTitlePOSSystem" xml:space="preserve">
+    <value>POS system</value>
+  </data>
+  <data name="ChangeFolderTitlePowerBIManuals" xml:space="preserve">
+    <value>Manuals for Power BI</value>
+  </data>
+  <data name="ChangeFolderTitlePowerBIReports" xml:space="preserve">
+    <value>Reports in Power BI</value>
+  </data>
+  <data name="ChangeFolderTitlePracticalEducation" xml:space="preserve">
+    <value>Practical education</value>
+  </data>
+  <data name="ChangeFolderTitleProductRange" xml:space="preserve">
+    <value>Product range</value>
+  </data>
+  <data name="ChangeFolderTitleReceiptTexts" xml:space="preserve">
+    <value>Receipt texts</value>
+  </data>
+  <data name="ChangeFolderTitleRetailOperationManual" xml:space="preserve">
+    <value>Retail Operation Manual</value>
+  </data>
+  <data name="ChangeFolderTitleSALE" xml:space="preserve">
+    <value>SALE</value>
+  </data>
+  <data name="ChangeFolderTitleSalesFollowUp" xml:space="preserve">
+    <value>Sales follow up</value>
+  </data>
+  <data name="ChangeFolderTitleSalesFollowup1" xml:space="preserve">
+    <value>Sales follow up</value>
+  </data>
+  <data name="ChangeFolderTitleSamesystem" xml:space="preserve">
+    <value>Samesystem</value>
+  </data>
+  <data name="ChangeFolderTitleSignsForPrint" xml:space="preserve">
+    <value>Different signs for print
+</value>
+  </data>
+  <data name="ChangeFolderTitleSkypeAccount" xml:space="preserve">
+    <value>Skype account</value>
+  </data>
+  <data name="ChangeFolderTitleStatus" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="ChangeFolderTitleStoreVisitReport" xml:space="preserve">
+    <value>Store visit report</value>
+  </data>
+  <data name="ChangeFolderTitleTablet" xml:space="preserve">
+    <value>Tablet</value>
+  </data>
+  <data name="ChangeFolderTitleThingsOnHangers" xml:space="preserve">
+    <value>Putting things on hangers</value>
+  </data>
+  <data name="ChangeFolderTitleTipsandTricks" xml:space="preserve">
+    <value>Tips and Tricks</value>
+  </data>
+  <data name="ChangeFolderTitleTradeRules" xml:space="preserve">
+    <value>Trade rules</value>
+  </data>
+  <data name="ChangeFolderTitleTravelAllowance" xml:space="preserve">
+    <value>travel allowance</value>
+  </data>
+  <data name="ChangeFolderTitleTRUCashRegister" xml:space="preserve">
+    <value>Theft, robbery and uneven cash register</value>
+  </data>
+  <data name="ChangeFolderTitleTrustpilot" xml:space="preserve">
+    <value>Trustpilot</value>
+  </data>
+  <data name="ChangeFolderTitleVMGuidelines" xml:space="preserve">
+    <value>VM Guidelines 
+</value>
+  </data>
+  <data name="ChangeFolderTitleVouchersAndFlyvers" xml:space="preserve">
+    <value>Vouchers and Flyvers</value>
+  </data>
+  <data name="ChangeFolderTitleWeeklyReOrdering" xml:space="preserve">
+    <value>Weekly re-ordering</value>
+  </data>
+  <data name="ChangeFolderTitleBonus" xml:space="preserve">
+    <value>Bonus</value>
+  </data>
   <data name="ChangeLibDescription" xml:space="preserve">
     <value>Manager folder with BC information about personnel, sales follow up, and other operational information
 </value>
@@ -164,6 +402,9 @@
     <value>Finance</value>
   </data>
   <data name="ChangeLibTitleFinancePowerBI" xml:space="preserve">
+    <value>Power BI</value>
+  </data>
+  <data name="ChangeLibTitleFinancePowerBI1" xml:space="preserve">
     <value>Power BI</value>
   </data>
   <data name="ChangeLibTitleHR" xml:space="preserve">
