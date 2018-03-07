@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="InfrastructureFiles" Url="SiteAssets">
+    <File Path="InfrastructureFiles\Images\logo.png" Url="Images/logo.png" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
+    <File Path="InfrastructureFiles\Images\changeBackground.PNG" Url="Images/changeBackground.PNG" ReplaceContent="TRUE"/>
+    <File Path="InfrastructureFiles\Images\COS_OsloByNight.JPG" Url="Images/COS_OsloByNight.JPG" ReplaceContent="TRUE"/>
+    <File Path="InfrastructureFiles\Images\RetailOperationsManual.png" Url="Images/RetailOperationsManual.png" ReplaceContent="TRUE"/>
+  </Module>
+</Elements>

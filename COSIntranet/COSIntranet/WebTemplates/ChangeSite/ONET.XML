@@ -18,8 +18,12 @@
         <Feature ID="00BFEA71-1C5E-4A24-B310-BA51C3EB7A57" />
         <!-- Three-state Workflow Feature -->
         <Feature ID="FDE5D850-671E-4143-950A-87B473922DC7" />
-        <!-- Change of scandinavia composed look -->
-        <Feature ID="eb785dea-d6cd-4c7e-82ce-71f56ec0816c" />
+        <!-- Change of scandinavia infrastructure -->
+        <Feature ID="8ff949de-0a18-409e-b853-91b80cceee58" />
+        <!-- Sharepoint publishing infrastructure -->
+        <Feature ID="f6924d36-2fa8-4f0b-b16d-06b7250180fa" />
+        <!-- Change of scandinavia composed look-->
+        <Feature ID="0de89914-06f0-4c4e-b080-7cffd569018f" />
       </SiteFeatures>
       <WebFeatures>
         <!-- TeamCollab Feature -->
@@ -33,7 +37,9 @@
         <!-- Getting Started List instance -->
         <Feature ID="4AEC7207-0D02-4f4f-AA07-B370199CD0C7" />
         <!-- Blog feature -->
-        <Feature ID="FAF00902-6BAB-4583-BD02-84DB191801D8" />
+        <Feature ID="FAF00902-6BAB-4583-BD02-84DB191801D8" />        
+        <!-- Change of scandinavia files and scripts -->
+        <Feature ID="ad4cc7c0-98e8-452d-a521-1eee031f1935" />
         <!-- MDS -->
         <Feature ID="87294C72-F260-42f3-A41B-981A2FFCE37A" />
       </WebFeatures>

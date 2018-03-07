@@ -17,7 +17,7 @@ namespace Change.Intranet.Features.ChangeComposedLook
     public class ChangeComposedLookEventReceiver : SPFeatureReceiver
     {
         private const string CustomLookName = "Change of Scandinavia";
-        private const string ThemeUrl = "_catalogs/theme/15/cos_pal005.spcolor";
+        private const string ThemeUrl = "_catalogs/theme/15/cos_pal015.spcolor";
         private const string MasterPageUrl = "_catalogs/masterpage/oslo.master";
 
         /// <summary>

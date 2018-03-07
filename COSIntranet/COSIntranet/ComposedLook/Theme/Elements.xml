@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Module Name="Theme" Url="_catalogs/theme/15">
-    <File Path="Theme\cos_pal005.spcolor"  Url="cos_pal005.spcolor" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
+    <File Path="Theme\cos_pal015.spcolor" Url="cos_pal015.spcolor" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
   </Module>
 </Elements>

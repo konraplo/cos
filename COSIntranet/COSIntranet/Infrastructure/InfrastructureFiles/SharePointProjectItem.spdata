@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectItem Type="Microsoft.VisualStudio.SharePoint.Module" DefaultFile="Elements.xml" SupportedTrustLevels="All" SupportedDeploymentScopes="Web, Site" xmlns="http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel">
+  <Files>
+    <ProjectItemFile Source="Elements.xml" Target="InfrastructureFiles\" Type="ElementManifest" />
+    <ProjectItemFile Source="Images\logo.png" Target="InfrastructureFiles\Images\" Type="ElementFile" />
+    <ProjectItemFile Source="Images\changeBackground.PNG" Target="InfrastructureFiles\Images\" Type="ElementFile" />
+    <ProjectItemFile Source="Images\COS_OsloByNight.JPG" Target="InfrastructureFiles\Images\" Type="ElementFile" />
+    <ProjectItemFile Source="Images\RetailOperationsManual.png" Target="InfrastructureFiles\Images\" Type="ElementFile" />
+  </Files>
+</ProjectItem>
