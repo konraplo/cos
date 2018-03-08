@@ -21,9 +21,7 @@
         <!-- Change of scandinavia infrastructure -->
         <Feature ID="8ff949de-0a18-409e-b853-91b80cceee58" />
         <!-- Sharepoint publishing infrastructure -->
-        <Feature ID="f6924d36-2fa8-4f0b-b16d-06b7250180fa" />
-        <!-- Change of scandinavia composed look-->
-        <Feature ID="0de89914-06f0-4c4e-b080-7cffd569018f" />
+        <Feature ID="f6924d36-2fa8-4f0b-b16d-06b7250180fa" />        
       </SiteFeatures>
       <WebFeatures>
         <!-- TeamCollab Feature -->
@@ -40,6 +38,8 @@
         <Feature ID="FAF00902-6BAB-4583-BD02-84DB191801D8" />        
         <!-- Change of scandinavia files and scripts -->
         <Feature ID="ad4cc7c0-98e8-452d-a521-1eee031f1935" />
+        <!-- Change of scandinavia composed look-->
+        <Feature ID="0de89914-06f0-4c4e-b080-7cffd569018f" />
         <!-- MDS -->
         <Feature ID="87294C72-F260-42f3-A41B-981A2FFCE37A" />
       </WebFeatures>

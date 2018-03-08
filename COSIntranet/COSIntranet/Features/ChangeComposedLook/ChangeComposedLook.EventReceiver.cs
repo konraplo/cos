@@ -19,6 +19,7 @@ namespace Change.Intranet.Features.ChangeComposedLook
         private const string CustomLookName = "Change of Scandinavia";
         private const string ThemeUrl = "_catalogs/theme/15/cos_pal015.spcolor";
         private const string MasterPageUrl = "_catalogs/masterpage/oslo.master";
+        private const string ImageUrl = "SiteAssets/Images/COS_OsloByNight.JPG";
 
         /// <summary>
         /// Query to get all composed looks for specified title
@@ -34,12 +35,12 @@ namespace Change.Intranet.Features.ChangeComposedLook
 
         public override void FeatureActivated(SPFeatureReceiverProperties properties)
         {
-            SPSite site = properties.Feature.Parent as SPSite;
+            SPWeb web = properties.Feature.Parent as SPWeb;
 
-            if (site != null)
+            if (web != null)
             {
-                string serverRelativeUrl = site.RootWeb.ServerRelativeUrl;
-                SPList list = site.RootWeb.GetList(SPUrlUtility.CombineUrl(site.RootWeb.ServerRelativeUrl, "_catalogs/design"));
+                string serverRelativeUrl = web.ServerRelativeUrl;
+                SPList list = web.GetList(SPUrlUtility.CombineUrl(web.ServerRelativeUrl, "_catalogs/design"));
                 string queryString = string.Format(GetComposedLookByTitle, CustomLookName);
                 SPQuery query = new SPQuery();
                 query.Query = queryString;
@@ -63,6 +64,11 @@ namespace Change.Intranet.Features.ChangeComposedLook
                     themeUrl.Url = SPUtility.ConcatUrls(serverRelativeUrl, ThemeUrl);
                     themeUrl.Description = SPUtility.ConcatUrls(serverRelativeUrl, ThemeUrl);
                     item["ThemeUrl"] = themeUrl;
+
+                    SPFieldUrlValue imageUrl = new SPFieldUrlValue();
+                    imageUrl.Url = SPUtility.ConcatUrls(serverRelativeUrl, ImageUrl);
+                    imageUrl.Description = SPUtility.ConcatUrls(serverRelativeUrl, ImageUrl);
+                    item["ImageUrl"] = imageUrl;
 
                     item["DisplayOrder"] = 199;
                     item.Update();
