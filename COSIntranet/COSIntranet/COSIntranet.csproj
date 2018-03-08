@@ -55,6 +55,9 @@
     <Compile Include="Features\ChangeComposedLook\ChangeComposedLook.EventReceiver.cs">
       <DependentUpon>ChangeComposedLook.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\ChangeListsForDivisions\ChangeListsForDivisions.EventReceiver.cs">
+      <DependentUpon>ChangeListsForDivisions.feature</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\COSIntranet.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -142,14 +142,10 @@
     <value>Buddy stores</value>
   </data>
   <data name="ChangeFolderTitleBookingOfCraftsmen" xml:space="preserve">
-    <value>Booking of craftsmen
-</value>
-  </data>
-  <data name="ChangeFolderTitleBookingOfCraftsmen1" xml:space="preserve">
-    <value />
+    <value>Order handcraftmen</value>
   </data>
   <data name="ChangeFolderTitleBookingOfLights" xml:space="preserve">
-    <value>Booking of lights</value>
+    <value>Order light</value>
   </data>
   <data name="ChangeFolderTitleBuying" xml:space="preserve">
     <value>Buying</value>
@@ -228,8 +224,7 @@
 </value>
   </data>
   <data name="ChangeFolderTitleManuals" xml:space="preserve">
-    <value>Manuals for assembling inventory
-</value>
+    <value>Assambly instructions for Inventory</value>
   </data>
   <data name="ChangeFolderTitleManualsToPOS" xml:space="preserve">
     <value>Manuals to POS</value>
@@ -245,8 +240,7 @@
     <value>Money handling and bank</value>
   </data>
   <data name="ChangeFolderTitleMountingOfFoil" xml:space="preserve">
-    <value>Mounting of foil 
-</value>
+    <value>Mounting foil </value>
   </data>
   <data name="ChangeFolderTitleObjectiveTools" xml:space="preserve">
     <value>Objective tools</value>
@@ -302,15 +296,11 @@
   <data name="ChangeFolderTitleSalesFollowUp" xml:space="preserve">
     <value>Sales follow up</value>
   </data>
-  <data name="ChangeFolderTitleSalesFollowup1" xml:space="preserve">
-    <value>Sales follow up</value>
-  </data>
   <data name="ChangeFolderTitleSamesystem" xml:space="preserve">
     <value>Samesystem</value>
   </data>
   <data name="ChangeFolderTitleSignsForPrint" xml:space="preserve">
-    <value>Different signs for print
-</value>
+    <value>Signs to print</value>
   </data>
   <data name="ChangeFolderTitleSkypeAccount" xml:space="preserve">
     <value>Skype account</value>
@@ -325,7 +315,7 @@
     <value>Tablet</value>
   </data>
   <data name="ChangeFolderTitleThingsOnHangers" xml:space="preserve">
-    <value>Putting things on hangers</value>
+    <value>How to put products on hangers</value>
   </data>
   <data name="ChangeFolderTitleTipsandTricks" xml:space="preserve">
     <value>Tips and Tricks</value>
