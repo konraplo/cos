@@ -115,7 +115,7 @@
     <None Include="Infrastructure\Lists\DivisionLevel\PowerBI\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{b619d74a-1bf5-478a-a70f-652bcd8f499e}</SharePointProjectItemId>
     </None>
-    <None Include="Infrastructure\Lists\DivisionLevel\ProductRange\SharePointProjectItem.spdata">
+    <None Include="Infrastructure\Lists\DivisionLevel\ProductAssortment\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{a294405d-6537-4361-b7a6-48d10ed1823e}</SharePointProjectItemId>
     </None>
     <None Include="Infrastructure\Lists\DivisionLevel\VisualMerchandise\SharePointProjectItem.spdata">
@@ -177,7 +177,7 @@
     <Content Include="Infrastructure\Lists\DivisionLevel\Marketing\Elements.xml" />
     <Content Include="Infrastructure\Lists\DivisionLevel\POSSystem\Elements.xml" />
     <Content Include="Infrastructure\Lists\DivisionLevel\PowerBI\Elements.xml" />
-    <Content Include="Infrastructure\Lists\DivisionLevel\ProductRange\Elements.xml" />
+    <Content Include="Infrastructure\Lists\DivisionLevel\ProductAssortment\Elements.xml" />
     <Content Include="Infrastructure\Lists\DivisionLevel\VisualMerchandise\Elements.xml" />
     <Content Include="Infrastructure\Lists\DivisionLevel\SalesTraining\Elements.xml" />
     <Content Include="Resources\COSIntranet.resx">
