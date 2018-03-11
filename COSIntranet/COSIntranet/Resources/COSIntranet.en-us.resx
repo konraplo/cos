@@ -230,6 +230,9 @@
   <data name="ChangeFolderTitleEmplyeeChangeAcademy" xml:space="preserve">
     <value>Emplyee on Change Academy</value>
   </data>
+  <data name="ChangeFolderTitleEOD" xml:space="preserve">
+    <value>EOD</value>
+  </data>
   <data name="ChangeFolderTitleEOSReturn" xml:space="preserve">
     <value>End of season return</value>
   </data>
@@ -406,7 +409,7 @@
     <value>Outphased items</value>
   </data>
   <data name="ChangeFolderTitlePhone" xml:space="preserve">
-    <value>Phone</value>
+    <value>Telephone</value>
   </data>
   <data name="ChangeFolderTitlePhonelist" xml:space="preserve">
     <value>Phonelist</value>
@@ -417,8 +420,14 @@
   <data name="ChangeFolderTitlePonHAllProducts" xml:space="preserve">
     <value>Products on hangers – all products</value>
   </data>
+  <data name="ChangeFolderTitlePOSManual" xml:space="preserve">
+    <value>Manual til POS</value>
+  </data>
   <data name="ChangeFolderTitlePOSSystem" xml:space="preserve">
-    <value>POS system</value>
+    <value>POS</value>
+  </data>
+  <data name="ChangeFolderTitlePowerBI" xml:space="preserve">
+    <value>Power BI</value>
   </data>
   <data name="ChangeFolderTitlePowerBIManuals" xml:space="preserve">
     <value>Manuals for Power BI</value>
@@ -462,6 +471,9 @@
   <data name="ChangeFolderTitleSamesystem" xml:space="preserve">
     <value>Samesystem</value>
   </data>
+  <data name="ChangeFolderTitleSamesystemManual" xml:space="preserve">
+    <value>Manual Samesystem</value>
+  </data>
   <data name="ChangeFolderTitleSharedLogin" xml:space="preserve">
     <value>Shared login for hour employee</value>
   </data>
@@ -472,8 +484,8 @@
   <data name="ChangeFolderTitleSizeOverview" xml:space="preserve">
     <value>Size overview</value>
   </data>
-  <data name="ChangeFolderTitleSkypeAccount" xml:space="preserve">
-    <value>Skype account</value>
+  <data name="ChangeFolderTitleSkypeManual" xml:space="preserve">
+    <value>Manual for Skype </value>
   </data>
   <data name="ChangeFolderTitleSmallCampaignsSigns" xml:space="preserve">
     <value>Signs for small Campaigns
@@ -487,6 +499,9 @@
   </data>
   <data name="ChangeFolderTitleStaffMeetings" xml:space="preserve">
     <value>Staff meetings</value>
+  </data>
+  <data name="ChangeFolderTitleStatus" xml:space="preserve">
+    <value>Status</value>
   </data>
   <data name="ChangeFolderTitleStoreAcqGuide" xml:space="preserve">
     <value>Guide to acquisitions to the store</value>
@@ -502,6 +517,9 @@
   </data>
   <data name="ChangeFolderTitleStoreVisitReport" xml:space="preserve">
     <value>Store visit report</value>
+  </data>
+  <data name="ChangeFolderTitleSurveyMonkeyManual" xml:space="preserve">
+    <value>Manual to Survey Monkey</value>
   </data>
   <data name="ChangeFolderTitleSwapList" xml:space="preserve">
     <value>Swap list</value>
@@ -530,6 +548,10 @@
   </data>
   <data name="ChangeFolderTitleTRUCashRegister" xml:space="preserve">
     <value>Theft, robbery and uneven cash register</value>
+  </data>
+  <data name="ChangeFolderTitleTrustpilotManual" xml:space="preserve">
+    <value>Manual Trustpilot
+</value>
   </data>
   <data name="ChangeFolderTitleUploadPicturesGuide" xml:space="preserve">
     <value>Manual for Photo reports 
@@ -618,9 +640,6 @@
   </data>
   <data name="ChangeLibTitleFinance" xml:space="preserve">
     <value>Finance</value>
-  </data>
-  <data name="ChangeLibTitleFinancePowerBI" xml:space="preserve">
-    <value>Power BI</value>
   </data>
   <data name="ChangeLibTitleHR" xml:space="preserve">
     <value>HR</value>
