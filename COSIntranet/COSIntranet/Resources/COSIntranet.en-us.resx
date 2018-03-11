@@ -117,8 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ChangeFolderFolloupHSalaryUsage" xml:space="preserve">
-    <value>Follow up on hours- and salary usage</value>
+  <data name="ChangeFolderFollowupHSalaryUsage" xml:space="preserve">
+    <value>Follow up hour and salary spendings
+</value>
   </data>
   <data name="ChangeFolderTitle4StepsSalesMethod" xml:space="preserve">
     <value>Four steps sales method</value>
@@ -134,9 +135,6 @@
   </data>
   <data name="ChangeFolderTitleBasicLookbook" xml:space="preserve">
     <value>Basic Lookbook</value>
-  </data>
-  <data name="ChangeFolderTitleBCVacationSchedule" xml:space="preserve">
-    <value>Contract and key receipt</value>
   </data>
   <data name="ChangeFolderTitleBlackFriday" xml:space="preserve">
     <value>Black Friday</value>
@@ -174,6 +172,9 @@
   <data name="ChangeFolderTitleCleaningMaintenance" xml:space="preserve">
     <value>Cleaning and maintenance</value>
   </data>
+  <data name="ChangeFolderTitleClosedVacationPeriods" xml:space="preserve">
+    <value>Periods closed for vacation</value>
+  </data>
   <data name="ChangeFolderTitleCompendium" xml:space="preserve">
     <value>Compendium</value>
   </data>
@@ -189,6 +190,9 @@
   <data name="ChangeFolderTitleContentPlan" xml:space="preserve">
     <value>Contentplan
 </value>
+  </data>
+  <data name="ChangeFolderTitleContractKey" xml:space="preserve">
+    <value>Contract and key</value>
   </data>
   <data name="ChangeFolderTitleCPLookbooks" xml:space="preserve">
     <value>Current and previous Lookbooks</value>
@@ -214,11 +218,17 @@
     <value>Daily weekly monthly follow up
 </value>
   </data>
+  <data name="ChangeFolderTitleDWMSalesFollowup" xml:space="preserve">
+    <value>Daily, weekly, monthly sales follow up</value>
+  </data>
   <data name="ChangeFolderTitleEaster" xml:space="preserve">
     <value>Easter</value>
   </data>
   <data name="ChangeFolderTitleEDM" xml:space="preserve">
     <value>EDM</value>
+  </data>
+  <data name="ChangeFolderTitleEmplyeeChangeAcademy" xml:space="preserve">
+    <value>Emplyee on Change Academy</value>
   </data>
   <data name="ChangeFolderTitleEOSReturn" xml:space="preserve">
     <value>End of season return</value>
@@ -262,8 +272,14 @@
   <data name="ChangeFolderTitleHandling" xml:space="preserve">
     <value>Handling</value>
   </data>
+  <data name="ChangeFolderTitleHR" xml:space="preserve">
+    <value>HR</value>
+  </data>
   <data name="ChangeFolderTitleIdeasEDM" xml:space="preserve">
     <value>Ideas for EDM</value>
+  </data>
+  <data name="ChangeFolderTitleIllness" xml:space="preserve">
+    <value>Illness</value>
   </data>
   <data name="ChangeFolderTitleInstoreInventoryManuals" xml:space="preserve">
     <value>Instore inventory  manuals</value>
@@ -273,6 +289,9 @@
   </data>
   <data name="ChangeFolderTitleJobAdvertisements" xml:space="preserve">
     <value>Job advertisements</value>
+  </data>
+  <data name="ChangeFolderTitleJobDescriptions" xml:space="preserve">
+    <value>Job descriptions</value>
   </data>
   <data name="ChangeFolderTitleLogin" xml:space="preserve">
     <value>Login</value>
@@ -301,6 +320,13 @@
   <data name="ChangeFolderTitleMerchandiseFlow" xml:space="preserve">
     <value>Merchandise Flow</value>
   </data>
+  <data name="ChangeFolderTitleMfollowupHours" xml:space="preserve">
+    <value>Monthly follow up on hours</value>
+  </data>
+  <data name="ChangeFolderTitleMfollowupSalaryCost" xml:space="preserve">
+    <value>Monthly follow up on Salary cost
+</value>
+  </data>
   <data name="ChangeFolderTitleMoneyBank" xml:space="preserve">
     <value>Money handling and bank</value>
   </data>
@@ -321,6 +347,10 @@
   <data name="ChangeFolderTitleMountingTextFoil" xml:space="preserve">
     <value>Mounting textfoil</value>
   </data>
+  <data name="ChangeFolderTitleMUS" xml:space="preserve">
+    <value>Staff interviews (MUS)
+</value>
+  </data>
   <data name="ChangeFolderTitleNearestContact" xml:space="preserve">
     <value>Nearest contact</value>
   </data>
@@ -334,6 +364,9 @@
   </data>
   <data name="ChangeFolderTitleObjectiveTools" xml:space="preserve">
     <value>Objective tools</value>
+  </data>
+  <data name="ChangeFolderTitleOnboarding" xml:space="preserve">
+    <value>Onboarding</value>
   </data>
   <data name="ChangeFolderTitleOnline" xml:space="preserve">
     <value>Online</value>
@@ -371,12 +404,6 @@
   </data>
   <data name="ChangeFolderTitleOutphasedItems" xml:space="preserve">
     <value>Outphased items</value>
-  </data>
-  <data name="ChangeFolderTitlePersonnelHandbook" xml:space="preserve">
-    <value>BC vacation schedule</value>
-  </data>
-  <data name="ChangeFolderTitlePersonnelMeetings" xml:space="preserve">
-    <value>Personnel meetings</value>
   </data>
   <data name="ChangeFolderTitlePhone" xml:space="preserve">
     <value>Phone</value>
@@ -420,9 +447,6 @@
   <data name="ChangeFolderTitleSale" xml:space="preserve">
     <value>Sale</value>
   </data>
-  <data name="ChangeFolderTitleSale1" xml:space="preserve">
-    <value>Sale</value>
-  </data>
   <data name="ChangeFolderTitleSalesFollowUp" xml:space="preserve">
     <value>Sales follow up</value>
   </data>
@@ -434,6 +458,9 @@
   </data>
   <data name="ChangeFolderTitleSalesTrainingMethod" xml:space="preserve">
     <value>Sales training method</value>
+  </data>
+  <data name="ChangeFolderTitleSamesystem" xml:space="preserve">
+    <value>Samesystem</value>
   </data>
   <data name="ChangeFolderTitleSharedLogin" xml:space="preserve">
     <value>Shared login for hour employee</value>
@@ -458,11 +485,17 @@
   <data name="ChangeFolderTitleStafflHandbook" xml:space="preserve">
     <value>Staff Handbook</value>
   </data>
+  <data name="ChangeFolderTitleStaffMeetings" xml:space="preserve">
+    <value>Staff meetings</value>
+  </data>
   <data name="ChangeFolderTitleStoreAcqGuide" xml:space="preserve">
     <value>Guide to acquisitions to the store</value>
   </data>
   <data name="ChangeFolderTitleStoreExpences" xml:space="preserve">
     <value>Expences in the store</value>
+  </data>
+  <data name="ChangeFolderTitleStoreMgrVacation" xml:space="preserve">
+    <value>Store manager vacation</value>
   </data>
   <data name="ChangeFolderTitleStoreSupply" xml:space="preserve">
     <value>Store Supply</value>
@@ -479,6 +512,9 @@
   <data name="ChangeFolderTitleTemplateGuide" xml:space="preserve">
     <value>Template and guide</value>
   </data>
+  <data name="ChangeFolderTitleTerminationResignation" xml:space="preserve">
+    <value>Termination and resignation</value>
+  </data>
   <data name="ChangeFolderTitleThingsOnHangers" xml:space="preserve">
     <value>How to put products on hangers
 </value>
@@ -489,8 +525,8 @@
   <data name="ChangeFolderTitleTipsReturnExchange" xml:space="preserve">
     <value>Tips when return or exchange</value>
   </data>
-  <data name="ChangeFolderTitleTravelAllowance" xml:space="preserve">
-    <value>travel allowance</value>
+  <data name="ChangeFolderTitleTravelExpence" xml:space="preserve">
+    <value>Travel Expence</value>
   </data>
   <data name="ChangeFolderTitleTRUCashRegister" xml:space="preserve">
     <value>Theft, robbery and uneven cash register</value>
@@ -498,6 +534,9 @@
   <data name="ChangeFolderTitleUploadPicturesGuide" xml:space="preserve">
     <value>Manual for Photo reports 
 </value>
+  </data>
+  <data name="ChangeFolderTitleVacationProcedure" xml:space="preserve">
+    <value>Vacation procedure</value>
   </data>
   <data name="ChangeFolderTitleVMBasic" xml:space="preserve">
     <value>Basic VM</value>
