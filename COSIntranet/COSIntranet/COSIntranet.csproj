@@ -85,6 +85,15 @@
     <None Include="Features\ChangeFileAndScripts\ChangeFileAndScripts.feature">
       <FeatureId>{8f46b44c-62a5-42ff-bdf9-090e2313d4f2}</FeatureId>
     </None>
+    <None Include="Infrastructure\ContentTypes\CorporateNews\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{56ed91e7-59d0-4551-a7ef-10c9cf8db858}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\ContentTypes\NationalNews\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{4df056f0-1fb0-4c50-84e6-2eba849575e9}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\ContentTypes\News\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{d4320103-af9c-4511-ab2e-4eb4fe1f9f01}</SharePointProjectItemId>
+    </None>
     <None Include="Infrastructure\InfrastructureFiles\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{8d45ff71-438f-4ed7-aacb-c68f1ea10945}</SharePointProjectItemId>
     </None>
@@ -137,7 +146,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
-    <Folder Include="Infrastructure\ContentTypes\" />
     <Folder Include="Infrastructure\Fields\" />
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +165,9 @@
     <Content Include="Features\ChangeFileAndScripts\ChangeFileAndScripts.Template.xml">
       <DependentUpon>ChangeFileAndScripts.feature</DependentUpon>
     </Content>
+    <Content Include="Infrastructure\ContentTypes\CorporateNews\Elements.xml" />
+    <Content Include="Infrastructure\ContentTypes\NationalNews\Elements.xml" />
+    <Content Include="Infrastructure\ContentTypes\News\Elements.xml" />
     <Content Include="Infrastructure\InfrastructureFiles\Elements.xml" />
     <Content Include="Infrastructure\InfrastructureFiles\Images\changeBackground.PNG" />
     <Content Include="Infrastructure\InfrastructureFiles\Images\COS_OsloByNight.JPG" />

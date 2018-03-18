@@ -61,6 +61,33 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to National News.
+        /// </summary>
+        internal static string ChangeCTNationalNews {
+            get {
+                return ResourceManager.GetString("ChangeCTNationalNews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to News .
+        /// </summary>
+        internal static string ChangeCTNews {
+            get {
+                return ResourceManager.GetString("ChangeCTNews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change of Scandinavia News base Content Type.
+        /// </summary>
+        internal static string ChangeCTNewsDescr {
+            get {
+                return ResourceManager.GetString("ChangeCTNewsDescr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Follow up hour and salary spendings
         ///.
         /// </summary>

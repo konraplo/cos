@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <!-- Parent ContentType: News (COSIntranet\News) (0x01100077E3F64F6C4348C3BE63D505679EF85B) -->
+  <ContentType ID="0x01100077E3F64F6C4348C3BE63D505679EF85B006C83CA6B58904F3FB1C831DCE0940A10"
+               Name="$Resources:COSIntranet,ChangeCTNationalNews"
+               Group="CHANGE Content Types"
+               Description="$Resources:COSIntranet,ChangeCTNationalNewsDescr"
+               Inherits="TRUE"
+               Version="0">
+    <FieldRefs>
+    </FieldRefs>
+  </ContentType>
+</Elements>

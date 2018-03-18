@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ChangeCTNationalNews" xml:space="preserve">
+    <value>National News</value>
+  </data>
+  <data name="ChangeCTNews" xml:space="preserve">
+    <value>News </value>
+  </data>
+  <data name="ChangeCTNewsDescr" xml:space="preserve">
+    <value>Change of Scandinavia News base Content Type</value>
+  </data>
+  <data name="ChangeCTNewsDescr1" xml:space="preserve">
+    <value>Change of Scandinavia News base Content Type</value>
+  </data>
   <data name="ChangeFolderFollowupHSalaryUsage" xml:space="preserve">
     <value>Follow up hour and salary spendings
 </value>
