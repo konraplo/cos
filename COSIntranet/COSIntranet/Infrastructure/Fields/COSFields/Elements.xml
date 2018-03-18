@@ -3,8 +3,8 @@
   <Field
        ID="{ec87d85c-4fc8-4400-8029-6685e75df42b}"
        Name="COSNewsExpires"
-       DisplayName="$Resources:Lintra.Cpm.Gantt,ChangeColNewsExpires"
-       Description="$Resources:Lintra.Cpm.Gantt,ChangeColNewsExpiresDescr"
+       DisplayName="$Resources:COSIntranet,ChangeColNewsExpires"
+       Description="$Resources:COSIntranet,ChangeColNewsExpiresDescr"
        Type="DateTime"
        Format="DateOnly"
        Required="TRUE"

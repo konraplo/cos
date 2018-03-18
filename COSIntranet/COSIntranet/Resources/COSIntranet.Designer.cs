@@ -115,7 +115,7 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to News .
+        ///   Looks up a localized string similar to News.
         /// </summary>
         internal static string ChangeCTNews {
             get {
