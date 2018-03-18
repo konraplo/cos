@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ChangeColNewsExpires" xml:space="preserve">
+    <value>Expires</value>
+  </data>
+  <data name="ChangeColNewsExpiresDescr" xml:space="preserve">
+    <value>News expiration date</value>
+  </data>
+  <data name="ChangeCTCorporateNews" xml:space="preserve">
+    <value>Corporate News</value>
+  </data>
+  <data name="ChangeCTCorporateNewsDescr" xml:space="preserve">
+    <value>Change of Scandinavia Corporate News</value>
+  </data>
   <data name="ChangeCTNationalNews" xml:space="preserve">
     <value>National News</value>
+  </data>
+  <data name="ChangeCTNationalNewsDescr" xml:space="preserve">
+    <value>Change of Scandinavia National News</value>
   </data>
   <data name="ChangeCTNews" xml:space="preserve">
     <value>News </value>

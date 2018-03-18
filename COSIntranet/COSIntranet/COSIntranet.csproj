@@ -94,6 +94,9 @@
     <None Include="Infrastructure\ContentTypes\News\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{d4320103-af9c-4511-ab2e-4eb4fe1f9f01}</SharePointProjectItemId>
     </None>
+    <None Include="Infrastructure\Fields\COSFields\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{c5860291-3df1-422f-a737-5e5dcc07bef3}</SharePointProjectItemId>
+    </None>
     <None Include="Infrastructure\InfrastructureFiles\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{8d45ff71-438f-4ed7-aacb-c68f1ea10945}</SharePointProjectItemId>
     </None>
@@ -146,7 +149,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
-    <Folder Include="Infrastructure\Fields\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ComposedLook\Theme\Elements.xml" />
@@ -168,6 +170,7 @@
     <Content Include="Infrastructure\ContentTypes\CorporateNews\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\NationalNews\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\News\Elements.xml" />
+    <Content Include="Infrastructure\Fields\COSFields\Elements.xml" />
     <Content Include="Infrastructure\InfrastructureFiles\Elements.xml" />
     <Content Include="Infrastructure\InfrastructureFiles\Images\changeBackground.PNG" />
     <Content Include="Infrastructure\InfrastructureFiles\Images\COS_OsloByNight.JPG" />

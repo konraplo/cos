@@ -8,6 +8,9 @@
                Inherits="TRUE"
                Version="0">
     <FieldRefs>
+      <FieldRef ID="{d3429cc9-adc4-439b-84a8-5679070f84cb}" Required="FALSE" Name="ArticleByLine" />
+      <FieldRef ID="{543bc2cf-1f30-488e-8f25-6fe3b689d9ac}" Required="FALSE" Name="PublishingRollupImage" />
+      <FieldRef ID="{ec87d85c-4fc8-4400-8029-6685e75df42b}" Required="TRUE" Name="COSNewsExpires" />
     </FieldRefs>
   </ContentType>
 </Elements>

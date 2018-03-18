@@ -61,11 +61,56 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expires.
+        /// </summary>
+        internal static string ChangeColNewsExpires {
+            get {
+                return ResourceManager.GetString("ChangeColNewsExpires", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to News expiration date.
+        /// </summary>
+        internal static string ChangeColNewsExpiresDescr {
+            get {
+                return ResourceManager.GetString("ChangeColNewsExpiresDescr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Corporate News.
+        /// </summary>
+        internal static string ChangeCTCorporateNews {
+            get {
+                return ResourceManager.GetString("ChangeCTCorporateNews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change of Scandinavia Corporate News.
+        /// </summary>
+        internal static string ChangeCTCorporateNewsDescr {
+            get {
+                return ResourceManager.GetString("ChangeCTCorporateNewsDescr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to National News.
         /// </summary>
         internal static string ChangeCTNationalNews {
             get {
                 return ResourceManager.GetString("ChangeCTNationalNews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change of Scandinavia National News.
+        /// </summary>
+        internal static string ChangeCTNationalNewsDescr {
+            get {
+                return ResourceManager.GetString("ChangeCTNationalNewsDescr", resourceCulture);
             }
         }
         
