@@ -6,5 +6,6 @@
     <ProjectItemFile Source="Images\changeBackground.PNG" Target="InfrastructureFiles\Images\" Type="ElementFile" />
     <ProjectItemFile Source="Images\COS_OsloByNight.JPG" Target="InfrastructureFiles\Images\" Type="ElementFile" />
     <ProjectItemFile Source="Images\RetailOperationsManual.png" Target="InfrastructureFiles\Images\" Type="ElementFile" />
+    <ProjectItemFile Source="Images\mainBackground.jpg" Target="InfrastructureFiles\Images\" Type="ElementFile" />
   </Files>
 </ProjectItem>

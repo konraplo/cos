@@ -501,7 +501,7 @@
     <value>Staff meetings</value>
   </data>
   <data name="ChangeFolderTitleStatus" xml:space="preserve">
-    <value>Status</value>
+    <value>Stockcount</value>
   </data>
   <data name="ChangeFolderTitleStoreAcqGuide" xml:space="preserve">
     <value>Guide to acquisitions to the store</value>
@@ -655,9 +655,6 @@
   </data>
   <data name="ChangeLibTitlePOSSystem" xml:space="preserve">
     <value>POS- System</value>
-  </data>
-  <data name="ChangeLibTitlePowerBI" xml:space="preserve">
-    <value>Power BI</value>
   </data>
   <data name="ChangeLibTitleProductAssortment" xml:space="preserve">
     <value>Product assortment</value>

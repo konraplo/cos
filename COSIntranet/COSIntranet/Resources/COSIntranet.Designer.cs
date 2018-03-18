@@ -59,5 +59,1585 @@ namespace Change.Intranet.Resources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Follow up hour and salary spendings
+        ///.
+        /// </summary>
+        internal static string ChangeFolderFollowupHSalaryUsage {
+            get {
+                return ResourceManager.GetString("ChangeFolderFollowupHSalaryUsage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Four steps sales method.
+        /// </summary>
+        internal static string ChangeFolderTitle4StepsSalesMethod {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitle4StepsSalesMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to APV.
+        /// </summary>
+        internal static string ChangeFolderTitleAPV {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleAPV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to APV checklist for stores.
+        /// </summary>
+        internal static string ChangeFolderTitleAPVChecklist {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleAPVChecklist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ordering bags for the bank.
+        /// </summary>
+        internal static string ChangeFolderTitleBagsOrdering {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleBagsOrdering", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Basic Lookbook.
+        /// </summary>
+        internal static string ChangeFolderTitleBasicLookbook {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleBasicLookbook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Black Friday.
+        /// </summary>
+        internal static string ChangeFolderTitleBlackFriday {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleBlackFriday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bonus.
+        /// </summary>
+        internal static string ChangeFolderTitleBonus {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleBonus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order handcraftmen.
+        /// </summary>
+        internal static string ChangeFolderTitleBookingOfCraftsmen {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleBookingOfCraftsmen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order light.
+        /// </summary>
+        internal static string ChangeFolderTitleBookingOfLights {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleBookingOfLights", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bra Fitting.
+        /// </summary>
+        internal static string ChangeFolderTitleBraFitting {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleBraFitting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buddy stores.
+        /// </summary>
+        internal static string ChangeFolderTitleBuddyStores {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleBuddyStores", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Catalog and overview.
+        /// </summary>
+        internal static string ChangeFolderTitleCatalogOverview {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleCatalogOverview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ordering handcraftmen in centers.
+        /// </summary>
+        internal static string ChangeFolderTitleCentersOrderingHandcraftmen {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleCentersOrderingHandcraftmen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Xmass.
+        /// </summary>
+        internal static string ChangeFolderTitleChristmas {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleChristmas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Claimsheet template and guidelines.
+        /// </summary>
+        internal static string ChangeFolderTitleClaimsheetTmpGuidelines {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleClaimsheetTmpGuidelines", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Claim sheet  for marketing materiale.
+        /// </summary>
+        internal static string ChangeFolderTitleClaimsMarketing {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleClaimsMarketing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cleaning and maintenance.
+        /// </summary>
+        internal static string ChangeFolderTitleCleaningMaintenance {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleCleaningMaintenance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Periods closed for vacation.
+        /// </summary>
+        internal static string ChangeFolderTitleClosedVacationPeriods {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleClosedVacationPeriods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compendium.
+        /// </summary>
+        internal static string ChangeFolderTitleCompendium {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleCompendium", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Competitions.
+        /// </summary>
+        internal static string ChangeFolderTitleCompetitions {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleCompetitions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Competitions - internal.
+        /// </summary>
+        internal static string ChangeFolderTitleCompetitionsInternal {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleCompetitionsInternal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contacts FAQ.
+        /// </summary>
+        internal static string ChangeFolderTitleContactsFAQ {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleContactsFAQ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contentplan
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleContentPlan {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleContentPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contract and key.
+        /// </summary>
+        internal static string ChangeFolderTitleContractKey {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleContractKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current and previous Lookbooks.
+        /// </summary>
+        internal static string ChangeFolderTitleCPLookbooks {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleCPLookbooks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actual Campaign
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleCurrentCampaign {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleCurrentCampaign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer counters.
+        /// </summary>
+        internal static string ChangeFolderTitleCustomerCounters {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleCustomerCounters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Daily rutines.
+        /// </summary>
+        internal static string ChangeFolderTitleDailyRutines {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleDailyRutines", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dansk lyskilde ordersheet.
+        /// </summary>
+        internal static string ChangeFolderTitleDanskLyskildeOrdersheet {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleDanskLyskildeOrdersheet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diff report - Template
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleDiffReportTemplate {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleDiffReportTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Daily weekly monthly follow up
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleDWMFollowup {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleDWMFollowup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Daily, weekly, monthly sales follow up.
+        /// </summary>
+        internal static string ChangeFolderTitleDWMSalesFollowup {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleDWMSalesFollowup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Easter.
+        /// </summary>
+        internal static string ChangeFolderTitleEaster {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleEaster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EDM.
+        /// </summary>
+        internal static string ChangeFolderTitleEDM {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleEDM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Emplyee on Change Academy.
+        /// </summary>
+        internal static string ChangeFolderTitleEmplyeeChangeAcademy {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleEmplyeeChangeAcademy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EOD.
+        /// </summary>
+        internal static string ChangeFolderTitleEOD {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleEOD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End of season return.
+        /// </summary>
+        internal static string ChangeFolderTitleEOSReturn {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleEOSReturn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Events.
+        /// </summary>
+        internal static string ChangeFolderTitleEvents {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleEvents", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exchange rules.
+        /// </summary>
+        internal static string ChangeFolderTitleExchangeRules {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleExchangeRules", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exchange rules, gift card
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleEXRulesGiftCard {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleEXRulesGiftCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flyer.
+        /// </summary>
+        internal static string ChangeFolderTitleFlyer {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleFlyer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forgot the password
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleForgotPassword {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleForgotPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Foto reports 
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleFotoReports {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleFotoReports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Furniture, mannequin, fittings.
+        /// </summary>
+        internal static string ChangeFolderTitleFurnitureMannequinFittings {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleFurnitureMannequinFittings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generic instore .
+        /// </summary>
+        internal static string ChangeFolderTitleGenericInstore {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleGenericInstore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GLS pricelist.
+        /// </summary>
+        internal static string ChangeFolderTitleGLSpricelist {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleGLSpricelist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Guide til Change Academy.
+        /// </summary>
+        internal static string ChangeFolderTitleGuideChangeAcademy {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleGuideChangeAcademy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Halloween.
+        /// </summary>
+        internal static string ChangeFolderTitleHalloween {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleHalloween", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Handling.
+        /// </summary>
+        internal static string ChangeFolderTitleHandling {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleHandling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HR.
+        /// </summary>
+        internal static string ChangeFolderTitleHR {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleHR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ideas for EDM.
+        /// </summary>
+        internal static string ChangeFolderTitleIdeasEDM {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleIdeasEDM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Illness.
+        /// </summary>
+        internal static string ChangeFolderTitleIllness {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleIllness", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instore inventory  manuals.
+        /// </summary>
+        internal static string ChangeFolderTitleInstoreInventoryManuals {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleInstoreInventoryManuals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Internally.
+        /// </summary>
+        internal static string ChangeFolderTitleInternally {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleInternally", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job advertisements.
+        /// </summary>
+        internal static string ChangeFolderTitleJobAdvertisements {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleJobAdvertisements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job descriptions.
+        /// </summary>
+        internal static string ChangeFolderTitleJobDescriptions {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleJobDescriptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        internal static string ChangeFolderTitleLogin {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Local yearlywheel template 
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleLYTemplate {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleLYTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maintain targit during Sale and Exchange.
+        /// </summary>
+        internal static string ChangeFolderTitleMaintainTarget {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleMaintainTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manual.
+        /// </summary>
+        internal static string ChangeFolderTitleManual {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleManual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Guide how to upload pictures
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleManualPhotoReports {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleManualPhotoReports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assambly instructions for Inventory .
+        /// </summary>
+        internal static string ChangeFolderTitleManuals {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleManuals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Material for windows
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleMaterialForWindows {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleMaterialForWindows", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Merchandise Flow.
+        /// </summary>
+        internal static string ChangeFolderTitleMerchandiseFlow {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleMerchandiseFlow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monthly follow up on hours.
+        /// </summary>
+        internal static string ChangeFolderTitleMfollowupHours {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleMfollowupHours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monthly follow up on Salary cost
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleMfollowupSalaryCost {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleMfollowupSalaryCost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Money handling and bank.
+        /// </summary>
+        internal static string ChangeFolderTitleMoneyBank {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleMoneyBank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Money  handling.
+        /// </summary>
+        internal static string ChangeFolderTitleMoneyHandling {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleMoneyHandling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Morning meetings
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleMorningMeetings {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleMorningMeetings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mounting foil.
+        /// </summary>
+        internal static string ChangeFolderTitleMountingFoil {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleMountingFoil", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mounting foil 
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleMountingOfFoil {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleMountingOfFoil", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mounting textfoil.
+        /// </summary>
+        internal static string ChangeFolderTitleMountingTextFoil {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleMountingTextFoil", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Staff interviews (MUS)
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleMUS {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleMUS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nearest contact.
+        /// </summary>
+        internal static string ChangeFolderTitleNearestContact {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleNearestContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neighbour size
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleNeighbourSize {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleNeighbourSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New employee
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleNewEmployee {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleNewEmployee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Objective tools.
+        /// </summary>
+        internal static string ChangeFolderTitleObjectiveTools {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleObjectiveTools", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Onboarding.
+        /// </summary>
+        internal static string ChangeFolderTitleOnboarding {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleOnboarding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Online.
+        /// </summary>
+        internal static string ChangeFolderTitleOnline {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleOnline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Onsight education.
+        /// </summary>
+        internal static string ChangeFolderTitleOnsightEducation {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleOnsightEducation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open by night.
+        /// </summary>
+        internal static string ChangeFolderTitleOpenByNight {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleOpenByNight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ordering days.
+        /// </summary>
+        internal static string ChangeFolderTitleOrderingDays {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleOrderingDays", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ordering handcraftmen (COS).
+        /// </summary>
+        internal static string ChangeFolderTitleOrderingHandcraftmen {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleOrderingHandcraftmen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How to receive orders.
+        /// </summary>
+        internal static string ChangeFolderTitleOrdersHowTo {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleOrdersHowTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Size of Marketing order
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleOrderSize {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleOrderSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order Templates.
+        /// </summary>
+        internal static string ChangeFolderTitleOrderTemplates {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleOrderTemplates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ordinary.
+        /// </summary>
+        internal static string ChangeFolderTitleOrdinary {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleOrdinary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Organisazion chart.
+        /// </summary>
+        internal static string ChangeFolderTitleOrganisazionChart {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleOrganisazionChart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transfers to other stores.
+        /// </summary>
+        internal static string ChangeFolderTitleOtherStoresTransfer {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleOtherStoresTransfer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Outphased items.
+        /// </summary>
+        internal static string ChangeFolderTitleOutphasedItems {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleOutphasedItems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Telephone.
+        /// </summary>
+        internal static string ChangeFolderTitlePhone {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitlePhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phonelist.
+        /// </summary>
+        internal static string ChangeFolderTitlePhonelist {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitlePhonelist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Photo reports.
+        /// </summary>
+        internal static string ChangeFolderTitlePhotoReports {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitlePhotoReports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Products on hangers – all products.
+        /// </summary>
+        internal static string ChangeFolderTitlePonHAllProducts {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitlePonHAllProducts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manual til POS.
+        /// </summary>
+        internal static string ChangeFolderTitlePOSManual {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitlePOSManual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to POS.
+        /// </summary>
+        internal static string ChangeFolderTitlePOSSystem {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitlePOSSystem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Power BI.
+        /// </summary>
+        internal static string ChangeFolderTitlePowerBI {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitlePowerBI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manuals for Power BI.
+        /// </summary>
+        internal static string ChangeFolderTitlePowerBIManuals {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitlePowerBIManuals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reports in Power BI.
+        /// </summary>
+        internal static string ChangeFolderTitlePowerBIReports {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitlePowerBIReports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prepack, Order confirmation.
+        /// </summary>
+        internal static string ChangeFolderTitlePrepackOrderConfirmation {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitlePrepackOrderConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preperation.
+        /// </summary>
+        internal static string ChangeFolderTitlePreperation {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitlePreperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product information.
+        /// </summary>
+        internal static string ChangeFolderTitleProductInfo {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleProductInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Receipt texts.
+        /// </summary>
+        internal static string ChangeFolderTitleReceiptTexts {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleReceiptTexts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Receiving.
+        /// </summary>
+        internal static string ChangeFolderTitleReceiving {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleReceiving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retail Operation Manual.
+        /// </summary>
+        internal static string ChangeFolderTitleRetailOperationManual {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleRetailOperationManual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sale.
+        /// </summary>
+        internal static string ChangeFolderTitleSale {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleSale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sales follow up.
+        /// </summary>
+        internal static string ChangeFolderTitleSalesFollowUp {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleSalesFollowUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sales gameing (Bankoplader).
+        /// </summary>
+        internal static string ChangeFolderTitleSalesGaming {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleSalesGaming", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sales tips.
+        /// </summary>
+        internal static string ChangeFolderTitleSalesTips {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleSalesTips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sales training method.
+        /// </summary>
+        internal static string ChangeFolderTitleSalesTrainingMethod {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleSalesTrainingMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Samesystem.
+        /// </summary>
+        internal static string ChangeFolderTitleSamesystem {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleSamesystem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manual Samesystem.
+        /// </summary>
+        internal static string ChangeFolderTitleSamesystemManual {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleSamesystemManual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shared login for hour employee.
+        /// </summary>
+        internal static string ChangeFolderTitleSharedLogin {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleSharedLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signs to print
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleSignsForPrint {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleSignsForPrint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Size overview.
+        /// </summary>
+        internal static string ChangeFolderTitleSizeOverview {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleSizeOverview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manual for Skype .
+        /// </summary>
+        internal static string ChangeFolderTitleSkypeManual {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleSkypeManual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signs for small Campaigns
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleSmallCampaignsSigns {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleSmallCampaignsSigns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Staff.
+        /// </summary>
+        internal static string ChangeFolderTitleStaff {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleStaff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Staff Handbook.
+        /// </summary>
+        internal static string ChangeFolderTitleStafflHandbook {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleStafflHandbook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Staff meetings.
+        /// </summary>
+        internal static string ChangeFolderTitleStaffMeetings {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleStaffMeetings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stockcount.
+        /// </summary>
+        internal static string ChangeFolderTitleStatus {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Guide to acquisitions to the store.
+        /// </summary>
+        internal static string ChangeFolderTitleStoreAcqGuide {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleStoreAcqGuide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expences in the store.
+        /// </summary>
+        internal static string ChangeFolderTitleStoreExpences {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleStoreExpences", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Store manager vacation.
+        /// </summary>
+        internal static string ChangeFolderTitleStoreMgrVacation {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleStoreMgrVacation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Store Supply.
+        /// </summary>
+        internal static string ChangeFolderTitleStoreSupply {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleStoreSupply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Store visit report.
+        /// </summary>
+        internal static string ChangeFolderTitleStoreVisitReport {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleStoreVisitReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manual to Survey Monkey.
+        /// </summary>
+        internal static string ChangeFolderTitleSurveyMonkeyManual {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleSurveyMonkeyManual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Swap list.
+        /// </summary>
+        internal static string ChangeFolderTitleSwapList {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleSwapList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tablet.
+        /// </summary>
+        internal static string ChangeFolderTitleTablet {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleTablet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Template and guide.
+        /// </summary>
+        internal static string ChangeFolderTitleTemplateGuide {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleTemplateGuide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Termination and resignation.
+        /// </summary>
+        internal static string ChangeFolderTitleTerminationResignation {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleTerminationResignation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How to put products on hangers
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleThingsOnHangers {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleThingsOnHangers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tips and Tricks.
+        /// </summary>
+        internal static string ChangeFolderTitleTipsandTricks {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleTipsandTricks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tips when return or exchange.
+        /// </summary>
+        internal static string ChangeFolderTitleTipsReturnExchange {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleTipsReturnExchange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Travel Expence.
+        /// </summary>
+        internal static string ChangeFolderTitleTravelExpence {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleTravelExpence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Theft, robbery and uneven cash register.
+        /// </summary>
+        internal static string ChangeFolderTitleTRUCashRegister {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleTRUCashRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manual Trustpilot
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleTrustpilotManual {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleTrustpilotManual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manual for Photo reports 
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleUploadPicturesGuide {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleUploadPicturesGuide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vacation procedure.
+        /// </summary>
+        internal static string ChangeFolderTitleVacationProcedure {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleVacationProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Basic VM.
+        /// </summary>
+        internal static string ChangeFolderTitleVMBasic {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleVMBasic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VM Golden Rules.
+        /// </summary>
+        internal static string ChangeFolderTitleVMGoldenRules {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleVMGoldenRules", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VM Guidelines 
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleVMGuidelines {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleVMGuidelines", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seasonal  VM
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleVMSeasonal {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleVMSeasonal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voucher.
+        /// </summary>
+        internal static string ChangeFolderTitleVoucher {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleVoucher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vouchers and Flyers.
+        /// </summary>
+        internal static string ChangeFolderTitleVouchersAndFlyvers {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleVouchersAndFlyvers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signs for window - Print i store.
+        /// </summary>
+        internal static string ChangeFolderTitleWindowSigns {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleWindowSigns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Year Calender.
+        /// </summary>
+        internal static string ChangeFolderTitleYearCalender {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleYearCalender", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yearwheel (guide and template)
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleYearwheel {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleYearwheel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Youngstrers and wokinghours
+        ///.
+        /// </summary>
+        internal static string ChangeFolderTitleYoungstrersWokinghours {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleYoungstrersWokinghours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change academy and E-Learning
+        ///.
+        /// </summary>
+        internal static string ChangeLibDescriptionChangeAcademy {
+            get {
+                return ResourceManager.GetString("ChangeLibDescriptionChangeAcademy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Daily procedures
+        ///.
+        /// </summary>
+        internal static string ChangeLibDescriptionDailyOperation {
+            get {
+                return ResourceManager.GetString("ChangeLibDescriptionDailyOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finance.
+        /// </summary>
+        internal static string ChangeLibDescriptionFinance {
+            get {
+                return ResourceManager.GetString("ChangeLibDescriptionFinance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HR.
+        /// </summary>
+        internal static string ChangeLibDescriptionHR {
+            get {
+                return ResourceManager.GetString("ChangeLibDescriptionHR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IT information and technical guidelines.
+        /// </summary>
+        internal static string ChangeLibDescriptionIT {
+            get {
+                return ResourceManager.GetString("ChangeLibDescriptionIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manager folder with BC information about personnel, sales follow up, and other operational information
+        ///.
+        /// </summary>
+        internal static string ChangeLibDescriptionManagers {
+            get {
+                return ResourceManager.GetString("ChangeLibDescriptionManagers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Information about current campaign, yearly overview, seasonal activities, content plan and ordering marketing material.
+        /// </summary>
+        internal static string ChangeLibDescriptionMarketing {
+            get {
+                return ResourceManager.GetString("ChangeLibDescriptionMarketing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Information about POS system
+        ///.
+        /// </summary>
+        internal static string ChangeLibDescriptionPOSSystem {
+            get {
+                return ResourceManager.GetString("ChangeLibDescriptionPOSSystem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product assortment, stock, delivery, and feedback on collections
+        ///.
+        /// </summary>
+        internal static string ChangeLibDescriptionProductAssortment {
+            get {
+                return ResourceManager.GetString("ChangeLibDescriptionProductAssortment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sales training, goals and competitions for internal use.
+        /// </summary>
+        internal static string ChangeLibDescriptionSalesTraining {
+            get {
+                return ResourceManager.GetString("ChangeLibDescriptionSalesTraining", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Information for the store&apos;s inventory, building and merchandising.
+        /// </summary>
+        internal static string ChangeLibDescriptionVisualMerchandise {
+            get {
+                return ResourceManager.GetString("ChangeLibDescriptionVisualMerchandise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change Academy.
+        /// </summary>
+        internal static string ChangeLibTitleChangeAcademy {
+            get {
+                return ResourceManager.GetString("ChangeLibTitleChangeAcademy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Daily Operation.
+        /// </summary>
+        internal static string ChangeLibTitleDailyOperation {
+            get {
+                return ResourceManager.GetString("ChangeLibTitleDailyOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finance.
+        /// </summary>
+        internal static string ChangeLibTitleFinance {
+            get {
+                return ResourceManager.GetString("ChangeLibTitleFinance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HR.
+        /// </summary>
+        internal static string ChangeLibTitleHR {
+            get {
+                return ResourceManager.GetString("ChangeLibTitleHR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IT.
+        /// </summary>
+        internal static string ChangeLibTitleIT {
+            get {
+                return ResourceManager.GetString("ChangeLibTitleIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Managers.
+        /// </summary>
+        internal static string ChangeLibTitleManagers {
+            get {
+                return ResourceManager.GetString("ChangeLibTitleManagers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Marketing.
+        /// </summary>
+        internal static string ChangeLibTitleMarketing {
+            get {
+                return ResourceManager.GetString("ChangeLibTitleMarketing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to POS- System.
+        /// </summary>
+        internal static string ChangeLibTitlePOSSystem {
+            get {
+                return ResourceManager.GetString("ChangeLibTitlePOSSystem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product assortment.
+        /// </summary>
+        internal static string ChangeLibTitleProductAssortment {
+            get {
+                return ResourceManager.GetString("ChangeLibTitleProductAssortment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sales training.
+        /// </summary>
+        internal static string ChangeLibTitleSalesTraining {
+            get {
+                return ResourceManager.GetString("ChangeLibTitleSalesTraining", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visual Merchandise .
+        /// </summary>
+        internal static string ChangeLibTitleVisualMerchandise {
+            get {
+                return ResourceManager.GetString("ChangeLibTitleVisualMerchandise", resourceCulture);
+            }
+        }
     }
 }

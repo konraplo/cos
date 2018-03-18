@@ -19,7 +19,7 @@ namespace Change.Intranet.Features.ChangeComposedLook
         private const string CustomLookName = "Change of Scandinavia";
         private const string ThemeUrl = "_catalogs/theme/15/cos_pal015.spcolor";
         private const string MasterPageUrl = "_catalogs/masterpage/oslo.master";
-        private const string ImageUrl = "SiteAssets/Images/COS_OsloByNight.JPG";
+        private const string ImageUrl = "SiteAssets/Images/mainBackground.JPG";
 
         /// <summary>
         /// Query to get all composed looks for specified title

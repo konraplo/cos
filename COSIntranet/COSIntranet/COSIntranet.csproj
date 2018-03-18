@@ -161,6 +161,7 @@
     <Content Include="Infrastructure\InfrastructureFiles\Images\changeBackground.PNG" />
     <Content Include="Infrastructure\InfrastructureFiles\Images\COS_OsloByNight.JPG" />
     <Content Include="Infrastructure\InfrastructureFiles\Images\logo.png" />
+    <Content Include="Infrastructure\InfrastructureFiles\Images\mainBackground.jpg" />
     <Content Include="Infrastructure\InfrastructureFiles\Images\RetailOperationsManual.png" />
     <Content Include="Infrastructure\Lists\DivisionLevel\ChangeAcademy\Elements.xml" />
     <Content Include="Infrastructure\Lists\DivisionLevel\DailyOperation\Elements.xml" />
