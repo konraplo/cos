@@ -334,8 +334,7 @@
     <value>Manual</value>
   </data>
   <data name="ChangeFolderTitleManualPhotoReports" xml:space="preserve">
-    <value>Guide how to upload pictures
-</value>
+    <value>Manual for Photo reports</value>
   </data>
   <data name="ChangeFolderTitleManuals" xml:space="preserve">
     <value>Assambly instructions for Inventory </value>
@@ -578,8 +577,7 @@
 </value>
   </data>
   <data name="ChangeFolderTitleUploadPicturesGuide" xml:space="preserve">
-    <value>Manual for Photo reports 
-</value>
+    <value>Guide how to upload pictures</value>
   </data>
   <data name="ChangeFolderTitleVacationProcedure" xml:space="preserve">
     <value>Vacation procedure</value>

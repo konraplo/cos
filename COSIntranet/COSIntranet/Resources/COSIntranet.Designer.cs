@@ -691,8 +691,7 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Guide how to upload pictures
-        ///.
+        ///   Looks up a localized string similar to Manual for Photo reports.
         /// </summary>
         internal static string ChangeFolderTitleManualPhotoReports {
             get {
@@ -1397,8 +1396,7 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Manual for Photo reports 
-        ///.
+        ///   Looks up a localized string similar to Guide how to upload pictures.
         /// </summary>
         internal static string ChangeFolderTitleUploadPicturesGuide {
             get {

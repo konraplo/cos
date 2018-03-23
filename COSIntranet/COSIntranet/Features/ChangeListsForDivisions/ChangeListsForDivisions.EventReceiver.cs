@@ -76,10 +76,10 @@ namespace Change.Intranet.Features.ChangeListsForDivisions
 
             folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleUploadPicturesGuide", "COSIntranet", web.Language);
             newFolder.SubFolders.Add(folderUrl);
-            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleMountingOfFoil", "COSIntranet", web.Language);
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleMountingFoil", "COSIntranet", web.Language);
             newFolder = folderColl.Add(folderUrl);
 
-            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleMountingFoil", "COSIntranet", web.Language);
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleMountingOfFoil", "COSIntranet", web.Language);
             newFolder.SubFolders.Add(folderUrl);
 
             folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleMountingTextFoil", "COSIntranet", web.Language);

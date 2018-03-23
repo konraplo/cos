@@ -325,7 +325,7 @@
     <value>Manual</value>
   </data>
   <data name="ChangeFolderTitleManualPhotoReports" xml:space="preserve">
-    <value>How to upload pictures</value>
+    <value>Manual til Foto rapporter</value>
   </data>
   <data name="ChangeFolderTitleManuals" xml:space="preserve">
     <value>Samlevejledninger til Inventar</value>
@@ -352,13 +352,13 @@
     <value>Morgenmøder</value>
   </data>
   <data name="ChangeFolderTitleMountingFoil" xml:space="preserve">
-    <value>Manual til Foto rapporter</value>
+    <value>Montering af folie</value>
   </data>
   <data name="ChangeFolderTitleMountingOfFoil" xml:space="preserve">
     <value>Montering af folie </value>
   </data>
   <data name="ChangeFolderTitleMountingTextFoil" xml:space="preserve">
-    <value>Guide til uploading af billeder  </value>
+    <value>Montering af tekstfolie</value>
   </data>
   <data name="ChangeFolderTitleMUS" xml:space="preserve">
     <value>MUS samtaler </value>
@@ -421,7 +421,7 @@
     <value>Telefonlister</value>
   </data>
   <data name="ChangeFolderTitlePhotoReports" xml:space="preserve">
-    <value>Montering af folie </value>
+    <value>Fotorapport</value>
   </data>
   <data name="ChangeFolderTitlePonHAllProducts" xml:space="preserve">
     <value>Videoer af opbøjling - alle varegrupper</value>
@@ -557,7 +557,7 @@
 </value>
   </data>
   <data name="ChangeFolderTitleUploadPicturesGuide" xml:space="preserve">
-    <value>Montering af tekstfolie </value>
+    <value>Guide til uploading af billeder</value>
   </data>
   <data name="ChangeFolderTitleVacationProcedure" xml:space="preserve">
     <value>Ferie procedure</value>

@@ -7,5 +7,13 @@
     <ProjectItemFile Source="Images\COS_OsloByNight.JPG" Target="InfrastructureFiles\Images\" Type="ElementFile" />
     <ProjectItemFile Source="Images\RetailOperationsManual.png" Target="InfrastructureFiles\Images\" Type="ElementFile" />
     <ProjectItemFile Source="Images\mainBackground.jpg" Target="InfrastructureFiles\Images\" Type="ElementFile" />
+    <ProjectItemFile Source="Images\AddItem.jpg" Target="InfrastructureFiles\Images\" Type="ElementFile" />
+    <ProjectItemFile Source="Images\changeBackgroundLink.png" Target="InfrastructureFiles\Images\" Type="ElementFile" />
+    <ProjectItemFile Source="Images\RetailOperationsManualLink.png" Target="InfrastructureFiles\Images\" Type="ElementFile" />
+    <ProjectItemFile Source="Images\ChangeAcademy.png" Target="InfrastructureFiles\Images\" Type="ElementFile" />
+    <ProjectItemFile Source="Images\ITChangeLink.png" Target="InfrastructureFiles\Images\" Type="ElementFile" />
+    <ProjectItemFile Source="Images\NewsletterLink.png" Target="InfrastructureFiles\Images\" Type="ElementFile" />
+    <ProjectItemFile Source="Images\PowerBILink.PNG" Target="InfrastructureFiles\Images\" Type="ElementFile" />
+    <ProjectItemFile Source="Images\sameSystemLink.PNG" Target="InfrastructureFiles\Images\" Type="ElementFile" />
   </Files>
 </ProjectItem>

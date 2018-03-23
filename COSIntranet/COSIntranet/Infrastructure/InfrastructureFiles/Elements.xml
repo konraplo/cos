@@ -6,5 +6,13 @@
     <File Path="InfrastructureFiles\Images\COS_OsloByNight.JPG" Url="Images/COS_OsloByNight.JPG" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
     <File Path="InfrastructureFiles\Images\RetailOperationsManual.png" Url="Images/RetailOperationsManual.png" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
     <File Path="InfrastructureFiles\Images\mainBackground.jpg" Url="Images/mainBackground.jpg" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
+    <File Path="InfrastructureFiles\Images\AddItem.jpg" Url="Images/AddItem.jpg" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
+    <File Path="InfrastructureFiles\Images\changeBackgroundLink.png" Url="Images/changeBackgroundLink.png" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
+    <File Path="InfrastructureFiles\Images\RetailOperationsManualLink.png" Url="Images/RetailOperationsManualLink.png" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
+    <File Path="InfrastructureFiles\Images\ChangeAcademy.png" Url="Images/ChangeAcademy.png" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
+    <File Path="InfrastructureFiles\Images\ITChangeLink.png" Url="Images/ITChangeLink.png" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
+    <File Path="InfrastructureFiles\Images\NewsletterLink.png" Url="Images/NewsletterLink.png" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
+    <File Path="InfrastructureFiles\Images\PowerBILink.PNG" Url="Images/PowerBILink.PNG" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
+    <File Path="InfrastructureFiles\Images\sameSystemLink.PNG" Url="Images/sameSystemLink.PNG" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
   </Module>
 </Elements>
