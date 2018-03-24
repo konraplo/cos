@@ -30,6 +30,8 @@
         <Feature ID="FAF00902-6BAB-4583-BD02-84DB191801D8" />
         <!-- Change of Scandinavia Lists for divisions -->
         <Feature ID="dbc5a2da-52af-49a2-85a6-584a2afbecd4" />
+        <!-- Change of scandinavia composed look-->
+        <Feature ID="0de89914-06f0-4c4e-b080-7cffd569018f" />
         <!-- MDS -->
         <Feature ID="87294C72-F260-42f3-A41B-981A2FFCE37A" />
       </WebFeatures>
