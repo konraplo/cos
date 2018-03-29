@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <ListInstance Title="Sites" OnQuickLaunch="TRUE" TemplateType="10001" Url="Lists/Sites" Description="My List Instance"></ListInstance>
+  <Field ID="{4dcbc8cf-ebd9-4e87-a332-d42aa7edb5ae}" Name="COSSite" DisplayName="Site" Type="LookupMulti" Mult="TRUE" UnlimitedLengthInDocumentLibrary="TRUE" Required="FALSE" List="Lists/Sites" ShowField="Title" Group="Custom Site Columns" Overwrite="TRUE"></Field>
+</Elements>
