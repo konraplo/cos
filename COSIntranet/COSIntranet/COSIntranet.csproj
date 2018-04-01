@@ -52,6 +52,7 @@
     <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventReceivers\InboxEventReceiver\InboxEventReceiver.cs" />
     <Compile Include="Features\ChangeComposedLook\ChangeComposedLook.EventReceiver.cs">
       <DependentUpon>ChangeComposedLook.feature</DependentUpon>
     </Compile>
@@ -70,6 +71,9 @@
     <None Include="ComposedLook\Theme\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{0c5a1f1c-450a-451d-9ffb-cdb58e264074}</SharePointProjectItemId>
     </None>
+    <None Include="EventReceivers\InboxEventReceiver\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{16579f80-edd5-4554-9529-2ea9fac4d437}</SharePointProjectItemId>
+    </None>
     <None Include="Features\ChangeWebTemplates\ChangeWebTemplates.feature">
       <FeatureId>{e88eedf4-3e70-4006-aafd-56b45ce67aa9}</FeatureId>
     </None>
@@ -84,6 +88,9 @@
     </None>
     <None Include="Features\ChangeFileAndScripts\ChangeFileAndScripts.feature">
       <FeatureId>{8f46b44c-62a5-42ff-bdf9-090e2313d4f2}</FeatureId>
+    </None>
+    <None Include="Features\ChangeContentOrganizer\ChangeContentOrganizer.feature">
+      <FeatureId>{a91f5092-ba86-4df6-8bfa-5f2248956e4f}</FeatureId>
     </None>
     <None Include="Infrastructure\ContentTypes\CorporateNews\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{56ed91e7-59d0-4551-a7ef-10c9cf8db858}</SharePointProjectItemId>
@@ -130,6 +137,24 @@
     <None Include="Infrastructure\Lists\DivisionLevel\SalesTraining\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{e11a311d-f764-4ff6-a499-59c3ef996eae}</SharePointProjectItemId>
     </None>
+    <None Include="Infrastructure\Lists\RootLevel\Folders\FoldersInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{ba62b06b-e0f1-492c-978a-102dec87a8d5}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\RootLevel\Folders\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{7a7dbba5-5744-4eee-a621-5bc37d119dca}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\RootLevel\Inbox\InboxInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{2d5647e0-dc34-4a77-8744-3f9b2f5705d0}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\RootLevel\Inbox\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{16d0a080-c995-4242-9bd5-0692bb28f386}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\RootLevel\Sites\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{50dab78b-75a3-4ad4-bda4-cd3f78e95a0b}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\RootLevel\Sites\SitesInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{abc81a6c-4b80-4ed7-b827-90921e5551d7}</SharePointProjectItemId>
+    </None>
     <None Include="key.snk" />
     <None Include="Package\Package.package">
       <PackageId>{6326d6d3-981a-48e9-b30e-0aeda6882d5b}</PackageId>
@@ -152,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ComposedLook\Theme\Elements.xml" />
+    <Content Include="EventReceivers\InboxEventReceiver\Elements.xml" />
     <Content Include="Features\ChangeWebTemplates\ChangeWebTemplates.Template.xml">
       <DependentUpon>ChangeWebTemplates.feature</DependentUpon>
     </Content>
@@ -166,6 +192,9 @@
     </Content>
     <Content Include="Features\ChangeFileAndScripts\ChangeFileAndScripts.Template.xml">
       <DependentUpon>ChangeFileAndScripts.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\ChangeContentOrganizer\ChangeContentOrganizer.Template.xml">
+      <DependentUpon>ChangeContentOrganizer.feature</DependentUpon>
     </Content>
     <Content Include="Infrastructure\ContentTypes\CorporateNews\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\NationalNews\Elements.xml" />
@@ -188,6 +217,9 @@
     <Content Include="Infrastructure\InfrastructureFiles\Scripts\COS.HideBlogToolsWP.js" />
     <Content Include="Infrastructure\InfrastructureFiles\Scripts\jquery-3.1.0.min.js" />
     <Content Include="Infrastructure\Lists\DivisionLevel\ChangeAcademy\Elements.xml" />
+    <Content Include="Infrastructure\Lists\DivisionLevel\ChangeAcademy\Elements.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Infrastructure\Lists\DivisionLevel\DailyOperation\Elements.xml" />
     <Content Include="Infrastructure\Lists\DivisionLevel\Finance\Elements.xml" />
     <Content Include="Infrastructure\Lists\DivisionLevel\HR\Elements.xml" />
@@ -197,6 +229,21 @@
     <Content Include="Infrastructure\Lists\DivisionLevel\ProductAssortment\Elements.xml" />
     <Content Include="Infrastructure\Lists\DivisionLevel\VisualMerchandise\Elements.xml" />
     <Content Include="Infrastructure\Lists\DivisionLevel\SalesTraining\Elements.xml" />
+    <Content Include="Infrastructure\Lists\RootLevel\Folders\Elements.xml" />
+    <Content Include="Infrastructure\Lists\RootLevel\Folders\FoldersInstance\Elements.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Infrastructure\Lists\RootLevel\Folders\Schema.xml" />
+    <Content Include="Infrastructure\Lists\RootLevel\Inbox\EditDlg.htm" />
+    <Content Include="Infrastructure\Lists\RootLevel\Inbox\Elements.xml" />
+    <Content Include="Infrastructure\Lists\RootLevel\Inbox\FileDlg.htm" />
+    <Content Include="Infrastructure\Lists\RootLevel\Inbox\InboxInstance\Elements.xml" />
+    <Content Include="Infrastructure\Lists\RootLevel\Inbox\Repair.aspx" />
+    <Content Include="Infrastructure\Lists\RootLevel\Inbox\Schema.xml" />
+    <Content Include="Infrastructure\Lists\RootLevel\Inbox\Upload.aspx" />
+    <Content Include="Infrastructure\Lists\RootLevel\Sites\Elements.xml" />
+    <Content Include="Infrastructure\Lists\RootLevel\Sites\Schema.xml" />
+    <Content Include="Infrastructure\Lists\RootLevel\Sites\SitesInstance\Elements.xml" />
     <Content Include="Resources\COSIntranet.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>COSIntranet.Designer.cs</LastGenOutput>
