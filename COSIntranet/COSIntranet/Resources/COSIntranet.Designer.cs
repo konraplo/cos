@@ -79,6 +79,24 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to URL.
+        /// </summary>
+        internal static string ChangeColUrl {
+            get {
+                return ResourceManager.GetString("ChangeColUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Relative destination URL.
+        /// </summary>
+        internal static string ChangeColUrlDescription {
+            get {
+                return ResourceManager.GetString("ChangeColUrlDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Corporate News.
         /// </summary>
         internal static string ChangeCTCorporateNews {

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<feature xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="2904de51-e14c-41df-8875-514a8330628d" description="Copies files to required folders" featureId="2904de51-e14c-41df-8875-514a8330628d" imageUrl="" solutionId="00000000-0000-0000-0000-000000000000" title="Change of scandinavia Content Organizer" version="" deploymentPath="$SharePoint.Project.FileNameWithoutExtension$_$SharePoint.Feature.FileNameWithoutExtension$" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/FeatureModel">
+<feature xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="2904de51-e14c-41df-8875-514a8330628d" description="Copies files to specified folders cross site collection" featureId="2904de51-e14c-41df-8875-514a8330628d" imageUrl="" scope="Site" solutionId="00000000-0000-0000-0000-000000000000" title="Change of scandinavia Content Organizer" version="" deploymentPath="$SharePoint.Project.FileNameWithoutExtension$_$SharePoint.Feature.FileNameWithoutExtension$" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/FeatureModel">
   <projectItems>
     <projectItemReference itemId="7a7dbba5-5744-4eee-a621-5bc37d119dca" />
     <projectItemReference itemId="ba62b06b-e0f1-492c-978a-102dec87a8d5" />

@@ -4,6 +4,7 @@ using Microsoft.SharePoint;
 using Microsoft.SharePoint.Utilities;
 using Microsoft.SharePoint.Workflow;
 using System.Threading.Tasks;
+using Change.Intranet.Common;
 
 namespace Change.Intranet
 {
@@ -52,15 +53,15 @@ namespace Change.Intranet
 
                                     foreach (string folderUrlToken in urlFolder.Split('/'))
                                     {
-                                        string translatedToken = SPUtility.GetLocalizedString(string.Format("$Resources:COSIntranet,{0}", folderUrlToken), "COSIntranet", web.Language);
                                         if (counter == 0)
                                         {
-                                            string listUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), string.Format("/Lists/{0}", translatedToken));
+                                            string listUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), string.Format("/Lists/{0}", ListUtilities.ListUrlMappings[folderUrlToken]));
                                             destinationList = web.GetList(listUrl);
                                             destinationFolder = destinationList.RootFolder;
                                         }
                                         else
                                         {
+                                            string translatedToken = SPUtility.GetLocalizedString(string.Format("$Resources:COSIntranet,{0}", folderUrlToken), "COSIntranet", web.Language);
                                             destinationFolder = destinationFolder.SubFolders[translatedToken];
                                         }
                                         counter++;

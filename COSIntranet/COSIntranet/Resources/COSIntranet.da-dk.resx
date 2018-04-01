@@ -658,4 +658,10 @@
   <data name="ChangeLibTitleVisualMerchandise" xml:space="preserve">
     <value>Visual Merchandise </value>
   </data>
+  <data name="ChangeColUrl" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="ChangeColUrlDescription" xml:space="preserve">
+    <value>Relative destination URL</value>
+  </data>
 </root>
