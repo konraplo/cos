@@ -185,6 +185,8 @@
     <Content Include="Infrastructure\InfrastructureFiles\Images\RetailOperationsManual.png" />
     <Content Include="Infrastructure\InfrastructureFiles\Images\RetailOperationsManualLink.png" />
     <Content Include="Infrastructure\InfrastructureFiles\Images\sameSystemLink.PNG" />
+    <Content Include="Infrastructure\InfrastructureFiles\Scripts\COS.HideBlogToolsWP.js" />
+    <Content Include="Infrastructure\InfrastructureFiles\Scripts\jquery-3.1.0.min.js" />
     <Content Include="Infrastructure\Lists\DivisionLevel\ChangeAcademy\Elements.xml" />
     <Content Include="Infrastructure\Lists\DivisionLevel\DailyOperation\Elements.xml" />
     <Content Include="Infrastructure\Lists\DivisionLevel\Finance\Elements.xml" />
