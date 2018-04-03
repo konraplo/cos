@@ -79,7 +79,7 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to URL.
+        ///   Looks up a localized string similar to Destination URL.
         /// </summary>
         internal static string ChangeColUrl {
             get {
