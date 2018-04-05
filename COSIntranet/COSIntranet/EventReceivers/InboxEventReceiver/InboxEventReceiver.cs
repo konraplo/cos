@@ -22,12 +22,14 @@ namespace Change.Intranet
         /// </summary>
         public override void ItemUpdated(SPItemEventProperties properties)
         {
+            Logger.WriteLog(Logger.Category.Medium, "InboxEventReceiver - Itemupdated", string.Format("item id:{0}", properties.ListItem.ID));
             SPListItem item = properties.ListItem;
             SPFile file = item.File;
             //byte[] bytes = file.OpenBinary();
             //Microsoft.Office.RecordsManagement.RecordsRepository.OfficialFileCore.SubmitFile()
             SPFieldLookupValueCollection sitesUrl = new SPFieldLookupValueCollection(item[sitelLookupId].ToString());
             SPFieldLookupValueCollection foldersUrl = new SPFieldLookupValueCollection(item[folderlLookupId].ToString());
+            Logger.WriteLog(Logger.Category.Medium, "InboxEventReceiver - Itemupdated", string.Format("Prepeare to provision file:{0}", file.Name));
             SPSecurity.RunWithElevatedPrivileges(delegate ()
             {
                 using (SPSite site = new SPSite(properties.SiteId))
@@ -37,6 +39,7 @@ namespace Change.Intranet
 
                     foreach (var siteUrl in sitesUrl)
                     {
+                        Logger.WriteLog(Logger.Category.Medium, "InboxEventReceiver - Itemupdated", string.Format("copy to site:{0}", siteUrl.LookupValue));
                         CopyFileToDetinations(site, foldersUrl, file, folderList, siteList, siteUrl.LookupId);
                     }
 
@@ -57,12 +60,14 @@ namespace Change.Intranet
             string urlField = itemSite[urlFieldId].ToString();
             using (SPWeb web = site.OpenWeb(urlField))
             {
+                Logger.WriteLog(Logger.Category.Medium, "InboxEventReceiver - CopyFileToDetinations", string.Format("web:{0}, opened - start provision file:{2}", web.Url, file.Name));
                 foreach (var folderUrl in foldersUrl)
                 {
                     try
                     {
                         SPListItem itemFolder = folderList.GetItemById(folderUrl.LookupId);
                         string urlFolder = itemFolder[urlFieldId].ToString();
+                        Logger.WriteLog(Logger.Category.Medium, "InboxEventReceiver - CopyFileToDetinations", string.Format("copy to folder:{0}, file:{1}", urlFolder, file.Name));
 
                         int counter = 0;
                         SPList destinationList = null;
@@ -88,6 +93,7 @@ namespace Change.Intranet
                     catch (Exception ex)
                     {
                         // handle error
+                        Logger.WriteLog(Logger.Category.Unexpected, "InboxEventReceiver - CopyFileToDetinations", string.Format("Errory by copy to File:{0} - {1}", file.Name, ex.Message));
                     }
                 }
             }

@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\ListUtilities.cs" />
+    <Compile Include="Common\Logger.cs" />
     <Compile Include="EventReceivers\InboxEventReceiver\InboxEventReceiver.cs" />
     <Compile Include="Features\ChangeComposedLook\ChangeComposedLook.EventReceiver.cs">
       <DependentUpon>ChangeComposedLook.feature</DependentUpon>
