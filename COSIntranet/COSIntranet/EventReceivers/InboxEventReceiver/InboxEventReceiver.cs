@@ -5,6 +5,7 @@ using Microsoft.SharePoint.Utilities;
 using Microsoft.SharePoint.Workflow;
 using System.Threading.Tasks;
 using Change.Intranet.Common;
+using System.IO;
 
 namespace Change.Intranet
 {
@@ -25,49 +26,56 @@ namespace Change.Intranet
             Logger.WriteLog(Logger.Category.Medium, "InboxEventReceiver - Itemupdated", string.Format("item id:{0}", properties.ListItem.ID));
             SPListItem item = properties.ListItem;
             SPFile file = item.File;
-            //byte[] bytes = file.OpenBinary();
-            //Microsoft.Office.RecordsManagement.RecordsRepository.OfficialFileCore.SubmitFile()
-            SPFieldLookupValueCollection sitesUrl = new SPFieldLookupValueCollection(item[sitelLookupId].ToString());
-            SPFieldLookupValueCollection foldersUrl = new SPFieldLookupValueCollection(item[folderlLookupId].ToString());
-            Logger.WriteLog(Logger.Category.Medium, "InboxEventReceiver - Itemupdated", string.Format("Prepeare to provision file:{0}", file.Name));
-            SPSecurity.RunWithElevatedPrivileges(delegate ()
+            if (file != null)
             {
-                using (SPSite site = new SPSite(properties.SiteId))
+                bool canDelete = true;
+                using (var stream = file.OpenBinaryStream())
                 {
-                    SPList siteList = site.RootWeb.GetList(SPUrlUtility.CombineUrl(properties.Web.ServerRelativeUrl.TrimEnd('/'), "/Lists/Sites"));
-                    SPList folderList = site.RootWeb.GetList(SPUrlUtility.CombineUrl(properties.Web.ServerRelativeUrl.TrimEnd('/'), "/Lists/Folders"));
-
-                    foreach (var siteUrl in sitesUrl)
+                    SPFieldLookupValueCollection sitesUrl = new SPFieldLookupValueCollection(item[sitelLookupId].ToString());
+                    SPFieldLookupValueCollection foldersUrl = new SPFieldLookupValueCollection(item[folderlLookupId].ToString());
+                    Logger.WriteLog(Logger.Category.Medium, "InboxEventReceiver - Itemupdated", string.Format("Prepeare to provision file:{0}", file.Name));
+                    SPSecurity.RunWithElevatedPrivileges(delegate ()
                     {
-                        Logger.WriteLog(Logger.Category.Medium, "InboxEventReceiver - Itemupdated", string.Format("copy to site:{0}", siteUrl.LookupValue));
-                        CopyFileToDetinations(site, foldersUrl, file, folderList, siteList, siteUrl.LookupId);
-                    }
+                        using (SPSite site = new SPSite(properties.SiteId))
+                        {
+                            SPList siteList = site.RootWeb.GetList(SPUrlUtility.CombineUrl(properties.Web.ServerRelativeUrl.TrimEnd('/'), "/Lists/Sites"));
+                            SPList folderList = site.RootWeb.GetList(SPUrlUtility.CombineUrl(properties.Web.ServerRelativeUrl.TrimEnd('/'), "/Lists/Folders"));
 
-                    //Parallel.ForEach(sitesUrl, (siteUrl) =>
-                    //{
-                    //    CopyFileToDetinations(site, foldersUrl, file, folderList, siteList, siteUrl.LookupId);
-                    //});
-                    
-                 }
-            });
-            
+                            //Parallel.ForEach(sitesUrl, (siteUrl) =>
+                            foreach (var siteUrl in sitesUrl)
+                            {
+                                Logger.WriteLog(Logger.Category.Medium, "InboxEventReceiver - Itemupdated", string.Format("copy to site:{0}", siteUrl.LookupValue));
+                                if (!CopyFileToDetinations(site, foldersUrl, file.Name, stream, folderList, siteList, siteUrl.LookupId))
+                                {
+                                    canDelete = false;
+                                }
+                            }
+                        }
+                    });
+                }
+                if (canDelete)
+                {
+                    file.Delete();
+                }
+            }
             base.ItemUpdated(properties);
         }
 
-        private void CopyFileToDetinations(SPSite site, SPFieldLookupValueCollection foldersUrl, SPFile file, SPList folderList, SPList siteList, int siteUrlId)
+        private bool CopyFileToDetinations(SPSite site, SPFieldLookupValueCollection foldersUrl, string filename, Stream stream, SPList folderList, SPList siteList, int siteUrlId)
         {
             SPListItem itemSite = siteList.GetItemById(siteUrlId);
             string urlField = itemSite[urlFieldId].ToString();
+            bool sucess = true;
             using (SPWeb web = site.OpenWeb(urlField))
             {
-                Logger.WriteLog(Logger.Category.Medium, "InboxEventReceiver - CopyFileToDetinations", string.Format("web:{0}, opened - start provision file:{2}", web.Url, file.Name));
+                Logger.WriteLog(Logger.Category.Medium, "InboxEventReceiver - CopyFileToDetinations", string.Format("web:{0}, opened - start provision file:{1}", web.Url, filename));         
                 foreach (var folderUrl in foldersUrl)
                 {
                     try
                     {
                         SPListItem itemFolder = folderList.GetItemById(folderUrl.LookupId);
                         string urlFolder = itemFolder[urlFieldId].ToString();
-                        Logger.WriteLog(Logger.Category.Medium, "InboxEventReceiver - CopyFileToDetinations", string.Format("copy to folder:{0}, file:{1}", urlFolder, file.Name));
+                        Logger.WriteLog(Logger.Category.Medium, "InboxEventReceiver - CopyFileToDetinations", string.Format("copy to folder:{0}, file:{1}", urlFolder, filename));
 
                         int counter = 0;
                         SPList destinationList = null;
@@ -88,17 +96,17 @@ namespace Change.Intranet
                             }
                             counter++;
                         }
-                        destinationFolder.Files.Add(file.Name, file.OpenBinaryStream());
+                        destinationFolder.Files.Add(filename, stream, true);
                     }
                     catch (Exception ex)
                     {
+                        Logger.WriteLog(Logger.Category.Unexpected, "InboxEventReceiver - CopyFileToDetinations", string.Format("Errory by copy to File:{0} - {1}", filename, ex.Message));
                         // handle error
-                        Logger.WriteLog(Logger.Category.Unexpected, "InboxEventReceiver - CopyFileToDetinations", string.Format("Errory by copy to File:{0} - {1}", file.Name, ex.Message));
+                        sucess = false;
                     }
                 }
             }
-
-
+            return sucess;
         }
     }
 }

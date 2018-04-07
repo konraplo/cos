@@ -60,7 +60,6 @@
         <ViewFields>
 
           <FieldRef Name="LinkTitle"></FieldRef>
-          <FieldRef Name="URL" />
         </ViewFields>
         <Query>
           <OrderBy>
