@@ -123,17 +123,23 @@
   <data name="ChangeColNewsExpiresDescr" xml:space="preserve">
     <value>Nyheds udløbsdato</value>
   </data>
+  <data name="ChangeColUrl" xml:space="preserve">
+    <value>Destinationswebadresse</value>
+  </data>
+  <data name="ChangeColUrlDescription" xml:space="preserve">
+    <value>Relativ destinationswebadresse</value>
+  </data>
   <data name="ChangeCTCorporateNews" xml:space="preserve">
-    <value>Virksomhedernes nyheder</value>
+    <value>Firma nyheder</value>
   </data>
   <data name="ChangeCTCorporateNewsDescr" xml:space="preserve">
-    <value>Change of Scandinavia Virksomhedernes nyheder</value>
+    <value>Change of Scandinavia Corporate News</value>
   </data>
   <data name="ChangeCTNationalNews" xml:space="preserve">
     <value>Nationale nyheder</value>
   </data>
   <data name="ChangeCTNationalNewsDescr" xml:space="preserve">
-    <value>Change of Scandinavia nationale nyheder</value>
+    <value>Change of Scandinavia National News</value>
   </data>
   <data name="ChangeCTNews" xml:space="preserve">
     <value>Nyheder</value>
@@ -325,7 +331,7 @@
     <value>Manual</value>
   </data>
   <data name="ChangeFolderTitleManualPhotoReports" xml:space="preserve">
-    <value>Manual til Foto rapporter</value>
+    <value>Guide til uploading af billeder </value>
   </data>
   <data name="ChangeFolderTitleManuals" xml:space="preserve">
     <value>Samlevejledninger til Inventar</value>
@@ -352,7 +358,7 @@
     <value>Morgenmøder</value>
   </data>
   <data name="ChangeFolderTitleMountingFoil" xml:space="preserve">
-    <value>Montering af folie</value>
+    <value>Manual til Foto rapporter</value>
   </data>
   <data name="ChangeFolderTitleMountingOfFoil" xml:space="preserve">
     <value>Montering af folie </value>
@@ -523,7 +529,7 @@
     <value>Store visit rapport</value>
   </data>
   <data name="ChangeFolderTitleSurveyMonkeyManual" xml:space="preserve">
-    <value />
+    <value>Manual to Survey Monkey</value>
   </data>
   <data name="ChangeFolderTitleSwapList" xml:space="preserve">
     <value>Swap liste</value>
@@ -557,7 +563,7 @@
 </value>
   </data>
   <data name="ChangeFolderTitleUploadPicturesGuide" xml:space="preserve">
-    <value>Guide til uploading af billeder</value>
+    <value>Manual til Foto rapporter</value>
   </data>
   <data name="ChangeFolderTitleVacationProcedure" xml:space="preserve">
     <value>Ferie procedure</value>
@@ -657,11 +663,5 @@
   </data>
   <data name="ChangeLibTitleVisualMerchandise" xml:space="preserve">
     <value>Visual Merchandise </value>
-  </data>
-  <data name="ChangeColUrl" xml:space="preserve">
-    <value>Destination URL</value>
-  </data>
-  <data name="ChangeColUrlDescription" xml:space="preserve">
-    <value>Relative destination URL</value>
   </data>
 </root>

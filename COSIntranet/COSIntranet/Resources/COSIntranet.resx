@@ -123,6 +123,12 @@
   <data name="ChangeColNewsExpiresDescr" xml:space="preserve">
     <value>News expiration date</value>
   </data>
+  <data name="ChangeColUrl" xml:space="preserve">
+    <value>Destination URL</value>
+  </data>
+  <data name="ChangeColUrlDescription" xml:space="preserve">
+    <value>Relative destination URL</value>
+  </data>
   <data name="ChangeCTCorporateNews" xml:space="preserve">
     <value>Corporate News</value>
   </data>
@@ -328,13 +334,14 @@
 </value>
   </data>
   <data name="ChangeFolderTitleMaintainTarget" xml:space="preserve">
-    <value>Maintain targit during Sale and Exchange</value>
+    <value>Maintain target during Sale and Exchange</value>
   </data>
   <data name="ChangeFolderTitleManual" xml:space="preserve">
     <value>Manual</value>
   </data>
   <data name="ChangeFolderTitleManualPhotoReports" xml:space="preserve">
-    <value>Manual for Photo reports</value>
+    <value>Guide how to upload pictures
+</value>
   </data>
   <data name="ChangeFolderTitleManuals" xml:space="preserve">
     <value>Assambly instructions for Inventory </value>
@@ -524,7 +531,7 @@
     <value>Staff meetings</value>
   </data>
   <data name="ChangeFolderTitleStatus" xml:space="preserve">
-    <value>Stockcount</value>
+    <value>Status</value>
   </data>
   <data name="ChangeFolderTitleStoreAcqGuide" xml:space="preserve">
     <value>Guide to acquisitions to the store</value>
@@ -577,7 +584,8 @@
 </value>
   </data>
   <data name="ChangeFolderTitleUploadPicturesGuide" xml:space="preserve">
-    <value>Guide how to upload pictures</value>
+    <value>Manual for Photo reports 
+</value>
   </data>
   <data name="ChangeFolderTitleVacationProcedure" xml:space="preserve">
     <value>Vacation procedure</value>
@@ -686,11 +694,5 @@
   </data>
   <data name="ChangeLibTitleVisualMerchandise" xml:space="preserve">
     <value>Visual Merchandise </value>
-  </data>
-  <data name="ChangeColUrl" xml:space="preserve">
-    <value>Destination URL</value>
-  </data>
-  <data name="ChangeColUrlDescription" xml:space="preserve">
-    <value>Relative destination URL</value>
   </data>
 </root>

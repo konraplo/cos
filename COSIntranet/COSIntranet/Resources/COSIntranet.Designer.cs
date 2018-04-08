@@ -691,7 +691,7 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Maintain targit during Sale and Exchange.
+        ///   Looks up a localized string similar to Maintain target during Sale and Exchange.
         /// </summary>
         internal static string ChangeFolderTitleMaintainTarget {
             get {
@@ -709,7 +709,8 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Manual for Photo reports.
+        ///   Looks up a localized string similar to Guide how to upload pictures
+        ///.
         /// </summary>
         internal static string ChangeFolderTitleManualPhotoReports {
             get {
@@ -1259,7 +1260,7 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stockcount.
+        ///   Looks up a localized string similar to Status.
         /// </summary>
         internal static string ChangeFolderTitleStatus {
             get {
@@ -1414,7 +1415,8 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Guide how to upload pictures.
+        ///   Looks up a localized string similar to Manual for Photo reports 
+        ///.
         /// </summary>
         internal static string ChangeFolderTitleUploadPicturesGuide {
             get {
