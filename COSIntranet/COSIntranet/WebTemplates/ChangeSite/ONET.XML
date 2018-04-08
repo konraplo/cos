@@ -40,6 +40,8 @@
         <Feature ID="ad4cc7c0-98e8-452d-a521-1eee031f1935" />
         <!-- Change of scandinavia composed look-->
         <Feature ID="0de89914-06f0-4c4e-b080-7cffd569018f" />
+        <!-- Change of scandinavia Content Organizer-->
+        <Feature ID="2904de51-e14c-41df-8875-514a8330628d" />
         <!-- MDS -->
         <Feature ID="87294C72-F260-42f3-A41B-981A2FFCE37A" />
       </WebFeatures>
