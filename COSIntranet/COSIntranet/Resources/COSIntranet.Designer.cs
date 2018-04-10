@@ -861,6 +861,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Newsletter.
+        /// </summary>
+        internal static string ChangeFolderTitleNewsletter {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleNewsletter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Objective tools.
         /// </summary>
         internal static string ChangeFolderTitleObjectiveTools {

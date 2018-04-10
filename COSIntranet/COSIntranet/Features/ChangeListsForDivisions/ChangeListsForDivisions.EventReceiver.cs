@@ -409,6 +409,12 @@ namespace Change.Intranet.Features.ChangeListsForDivisions
             folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleTemplateGuide", "COSIntranet", web.Language);
             storeVisitReport.SubFolders.Add(folderUrl);
 
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleRetailOperationManual", "COSIntranet", web.Language);
+            SPFolder retailOperationManual = folderColl.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleNewsletter", "COSIntranet", web.Language);
+            SPFolder newsletter = folderColl.Add(folderUrl);
+
             folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleTRUCashRegister", "COSIntranet", web.Language);
             SPFolder truCashRegister = folderColl.Add(folderUrl);
 

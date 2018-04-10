@@ -695,4 +695,7 @@
   <data name="ChangeLibTitleVisualMerchandise" xml:space="preserve">
     <value>Visual Merchandise </value>
   </data>
+  <data name="ChangeFolderTitleNewsletter" xml:space="preserve">
+    <value>Newsletter</value>
+  </data>
 </root>
