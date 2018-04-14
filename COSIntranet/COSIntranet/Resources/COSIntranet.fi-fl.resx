@@ -148,23 +148,22 @@
     <value>Change of Scandinavia News base Content Type</value>
   </data>
   <data name="ChangeFolderFollowupHSalaryUsage" xml:space="preserve">
-    <value>Follow up hour and salary spendings
-</value>
+    <value>Työtuntien ja henkilöstökulun seuranta</value>
   </data>
   <data name="ChangeFolderTitle4StepsSalesMethod" xml:space="preserve">
-    <value>Four steps sales method</value>
+    <value>4 -askeleen myyntitapa</value>
   </data>
   <data name="ChangeFolderTitleAPV" xml:space="preserve">
     <value>APV</value>
   </data>
   <data name="ChangeFolderTitleAPVChecklist" xml:space="preserve">
-    <value>APV checklist for stores</value>
+    <value>Työterveys</value>
   </data>
   <data name="ChangeFolderTitleBagsOrdering" xml:space="preserve">
-    <value>Ordering bags for the bank</value>
+    <value>Rahatilityslomakkeet</value>
   </data>
   <data name="ChangeFolderTitleBasicLookbook" xml:space="preserve">
-    <value>Basic Lookbook</value>
+    <value>Basic -kuvasto</value>
   </data>
   <data name="ChangeFolderTitleBlackFriday" xml:space="preserve">
     <value>Black Friday</value>
@@ -173,285 +172,268 @@
     <value>Bonus</value>
   </data>
   <data name="ChangeFolderTitleBookingOfCraftsmen" xml:space="preserve">
-    <value>Order handcraftmen</value>
+    <value>Remonttimiehen tilaus</value>
   </data>
   <data name="ChangeFolderTitleBookingOfLights" xml:space="preserve">
-    <value>Order light</value>
+    <value>Lamppujen tilaus</value>
   </data>
   <data name="ChangeFolderTitleBraFitting" xml:space="preserve">
-    <value>Bra Fitting</value>
+    <value>Rintaliivin mittaus ja sovitus</value>
   </data>
   <data name="ChangeFolderTitleBuddyStores" xml:space="preserve">
-    <value>Buddy stores</value>
+    <value>Back up myymälä</value>
   </data>
   <data name="ChangeFolderTitleCatalogOverview" xml:space="preserve">
-    <value>Catalog and overview</value>
+    <value>Kuvasto ja yleiskuvaus</value>
   </data>
   <data name="ChangeFolderTitleCentersOrderingHandcraftmen" xml:space="preserve">
-    <value>Ordering handcraftmen in centers</value>
+    <value>Remonttimiehen tilaus</value>
   </data>
   <data name="ChangeFolderTitleChristmas" xml:space="preserve">
-    <value>Xmass</value>
+    <value>Joulu</value>
   </data>
   <data name="ChangeFolderTitleClaimsheetTmpGuidelines" xml:space="preserve">
-    <value>Claimsheet template and guidelines</value>
+    <value>Tuotereklamaatio ja ohjeet</value>
   </data>
   <data name="ChangeFolderTitleClaimsMarketing" xml:space="preserve">
-    <value>Claim sheet  for marketing materiale</value>
+    <value>Markkinointimateriaalin reklamaatio</value>
   </data>
   <data name="ChangeFolderTitleCleaningMaintenance" xml:space="preserve">
-    <value>Cleaning and maintenance</value>
+    <value>Siivous ja ylläpito</value>
   </data>
   <data name="ChangeFolderTitleClosedVacationPeriods" xml:space="preserve">
-    <value>Periods closed for vacation</value>
+    <value>Viikot jolloin ei ole lomia</value>
   </data>
   <data name="ChangeFolderTitleCompendium" xml:space="preserve">
-    <value>Compendium</value>
+    <value>Tiivistelmä</value>
   </data>
   <data name="ChangeFolderTitleCompetitions" xml:space="preserve">
-    <value>Competitions</value>
+    <value>Kilpailut</value>
   </data>
   <data name="ChangeFolderTitleCompetitionsInternal" xml:space="preserve">
-    <value>Competitions - internal</value>
+    <value>Kilpailut - sisäinen</value>
   </data>
   <data name="ChangeFolderTitleContactsFAQ" xml:space="preserve">
-    <value>Contacts FAQ</value>
+    <value>Yhteystiedot, kysymyksiä ja vastauksia</value>
   </data>
   <data name="ChangeFolderTitleContentPlan" xml:space="preserve">
-    <value>Contentplan
-</value>
+    <value>Markkinoinnin vuosikello</value>
   </data>
   <data name="ChangeFolderTitleContractKey" xml:space="preserve">
-    <value>Contract and key</value>
+    <value>Sopimus ja avain</value>
   </data>
   <data name="ChangeFolderTitleCPLookbooks" xml:space="preserve">
-    <value>Current and previous Lookbooks</value>
+    <value>Voimassa oleva ja edelliset tuotekuvastot</value>
   </data>
   <data name="ChangeFolderTitleCurrentCampaign" xml:space="preserve">
-    <value>Actual Campaign
-</value>
+    <value>Voimassa oleva kampanja</value>
   </data>
   <data name="ChangeFolderTitleCustomerCounters" xml:space="preserve">
-    <value>Customer counters</value>
+    <value>Asiakaslaskuri</value>
   </data>
   <data name="ChangeFolderTitleDailyRutines" xml:space="preserve">
-    <value>Daily rutines</value>
+    <value>Päivittäiset rutiinit</value>
   </data>
   <data name="ChangeFolderTitleDanskLyskildeOrdersheet" xml:space="preserve">
-    <value>Dansk lyskilde ordersheet</value>
+    <value>Lamppujen tilaus</value>
   </data>
   <data name="ChangeFolderTitleDiffReportTemplate" xml:space="preserve">
-    <value>Diff report - Template
-</value>
+    <value>Kassaeron raportointi</value>
   </data>
   <data name="ChangeFolderTitleDWMFollowup" xml:space="preserve">
-    <value>Daily weekly monthly follow up
-</value>
+    <value>Päivittäinen, viikottainan, kuukausittainen seuranta</value>
   </data>
   <data name="ChangeFolderTitleDWMSalesFollowup" xml:space="preserve">
-    <value>Daily, weekly, monthly sales follow up</value>
+    <value>Päivittäinen, viikottainan, kuukausittainen seuranta</value>
   </data>
   <data name="ChangeFolderTitleEaster" xml:space="preserve">
-    <value>Easter</value>
+    <value>Pääsiäinen</value>
   </data>
   <data name="ChangeFolderTitleEDM" xml:space="preserve">
-    <value>EDM</value>
+    <value>CC kanta-asiakaskirje - EDM</value>
   </data>
   <data name="ChangeFolderTitleEmplyeeChangeAcademy" xml:space="preserve">
-    <value>Emplyee on Change Academy</value>
+    <value>Koulutuksessa</value>
   </data>
   <data name="ChangeFolderTitleEOD" xml:space="preserve">
     <value>EOD</value>
   </data>
   <data name="ChangeFolderTitleEOSReturn" xml:space="preserve">
-    <value>End of season return</value>
+    <value>Tuotepalautus keskusvarastolle</value>
   </data>
   <data name="ChangeFolderTitleEvents" xml:space="preserve">
-    <value>Events</value>
+    <value>Tapahtumat</value>
   </data>
   <data name="ChangeFolderTitleExchangeRules" xml:space="preserve">
-    <value>Exchange rules</value>
+    <value>Asiakasreklamaatio säännöt</value>
   </data>
   <data name="ChangeFolderTitleEXRulesGiftCard" xml:space="preserve">
-    <value>Exchange rules, gift card
-</value>
+    <value>Tuotteen reklamaatio</value>
   </data>
   <data name="ChangeFolderTitleFlyer" xml:space="preserve">
-    <value>Flyer</value>
+    <value>Flyerit</value>
   </data>
   <data name="ChangeFolderTitleForgotPassword" xml:space="preserve">
-    <value>Forgot the password
-</value>
+    <value>Unohditko salasanan?</value>
   </data>
   <data name="ChangeFolderTitleFotoReports" xml:space="preserve">
-    <value>Foto reports 
-</value>
+    <value>Kuvaraportointi</value>
   </data>
   <data name="ChangeFolderTitleFurnitureMannequinFittings" xml:space="preserve">
-    <value>Furniture, mannequin, fittings</value>
+    <value>Kalusteet, mallinuket ja somisteet</value>
   </data>
   <data name="ChangeFolderTitleGenericInstore" xml:space="preserve">
-    <value>Generic instore </value>
+    <value>Yleinen markkinointimateriaali</value>
   </data>
   <data name="ChangeFolderTitleGLSpricelist" xml:space="preserve">
-    <value>GLS pricelist</value>
+    <value>Rahtihinnasto</value>
   </data>
   <data name="ChangeFolderTitleGuideChangeAcademy" xml:space="preserve">
-    <value>Guide til Change Academy</value>
+    <value>Change Acadamy ohje</value>
   </data>
   <data name="ChangeFolderTitleHalloween" xml:space="preserve">
     <value>Halloween</value>
   </data>
   <data name="ChangeFolderTitleHandling" xml:space="preserve">
-    <value>Handling</value>
+    <value>Käsittely</value>
   </data>
   <data name="ChangeFolderTitleHR" xml:space="preserve">
     <value>HR</value>
   </data>
   <data name="ChangeFolderTitleIdeasEDM" xml:space="preserve">
-    <value>Ideas for EDM</value>
+    <value>Ideoita kanta-asiakaskirjeiksi, -tapahtumiksi</value>
   </data>
   <data name="ChangeFolderTitleIllness" xml:space="preserve">
-    <value>Illness</value>
+    <value>Sairasloma</value>
   </data>
   <data name="ChangeFolderTitleInstoreInventoryManuals" xml:space="preserve">
-    <value>Instore inventory  manuals</value>
+    <value>Varastoinventaario</value>
   </data>
   <data name="ChangeFolderTitleInternally" xml:space="preserve">
-    <value>Internally</value>
+    <value>Sisäisesti</value>
   </data>
   <data name="ChangeFolderTitleJobAdvertisements" xml:space="preserve">
-    <value>Job advertisements</value>
+    <value>Työpaikkailmoitus</value>
   </data>
   <data name="ChangeFolderTitleJobDescriptions" xml:space="preserve">
-    <value>Job descriptions</value>
+    <value>Työnkuvaus</value>
   </data>
   <data name="ChangeFolderTitleLogin" xml:space="preserve">
-    <value>Login</value>
+    <value>Sisäänkirjautuminen</value>
   </data>
   <data name="ChangeFolderTitleLYTemplate" xml:space="preserve">
-    <value>Local yearlywheel template 
-</value>
+    <value>Markkinoinnin vuosikello</value>
   </data>
   <data name="ChangeFolderTitleMaintainTarget" xml:space="preserve">
-    <value>Maintain target during Sale and Exchange</value>
+    <value>Tavoitteen ylläpito ALE ja vaihtotilanteissa</value>
   </data>
   <data name="ChangeFolderTitleManual" xml:space="preserve">
-    <value>Manual</value>
+    <value>Ohjeet</value>
   </data>
   <data name="ChangeFolderTitleManualPhotoReports" xml:space="preserve">
-    <value>Guide how to upload pictures
-</value>
+    <value>Kuvaraportointi</value>
   </data>
   <data name="ChangeFolderTitleManuals" xml:space="preserve">
-    <value>Assambly instructions for Inventory </value>
+    <value>Varastoinventaario</value>
   </data>
   <data name="ChangeFolderTitleMaterialForWindows" xml:space="preserve">
-    <value>Material for windows
-</value>
+    <value>Ikkunasomistusmateriaali</value>
   </data>
   <data name="ChangeFolderTitleMerchandiseFlow" xml:space="preserve">
-    <value>Merchandise Flow</value>
+    <value>Tuotetoimitus myymälään</value>
   </data>
   <data name="ChangeFolderTitleMfollowupHours" xml:space="preserve">
-    <value>Monthly follow up on hours</value>
+    <value>Kuukausittainen työtuntien seuranta</value>
   </data>
   <data name="ChangeFolderTitleMfollowupSalaryCost" xml:space="preserve">
-    <value>Monthly follow up on Salary cost
-</value>
+    <value>Kuukausittainen henkilöstökustannuksen seuranta</value>
   </data>
   <data name="ChangeFolderTitleMoneyBank" xml:space="preserve">
-    <value>Money handling and bank</value>
+    <value>Rahan käsittely ja pankki</value>
   </data>
   <data name="ChangeFolderTitleMoneyHandling" xml:space="preserve">
-    <value>Money  handling</value>
+    <value>Rahankäsittely</value>
   </data>
   <data name="ChangeFolderTitleMorningMeetings" xml:space="preserve">
-    <value>Morning meetings
-</value>
+    <value>Myymäläpalaveri</value>
   </data>
   <data name="ChangeFolderTitleMountingFoil" xml:space="preserve">
-    <value>Mounting foil</value>
+    <value>Ikkunatarran kiinnitys (kuva)</value>
   </data>
   <data name="ChangeFolderTitleMountingOfFoil" xml:space="preserve">
-    <value>Mounting foil 
-</value>
+    <value>Ikkunatarran kiinnitys</value>
   </data>
   <data name="ChangeFolderTitleMountingTextFoil" xml:space="preserve">
-    <value>Mounting textfoil</value>
+    <value>Ikkunatarran kiinnitys (teksti)</value>
   </data>
   <data name="ChangeFolderTitleMUS" xml:space="preserve">
-    <value>Staff interviews (MUS)
-</value>
+    <value>Työhaastattelut</value>
   </data>
   <data name="ChangeFolderTitleNearestContact" xml:space="preserve">
-    <value>Nearest contact</value>
+    <value>HR</value>
   </data>
   <data name="ChangeFolderTitleNeighbourSize" xml:space="preserve">
-    <value>Neighbour size
-</value>
+    <value>Rinnakkaiskoot</value>
   </data>
   <data name="ChangeFolderTitleNewEmployee" xml:space="preserve">
-    <value>New employee
-</value>
+    <value>Uusi työntekijä</value>
   </data>
   <data name="ChangeFolderTitleObjectiveTools" xml:space="preserve">
-    <value>Objective tools</value>
+    <value>Myyntimenetelmä</value>
   </data>
   <data name="ChangeFolderTitleOnboarding" xml:space="preserve">
-    <value>Onboarding</value>
+    <value>Perehdytys</value>
   </data>
   <data name="ChangeFolderTitleOnline" xml:space="preserve">
-    <value>Online</value>
+    <value>Verkkokauppa</value>
   </data>
   <data name="ChangeFolderTitleOnsightEducation" xml:space="preserve">
-    <value>Onsight education</value>
+    <value>Oppisopimus</value>
   </data>
   <data name="ChangeFolderTitleOpenByNight" xml:space="preserve">
-    <value>Open by night</value>
+    <value>Asiakastapahtumat</value>
   </data>
   <data name="ChangeFolderTitleOrderingDays" xml:space="preserve">
-    <value>Ordering days</value>
+    <value>Tilauspäivät</value>
   </data>
   <data name="ChangeFolderTitleOrderingHandcraftmen" xml:space="preserve">
-    <value>Ordering handcraftmen (COS)</value>
+    <value>Remonttimiehen tilaus</value>
   </data>
   <data name="ChangeFolderTitleOrdersHowTo" xml:space="preserve">
-    <value>How to receive orders</value>
+    <value>Tuotetilaus</value>
   </data>
   <data name="ChangeFolderTitleOrderSize" xml:space="preserve">
-    <value>Size of Marketing order
-</value>
+    <value>Markkinointimateriaalin tilauksen määrä</value>
   </data>
   <data name="ChangeFolderTitleOrderTemplates" xml:space="preserve">
-    <value>Order Templates</value>
+    <value>Tilauslomakkeet</value>
   </data>
   <data name="ChangeFolderTitleOrdinary" xml:space="preserve">
-    <value>Ordinary</value>
+    <value>Tavallinen</value>
   </data>
   <data name="ChangeFolderTitleOrganisazionChart" xml:space="preserve">
-    <value>Organisazion chart</value>
+    <value>Organisaatio</value>
   </data>
   <data name="ChangeFolderTitleOtherStoresTransfer" xml:space="preserve">
-    <value>Transfers to other stores</value>
+    <value>Tuotesiirrot myymälöiden välillä</value>
   </data>
   <data name="ChangeFolderTitleOutphasedItems" xml:space="preserve">
-    <value>Outphased items</value>
+    <value>Poistuvat tuotteet</value>
   </data>
   <data name="ChangeFolderTitlePhone" xml:space="preserve">
-    <value>Telephone</value>
+    <value>Puhelin</value>
   </data>
   <data name="ChangeFolderTitlePhonelist" xml:space="preserve">
-    <value>Phonelist</value>
+    <value>Yhteystiedot</value>
   </data>
   <data name="ChangeFolderTitlePhotoReports" xml:space="preserve">
-    <value>Photo reports</value>
+    <value>Kuvaraportointi</value>
   </data>
   <data name="ChangeFolderTitlePonHAllProducts" xml:space="preserve">
-    <value>Products on hangers – all products</value>
+    <value>Tuotteiden henkarointi</value>
   </data>
   <data name="ChangeFolderTitlePOSManual" xml:space="preserve">
-    <value>Manual til POS</value>
+    <value>POS ohjeet</value>
   </data>
   <data name="ChangeFolderTitlePOSSystem" xml:space="preserve">
     <value>POS</value>
@@ -460,216 +442,202 @@
     <value>Power BI</value>
   </data>
   <data name="ChangeFolderTitlePowerBIManuals" xml:space="preserve">
-    <value>Manuals for Power BI</value>
+    <value>Power BI ohjeet</value>
   </data>
   <data name="ChangeFolderTitlePowerBIReports" xml:space="preserve">
-    <value>Reports in Power BI</value>
+    <value>Power BI raportit</value>
   </data>
   <data name="ChangeFolderTitlePrepackOrderConfirmation" xml:space="preserve">
-    <value>Prepack, Order confirmation</value>
+    <value>Perustoimitus, tilausvahvistus</value>
   </data>
   <data name="ChangeFolderTitlePreperation" xml:space="preserve">
-    <value>Preperation</value>
+    <value>Valmistelut</value>
   </data>
   <data name="ChangeFolderTitleProductInfo" xml:space="preserve">
-    <value>Product information</value>
+    <value>Tuotetietoa</value>
   </data>
   <data name="ChangeFolderTitleReceiptTexts" xml:space="preserve">
-    <value>Receipt texts</value>
+    <value>Kuittiteksti</value>
   </data>
   <data name="ChangeFolderTitleReceiving" xml:space="preserve">
-    <value>Receiving</value>
+    <value>Tuotteiden vastaanotto</value>
   </data>
   <data name="ChangeFolderTitleRetailOperationManual" xml:space="preserve">
-    <value>Retail Operation Manual</value>
+    <value>Konseptikantio</value>
   </data>
   <data name="ChangeFolderTitleSale" xml:space="preserve">
-    <value>Sale</value>
+    <value>ALE</value>
   </data>
   <data name="ChangeFolderTitleSalesFollowUp" xml:space="preserve">
-    <value>Sales follow up</value>
+    <value>Myynninseuranta</value>
   </data>
   <data name="ChangeFolderTitleSalesGaming" xml:space="preserve">
-    <value>Sales gameing (Bankoplader)</value>
+    <value>Rahatilitys</value>
   </data>
   <data name="ChangeFolderTitleSalesTips" xml:space="preserve">
-    <value>Sales tips</value>
+    <value>Myyntivinkkejä</value>
   </data>
   <data name="ChangeFolderTitleSalesTrainingMethod" xml:space="preserve">
-    <value>Sales training method</value>
+    <value>Myyntimenetelmä</value>
   </data>
   <data name="ChangeFolderTitleSamesystem" xml:space="preserve">
-    <value>Samesystem</value>
+    <value>Työtuntien kirjaus</value>
   </data>
   <data name="ChangeFolderTitleSamesystemManual" xml:space="preserve">
-    <value>Manual Samesystem</value>
+    <value>Käsikirja työtuntien kirjaukseen</value>
   </data>
   <data name="ChangeFolderTitleSharedLogin" xml:space="preserve">
-    <value>Shared login for hour employee</value>
+    <value>Sisäänkirjautuminen osa-aikaisille</value>
   </data>
   <data name="ChangeFolderTitleSignsForPrint" xml:space="preserve">
-    <value>Signs to print
-</value>
+    <value>A4 ja A3 tauluja tulostettavaksi</value>
   </data>
   <data name="ChangeFolderTitleSizeOverview" xml:space="preserve">
-    <value>Size overview</value>
+    <value>Kokomatriisi</value>
   </data>
   <data name="ChangeFolderTitleSkypeManual" xml:space="preserve">
-    <value>Manual for Skype </value>
+    <value>Skype</value>
   </data>
   <data name="ChangeFolderTitleSmallCampaignsSigns" xml:space="preserve">
-    <value>Signs for small Campaigns
-</value>
+    <value>A4 ja A3 kylttien tulostus</value>
   </data>
   <data name="ChangeFolderTitleStaff" xml:space="preserve">
-    <value>Staff</value>
+    <value>Henkilökunta</value>
   </data>
   <data name="ChangeFolderTitleStafflHandbook" xml:space="preserve">
-    <value>Staff Handbook</value>
+    <value>Henkilökunnan käsikirja</value>
   </data>
   <data name="ChangeFolderTitleStaffMeetings" xml:space="preserve">
-    <value>Staff meetings</value>
+    <value>Myymäläpalaverit</value>
   </data>
   <data name="ChangeFolderTitleStatus" xml:space="preserve">
-    <value>Status</value>
+    <value>Tilanne</value>
   </data>
   <data name="ChangeFolderTitleStoreAcqGuide" xml:space="preserve">
-    <value>Guide to acquisitions to the store</value>
+    <value>HR</value>
   </data>
   <data name="ChangeFolderTitleStoreExpences" xml:space="preserve">
-    <value>Expences in the store</value>
+    <value>Kululasku myymälässä</value>
   </data>
   <data name="ChangeFolderTitleStoreMgrVacation" xml:space="preserve">
-    <value>Store manager vacation</value>
+    <value>Myymälänhoitajan loma</value>
   </data>
   <data name="ChangeFolderTitleStoreSupply" xml:space="preserve">
-    <value>Store Supply</value>
+    <value>Myymälämateriaali</value>
   </data>
   <data name="ChangeFolderTitleStoreVisitReport" xml:space="preserve">
-    <value>Store visit report</value>
+    <value>Myymäläraportti</value>
   </data>
   <data name="ChangeFolderTitleSurveyMonkeyManual" xml:space="preserve">
-    <value>Manual to Survey Monkey</value>
+    <value>Survey Monkey</value>
   </data>
   <data name="ChangeFolderTitleSwapList" xml:space="preserve">
-    <value>Swap list</value>
+    <value>Siirtolista</value>
   </data>
   <data name="ChangeFolderTitleTablet" xml:space="preserve">
-    <value>Tablet</value>
+    <value>Tabletti</value>
   </data>
   <data name="ChangeFolderTitleTemplateGuide" xml:space="preserve">
-    <value>Template and guide</value>
+    <value>Lomakkeet ja ohjeet</value>
   </data>
   <data name="ChangeFolderTitleTerminationResignation" xml:space="preserve">
-    <value>Termination and resignation</value>
+    <value>Palvelusuhteen mitätöinti ja päätös</value>
   </data>
   <data name="ChangeFolderTitleThingsOnHangers" xml:space="preserve">
-    <value>How to put products on hangers
-</value>
+    <value>Tuotteiden henkarointi</value>
   </data>
   <data name="ChangeFolderTitleTipsandTricks" xml:space="preserve">
-    <value>Tips and Tricks</value>
+    <value>Ohjeita ja Vinkkejä</value>
   </data>
   <data name="ChangeFolderTitleTipsReturnExchange" xml:space="preserve">
-    <value>Tips when return or exchange</value>
+    <value>Tuotereklamaatio, vaihto, palautus</value>
   </data>
   <data name="ChangeFolderTitleTravelExpence" xml:space="preserve">
-    <value>Travel Expence</value>
+    <value>Matkakulut</value>
   </data>
   <data name="ChangeFolderTitleTRUCashRegister" xml:space="preserve">
-    <value>Theft, robbery and uneven cash register</value>
+    <value>Varkaus, ryöstö, kassaerot</value>
   </data>
   <data name="ChangeFolderTitleTrustpilotManual" xml:space="preserve">
-    <value>Manual Trustpilot
-</value>
+    <value>Käsikirja  </value>
   </data>
   <data name="ChangeFolderTitleUploadPicturesGuide" xml:space="preserve">
-    <value>Manual for Photo reports 
-</value>
+    <value>Kuvaraportointi</value>
   </data>
   <data name="ChangeFolderTitleVacationProcedure" xml:space="preserve">
-    <value>Vacation procedure</value>
+    <value>Lomat</value>
   </data>
   <data name="ChangeFolderTitleVMBasic" xml:space="preserve">
-    <value>Basic VM</value>
+    <value>Somistamisen Yleinen</value>
   </data>
   <data name="ChangeFolderTitleVMGoldenRules" xml:space="preserve">
-    <value>VM Golden Rules</value>
+    <value>Somistamisen kultaiset säännöt</value>
   </data>
   <data name="ChangeFolderTitleVMGuidelines" xml:space="preserve">
-    <value>VM Guidelines 
-</value>
+    <value>Somistusohjeet</value>
   </data>
   <data name="ChangeFolderTitleVMSeasonal" xml:space="preserve">
-    <value>Seasonal  VM
-</value>
+    <value>Somistaminen Kausittainen</value>
   </data>
   <data name="ChangeFolderTitleVoucher" xml:space="preserve">
-    <value>Voucher</value>
+    <value>Etukupongit  </value>
   </data>
   <data name="ChangeFolderTitleVouchersAndFlyvers" xml:space="preserve">
-    <value>Vouchers and Flyers</value>
+    <value>Etukupongit ja flyerit</value>
   </data>
   <data name="ChangeFolderTitleWindowSigns" xml:space="preserve">
-    <value>Signs for window - Print i store</value>
+    <value>A4 ja A3 kylttien tulostus</value>
   </data>
   <data name="ChangeFolderTitleYearCalender" xml:space="preserve">
-    <value>Year Calender</value>
+    <value>Vuosikello</value>
   </data>
   <data name="ChangeFolderTitleYearwheel" xml:space="preserve">
-    <value>Yearwheel (guide and template)
-</value>
+    <value>Vuosikello</value>
   </data>
   <data name="ChangeFolderTitleYoungstrersWokinghours" xml:space="preserve">
-    <value>Youngstrers and wokinghours
-</value>
+    <value>Työaika</value>
   </data>
   <data name="ChangeLibDescriptionChangeAcademy" xml:space="preserve">
-    <value>Change academy and E-Learning
-</value>
+    <value>Change Academy ja eLearning</value>
   </data>
   <data name="ChangeLibDescriptionDailyOperation" xml:space="preserve">
-    <value>Daily procedures
-</value>
+    <value>Päivittäiset toiminnot </value>
   </data>
   <data name="ChangeLibDescriptionFinance" xml:space="preserve">
-    <value>Finance</value>
+    <value>Talous</value>
   </data>
   <data name="ChangeLibDescriptionHR" xml:space="preserve">
     <value>HR</value>
   </data>
   <data name="ChangeLibDescriptionIT" xml:space="preserve">
-    <value>IT information and technical guidelines</value>
+    <value>IT tietoa ja ohjeita</value>
   </data>
   <data name="ChangeLibDescriptionManagers" xml:space="preserve">
-    <value>Manager folder with BC information about personnel, sales follow up, and other operational information
-</value>
+    <value>Henkilöstön tietoa, myynnin seuranta, operatiivista tietoa</value>
   </data>
   <data name="ChangeLibDescriptionMarketing" xml:space="preserve">
-    <value>Information about current campaign, yearly overview, seasonal activities, content plan and ordering marketing material</value>
+    <value>Tietoa voimassa olevista kampanjoista, markkinoinnin vuosikello, tapahtumista ja markkinointimateriaalista</value>
   </data>
   <data name="ChangeLibDescriptionPOSSystem" xml:space="preserve">
-    <value>Information about POS system
-</value>
+    <value>Tietoa POS -System -kassajärjestelmästä</value>
   </data>
   <data name="ChangeLibDescriptionProductAssortment" xml:space="preserve">
-    <value>Product assortment, stock, delivery, and feedback on collections
-</value>
+    <value>Tuotevalikoima, varasto, toimitukset, mallistopalaute</value>
   </data>
   <data name="ChangeLibDescriptionSalesTraining" xml:space="preserve">
-    <value>Sales training, goals and competitions for internal use</value>
+    <value>Myynnin valmennus, tavoitteet ja kilpailut</value>
   </data>
   <data name="ChangeLibDescriptionVisualMerchandise" xml:space="preserve">
-    <value>Information for the store's inventory, building and merchandising</value>
+    <value>Tietoa myymälän kalusteista, rakentamisesta ja somistisesta</value>
   </data>
   <data name="ChangeLibTitleChangeAcademy" xml:space="preserve">
     <value>Change Academy</value>
   </data>
   <data name="ChangeLibTitleDailyOperation" xml:space="preserve">
-    <value>Daily Operation</value>
+    <value>Päivittäiset toiminnot </value>
   </data>
   <data name="ChangeLibTitleFinance" xml:space="preserve">
-    <value>Finance</value>
+    <value>Talous</value>
   </data>
   <data name="ChangeLibTitleHR" xml:space="preserve">
     <value>HR</value>
@@ -678,24 +646,21 @@
     <value>IT</value>
   </data>
   <data name="ChangeLibTitleManagers" xml:space="preserve">
-    <value>Managers</value>
+    <value>Hallinto</value>
   </data>
   <data name="ChangeLibTitleMarketing" xml:space="preserve">
-    <value>Marketing</value>
+    <value>Markkinointi</value>
   </data>
   <data name="ChangeLibTitlePOSSystem" xml:space="preserve">
-    <value>POS- System</value>
+    <value>Kassajärjestelmä POS-System</value>
   </data>
   <data name="ChangeLibTitleProductAssortment" xml:space="preserve">
-    <value>Product assortment</value>
+    <value>Tuotevalikoima</value>
   </data>
   <data name="ChangeLibTitleSalesTraining" xml:space="preserve">
-    <value>Sales training</value>
+    <value>Myynnin valmennus</value>
   </data>
   <data name="ChangeLibTitleVisualMerchandise" xml:space="preserve">
-    <value>Visual Merchandise </value>
-  </data>
-  <data name="ChangeFolderTitleNewsletter" xml:space="preserve">
-    <value>Newsletter</value>
+    <value>Somistus</value>
   </data>
 </root>

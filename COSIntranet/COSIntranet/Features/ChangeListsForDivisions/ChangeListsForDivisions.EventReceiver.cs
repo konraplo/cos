@@ -584,13 +584,13 @@ namespace Change.Intranet.Features.ChangeListsForDivisions
             SPFolderCollection folderColl = list.RootFolder.SubFolders;
 
             string folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitlePowerBI", "COSIntranet", web.Language);
-            SPFolder storeMgrVacation = folderColl.Add(folderUrl);
+            SPFolder powerBI = folderColl.Add(folderUrl);
 
             folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitlePowerBIManuals", "COSIntranet", web.Language);
-            storeMgrVacation.SubFolders.Add(folderUrl);
+            powerBI.SubFolders.Add(folderUrl);
 
             folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitlePowerBIReports", "COSIntranet", web.Language);
-            storeMgrVacation.SubFolders.Add(folderUrl);
+            powerBI.SubFolders.Add(folderUrl);
 
             folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleSurveyMonkeyManual", "COSIntranet", web.Language);
             folderColl.Add(folderUrl);

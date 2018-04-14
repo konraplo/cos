@@ -335,7 +335,7 @@
     <value>Anleitung zum Hochladen von Fotos</value>
   </data>
   <data name="ChangeFolderTitleManuals" xml:space="preserve">
-    <value>Anordnung / Anweisung für Inventur</value>
+    <value>Anordnung - Anweisung für Inventur</value>
   </data>
   <data name="ChangeFolderTitleMaterialForWindows" xml:space="preserve">
     <value>Schaufenstermaterial</value>
@@ -410,7 +410,7 @@
     <value>Bestellvorlage</value>
   </data>
   <data name="ChangeFolderTitleOrdinary" xml:space="preserve">
-    <value />
+    <value>Gewöhnlich</value>
   </data>
   <data name="ChangeFolderTitleOrganisazionChart" xml:space="preserve">
     <value>Organisationsdiagramm</value>
@@ -482,7 +482,7 @@
     <value>Verkaufstraining-Methode</value>
   </data>
   <data name="ChangeFolderTitleSamesystem" xml:space="preserve">
-    <value />
+    <value>Samesystem</value>
   </data>
   <data name="ChangeFolderTitleSamesystemManual" xml:space="preserve">
     <value>Manual Samesystem</value>
@@ -589,7 +589,7 @@
     <value>Gutscheine und Flyer</value>
   </data>
   <data name="ChangeFolderTitleWindowSigns" xml:space="preserve">
-    <value />
+    <value>Schilder für Fenster - Print im Laden</value>
   </data>
   <data name="ChangeFolderTitleYearCalender" xml:space="preserve">
     <value>Jahreskalender</value>
