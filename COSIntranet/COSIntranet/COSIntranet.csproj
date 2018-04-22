@@ -52,11 +52,16 @@
     <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\ContentOrganizerUtilities.cs" />
     <Compile Include="Common\ListUtilities.cs" />
     <Compile Include="Common\Logger.cs" />
     <Compile Include="EventReceivers\InboxEventReceiver\InboxEventReceiver.cs" />
+    <Compile Include="EventReceivers\PreventFolderDeleteEventReceiver\PreventFolderDeleteEventReceiver.cs" />
     <Compile Include="Features\ChangeComposedLook\ChangeComposedLook.EventReceiver.cs">
       <DependentUpon>ChangeComposedLook.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\ChangeContentOrganizer\ChangeContentOrganizer.EventReceiver.cs">
+      <DependentUpon>ChangeContentOrganizer.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\ChangeListsForDivisions\ChangeListsForDivisions.EventReceiver.cs">
       <DependentUpon>ChangeListsForDivisions.feature</DependentUpon>
@@ -75,6 +80,9 @@
     </None>
     <None Include="EventReceivers\InboxEventReceiver\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{16579f80-edd5-4554-9529-2ea9fac4d437}</SharePointProjectItemId>
+    </None>
+    <None Include="EventReceivers\PreventFolderDeleteEventReceiver\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{a2bc7d7b-03c1-4996-bfff-2ad6d7dcda4f}</SharePointProjectItemId>
     </None>
     <None Include="Features\ChangeWebTemplates\ChangeWebTemplates.feature">
       <FeatureId>{e88eedf4-3e70-4006-aafd-56b45ce67aa9}</FeatureId>

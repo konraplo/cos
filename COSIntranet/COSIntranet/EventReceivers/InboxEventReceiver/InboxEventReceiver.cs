@@ -16,7 +16,6 @@ namespace Change.Intranet
     {
         private Guid sitelLookupId = new Guid("{4dcbc8cf-ebd9-4e87-a332-d42aa7edb5ae}");
         private Guid folderlLookupId = new Guid("{BD708A9B-98AE-4A32-9981-5011326C5428}");
-        private Guid urlFieldId = new Guid("{5B0F68F2-8B2E-4C9D-B2B4-157BB8205052}");
 
         /// <summary>
         /// An item was updated.
@@ -64,7 +63,7 @@ namespace Change.Intranet
         private bool CopyFileToDetinations(SPSite site, SPFieldLookupValueCollection foldersUrl, string filename, Stream stream, SPList folderList, SPList siteList, int siteUrlId)
         {
             SPListItem itemSite = siteList.GetItemById(siteUrlId);
-            string urlField = itemSite[urlFieldId].ToString();
+            string urlField = itemSite[ContentOrganizerUtilities.UrlFieldId].ToString();
             bool sucess = true;
             using (SPWeb web = site.OpenWeb(urlField))
             {
@@ -74,7 +73,7 @@ namespace Change.Intranet
                     try
                     {
                         SPListItem itemFolder = folderList.GetItemById(folderUrl.LookupId);
-                        string urlFolder = itemFolder[urlFieldId].ToString();
+                        string urlFolder = itemFolder[ContentOrganizerUtilities.UrlFieldId].ToString();
                         Logger.WriteLog(Logger.Category.Medium, "InboxEventReceiver - CopyFileToDetinations", string.Format("copy to folder:{0}, file:{1}", urlFolder, filename));
 
                         int counter = 0;

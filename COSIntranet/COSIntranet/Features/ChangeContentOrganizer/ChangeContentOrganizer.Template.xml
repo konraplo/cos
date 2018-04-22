@@ -1,3 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Feature xmlns="http://schemas.microsoft.com/sharepoint/">
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Version="1.1.2.0">
+<UpgradeActions
+  ReceiverAssembly="Change.Intranet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fa27d85e9cfa53d4" 
+  ReceiverClass="Change.Intranet.Features.ChangeContentOrganizer.ChangeContentOrganizerEventReceiver">    
+
+ <VersionRange EndVersion="1.1.2.0">      
+     <CustomUpgradeAction Name="UpgradeToV1.1">     
+   </CustomUpgradeAction>
+   
+ </VersionRange> 
+</UpgradeActions>
 </Feature>
