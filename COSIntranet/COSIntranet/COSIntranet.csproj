@@ -141,6 +141,9 @@
     <None Include="Infrastructure\Lists\DivisionLevel\ProductAssortment\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{a294405d-6537-4361-b7a6-48d10ed1823e}</SharePointProjectItemId>
     </None>
+    <None Include="Infrastructure\Lists\DivisionLevel\SalesCalendar\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{408676e9-36cd-4dee-bffa-659e4aa49803}</SharePointProjectItemId>
+    </None>
     <None Include="Infrastructure\Lists\DivisionLevel\VisualMerchandise\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{cf02bad8-7d6c-4cd1-beae-218b49247ee9}</SharePointProjectItemId>
     </None>
@@ -235,6 +238,7 @@
     <Content Include="Infrastructure\Lists\DivisionLevel\Managers\Elements.xml" />
     <Content Include="Infrastructure\Lists\DivisionLevel\Marketing\Elements.xml" />
     <Content Include="Infrastructure\Lists\DivisionLevel\ProductAssortment\Elements.xml" />
+    <Content Include="Infrastructure\Lists\DivisionLevel\SalesCalendar\Elements.xml" />
     <Content Include="Infrastructure\Lists\DivisionLevel\VisualMerchandise\Elements.xml" />
     <Content Include="Infrastructure\Lists\DivisionLevel\SalesTraining\Elements.xml" />
     <Content Include="Infrastructure\Lists\RootLevel\Folders\Elements.xml" />

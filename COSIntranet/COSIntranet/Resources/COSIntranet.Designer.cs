@@ -1722,6 +1722,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sales Calendar.
+        /// </summary>
+        internal static string ChangeLibTitleSalesCalendar {
+            get {
+                return ResourceManager.GetString("ChangeLibTitleSalesCalendar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sales training.
         /// </summary>
         internal static string ChangeLibTitleSalesTraining {

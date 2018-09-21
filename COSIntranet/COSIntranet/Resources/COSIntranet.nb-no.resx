@@ -698,4 +698,7 @@
   <data name="ChangeFolderTitleNewsletter" xml:space="preserve">
     <value>Newsletter</value>
   </data>
+  <data name="ChangeLibTitleSalesCalendar" xml:space="preserve">
+    <value>Sales Calendar</value>
+  </data>
 </root>
