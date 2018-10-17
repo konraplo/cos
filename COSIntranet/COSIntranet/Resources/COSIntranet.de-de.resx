@@ -673,4 +673,7 @@
   <data name="ChangeLibTitleSalesCalendar" xml:space="preserve">
     <value>Sales Calendar</value>
   </data>
+  <data name="ChangeLibDescriptionSalesCalendar" xml:space="preserve">
+    <value>Sales Calendar</value>
+  </data>
 </root>
