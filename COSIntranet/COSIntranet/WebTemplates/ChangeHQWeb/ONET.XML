@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Title="CHANGE Lingerie Division Web;" Revision="3" ListDir="$Resources:core,lists_Folder;" xmlns:ows="Microsoft SharePoint" UIVersion="15" HideSiteContentsLink="true">
+  <NavBars>
+    <NavBar Name="$Resources:core,category_Top;" Separator="&amp;nbsp;&amp;nbsp;&amp;nbsp;" Body="&lt;a ID='onettopnavbar#LABEL_ID#' href='#URL#' accesskey='J'&gt;#LABEL#&lt;/a&gt;" ID="1002" />
+    <NavBar Name="$Resources:core,category_NavHome;" Prefix="&lt;table border='0' cellpadding='4' cellspacing='0'&gt;" Body="&lt;tr&gt;&lt;td&gt;&lt;table border='0' cellpadding='0' cellspacing='0'&gt;&lt;tr&gt;&lt;td&gt;&lt;img src='/_layouts/15/images/blank.gif' id='100' alt='' border='0'&gt;&amp;nbsp;&lt;/td&gt;&lt;td valign='top'&gt;&lt;a id='onetleftnavbar#LABEL_ID#' href='#URL#'&gt;#LABEL#&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;" Suffix="&lt;/table&gt;" ID="1031" />
+    <NavBar Name="$Resources:core,category_SiteContents;" Prefix="&lt;table border='0' cellpadding='4' cellspacing='0'&gt;" Body="&lt;tr&gt;&lt;td&gt;&lt;table border='0' cellpadding='0' cellspacing='0'&gt;&lt;tr&gt;&lt;td&gt;&lt;img src='/_layouts/15/images/blank.gif' id='100' alt='' border='0'&gt;&amp;nbsp;&lt;/td&gt;&lt;td valign='top'&gt;&lt;a id='onetleftnavbar#LABEL_ID#' href='#URL#'&gt;#LABEL#&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;" Suffix="&lt;/table&gt;" ID="1034" />
+    <NavBar Name="$Resources:core,SiteSettings_SearchNav_Title;" Separator="&amp;nbsp;&amp;nbsp;&amp;nbsp;" Body="&lt;a ID='onettopnavbar#LABEL_ID#' href='#URL#' accesskey='J'&gt;#LABEL#&lt;/a&gt;" ID="1040" />
+  </NavBars>
+  <ListTemplates>
+  </ListTemplates>
+  <Configurations>
+    <Configuration ID="0" Name="Default" MasterUrl="_catalogs/masterpage/seattle.master">
+      <Lists>
+        <List FeatureId="00BFEA71-E717-4E80-AA17-D0C71B360101" Type="101" Title="$Resources:core,shareddocuments_Title_15;" Url="$Resources:core,shareddocuments_Folder;" OnQuickLaunch="TRUE" QuickLaunchHeading="TRUE" />
+      </Lists>
+      <SiteFeatures>
+      </SiteFeatures>
+      <WebFeatures>
+        <!-- TeamCollab Feature -->
+        <Feature ID="00BFEA71-4EA5-48D4-A4AD-7EA5C011ABE5" />
+        <!-- MobilityRedirect -->
+        <Feature ID="F41CC668-37E5-4743-B4A8-74D1DB3FD8A4" />
+        <!-- WikiPageHomePage Feature -->
+        <Feature ID="00BFEA71-D8FE-4FEC-8DAD-01C19A6E4053" />
+        <!-- SiteNotebook Feature -->
+        <Feature ID="F151BB39-7C3B-414F-BB36-6BF18872052F" />
+        <!-- Getting Started List instance -->
+        <Feature ID="4AEC7207-0D02-4f4f-AA07-B370199CD0C7" />
+        <!-- Blog feature -->
+        <Feature ID="FAF00902-6BAB-4583-BD02-84DB191801D8" />
+        <!-- Change of Scandinavia Lists for hq -->
+        <Feature ID="87e15c25-5862-4107-a781-a47e6d4daa2d" />
+        <!-- Change of scandinavia composed look-->
+        <Feature ID="0de89914-06f0-4c4e-b080-7cffd569018f" />
+        <!-- MDS -->
+        <Feature ID="87294C72-F260-42f3-A41B-981A2FFCE37A" />
+      </WebFeatures>
+    </Configuration>
+  </Configurations>
+</Project>
