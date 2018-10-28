@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <WebTemplate BaseConfigurationID="0"
+               BaseTemplateID="1"
+               BaseTemplateName="STS"
+               Description="Change of Scandinavia headquarter web template"
+               Name="ChangeHQWeb"
+               DisplayCategory="CHANGE" Title="Change of Scandinavia headquarter web template" Subweb="TRUE">
+  </WebTemplate>
+</Elements>

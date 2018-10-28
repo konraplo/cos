@@ -138,6 +138,9 @@
     <None Include="Infrastructure\Lists\DivisionLevel\IT\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{1bb96f2f-0f63-4d53-b16b-bed32acc25c1}</SharePointProjectItemId>
     </None>
+    <None Include="Infrastructure\Lists\DivisionLevel\SalesCalendarInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{8f99cd86-2ef0-43a7-93f2-574ad6d71db7}</SharePointProjectItemId>
+    </None>
     <None Include="Infrastructure\Lists\DivisionLevel\Managers\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{c0e4d2bf-4f0e-4e30-a442-ab7c20a7be4a}</SharePointProjectItemId>
     </None>
@@ -146,9 +149,6 @@
     </None>
     <None Include="Infrastructure\Lists\DivisionLevel\ProductAssortment\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{a294405d-6537-4361-b7a6-48d10ed1823e}</SharePointProjectItemId>
-    </None>
-    <None Include="Infrastructure\Lists\DivisionLevel\SalesCalendar\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{408676e9-36cd-4dee-bffa-659e4aa49803}</SharePointProjectItemId>
     </None>
     <None Include="Infrastructure\Lists\DivisionLevel\VisualMerchandise\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{cf02bad8-7d6c-4cd1-beae-218b49247ee9}</SharePointProjectItemId>
@@ -186,6 +186,9 @@
     </None>
     <None Include="WebTemplates\ChangeDivisionWeb\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{b2194afc-74d3-4f51-a2a2-4a1dccf5deb4}</SharePointProjectItemId>
+    </None>
+    <None Include="WebTemplates\ChangeHQWeb\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{f5b94204-9517-45b1-bff4-0a797a605e8d}</SharePointProjectItemId>
     </None>
     <None Include="WebTemplates\ChangeSite\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{a2d7dca5-9a2c-4587-b900-b63db743ec0b}</SharePointProjectItemId>
@@ -244,10 +247,14 @@
     <Content Include="Infrastructure\Lists\DivisionLevel\Finance\Elements.xml" />
     <Content Include="Infrastructure\Lists\DivisionLevel\HR\Elements.xml" />
     <Content Include="Infrastructure\Lists\DivisionLevel\IT\Elements.xml" />
+    <Content Include="Infrastructure\Lists\DivisionLevel\SalesCalendarInstance\Elements.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Infrastructure\Lists\DivisionLevel\Managers\Elements.xml" />
     <Content Include="Infrastructure\Lists\DivisionLevel\Marketing\Elements.xml" />
-    <Content Include="Infrastructure\Lists\DivisionLevel\ProductAssortment\Elements.xml" />
-    <Content Include="Infrastructure\Lists\DivisionLevel\SalesCalendar\Elements.xml" />
+    <Content Include="Infrastructure\Lists\DivisionLevel\ProductAssortment\Elements.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Infrastructure\Lists\DivisionLevel\VisualMerchandise\Elements.xml" />
     <Content Include="Infrastructure\Lists\DivisionLevel\SalesTraining\Elements.xml" />
     <Content Include="Infrastructure\Lists\RootLevel\Folders\Elements.xml" />
@@ -271,6 +278,10 @@
     </Content>
     <Content Include="WebTemplates\ChangeDivisionWeb\Elements.xml" />
     <Content Include="WebTemplates\ChangeDivisionWeb\ONET.XML" />
+    <Content Include="WebTemplates\ChangeHQWeb\Elements.xml" />
+    <Content Include="WebTemplates\ChangeHQWeb\ONET.XML">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="WebTemplates\ChangeSite\Elements.xml" />
     <Content Include="WebTemplates\ChangeSite\ONET.XML" />
   </ItemGroup>

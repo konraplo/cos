@@ -3,6 +3,7 @@
   <ListInstance Title="$Resources:COSIntranet,ChangeLibTitleSalesCalendar"
                 OnQuickLaunch="FALSE"
                 TemplateType="106"
+                FeatureId="00bfea71-ec85-4903-972d-ebe475780106"
                 Url="Lists/SalesCalendar"
                 Description="$Resources:COSIntranet,ChangeLibDescriptionSalesCalendar">
   </ListInstance>
