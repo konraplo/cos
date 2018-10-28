@@ -187,9 +187,6 @@
     <None Include="WebTemplates\ChangeDivisionWeb\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{b2194afc-74d3-4f51-a2a2-4a1dccf5deb4}</SharePointProjectItemId>
     </None>
-    <None Include="WebTemplates\ChangeHQWeb\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{b2f8c060-dce5-4608-8641-66bd9936ad84}</SharePointProjectItemId>
-    </None>
     <None Include="WebTemplates\ChangeSite\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{a2d7dca5-9a2c-4587-b900-b63db743ec0b}</SharePointProjectItemId>
     </None>
@@ -274,8 +271,6 @@
     </Content>
     <Content Include="WebTemplates\ChangeDivisionWeb\Elements.xml" />
     <Content Include="WebTemplates\ChangeDivisionWeb\ONET.XML" />
-    <Content Include="WebTemplates\ChangeHQWeb\Elements.xml" />
-    <Content Include="WebTemplates\ChangeHQWeb\ONET.XML" />
     <Content Include="WebTemplates\ChangeSite\Elements.xml" />
     <Content Include="WebTemplates\ChangeSite\ONET.XML" />
   </ItemGroup>
