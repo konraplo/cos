@@ -564,6 +564,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GDPR.
+        /// </summary>
+        internal static string ChangeFolderTitleGDPR {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleGDPR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Generic instore .
         /// </summary>
         internal static string ChangeFolderTitleGenericInstore {

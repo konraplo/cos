@@ -478,6 +478,9 @@ namespace Change.Intranet.Features.ChangeListsForDivisions
             folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleAPVChecklist", "COSIntranet", web.Language);
             apv.SubFolders.Add(folderUrl);
 
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleGDPR", "COSIntranet", web.Language);
+            folderColl.Add(folderUrl);
+
             folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitlePhonelist", "COSIntranet", web.Language);
             folderColl.Add(folderUrl);
             

@@ -676,4 +676,7 @@
   <data name="ChangeLibDescriptionSalesCalendar" xml:space="preserve">
     <value>Sales Calendar</value>
   </data>
+  <data name="ChangeFolderTitleGDPR" xml:space="preserve">
+    <value>GDPR</value>
+  </data>
 </root>
