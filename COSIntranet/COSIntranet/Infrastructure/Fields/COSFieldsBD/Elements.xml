@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <!-- Business development fields -->
+  <!-- Deparmentmanager -->
+  <Field ID="{320DC330-92FE-480B-967E-0B205A94AA7D}"
+           StaticName="Deparmentmanager"
+           Name="Deparmentmanager"
+           Type="User"
+           DisplayName="$Resources:COSIntranet,ChangeColDeparmentmanager"
+           List="UserInfo"
+           Required="TRUE"
+           ShowField="ImnName"
+           UserSelectionMode="PeopleAndGroups"
+           UserSelectionScope="0"
+           Group="CHANGE Fields"/>
+</Elements>

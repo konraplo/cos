@@ -111,11 +111,17 @@
     <None Include="Infrastructure\ContentTypes\CorporateNews\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{56ed91e7-59d0-4551-a7ef-10c9cf8db858}</SharePointProjectItemId>
     </None>
+    <None Include="Infrastructure\ContentTypes\Department\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{29bfce66-e128-4d3c-983c-ce22bb4ab455}</SharePointProjectItemId>
+    </None>
     <None Include="Infrastructure\ContentTypes\NationalNews\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{4df056f0-1fb0-4c50-84e6-2eba849575e9}</SharePointProjectItemId>
     </None>
     <None Include="Infrastructure\ContentTypes\News\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{d4320103-af9c-4511-ab2e-4eb4fe1f9f01}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Fields\COSFieldsBD\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{8d5334f4-33c3-4bfe-b006-5e15f3afd129}</SharePointProjectItemId>
     </None>
     <None Include="Infrastructure\Fields\COSFields\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{c5860291-3df1-422f-a737-5e5dcc07bef3}</SharePointProjectItemId>
@@ -220,8 +226,10 @@
       <DependentUpon>ChangeListsForHQ.feature</DependentUpon>
     </Content>
     <Content Include="Infrastructure\ContentTypes\CorporateNews\Elements.xml" />
+    <Content Include="Infrastructure\ContentTypes\Department\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\NationalNews\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\News\Elements.xml" />
+    <Content Include="Infrastructure\Fields\COSFieldsBD\Elements.xml" />
     <Content Include="Infrastructure\Fields\COSFields\Elements.xml" />
     <Content Include="Infrastructure\InfrastructureFiles\Elements.xml" />
     <Content Include="Infrastructure\InfrastructureFiles\Images\AddItem.jpg" />

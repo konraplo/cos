@@ -679,4 +679,16 @@
   <data name="ChangeFolderTitleGDPR" xml:space="preserve">
     <value>GDPR</value>
   </data>
+  <data name="ChangeColDeparmentmanager" xml:space="preserve">
+    <value>Department manager</value>
+  </data>
+  <data name="ChangeColParentdeparment" xml:space="preserve">
+    <value>Parent department</value>
+  </data>
+  <data name="ChangeCTDepartment" xml:space="preserve">
+    <value>Department</value>
+  </data>
+  <data name="ChangeCTDepartmentDescr" xml:space="preserve">
+    <value>CHANGE Department</value>
+  </data>
 </root>

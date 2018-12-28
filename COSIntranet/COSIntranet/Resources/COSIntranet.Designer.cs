@@ -61,6 +61,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Department manager.
+        /// </summary>
+        internal static string ChangeColDeparmentmanager {
+            get {
+                return ResourceManager.GetString("ChangeColDeparmentmanager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Expires.
         /// </summary>
         internal static string ChangeColNewsExpires {
@@ -75,6 +84,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeColNewsExpiresDescr {
             get {
                 return ResourceManager.GetString("ChangeColNewsExpiresDescr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parent department.
+        /// </summary>
+        internal static string ChangeColParentdeparment {
+            get {
+                return ResourceManager.GetString("ChangeColParentdeparment", resourceCulture);
             }
         }
         
@@ -111,6 +129,24 @@ namespace Change.Intranet.Resources {
         internal static string ChangeCTCorporateNewsDescr {
             get {
                 return ResourceManager.GetString("ChangeCTCorporateNewsDescr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Department.
+        /// </summary>
+        internal static string ChangeCTDepartment {
+            get {
+                return ResourceManager.GetString("ChangeCTDepartment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CHANGE Department.
+        /// </summary>
+        internal static string ChangeCTDepartmentDescr {
+            get {
+                return ResourceManager.GetString("ChangeCTDepartmentDescr", resourceCulture);
             }
         }
         
