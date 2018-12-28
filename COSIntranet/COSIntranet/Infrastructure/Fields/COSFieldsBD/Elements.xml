@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <!-- Business development fields -->
-  <!-- Deparmentmanager -->
+  <!-- Deparment -->
   <Field ID="{320DC330-92FE-480B-967E-0B205A94AA7D}"
            StaticName="Deparmentmanager"
            Name="Deparmentmanager"
@@ -13,4 +13,30 @@
            UserSelectionMode="PeopleAndGroups"
            UserSelectionScope="0"
            Group="CHANGE Fields"/>
+
+  <!-- Store -->
+  <Field ID="{6CC3F80F-3CBD-47C1-ABDF-E9F87871863D}"
+           StaticName="Storeid"
+           Name="Storeid" 
+           Type="Text"
+           DisplayName="$Resources:COSIntranet,ChangeColStoreid"
+           Group="CHANGE Fields"/>
+  
+  <Field ID="{B5F2AFCA-C006-4EF9-AE52-5390C6865D2D}" 
+         StaticName="ChangeCountry"
+         Name="ChangeCountry" 
+         DisplayName="$Resources:COSIntranet,ChangeColCountry" 
+         Type="Choice"
+         Group="CHANGE Fields">
+    <CHOICES>
+      <CHOICE>Denmark</CHOICE>
+      <CHOICE>Germany</CHOICE>
+      <CHOICE>Canada</CHOICE>
+      <CHOICE>Norway</CHOICE>
+      <CHOICE>Sweden</CHOICE>
+      <CHOICE>Poland</CHOICE>
+      <CHOICE>Finland</CHOICE>
+      <CHOICE>Ireland</CHOICE>
+    </CHOICES>
+  </Field>
 </Elements>

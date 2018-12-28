@@ -120,6 +120,9 @@
     <None Include="Infrastructure\ContentTypes\News\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{d4320103-af9c-4511-ab2e-4eb4fe1f9f01}</SharePointProjectItemId>
     </None>
+    <None Include="Infrastructure\ContentTypes\Store\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{f65023ea-33ce-42ee-b3ab-a12f03234f2e}</SharePointProjectItemId>
+    </None>
     <None Include="Infrastructure\Fields\COSFieldsBD\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{8d5334f4-33c3-4bfe-b006-5e15f3afd129}</SharePointProjectItemId>
     </None>
@@ -229,6 +232,7 @@
     <Content Include="Infrastructure\ContentTypes\Department\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\NationalNews\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\News\Elements.xml" />
+    <Content Include="Infrastructure\ContentTypes\Store\Elements.xml" />
     <Content Include="Infrastructure\Fields\COSFieldsBD\Elements.xml" />
     <Content Include="Infrastructure\Fields\COSFields\Elements.xml" />
     <Content Include="Infrastructure\InfrastructureFiles\Elements.xml" />

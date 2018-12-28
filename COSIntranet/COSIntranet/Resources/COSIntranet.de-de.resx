@@ -691,4 +691,16 @@
   <data name="ChangeCTDepartmentDescr" xml:space="preserve">
     <value>CHANGE Department</value>
   </data>
+  <data name="ChangeColStoreid" xml:space="preserve">
+    <value>Store ID</value>
+  </data>
+  <data name="ChangeColCountry" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="ChangeCTStore" xml:space="preserve">
+    <value>Store</value>
+  </data>
+  <data name="ChangeCTStoreDescr" xml:space="preserve">
+    <value>CHANGE Store</value>
+  </data>
 </root>
