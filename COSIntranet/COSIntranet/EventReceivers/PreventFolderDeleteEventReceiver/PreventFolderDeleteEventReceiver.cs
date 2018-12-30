@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Security.Permissions;
 using Microsoft.SharePoint;
 using Microsoft.SharePoint.Utilities;
-using Microsoft.SharePoint.Workflow;
 using Change.Intranet.Common;
 using System.Collections.Generic;
 

@@ -1664,6 +1664,24 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CHANGE Departments.
+        /// </summary>
+        internal static string ChangeLibDescriptionChangeDepartments {
+            get {
+                return ResourceManager.GetString("ChangeLibDescriptionChangeDepartments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CHANGE Store.
+        /// </summary>
+        internal static string ChangeLibDescriptionChangeStores {
+            get {
+                return ResourceManager.GetString("ChangeLibDescriptionChangeStores", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Daily procedures
         ///.
         /// </summary>
@@ -1740,6 +1758,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CHANGE Project Tasks.
+        /// </summary>
+        internal static string ChangeLibDescriptionProjectTasks {
+            get {
+                return ResourceManager.GetString("ChangeLibDescriptionProjectTasks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sales Calendar.
         /// </summary>
         internal static string ChangeLibDescriptionSalesCalendar {
@@ -1781,6 +1808,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeLibTitleDailyOperation {
             get {
                 return ResourceManager.GetString("ChangeLibTitleDailyOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Departments.
+        /// </summary>
+        internal static string ChangeLibTitleDepartments {
+            get {
+                return ResourceManager.GetString("ChangeLibTitleDepartments", resourceCulture);
             }
         }
         
@@ -1848,6 +1884,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Project Tasks.
+        /// </summary>
+        internal static string ChangeLibTitleProjectTasks {
+            get {
+                return ResourceManager.GetString("ChangeLibTitleProjectTasks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sales Calendar.
         /// </summary>
         internal static string ChangeLibTitleSalesCalendar {
@@ -1862,6 +1907,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeLibTitleSalesTraining {
             get {
                 return ResourceManager.GetString("ChangeLibTitleSalesTraining", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Store.
+        /// </summary>
+        internal static string ChangeLibTitleStores {
+            get {
+                return ResourceManager.GetString("ChangeLibTitleStores", resourceCulture);
             }
         }
         

@@ -52,7 +52,9 @@
     <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\CommonUtilities.cs" />
     <Compile Include="Common\ContentOrganizerUtilities.cs" />
+    <Compile Include="Common\Fields.cs" />
     <Compile Include="Common\ListUtilities.cs" />
     <Compile Include="Common\Logger.cs" />
     <Compile Include="EventReceivers\InboxEventReceiver\InboxEventReceiver.cs" />
@@ -137,6 +139,15 @@
     </None>
     <None Include="Infrastructure\InfrastructureFiles\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{8d45ff71-438f-4ed7-aacb-c68f1ea10945}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\BusinessDev\Departments\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{851960c8-e714-478e-95bf-3b0555a1114d}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\BusinessDev\ProjectTasks\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{8204a972-4679-478f-8b03-cfac44ee3380}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\BusinessDev\Stores\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{8ccbe49c-de21-4630-82c1-d67e4b6dce5b}</SharePointProjectItemId>
     </None>
     <None Include="Infrastructure\Lists\DivisionLevel\ChangeAcademy\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{9b5d6fce-b6b7-45a6-8916-bff4fcef4c1c}</SharePointProjectItemId>
@@ -259,6 +270,9 @@
     <Content Include="Infrastructure\InfrastructureFiles\Images\sameSystemLink.PNG" />
     <Content Include="Infrastructure\InfrastructureFiles\Scripts\COS.HideBlogToolsWP.js" />
     <Content Include="Infrastructure\InfrastructureFiles\Scripts\jquery-3.1.0.min.js" />
+    <Content Include="Infrastructure\Lists\BusinessDev\Departments\Elements.xml" />
+    <Content Include="Infrastructure\Lists\BusinessDev\ProjectTasks\Elements.xml" />
+    <Content Include="Infrastructure\Lists\BusinessDev\Stores\Elements.xml" />
     <Content Include="Infrastructure\Lists\DivisionLevel\ChangeAcademy\Elements.xml" />
     <Content Include="Infrastructure\Lists\DivisionLevel\ChangeAcademy\Elements.xml">
       <SubType>Designer</SubType>

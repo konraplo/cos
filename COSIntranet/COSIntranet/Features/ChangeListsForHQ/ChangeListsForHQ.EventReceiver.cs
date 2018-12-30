@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using System.Security.Permissions;
 using Change.Intranet.Common;
 using Microsoft.SharePoint;
+using Microsoft.SharePoint.Utilities;
 
 namespace Change.Intranet.Features.ChangeListsForHQ
 {
@@ -30,6 +31,22 @@ namespace Change.Intranet.Features.ChangeListsForHQ
             }
         }
 
+        private void AddLookupsToLists(SPWeb web)
+        {
+            Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", "add Lookups to lists");
+
+            string deptUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.Departments);
+            Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", string.Format("add Lookups to:{0}", deptUrl));
+            SPList deptList = web.GetList(deptUrl);
+            //ListUtilities.CreateLookupFieldAtList(web, "ParentDepartment", Fields.Department, deptList, Fields.Title, deptList, false, false);
+            string storesUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.Stores);
+            Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", string.Format("add Lookups to:{0}", storesUrl));
+            SPList storestList = web.GetList(storesUrl);
+
+            string tasksUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.ProjectTasks);
+            Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", string.Format("add Lookups to:{0}", tasksUrl));
+            SPList tasksList = web.GetList(tasksUrl);
+        }
 
         // Uncomment the method below to handle the event raised before a feature is deactivated.
 
