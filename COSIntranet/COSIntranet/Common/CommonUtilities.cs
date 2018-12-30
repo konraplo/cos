@@ -82,6 +82,181 @@
             }
         }
 
+        /// <summary>
+        /// Attach specified content type to the specified list
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="contentType"></param>
+        /// <param name="pSetAsDefualtContentType">indicates if this content type should be default one in list</param>
+        /// <param name="pContentTypesEnabled">indicates if after this content types management in list is active or not</param>
+        public static SPContentType AttachContentTypeToList(SPList list, SPContentType contentType, bool pSetAsDefualtContentType, bool pContentTypesEnabled)
+        {
+            //check preconditions
+            if (list == null)
+            {
+                Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName,"Helper.AttachContentTypeToList:Parameter 'list' is NULL.");
+                throw new ArgumentNullException("list");
+            }
+            if (contentType == null)
+            {
+                Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName,"Helper.AttachContentTypeToList:Parameter 'contentType' is NULL.");
+                throw new ArgumentNullException("contentType");
+            }
 
+            SPContentType addedCts = null;
+            try
+            {
+                Logger.WriteLog(Logger.Category.Information, typeof(CommonUtilities).FullName,"list.ContentTypesEnabled = true;");
+                list.ContentTypesEnabled = true;
+                SPContentType foundedCts = list.ContentTypes[list.ContentTypes.BestMatch(contentType.Id)];
+                if (!(foundedCts.Parent.Id == contentType.Id))
+                {
+                    Logger.WriteLog(Logger.Category.Information, typeof(CommonUtilities).FullName, ("ContentType not found, so add it"));
+                    addedCts = list.ContentTypes.Add(contentType);
+                    Logger.WriteLog(Logger.Category.Information, typeof(CommonUtilities).FullName, "Update List");
+                    list.Update();
+                }
+                else
+                {
+                    addedCts = foundedCts;
+                }
+
+                if (addedCts != null && pSetAsDefualtContentType)
+                {
+                    SetContentTypeAsDefault(list.ParentWeb.Lists[list.ID], addedCts.Id);
+                }
+
+                return addedCts;
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName, ex.Message);
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Set specified content type as default for pList
+        /// </summary>
+        /// <param name="pList">list</param>
+        /// <param name="pCtsID">content type id</param>
+        public static void SetContentTypeAsDefault(SPList pList, SPContentTypeId pCtsID)
+        {
+            //check preconditions
+            if (pList == null)
+            {
+                Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName, "Helper.AttachContentTypeToList:Parameter 'pList' is NULL.");
+                throw new ArgumentNullException("pList");
+            }
+
+            SPContentType[] newContentTypeOrderArray = new SPContentType[pList.RootFolder.ContentTypeOrder.Count];
+            newContentTypeOrderArray[0] = pList.ContentTypes[pCtsID];
+
+            if (newContentTypeOrderArray[0] == null)
+            {
+                string msg = String.Format("Helper.SetContentTypeAsDefault:wrong contentype guid:{0}.", pCtsID);
+                Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName, msg);
+
+                throw new ArgumentException(msg, "pCtsID");
+            }
+
+            int counter = 1;
+            foreach (SPContentType cts in pList.RootFolder.ContentTypeOrder)
+            {
+                if (cts.Id == pCtsID)
+                {
+                    continue;
+                }
+
+                if (counter >= newContentTypeOrderArray.Length)
+                {
+                    break;
+                }
+                newContentTypeOrderArray[counter] = cts;
+                counter++;
+            }
+
+            pList.RootFolder.UniqueContentTypeOrder = newContentTypeOrderArray;
+            pList.RootFolder.Update();
+        }
+
+        /// <summary>
+        /// Add specified field to content type
+        /// </summary>
+        /// <param name="pWeb"></param>
+        /// <param name="pContentType"> </param>
+        /// <param name="pField"></param>
+        /// <param name="pRequired">should this field be required or not</param>
+        /// <param name="pReadOnly"> </param>
+        public static void AddFieldToContentType(SPWeb pWeb, SPContentType pContentType, SPField pField, bool pRequired, bool pReadOnly, string pDisplayName)
+        {
+            //preconditions
+            if (pWeb == null)
+            {
+                Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName,"Helper.AttachContentTypeToList:Parameter 'web' is NULL.");
+                throw new ArgumentNullException("pWeb");
+            }
+
+            if (pField == null)
+            {
+                Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName,"Helper.AttachContentTypeToList:Parameter 'pField' is NULL.");
+                throw new ArgumentNullException("pField");
+            }
+
+            if (pContentType == null)
+            {
+                Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName,"Helper.AttachContentTypeToList:Parameter 'pField' is NULL.");
+                throw new ArgumentNullException("pField");
+            }
+
+            using (SPSite site = new SPSite(pWeb.Site.ID))
+            {
+                using (SPWeb rootWeb = site.OpenWeb(site.RootWeb.ID))
+                {
+                    if (!pContentType.Fields.Contains(pField.Id))
+                    {
+                        rootWeb.AllowUnsafeUpdates = true;
+
+                        SPFieldLink fieldLink = new SPFieldLink(pField);
+                        fieldLink.Required = pRequired;
+                        fieldLink.DisplayName = string.IsNullOrEmpty(pDisplayName) ? pField.Title: pDisplayName;
+
+                        if (pRequired)
+                        {
+                            fieldLink.ReadOnly = false;
+                        }
+                        else
+                        {
+                            fieldLink.ReadOnly = pReadOnly;
+
+                        }
+                        pContentType.FieldLinks.Add(fieldLink);
+                        SPContentType checkContentType = rootWeb.AvailableContentTypes[pContentType.Id];
+                        pContentType.Update(null != checkContentType);
+                        rootWeb.AllowUnsafeUpdates = false;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// break role ingeritance and assigne permission to specified item
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="principal">SPUser or SPGroup</param>
+        /// <param name="roleType"></param>
+        public static void AssignPermissionsToItem(SPListItem item, SPPrincipal principal, SPRoleType roleType)
+        {
+            if (!item.HasUniqueRoleAssignments)
+            {
+                item.BreakRoleInheritance(false, true);
+            }
+
+            SPRoleAssignment roleAssignment = new SPRoleAssignment(principal);
+            SPRoleDefinition roleDefinition = item.Web.RoleDefinitions.GetByType(roleType);
+            roleAssignment.RoleDefinitionBindings.Add(roleDefinition);
+
+            item.RoleAssignments.Add(roleAssignment);
+        }
     }
 }

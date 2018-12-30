@@ -70,6 +70,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Department.
+        /// </summary>
+        internal static string ChangeColDeparment {
+            get {
+                return ResourceManager.GetString("ChangeColDeparment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Department manager.
         /// </summary>
         internal static string ChangeColDeparmentmanager {
@@ -102,6 +111,33 @@ namespace Change.Intranet.Resources {
         internal static string ChangeColParentdeparment {
             get {
                 return ResourceManager.GetString("ChangeColParentdeparment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parent Project.
+        /// </summary>
+        internal static string ChangeColParentProject {
+            get {
+                return ResourceManager.GetString("ChangeColParentProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project Task.
+        /// </summary>
+        internal static string ChangeColProjectTask {
+            get {
+                return ResourceManager.GetString("ChangeColProjectTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Store.
+        /// </summary>
+        internal static string ChangeColStore {
+            get {
+                return ResourceManager.GetString("ChangeColStore", resourceCulture);
             }
         }
         

@@ -11,7 +11,11 @@ namespace Change.Intranet.Common
     /// </summary>
     public static class Fields
     {
+        public const string ChangeFieldsGroup = "CHANGE Fields";
         public const string Department = "ChangeDepartment";
+        public const string ProjectTask = "ChangeProjectTask";
+        public const string Store = "ChangeStore";
+        public const string StoreId = "Storeid";
         public const string Title = "Title";
     }
 }

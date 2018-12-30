@@ -31,14 +31,14 @@ namespace Change.Intranet.Features.ChangeListsForHQ
             }
         }
 
-        private void AddLookupsToLists(SPWeb web)
+        private void AddFieldsAndCTToLists(SPWeb web)
         {
-            Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", "add Lookups to lists");
+            Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", "Find lists");
 
             string deptUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.Departments);
             Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", string.Format("add Lookups to:{0}", deptUrl));
             SPList deptList = web.GetList(deptUrl);
-            //ListUtilities.CreateLookupFieldAtList(web, "ParentDepartment", Fields.Department, deptList, Fields.Title, deptList, false, false);
+
             string storesUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.Stores);
             Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", string.Format("add Lookups to:{0}", storesUrl));
             SPList storestList = web.GetList(storesUrl);
@@ -46,6 +46,30 @@ namespace Change.Intranet.Features.ChangeListsForHQ
             string tasksUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.ProjectTasks);
             Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", string.Format("add Lookups to:{0}", tasksUrl));
             SPList tasksList = web.GetList(tasksUrl);
+
+            // add lookups
+            Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", "Add lookups");
+
+            SPFieldLookup deptLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.Department, "$Resources:COSIntranet,ChangeColDeparment", Fields.Title, deptList, false, false);
+            SPFieldLookup taskLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.ProjectTask, "$Resources:COSIntranet,ChangeColProjectTask", Fields.Title, tasksList, false, false);
+            SPFieldLookup storeLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.Store, "$Resources:COSIntranet,ChangeColStore", Fields.StoreId, storestList, false, false);
+
+            // add ct to lists
+            SPContentType storeContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.Store];
+            CommonUtilities.AttachContentTypeToList(storestList, storeContentType, true, false);
+
+            SPContentType deptContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.Department];
+            SPContentType deptListContentType = CommonUtilities.AttachContentTypeToList(storestList, storeContentType, true, false);
+            CommonUtilities.AddFieldToContentType(web, deptListContentType, deptLookup, false, false, "$Resources:COSIntranet,ChangeColParentdeparment");
+
+            SPContentType projectContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.Project];
+            projectContentType.FieldLinks.Delete(SPBuiltInFieldId.Predecessors);
+            CommonUtilities.AddFieldToContentType(web, projectContentType, storeLookup, true, false, string.Empty);
+
+            SPContentType projectTaskContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.ProjectTask];
+            CommonUtilities.AddFieldToContentType(web, projectTaskContentType, taskLookup, false, false, "$Resources:COSIntranet,ChangeColParentProject");
+            CommonUtilities.AddFieldToContentType(web, projectTaskContentType, storeLookup, true, true, string.Empty);
+
         }
 
         // Uncomment the method below to handle the event raised before a feature is deactivated.

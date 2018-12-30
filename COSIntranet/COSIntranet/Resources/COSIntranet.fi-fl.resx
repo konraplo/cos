@@ -738,4 +738,16 @@
   <data name="ChangeProjectTitle" xml:space="preserve">
     <value>Project name</value>
   </data>
+  <data name="ChangeColDeparment" xml:space="preserve">
+    <value>Department</value>
+  </data>
+  <data name="ChangeColParentProject" xml:space="preserve">
+    <value>Parent Project</value>
+  </data>
+  <data name="ChangeColProjectTask" xml:space="preserve">
+    <value>Project Task</value>
+  </data>
+  <data name="ChangeColStore" xml:space="preserve">
+    <value>Store</value>
+  </data>
 </root>

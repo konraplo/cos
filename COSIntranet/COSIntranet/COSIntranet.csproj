@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Common\CommonUtilities.cs" />
     <Compile Include="Common\ContentOrganizerUtilities.cs" />
+    <Compile Include="Common\ContentTypeIds.cs" />
     <Compile Include="Common\Fields.cs" />
     <Compile Include="Common\ListUtilities.cs" />
     <Compile Include="Common\Logger.cs" />
