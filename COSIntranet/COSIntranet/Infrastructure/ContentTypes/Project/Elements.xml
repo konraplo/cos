@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <!-- Parent ContentType: Task (0x0108) -->
+  <ContentType ID="0x0108001845C9025F79452AA25119FB17AEB359"
+               Name="$Resources:COSIntranet,ChangeCTProject"
+               Group="CHANGE Content Types"
+               Description="$Resources:COSIntranet,ChangeCTProjectDescr"
+               Inherits="TRUE"
+               Version="0">
+    <FieldRefs>
+      <FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" DisplayName="$Resources:COSIntranet,ChangeProjectTitle" Required="TRUE" />
+      <FieldRef ID="{64cd368d-2f95-4bfc-a1f9-8d4324ecb007}" Name="StartDate" Required="TRUE" />
+      <FieldRef ID="{cd21b4c2-6841-4f9e-a23a-738a65f99889}" Name="DueDate" DisplayName="$Resources:COSIntranet,ChangeOpeningDate" Required="TRUE" />
+      <FieldRef ID="{53101f38-dd2e-458c-b245-0c236cc13d1a}" Name="AssignedTo" DisplayName="$Resources:COSIntranet,ChangeProjectCoordinator" />
+      <FieldRef ID="{B5F2AFCA-C006-4EF9-AE52-5390C6865D2D}" Name="ChangeCountry" ShowInNewForm="FALSE" ShowInEditForm="FALSE"/>
+      <FieldRef ID="{d2311440-1ed6-46ea-b46d-daa643dc3886}" Name="PercentComplete" />
+      <FieldRef ID="{7662cd2c-f069-4dba-9e35-082cf976e170}" Name="Description" />
+      <FieldRef ID="{a8eb573e-9e11-481a-a8c9-1104a54b2fbd}" Name="Priority" />
+      <FieldRef ID="{c15b34c3-ce7d-490a-b133-3f4de8801b76}" Name="Status" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ShowInDisplayForm="FALSE"/>
+      <FieldRef ID="{35752185-6016-4595-A972-7959148EA585}" Name="ChangeProjectStatus" Required="TRUE"/>
+      <FieldRef ID="{c3a92d97-2b77-4a25-9698-3ab54874bc6f}" Name="Predecessors" Hidden="TRUE"/>
+    </FieldRefs>
+  </ContentType>
+</Elements>

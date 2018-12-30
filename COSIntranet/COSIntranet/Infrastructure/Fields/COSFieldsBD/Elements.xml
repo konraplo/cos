@@ -37,6 +37,24 @@
       <CHOICE>Poland</CHOICE>
       <CHOICE>Finland</CHOICE>
       <CHOICE>Ireland</CHOICE>
+    </CHOICES>   
+  </Field>
+  
+  <!-- Project -->
+  <Field ID="{35752185-6016-4595-A972-7959148EA585}"
+         StaticName="ChangeProjectStatus"
+         Name="ChangeProjectStatus"
+         DisplayName="$Resources:COSIntranet,ChangeProjectStatus"
+         Type="Choice"
+         Group="CHANGE Fields">
+    <CHOICES>
+      <CHOICE>Location Approved</CHOICE>
+      <CHOICE>P&amp;L approved by Claus</CHOICE>
+      <CHOICE>Contract signed</CHOICE>
+      <CHOICE>HQ informed</CHOICE>
+      <CHOICE>Handover to retail</CHOICE>
+      <CHOICE>Under invetigation</CHOICE>
+      <CHOICE>Project finished</CHOICE>
     </CHOICES>
   </Field>
 </Elements>

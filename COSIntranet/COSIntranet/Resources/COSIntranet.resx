@@ -731,4 +731,28 @@
   <data name="ChangeCTStoreDescr" xml:space="preserve">
     <value>CHANGE Store</value>
   </data>
+  <data name="ChangeCTProject" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="ChangeCTProjectDescr" xml:space="preserve">
+    <value>CHANGE Store opening Project</value>
+  </data>
+  <data name="ChangeProjectTitle" xml:space="preserve">
+    <value>Project name</value>
+  </data>
+  <data name="ChangeOpeningDate" xml:space="preserve">
+    <value>Opening Date</value>
+  </data>
+  <data name="ChangeProjectCoordinator" xml:space="preserve">
+    <value>Project Coordinator</value>
+  </data>
+  <data name="ChangeProjectStatus" xml:space="preserve">
+    <value>Project Status</value>
+  </data>
+  <data name="ChangeCTProjectTask" xml:space="preserve">
+    <value>Project Task</value>
+  </data>
+  <data name="ChangeCTProjectTaskDescr" xml:space="preserve">
+    <value>CHANGE Project Task</value>
+  </data>
 </root>

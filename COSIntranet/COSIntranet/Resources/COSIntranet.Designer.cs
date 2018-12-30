@@ -205,6 +205,42 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Project.
+        /// </summary>
+        internal static string ChangeCTProject {
+            get {
+                return ResourceManager.GetString("ChangeCTProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CHANGE Store opening Project.
+        /// </summary>
+        internal static string ChangeCTProjectDescr {
+            get {
+                return ResourceManager.GetString("ChangeCTProjectDescr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project Task.
+        /// </summary>
+        internal static string ChangeCTProjectTask {
+            get {
+                return ResourceManager.GetString("ChangeCTProjectTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CHANGE Project Task.
+        /// </summary>
+        internal static string ChangeCTProjectTaskDescr {
+            get {
+                return ResourceManager.GetString("ChangeCTProjectTaskDescr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Store.
         /// </summary>
         internal static string ChangeCTStore {
@@ -1835,6 +1871,42 @@ namespace Change.Intranet.Resources {
         internal static string ChangeLibTitleVisualMerchandise {
             get {
                 return ResourceManager.GetString("ChangeLibTitleVisualMerchandise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opening Date.
+        /// </summary>
+        internal static string ChangeOpeningDate {
+            get {
+                return ResourceManager.GetString("ChangeOpeningDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project Coordinator.
+        /// </summary>
+        internal static string ChangeProjectCoordinator {
+            get {
+                return ResourceManager.GetString("ChangeProjectCoordinator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project Status.
+        /// </summary>
+        internal static string ChangeProjectStatus {
+            get {
+                return ResourceManager.GetString("ChangeProjectStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project name.
+        /// </summary>
+        internal static string ChangeProjectTitle {
+            get {
+                return ResourceManager.GetString("ChangeProjectTitle", resourceCulture);
             }
         }
     }
