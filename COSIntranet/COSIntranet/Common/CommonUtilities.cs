@@ -240,6 +240,54 @@
         }
 
         /// <summary>
+        /// add event receiver to spcified list
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="type"></param>
+        /// <param name="assembly"></param>
+        /// <param name="className"></param>
+        /// <param name="synchronous"></param>
+        public static void AddListEventReceiver(SPList list, SPEventReceiverType type, string assembly, string className, bool synchronous)
+        {
+            DeleteListEventReceiver(list, type);
+
+
+            list.EventReceivers.Add(type,
+                                   assembly,
+                                   className);
+
+            if (synchronous)
+            {
+                foreach (SPEventReceiverDefinition receiver in list.EventReceivers)
+                {
+                    if (receiver.Type == type)
+                    {
+                        receiver.Synchronization = SPEventReceiverSynchronization.Synchronous;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// remove event receiver from specified list
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="type"></param>
+        public static void DeleteListEventReceiver(SPList list, SPEventReceiverType type)
+        {
+            foreach (SPEventReceiverDefinition evt in list.EventReceivers)
+            {
+                if (evt.Type == type)
+                {
+                    evt.Delete();
+                    break;
+                }
+            }
+
+            list.Update();
+        }
+
+        /// <summary>
         /// break role ingeritance and assigne permission to specified item
         /// </summary>
         /// <param name="item"></param>
