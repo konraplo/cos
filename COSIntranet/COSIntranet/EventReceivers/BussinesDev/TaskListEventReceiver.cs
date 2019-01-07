@@ -4,11 +4,10 @@
     using Microsoft.SharePoint;
 
     /// <summary>
-    /// Event receivers for store list
+    /// Event receivers for CHANGE task list
     /// </summary>
-    public class StoreListEventReceiver : SPItemEventReceiver
+    public class TaskListEventReceiver : SPItemEventReceiver
     {
-       
         /// <summary>
         /// Ein Element wurde hinzugefügt..
         /// </summary>
@@ -25,9 +24,9 @@
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "ItemUpdated");
         }
 
-        private void SetStoreId(SPListItem storeItem)
-        { 
-            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "Set Store Id");
+        private void SetLocalization()
+        {
+
         }
     }
 }

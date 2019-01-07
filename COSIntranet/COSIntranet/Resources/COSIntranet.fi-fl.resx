@@ -750,4 +750,7 @@
   <data name="ChangeColStore" xml:space="preserve">
     <value>Store</value>
   </data>
+  <data name="ChangeColResponsibleDepartment" xml:space="preserve">
+    <value>Responsible Depratment</value>
+  </data>
 </root>

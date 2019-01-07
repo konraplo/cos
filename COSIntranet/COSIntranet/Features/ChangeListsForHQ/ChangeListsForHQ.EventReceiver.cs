@@ -26,13 +26,19 @@ namespace Change.Intranet.Features.ChangeListsForHQ
 
             if (web != null)
             {
+                Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", "add CT and ER");
+                AddFieldsCtErToLists(web);
+
                 // add folder strucure
                 Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", "add folder strucure");
-              
             }
         }
 
-        private void AddFieldsAndCTToLists(SPWeb web)
+        /// <summary>
+        /// Add fields, content types end event receivers to list
+        /// </summary>
+        /// <param name="web"></param>
+        private void AddFieldsCtErToLists(SPWeb web)
         {
             Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", "Find lists");
 
@@ -63,22 +69,23 @@ namespace Change.Intranet.Features.ChangeListsForHQ
 
             SPContentType deptContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.Department];
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", deptContentType.Name, deptUrl));
-            SPContentType deptListContentType = CommonUtilities.AttachContentTypeToList(storestList, storeContentType, true, false);
+            SPContentType deptListContentType = CommonUtilities.AttachContentTypeToList(deptList, deptContentType, true, false);
             CommonUtilities.AddFieldToContentType(web, deptListContentType, deptLookup, false, false, "$Resources:COSIntranet,ChangeColParentdeparment");
 
             SPContentType projectContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.Project];
             projectContentType.FieldLinks.Delete(SPBuiltInFieldId.Predecessors);
             projectContentType.FieldLinks[SPBuiltInFieldId.Title].DisplayName = "$Resources:COSIntranet,ChangeProjectTitle";
-            projectContentType.FieldLinks[SPBuiltInFieldId.DueDate].DisplayName = "$Resources:COSIntranet,ChangeOpeningDate";
+            projectContentType.FieldLinks[SPBuiltInFieldId.TaskDueDate].DisplayName = "$Resources:COSIntranet,ChangeOpeningDate";
             projectContentType.FieldLinks[SPBuiltInFieldId.AssignedTo].DisplayName = "$Resources:COSIntranet,ChangeProjectCoordinator";
+            projectContentType.FieldLinks[SPBuiltInFieldId.TaskStatus].Hidden = true;
             CommonUtilities.AddFieldToContentType(web, projectContentType, storeLookup, true, false, string.Empty);
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", projectContentType.Name, tasksUrl));
             CommonUtilities.AttachContentTypeToList(tasksList, projectContentType, true, true);
 
             SPContentType projectTaskContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.ProjectTask];
             CommonUtilities.AddFieldToContentType(web, projectTaskContentType, taskLookup, false, false, "$Resources:COSIntranet,ChangeColParentProject");
-            CommonUtilities.AddFieldToContentType(web, projectTaskContentType, storeLookup, true, true, string.Empty);
-            CommonUtilities.AddFieldToContentType(web, projectTaskContentType, deptLookup, false, false, "$Resources:COSIntranet,ChangeColDeparment");
+            CommonUtilities.AddFieldToContentType(web, projectTaskContentType, storeLookup, false, true, string.Empty);
+            CommonUtilities.AddFieldToContentType(web, projectTaskContentType, deptLookup, false, false, "$Resources:COSIntranet,ChangeColResponsibleDepartment");
 
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", projectTaskContentType.Name, tasksUrl));
             CommonUtilities.AttachContentTypeToList(tasksList, projectTaskContentType, false, true);
@@ -92,6 +99,9 @@ namespace Change.Intranet.Features.ChangeListsForHQ
             CommonUtilities.AddListEventReceiver(deptList, SPEventReceiverType.ItemAdded, Assembly.GetExecutingAssembly().FullName, "Change.Intranet.EventReceivers.BussinesDev.DeptListEventReceiver", false);
             CommonUtilities.AddListEventReceiver(deptList, SPEventReceiverType.ItemUpdated, Assembly.GetExecutingAssembly().FullName, "Change.Intranet.EventReceivers.BussinesDev.DeptListEventReceiver", false);
 
+            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ER to List, {0}", deptUrl));
+            CommonUtilities.AddListEventReceiver(tasksList, SPEventReceiverType.ItemAdded, Assembly.GetExecutingAssembly().FullName, "Change.Intranet.EventReceivers.BussinesDev.TaskListEventReceiver", false);
+            CommonUtilities.AddListEventReceiver(tasksList, SPEventReceiverType.ItemUpdated, Assembly.GetExecutingAssembly().FullName, "Change.Intranet.EventReceivers.BussinesDev.TaskListEventReceiver", false);
         }
 
         // Uncomment the method below to handle the event raised before a feature is deactivated.

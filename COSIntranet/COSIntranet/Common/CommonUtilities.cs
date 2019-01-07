@@ -61,7 +61,7 @@
                             fieldName = rootWeb.Fields.AddLookup(fieldName, lookupList.ID, lookupList.ParentWeb.ID, required);
                         }
 
-                        lookUp = (SPFieldLookup)rootWeb.Fields[fieldName];
+                        lookUp = (SPFieldLookup)rootWeb.Fields.GetFieldByInternalName(fieldName);
                         lookUp.AllowMultipleValues = allowMultipleValues;
                         lookUp.Group = groupName;
                         lookUp.Title = lookupFieldDisplayName;
@@ -106,27 +106,35 @@
             SPContentType addedCts = null;
             try
             {
-                Logger.WriteLog(Logger.Category.Information, typeof(CommonUtilities).FullName,"list.ContentTypesEnabled = true;");
-                list.ContentTypesEnabled = true;
-                SPContentType foundedCts = list.ContentTypes[list.ContentTypes.BestMatch(contentType.Id)];
-                if (!(foundedCts.Parent.Id == contentType.Id))
+                using (SPSite site = new SPSite(list.ParentWeb.Site.ID))
                 {
-                    Logger.WriteLog(Logger.Category.Information, typeof(CommonUtilities).FullName, ("ContentType not found, so add it"));
-                    addedCts = list.ContentTypes.Add(contentType);
-                    Logger.WriteLog(Logger.Category.Information, typeof(CommonUtilities).FullName, "Update List");
-                    list.Update();
-                }
-                else
-                {
-                    addedCts = foundedCts;
-                }
+                    using (SPWeb rootWeb = site.OpenWeb(list.ParentWeb.ID))
+                    {
 
-                if (addedCts != null && pSetAsDefualtContentType)
-                {
-                    SetContentTypeAsDefault(list.ParentWeb.Lists[list.ID], addedCts.Id);
-                }
+                        Logger.WriteLog(Logger.Category.Information, typeof(CommonUtilities).FullName, "list.ContentTypesEnabled = true;");
+                        list = rootWeb.Lists[list.ID];
+                        list.ContentTypesEnabled = true;
+                        SPContentType foundedCts = list.ContentTypes[list.ContentTypes.BestMatch(contentType.Id)];
+                        if (!(foundedCts.Parent.Id == contentType.Id))
+                        {
+                            Logger.WriteLog(Logger.Category.Information, typeof(CommonUtilities).FullName, ("ContentType not found, so add it"));
+                            addedCts = list.ContentTypes.Add(contentType);
+                            Logger.WriteLog(Logger.Category.Information, typeof(CommonUtilities).FullName, "Update List");
+                            list.Update();
+                        }
+                        else
+                        {
+                            addedCts = foundedCts;
+                        }
 
-                return addedCts;
+                        if (addedCts != null && pSetAsDefualtContentType)
+                        {
+                            SetContentTypeAsDefault(list.ParentWeb.Lists[list.ID], addedCts.Id);
+                        }
+
+                        return addedCts;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -181,7 +189,7 @@
         }
 
         /// <summary>
-        /// Add specified field to content type
+        /// Add specified field to content type (or update existing with specified props)
         /// </summary>
         /// <param name="pWeb"></param>
         /// <param name="pContentType"> </param>
@@ -213,28 +221,37 @@
             {
                 using (SPWeb rootWeb = site.OpenWeb(site.RootWeb.ID))
                 {
+                    rootWeb.AllowUnsafeUpdates = true;
+                    SPFieldLink fieldLink;
                     if (!pContentType.Fields.Contains(pField.Id))
                     {
-                        rootWeb.AllowUnsafeUpdates = true;
 
-                        SPFieldLink fieldLink = new SPFieldLink(pField);
-                        fieldLink.Required = pRequired;
-                        fieldLink.DisplayName = string.IsNullOrEmpty(pDisplayName) ? pField.Title: pDisplayName;
-
-                        if (pRequired)
-                        {
-                            fieldLink.ReadOnly = false;
-                        }
-                        else
-                        {
-                            fieldLink.ReadOnly = pReadOnly;
-
-                        }
+                        fieldLink = new SPFieldLink(pField);
+                        
                         pContentType.FieldLinks.Add(fieldLink);
-                        SPContentType checkContentType = rootWeb.AvailableContentTypes[pContentType.Id];
-                        pContentType.Update(null != checkContentType);
-                        rootWeb.AllowUnsafeUpdates = false;
+                        
                     }
+                    else
+                    {
+                        fieldLink = pContentType.FieldLinks[pField.Id];
+                    }
+
+                    fieldLink.Required = pRequired;
+                    fieldLink.DisplayName = string.IsNullOrEmpty(pDisplayName) ? pField.Title : pDisplayName;
+
+                    if (pRequired)
+                    {
+                        fieldLink.ReadOnly = false;
+                    }
+                    else
+                    {
+                        fieldLink.ReadOnly = pReadOnly;
+
+                    }
+
+                    SPContentType checkContentType = rootWeb.AvailableContentTypes[pContentType.Id];
+                    pContentType.Update(null != checkContentType);
+                    rootWeb.AllowUnsafeUpdates = false;
                 }
             }
         }
@@ -249,20 +266,27 @@
         /// <param name="synchronous"></param>
         public static void AddListEventReceiver(SPList list, SPEventReceiverType type, string assembly, string className, bool synchronous)
         {
-            DeleteListEventReceiver(list, type);
-
-
-            list.EventReceivers.Add(type,
-                                   assembly,
-                                   className);
-
-            if (synchronous)
+            using (SPSite site = new SPSite(list.ParentWeb.Site.ID))
             {
-                foreach (SPEventReceiverDefinition receiver in list.EventReceivers)
+                using (SPWeb rootWeb = site.OpenWeb(list.ParentWeb.ID))
                 {
-                    if (receiver.Type == type)
+                    list = rootWeb.Lists[list.ID];
+                    DeleteListEventReceiver(list, type);
+
+
+                    list.EventReceivers.Add(type,
+                                           assembly,
+                                           className);
+
+                    if (synchronous)
                     {
-                        receiver.Synchronization = SPEventReceiverSynchronization.Synchronous;
+                        foreach (SPEventReceiverDefinition receiver in list.EventReceivers)
+                        {
+                            if (receiver.Type == type)
+                            {
+                                receiver.Synchronization = SPEventReceiverSynchronization.Synchronous;
+                            }
+                        }
                     }
                 }
             }

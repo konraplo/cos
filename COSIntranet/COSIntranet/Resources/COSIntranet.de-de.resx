@@ -757,4 +757,7 @@
   <data name="ChangeColParentProject" xml:space="preserve">
     <value>Parent Project</value>
   </data>
+  <data name="ChangeColResponsibleDepartment" xml:space="preserve">
+    <value>Responsible Department</value>
+  </data>
 </root>

@@ -60,6 +60,7 @@
     <Compile Include="Common\Logger.cs" />
     <Compile Include="EventReceivers\BussinesDev\DeptListEventReceiver.cs" />
     <Compile Include="EventReceivers\BussinesDev\StoreListEventReceiver.cs" />
+    <Compile Include="EventReceivers\BussinesDev\TaskListEventReceiver.cs" />
     <Compile Include="EventReceivers\InboxEventReceiver\InboxEventReceiver.cs" />
     <Compile Include="EventReceivers\PreventFolderDeleteEventReceiver\PreventFolderDeleteEventReceiver.cs" />
     <Compile Include="Features\ChangeComposedLook\ChangeComposedLook.EventReceiver.cs">
