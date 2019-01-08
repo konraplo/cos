@@ -10,7 +10,7 @@
     <FieldRefs>
       <FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Required="TRUE" Name="Title" />
       <FieldRef ID="{6CC3F80F-3CBD-47C1-ABDF-E9F87871863D}" Required="FALSE" Name="Storeid" />
-      <FieldRef ID="{B5F2AFCA-C006-4EF9-AE52-5390C6865D2D}" Required="TRUE" Name="ChangeCountry" />
+      <FieldRef ID="{B5F2AFCA-C006-4EF9-AE52-5390C6865D2D}" Required="TRUE" Name="ChangeCountry" ShowInEditForm="FALSE"/>
       <FieldRef ID="{fc2e188e-ba91-48c9-9dd3-16431afddd50}" Required="FALSE" Name="WorkAddress" />
       <FieldRef ID="{6ca7bd7f-b490-402e-af1b-2813cf087b1e}" Required="FALSE" Name="WorkCity" />
     </FieldRefs>

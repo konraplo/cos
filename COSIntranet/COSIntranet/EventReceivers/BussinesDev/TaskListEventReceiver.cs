@@ -63,7 +63,7 @@
                 foreach (ProjectTask task in ProjectUtilities.CreateStoreOpeningTasks())
                 {
                     StringBuilder batchItemSetVar = new StringBuilder();
-                    batchItemSetVar.Append(string.Format(CommonUtilities.BATCH_ITEM_SET_VAR, 
+                    batchItemSetVar.Append(string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
                                                         item.ParentList.Fields[SPBuiltInFieldId.Title].InternalName,
                                                         task.Title));
                     batchItemSetVar.Append(
@@ -93,6 +93,17 @@
 
                 CommonUtilities.BatchAddListItems(item.Web, formatedUpdateBatchCommands);
                 EventFiringEnabled = true;
+            }
+            else if (item.ContentType.Parent.Id == ContentTypeIds.ProjectTask)
+            {
+                SPFieldLookupValue project = new SPFieldLookupValue(Convert.ToString(item[Fields.ProjectTask]));
+                SPListItem storeItem = item.ParentList.GetItemById(project.LookupId);
+                SPFieldLookupValue store = new SPFieldLookupValue(Convert.ToString(storeItem[Fields.Store]));
+                string storeCountry = ProjectUtilities.GetStoreCountry(item.Web, store.LookupId);
+                item[Fields.ChangeCountryId] = storeCountry;
+                item[Fields.Store] = storeItem[Fields.Store];
+                item[SPBuiltInFieldId.ParentID] = string.Format("{0};#{1}", project.LookupId, project.LookupValue);
+                item.Update();
             }
         }
     }

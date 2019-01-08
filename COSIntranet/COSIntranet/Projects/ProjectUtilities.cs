@@ -48,5 +48,14 @@
             
             return Convert.ToString(storeItem[Fields.ChangeCountryId]);
         }
+
+        public static string GetProjectCountry(SPWeb web, int projectItemId)
+        {
+            string tasksUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.ProjectTasks);
+            SPList tasksList = web.GetList(tasksUrl);
+            SPListItem storeItem = tasksList.GetItemById(projectItemId);
+            SPFieldLookupValue store = new SPFieldLookupValue(Convert.ToString(storeItem[Fields.Store]));
+            return GetStoreCountry(web, store.LookupId);
+        }
     }
 }
