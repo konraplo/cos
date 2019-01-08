@@ -75,6 +75,8 @@
     <Compile Include="Features\ChangeListsForHQ\ChangeListsForHQ.EventReceiver.cs">
       <DependentUpon>ChangeListsForHQ.feature</DependentUpon>
     </Compile>
+    <Compile Include="Model\ProjectTask.cs" />
+    <Compile Include="Projects\ProjectUtilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\COSIntranet.Designer.cs">
       <AutoGen>True</AutoGen>

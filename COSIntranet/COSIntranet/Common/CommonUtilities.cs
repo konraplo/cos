@@ -1,6 +1,8 @@
 ﻿namespace Change.Intranet.Common
 {
     using System;
+    using System.Collections.Generic;
+    using System.Text;
     using Microsoft.SharePoint;
 
     /// <summary>
@@ -8,6 +10,35 @@
     /// </summary>
     public static class CommonUtilities
     {
+        /// <summary>
+        /// batch comand to delete items
+        /// </summary>
+        private const string BATCH_DELETE_ITEM_CMD = "<Method><SetList Scope=\"Request\">{0}</SetList><SetVar Name=\"ID\">{1}</SetVar><SetVar Name=\"Cmd\">Delete</SetVar></Method>";
+
+        /// <summary>
+        /// batch comand to update items
+        /// </summary>
+        public const string BATCH_UPDATE_ITEM_CMD = "<Method ID=\"{0}\">" +
+                    "<SetList>{1}</SetList>" +
+                    "<SetVar Name=\"Cmd\">Save</SetVar>" +
+                    "<SetVar Name=\"ID\">{2}</SetVar>" +
+                    "{3}" +
+                    "</Method>";
+        /// <summary>
+        /// batch row used to update items
+        /// </summary>
+        public const string BATCH_ADD_ITEM_CMD = "<Method ID=\"{0}\">" +
+                   "<SetList>{1}</SetList>" +
+                   "<SetVar Name=\"Cmd\">Save</SetVar>" +
+                   "<SetVar Name=\"ID\">New</SetVar>" +
+                   "{2}" +
+                   "</Method>";
+
+        /// <summary>
+        /// batch row used to set values for item in batch commands
+        /// </summary>
+        public const string BATCH_ITEM_SET_VAR = "<SetVar Name=\"urn:schemas-microsoft-com:office:office#{0}\">{1}</SetVar>";
+
         /// <summary>
         /// This method creates a lookup site column if not exists.
         /// </summary>
@@ -329,6 +360,34 @@
             roleAssignment.RoleDefinitionBindings.Add(roleDefinition);
 
             item.RoleAssignments.Add(roleAssignment);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="web"></param>
+        /// <param name="formatedAddBatchCommands"></param>
+        /// <returns></returns>
+        public static string BatchAddListItems(SPWeb web, List<string> formatedAddBatchCommands)
+        {
+            StringBuilder methodBuilder = new StringBuilder();
+
+            string batch = String.Empty;
+            string batchFormat = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><ows:Batch OnError=\"Return\">{0}</ows:Batch>";
+
+            foreach (string item in formatedAddBatchCommands)
+            {
+                methodBuilder.Append(item);
+            }
+
+            // put the pieces together.
+            //string method = string.Format(methodFormat, itemId, listId, value);
+            batch = String.Format(batchFormat, methodBuilder);
+
+            // process batch commands.
+            string batchReturn = web.ProcessBatchData(batch);
+
+            return batchReturn;
         }
     }
 }

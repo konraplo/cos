@@ -24,9 +24,19 @@
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "ItemUpdated");
         }
 
-        private void SetLocalization()
+        private void SetLocalization(SPListItem item)
         {
-
+            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("SetLocalization for id:{0}, ct:{1}",item.ID, item.ContentType.Name));
+            if (item.ContentType.Parent.Id == ContentTypeIds.Project)
+            {
+                EventFiringEnabled = false;
+                EventFiringEnabled = true;
+            }
+            else if(item.ContentType.Parent.Id == ContentTypeIds.ProjectTask)
+            {
+                EventFiringEnabled = false;
+                EventFiringEnabled = true;
+            }
         }
     }
 }
