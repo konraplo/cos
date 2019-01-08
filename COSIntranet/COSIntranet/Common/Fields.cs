@@ -17,5 +17,10 @@ namespace Change.Intranet.Common
         public const string Store = "ChangeStore";
         public const string StoreId = "Storeid";
         public const string Title = "Title";
+
+        /// <summary>
+        /// GUID of ChangeCountry ItemId
+        /// </summary>
+        public static Guid ChangeCountryId = new Guid("{B5F2AFCA-C006-4EF9-AE52-5390C6865D2D}");
     }
 }

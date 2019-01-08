@@ -1,12 +1,16 @@
 ﻿namespace Change.Intranet.Projects
 {
+    using Change.Intranet.Common;
     using Change.Intranet.Model;
+    using Microsoft.SharePoint;
+    using Microsoft.SharePoint.Utilities;
+    using System;
     using System.Collections.Generic;
 
     /// <summary>
     /// Helpermethods with project related methods and functions.
     /// </summary>
-    public class ProjectUtilities
+    public static class ProjectUtilities
     {
         /// <summary>
         /// Regional manager
@@ -34,6 +38,15 @@
             tasks.Add(new ProjectTask { Title = "Drawings finish", Duration = 2, Responsible = Storedesign });
             tasks.Add(new ProjectTask { Title = "Drawings approved", Duration = 2, Responsible = RegionalManager });
             return tasks;
+        }
+
+        public static string GetStoreCountry(SPWeb web, int storeItemId)
+        {
+            string storesUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.Stores);
+            SPList storestList = web.GetList(storesUrl);
+            SPListItem storeItem = storestList.GetItemById(storeItemId);
+            
+            return Convert.ToString(storeItem[Fields.ChangeCountryId]);
         }
     }
 }
