@@ -63,6 +63,9 @@
     <Compile Include="EventReceivers\BussinesDev\TaskListEventReceiver.cs" />
     <Compile Include="EventReceivers\InboxEventReceiver\InboxEventReceiver.cs" />
     <Compile Include="EventReceivers\PreventFolderDeleteEventReceiver\PreventFolderDeleteEventReceiver.cs" />
+    <Compile Include="Features\ChangeBusinessDevelopment\ChangeBusinessDevelopment.EventReceiver.cs">
+      <DependentUpon>ChangeBusinessDevelopment.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\ChangeComposedLook\ChangeComposedLook.EventReceiver.cs">
       <DependentUpon>ChangeComposedLook.feature</DependentUpon>
     </Compile>
@@ -115,6 +118,9 @@
     </None>
     <None Include="Features\ChangeListsForHQ\ChangeListsForHQ.feature">
       <FeatureId>{d27e479c-83f4-41da-ae6d-93fc8a59bdfc}</FeatureId>
+    </None>
+    <None Include="Features\ChangeBusinessDevelopment\ChangeBusinessDevelopment.feature">
+      <FeatureId>{b9b7171c-4203-4385-8c6c-03b692f361a9}</FeatureId>
     </None>
     <None Include="Infrastructure\ContentTypes\CorporateNews\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{56ed91e7-59d0-4551-a7ef-10c9cf8db858}</SharePointProjectItemId>
@@ -250,6 +256,9 @@
     </Content>
     <Content Include="Features\ChangeListsForHQ\ChangeListsForHQ.Template.xml">
       <DependentUpon>ChangeListsForHQ.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\ChangeBusinessDevelopment\ChangeBusinessDevelopment.Template.xml">
+      <DependentUpon>ChangeBusinessDevelopment.feature</DependentUpon>
     </Content>
     <Content Include="Infrastructure\ContentTypes\CorporateNews\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\Department\Elements.xml" />

@@ -1,4 +1,4 @@
-namespace Change.Intranet.Features.ChangeListsForHQ
+namespace Change.Intranet.Features.ChangeBusinessDevelopment
 {
     using System;
     using System.Reflection;
@@ -15,8 +15,8 @@ namespace Change.Intranet.Features.ChangeListsForHQ
     /// The GUID attached to this class may be used during packaging and should not be modified.
     /// </remarks>
 
-    [Guid("938634aa-6e5a-4bbf-8d1e-44b56a089b22")]
-    public class ChangeListsForHQEventReceiver : SPFeatureReceiver
+    [Guid("313988d9-d9fa-436a-9711-7405c5680067")]
+    public class ChangeBusinessDevelopmentEventReceiver : SPFeatureReceiver
     {
         // Uncomment the method below to handle the event raised after a feature has been activated.
 
@@ -26,8 +26,11 @@ namespace Change.Intranet.Features.ChangeListsForHQ
 
             if (web != null)
             {
+                Logger.WriteLog(Logger.Category.Information, "ChangeBusinessDevelopmentEventReceiver", "add CT and ER");
+                AddFieldsCtErToLists(web);
+
                 // add folder strucure
-                Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", "add folder strucure");
+                Logger.WriteLog(Logger.Category.Information, "ChangeBusinessDevelopmentEventReceiver", "add folder strucure");
             }
         }
 
