@@ -14,6 +14,19 @@
            UserSelectionScope="0"
            Group="CHANGE Fields"/>
 
+  <!-- Deparment -->
+  <Field ID="{6F466362-970F-46CC-BE8F-FD35D6D0B8FC}"
+           StaticName="Countrymanager"
+           Name="Countrymanager"
+           Type="User"
+           DisplayName="$Resources:COSIntranet,ChangeColCountrymanager"
+           List="UserInfo"
+           Required="TRUE"
+           ShowField="ImnName"
+           UserSelectionMode="PeopleAndGroups"
+           UserSelectionScope="0"
+           Group="CHANGE Fields"/>
+
   <!-- Store -->
   <Field ID="{6CC3F80F-3CBD-47C1-ABDF-E9F87871863D}"
            StaticName="Storeid"

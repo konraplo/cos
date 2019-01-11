@@ -70,6 +70,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Country manager.
+        /// </summary>
+        internal static string ChangeColCountrymanager {
+            get {
+                return ResourceManager.GetString("ChangeColCountrymanager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Department.
         /// </summary>
         internal static string ChangeColDeparment {
@@ -133,6 +142,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Responsible Department.
+        /// </summary>
+        internal static string ChangeColResponsibleDepartment {
+            get {
+                return ResourceManager.GetString("ChangeColResponsibleDepartment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Store.
         /// </summary>
         internal static string ChangeColStore {
@@ -183,6 +201,24 @@ namespace Change.Intranet.Resources {
         internal static string ChangeCTCorporateNewsDescr {
             get {
                 return ResourceManager.GetString("ChangeCTCorporateNewsDescr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country.
+        /// </summary>
+        internal static string ChangeCTCountry {
+            get {
+                return ResourceManager.GetString("ChangeCTCountry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CHANGE Country.
+        /// </summary>
+        internal static string ChangeCTCountryDescr {
+            get {
+                return ResourceManager.GetString("ChangeCTCountryDescr", resourceCulture);
             }
         }
         

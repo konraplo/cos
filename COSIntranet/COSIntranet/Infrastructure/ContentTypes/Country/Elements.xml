@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <!-- Parent ContentType: Item (0x01) -->
+  <ContentType ID="0x010019D973A0C7BC4D118270B2D2994DD979"
+                Name="$Resources:COSIntranet,ChangeCTCountry"
+               Group="CHANGE Content Types"
+               Description="$Resources:COSIntranet,ChangeCTCountryDescr"
+               Inherits="TRUE"
+               Version="0">
+    <FieldRefs>
+      <FieldRef ID="{6F466362-970F-46CC-BE8F-FD35D6D0B8FC}" Required="TRUE" Name="Countrymanager" />
+    </FieldRefs>
+  </ContentType>
+</Elements>

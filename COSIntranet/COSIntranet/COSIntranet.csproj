@@ -125,6 +125,9 @@
     <None Include="Infrastructure\ContentTypes\CorporateNews\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{56ed91e7-59d0-4551-a7ef-10c9cf8db858}</SharePointProjectItemId>
     </None>
+    <None Include="Infrastructure\ContentTypes\Country\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{411ca991-ae28-4501-91ef-e86d1668e0a6}</SharePointProjectItemId>
+    </None>
     <None Include="Infrastructure\ContentTypes\Department\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{29bfce66-e128-4d3c-983c-ce22bb4ab455}</SharePointProjectItemId>
     </None>
@@ -261,6 +264,7 @@
       <DependentUpon>ChangeBusinessDevelopment.feature</DependentUpon>
     </Content>
     <Content Include="Infrastructure\ContentTypes\CorporateNews\Elements.xml" />
+    <Content Include="Infrastructure\ContentTypes\Country\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\Department\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\NationalNews\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\News\Elements.xml" />

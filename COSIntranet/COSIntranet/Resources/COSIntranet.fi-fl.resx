@@ -753,4 +753,13 @@
   <data name="ChangeColResponsibleDepartment" xml:space="preserve">
     <value>Responsible Depratment</value>
   </data>
+  <data name="ChangeColCountrymanager" xml:space="preserve">
+    <value>Country manager</value>
+  </data>
+  <data name="ChangeCTCountry" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="ChangeCTCountryDescr" xml:space="preserve">
+    <value>CHANGE Country</value>
+  </data>
 </root>
