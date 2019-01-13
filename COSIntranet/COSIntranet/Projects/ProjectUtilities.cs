@@ -40,15 +40,27 @@
             return tasks;
         }
 
+        /// <summary>
+        /// Get store country lookup value
+        /// </summary>
+        /// <param name="web"></param>
+        /// <param name="storeItemId"></param>
+        /// <returns></returns>
         public static string GetStoreCountry(SPWeb web, int storeItemId)
         {
             string storesUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.Stores);
             SPList storestList = web.GetList(storesUrl);
             SPListItem storeItem = storestList.GetItemById(storeItemId);
-            
-            return Convert.ToString(storeItem[Fields.ChangeCountryId]);
+            SPFieldLookupValue country = new SPFieldLookupValue(Convert.ToString(storeItem[Fields.Country]));
+            return string.Format("{0};#{1}", country.LookupId, country.LookupValue);
         }
 
+        /// <summary>
+        /// Get project country lookup value
+        /// </summary>
+        /// <param name="web"></param>
+        /// <param name="projectItemId"></param>
+        /// <returns></returns>
         public static string GetProjectCountry(SPWeb web, int projectItemId)
         {
             string tasksUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.ProjectTasks);

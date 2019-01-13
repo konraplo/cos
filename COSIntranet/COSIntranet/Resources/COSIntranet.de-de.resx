@@ -775,4 +775,7 @@
   <data name="ChangeLibDescriptionCountries" xml:space="preserve">
     <value>CHANGE Countries</value>
   </data>
+  <data name="ChangeColTaskDuration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
 </root>

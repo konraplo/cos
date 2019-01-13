@@ -64,12 +64,12 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
             SPFieldLookup deptLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.Department, "$Resources:COSIntranet,ChangeColDeparment", Fields.Title, deptList, false, false);
             SPFieldLookup taskLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.ProjectTask, "$Resources:COSIntranet,ChangeColProjectTask", Fields.Title, tasksList, false, false);
             SPFieldLookup storeLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.Store, "$Resources:COSIntranet,ChangeColStore", Fields.StoreId, storetList, false, false);
-            SPFieldLookup countryLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.Store, "$Resources:COSIntranet,ChangeColCountry", Fields.Title, countriesList, false, false);
+            SPFieldLookup countryLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.Country, "$Resources:COSIntranet,ChangeColCountry", Fields.Title, countriesList, false, false);
 
             // add ct to lists
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "add ct to lists");
             SPContentType storeContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.Store];
-            CommonUtilities.AddFieldToContentType(web, storeContentType, countryLookup, false, true, string.Empty);
+            CommonUtilities.AddFieldToContentType(web, storeContentType, countryLookup, true, false, string.Empty);
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", storeContentType.Name, storesUrl));
             CommonUtilities.AttachContentTypeToList(storetList, storeContentType, true, false);
 

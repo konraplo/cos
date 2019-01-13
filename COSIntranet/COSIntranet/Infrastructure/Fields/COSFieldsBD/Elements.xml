@@ -52,4 +52,14 @@
       <CHOICE>Project finished</CHOICE>
     </CHOICES>
   </Field>
+
+  <Field ID="{F3C19AC2-4AE7-45BB-940B-0AFC1CB1A05C}" 
+         Name="ChangeTaskDuration" 
+         Type="Number" 
+         Decimals="0" 
+         Percentage="FALSE" 
+         DisplayName="$Resources:COSIntranet,ChangeColTaskDuration" 
+         Group="CHANGE Fields">
+  </Field>
 </Elements>
+

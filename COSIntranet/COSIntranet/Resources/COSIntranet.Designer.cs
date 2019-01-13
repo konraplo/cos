@@ -169,6 +169,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Duration.
+        /// </summary>
+        internal static string ChangeColTaskDuration {
+            get {
+                return ResourceManager.GetString("ChangeColTaskDuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Destination URL.
         /// </summary>
         internal static string ChangeColUrl {

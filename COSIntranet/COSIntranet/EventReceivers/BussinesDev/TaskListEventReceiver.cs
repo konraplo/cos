@@ -84,9 +84,12 @@
                            string.Format("{0};#{1}", item.ID, item.Title)));
                     batchItemSetVar.Append(
                            string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
-                           item.ParentList.Fields[Fields.ChangeCountryId].InternalName,
-                           storeCountry));
-
+                           Fields.Country,
+                           string.Format("{0};#{1}", store.LookupId, store.LookupValue)));
+                    batchItemSetVar.Append(
+                           string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                           item.ParentList.Fields[Fields.ChangeTaskDurationId].InternalName,
+                           task.Duration));
                     formatedUpdateBatchCommands.Add(string.Format(CommonUtilities.BATCH_ADD_ITEM_CMD, counter, item.ParentList.ID.ToString(), batchItemSetVar));
                     counter++;
                 }
@@ -100,7 +103,7 @@
                 SPListItem storeItem = item.ParentList.GetItemById(project.LookupId);
                 SPFieldLookupValue store = new SPFieldLookupValue(Convert.ToString(storeItem[Fields.Store]));
                 string storeCountry = ProjectUtilities.GetStoreCountry(item.Web, store.LookupId);
-                item[Fields.ChangeCountryId] = storeCountry;
+                item[Fields.Country] = storeCountry;
                 item[Fields.Store] = storeItem[Fields.Store];
                 item[SPBuiltInFieldId.ParentID] = string.Format("{0};#{1}", project.LookupId, project.LookupValue);
                 item.Update();

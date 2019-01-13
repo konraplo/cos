@@ -11,6 +11,7 @@
       <FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" Required="TRUE" />
       <FieldRef ID="{64cd368d-2f95-4bfc-a1f9-8d4324ecb007}" Name="StartDate" Required="TRUE" />
       <FieldRef ID="{cd21b4c2-6841-4f9e-a23a-738a65f99889}" Name="DueDate" Required="TRUE" />
+      <FieldRef ID="{F3C19AC2-4AE7-45BB-940B-0AFC1CB1A05C}" Name="ChangeTaskDuration" />
       <FieldRef ID="{53101f38-dd2e-458c-b245-0c236cc13d1a}" Name="AssignedTo" />
       <FieldRef ID="{d2311440-1ed6-46ea-b46d-daa643dc3886}" Name="PercentComplete" />
       <FieldRef ID="{7662cd2c-f069-4dba-9e35-082cf976e170}" Name="Description" />

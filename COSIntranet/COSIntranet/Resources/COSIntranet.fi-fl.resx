@@ -765,6 +765,9 @@
   <data name="CHANGE Countries" xml:space="preserve">
     <value>CHANGE Countries</value>
   </data>
+  <data name="ChangeColTaskDuration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
   <data name="ChangeLibTitleCountries" xml:space="preserve">
     <value>Countries</value>
   </data>
