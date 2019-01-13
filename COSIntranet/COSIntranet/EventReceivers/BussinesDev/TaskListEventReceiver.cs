@@ -50,15 +50,20 @@
         {
             if (item.ContentType.Parent.Id == ContentTypeIds.Project)
             {
-                Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("CreateProjectTasks for id:{0}, title:{1}", item.ID, item.Title));
                 EventFiringEnabled = false;
 
+               // update project store
+                Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("update project store for id:{0}, title:{1}", item.ID, item.Title));
+                SPFieldLookupValue store = new SPFieldLookupValue(Convert.ToString(item[Fields.Store]));
+                string storeCountry = ProjectUtilities.GetStoreCountry(item.Web, store.LookupId);
+                item[Fields.Country] = storeCountry;
+                item.Update();
+
+                Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("CreateProjectTasks for id:{0}, title:{1}", item.ID, item.Title));
                 SPContentType foundedProjectTask = item.ParentList.ContentTypes[item.ParentList.ContentTypes.BestMatch(ContentTypeIds.ProjectTask)];
 
                 List<string> formatedUpdateBatchCommands = new List<string>();
                 int counter = 1;
-                SPFieldLookupValue store = new SPFieldLookupValue(Convert.ToString(item[Fields.Store]));
-                string storeCountry = ProjectUtilities.GetStoreCountry(item.Web, store.LookupId);
 
                 foreach (ProjectTask task in ProjectUtilities.CreateStoreOpeningTasks())
                 {
@@ -99,6 +104,7 @@
             }
             else if (item.ContentType.Parent.Id == ContentTypeIds.ProjectTask)
             {
+                Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("update project store/country for id:{0}, title:{1}", item.ID, item.Title));
                 SPFieldLookupValue project = new SPFieldLookupValue(Convert.ToString(item[Fields.ProjectTask]));
                 SPListItem storeItem = item.ParentList.GetItemById(project.LookupId);
                 SPFieldLookupValue store = new SPFieldLookupValue(Convert.ToString(storeItem[Fields.Store]));

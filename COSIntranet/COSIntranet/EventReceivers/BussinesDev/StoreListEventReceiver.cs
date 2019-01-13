@@ -2,6 +2,7 @@
 {
     using Change.Intranet.Common;
     using Microsoft.SharePoint;
+    using System;
 
     /// <summary>
     /// Event receivers for store list
@@ -15,6 +16,7 @@
         public override void ItemAdded(SPItemEventProperties properties)
         {
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "ItemAdded");
+            SetStoreId(properties.ListItem);
         }
 
         /// <summary>
@@ -23,11 +25,17 @@
         public override void ItemUpdated(SPItemEventProperties properties)
         {
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "ItemUpdated");
+            SetStoreId(properties.ListItem);
         }
 
         private void SetStoreId(SPListItem storeItem)
         { 
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "Set Store Id");
+            if (string.IsNullOrEmpty(Convert.ToString(storeItem[Fields.StoreId])))
+            {
+                storeItem[Fields.StoreId] = string.Format("{0}-{1}", storeItem.ID, storeItem.Title);
+                storeItem.Update();
+            }
         }
     }
 }
