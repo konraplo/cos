@@ -12,7 +12,6 @@
       <FieldRef ID="{64cd368d-2f95-4bfc-a1f9-8d4324ecb007}" Name="StartDate" Required="TRUE" />
       <FieldRef ID="{cd21b4c2-6841-4f9e-a23a-738a65f99889}" Name="DueDate" DisplayName="$Resources:COSIntranet,ChangeOpeningDate" Required="TRUE" />
       <FieldRef ID="{53101f38-dd2e-458c-b245-0c236cc13d1a}" Name="AssignedTo" DisplayName="$Resources:COSIntranet,ChangeProjectCoordinator" />
-      <FieldRef ID="{B5F2AFCA-C006-4EF9-AE52-5390C6865D2D}" Name="ChangeCountry" ShowInNewForm="FALSE" ShowInEditForm="FALSE"/>
       <FieldRef ID="{d2311440-1ed6-46ea-b46d-daa643dc3886}" Name="PercentComplete" />
       <FieldRef ID="{7662cd2c-f069-4dba-9e35-082cf976e170}" Name="Description" />
       <FieldRef ID="{a8eb573e-9e11-481a-a8c9-1104a54b2fbd}" Name="Priority" />

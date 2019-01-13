@@ -1754,6 +1754,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CHANGE Countries.
+        /// </summary>
+        internal static string ChangeLibDescriptionCountries {
+            get {
+                return ResourceManager.GetString("ChangeLibDescriptionCountries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Daily procedures
         ///.
         /// </summary>
@@ -1871,6 +1880,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeLibTitleChangeAcademy {
             get {
                 return ResourceManager.GetString("ChangeLibTitleChangeAcademy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Countries.
+        /// </summary>
+        internal static string ChangeLibTitleCountries {
+            get {
+                return ResourceManager.GetString("ChangeLibTitleCountries", resourceCulture);
             }
         }
         

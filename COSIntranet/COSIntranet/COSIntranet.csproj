@@ -155,6 +155,9 @@
     <None Include="Infrastructure\InfrastructureFiles\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{8d45ff71-438f-4ed7-aacb-c68f1ea10945}</SharePointProjectItemId>
     </None>
+    <None Include="Infrastructure\Lists\BusinessDev\Countries\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{f7d5da66-8351-42d3-bddd-5c6860818dcd}</SharePointProjectItemId>
+    </None>
     <None Include="Infrastructure\Lists\BusinessDev\Departments\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{851960c8-e714-478e-95bf-3b0555a1114d}</SharePointProjectItemId>
     </None>
@@ -289,6 +292,7 @@
     <Content Include="Infrastructure\InfrastructureFiles\Images\sameSystemLink.PNG" />
     <Content Include="Infrastructure\InfrastructureFiles\Scripts\COS.HideBlogToolsWP.js" />
     <Content Include="Infrastructure\InfrastructureFiles\Scripts\jquery-3.1.0.min.js" />
+    <Content Include="Infrastructure\Lists\BusinessDev\Countries\Elements.xml" />
     <Content Include="Infrastructure\Lists\BusinessDev\Departments\Elements.xml" />
     <Content Include="Infrastructure\Lists\BusinessDev\ProjectTasks\Elements.xml" />
     <Content Include="Infrastructure\Lists\BusinessDev\Stores\Elements.xml" />

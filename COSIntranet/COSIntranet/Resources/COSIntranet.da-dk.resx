@@ -766,4 +766,10 @@
   <data name="ChangeColCountrymanager" xml:space="preserve">
     <value>Country manager</value>
   </data>
+  <data name="ChangeLibTitleCountries" xml:space="preserve">
+    <value>Countries</value>
+  </data>
+  <data name="ChangeLibDescriptionCountries" xml:space="preserve">
+    <value>CHANGE Countries</value>
+  </data>
 </root>

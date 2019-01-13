@@ -8,6 +8,11 @@
     public static class ContentTypeIds
     {
         /// <summary>
+        /// SPContentTypeId of the Change country ContentType
+        /// </summary>
+        public static SPContentTypeId Country = new SPContentTypeId("0x010019D973A0C7BC4D118270B2D2994DD979");
+
+        /// <summary>
         /// SPContentTypeId of the Change store ContentType
         /// </summary>
         public static SPContentTypeId Store = new SPContentTypeId("0x0100134A06001B184621BDC69D96729FA9B0");

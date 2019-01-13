@@ -48,24 +48,34 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
 
             string storesUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.Stores);
             Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", string.Format("add Lookups to:{0}", storesUrl));
-            SPList storestList = web.GetList(storesUrl);
+            SPList storetList = web.GetList(storesUrl);
 
             string tasksUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.ProjectTasks);
             Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", string.Format("add Lookups to:{0}", tasksUrl));
             SPList tasksList = web.GetList(tasksUrl);
+
+            string countriesUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.Countries);
+            Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", string.Format("add Lookups to:{0}", tasksUrl));
+            SPList countriesList = web.GetList(countriesUrl);
 
             // add lookups
             Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", "Add lookups");
 
             SPFieldLookup deptLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.Department, "$Resources:COSIntranet,ChangeColDeparment", Fields.Title, deptList, false, false);
             SPFieldLookup taskLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.ProjectTask, "$Resources:COSIntranet,ChangeColProjectTask", Fields.Title, tasksList, false, false);
-            SPFieldLookup storeLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.Store, "$Resources:COSIntranet,ChangeColStore", Fields.StoreId, storestList, false, false);
+            SPFieldLookup storeLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.Store, "$Resources:COSIntranet,ChangeColStore", Fields.StoreId, storetList, false, false);
+            SPFieldLookup countryLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.Store, "$Resources:COSIntranet,ChangeColCountry", Fields.Title, countriesList, false, false);
 
             // add ct to lists
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "add ct to lists");
             SPContentType storeContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.Store];
+            CommonUtilities.AddFieldToContentType(web, storeContentType, countryLookup, false, true, string.Empty);
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", storeContentType.Name, storesUrl));
-            CommonUtilities.AttachContentTypeToList(storestList, storeContentType, true, false);
+            CommonUtilities.AttachContentTypeToList(storetList, storeContentType, true, false);
+
+            SPContentType countryContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.Country];
+            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", countryContentType.Name, countriesUrl));
+            CommonUtilities.AttachContentTypeToList(countriesList, countryContentType, true, false);
 
             SPContentType deptContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.Department];
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", deptContentType.Name, deptUrl));
@@ -79,6 +89,7 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
             projectContentType.FieldLinks[SPBuiltInFieldId.AssignedTo].DisplayName = "$Resources:COSIntranet,ChangeProjectCoordinator";
             projectContentType.FieldLinks[SPBuiltInFieldId.TaskStatus].Hidden = true;
             CommonUtilities.AddFieldToContentType(web, projectContentType, storeLookup, true, false, string.Empty);
+            CommonUtilities.AddFieldToContentType(web, projectContentType, countryLookup, false, true, string.Empty);
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", projectContentType.Name, tasksUrl));
             CommonUtilities.AttachContentTypeToList(tasksList, projectContentType, true, true);
 
@@ -86,14 +97,15 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
             CommonUtilities.AddFieldToContentType(web, projectTaskContentType, taskLookup, true, false, "$Resources:COSIntranet,ChangeColParentProject");
             CommonUtilities.AddFieldToContentType(web, projectTaskContentType, storeLookup, false, true, string.Empty);
             CommonUtilities.AddFieldToContentType(web, projectTaskContentType, deptLookup, false, false, "$Resources:COSIntranet,ChangeColResponsibleDepartment");
+            CommonUtilities.AddFieldToContentType(web, projectTaskContentType, countryLookup, false, true, string.Empty);
 
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", projectTaskContentType.Name, tasksUrl));
             CommonUtilities.AttachContentTypeToList(tasksList, projectTaskContentType, false, true);
 
             //add ER to Lists
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ER to List, {0}", storesUrl));
-            CommonUtilities.AddListEventReceiver(storestList, SPEventReceiverType.ItemAdded, Assembly.GetExecutingAssembly().FullName, "Change.Intranet.EventReceivers.BussinesDev.StoreListEventReceiver", false);
-            CommonUtilities.AddListEventReceiver(storestList, SPEventReceiverType.ItemUpdated, Assembly.GetExecutingAssembly().FullName, "Change.Intranet.EventReceivers.BussinesDev.StoreListEventReceiver", false);
+            CommonUtilities.AddListEventReceiver(storetList, SPEventReceiverType.ItemAdded, Assembly.GetExecutingAssembly().FullName, "Change.Intranet.EventReceivers.BussinesDev.StoreListEventReceiver", false);
+            CommonUtilities.AddListEventReceiver(storetList, SPEventReceiverType.ItemUpdated, Assembly.GetExecutingAssembly().FullName, "Change.Intranet.EventReceivers.BussinesDev.StoreListEventReceiver", false);
 
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ER to List, {0}", deptUrl));
             CommonUtilities.AddListEventReceiver(deptList, SPEventReceiverType.ItemAdded, Assembly.GetExecutingAssembly().FullName, "Change.Intranet.EventReceivers.BussinesDev.DeptListEventReceiver", false);

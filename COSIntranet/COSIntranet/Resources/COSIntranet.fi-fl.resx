@@ -762,4 +762,10 @@
   <data name="ChangeCTCountryDescr" xml:space="preserve">
     <value>CHANGE Country</value>
   </data>
+  <data name="CHANGE Countries" xml:space="preserve">
+    <value>CHANGE Countries</value>
+  </data>
+  <data name="ChangeLibTitleCountries" xml:space="preserve">
+    <value>Countries</value>
+  </data>
 </root>

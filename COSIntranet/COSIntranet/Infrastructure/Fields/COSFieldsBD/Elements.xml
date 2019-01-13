@@ -14,7 +14,7 @@
            UserSelectionScope="0"
            Group="CHANGE Fields"/>
 
-  <!-- Deparment -->
+  <!-- Country -->
   <Field ID="{6F466362-970F-46CC-BE8F-FD35D6D0B8FC}"
            StaticName="Countrymanager"
            Name="Countrymanager"
@@ -35,24 +35,6 @@
            DisplayName="$Resources:COSIntranet,ChangeColStoreid"
            Group="CHANGE Fields"/>
   
-  <Field ID="{B5F2AFCA-C006-4EF9-AE52-5390C6865D2D}" 
-         StaticName="ChangeCountry"
-         Name="ChangeCountry" 
-         DisplayName="$Resources:COSIntranet,ChangeColCountry" 
-         Type="Choice"
-         Group="CHANGE Fields">
-    <CHOICES>
-      <CHOICE>Denmark</CHOICE>
-      <CHOICE>Germany</CHOICE>
-      <CHOICE>Canada</CHOICE>
-      <CHOICE>Norway</CHOICE>
-      <CHOICE>Sweden</CHOICE>
-      <CHOICE>Poland</CHOICE>
-      <CHOICE>Finland</CHOICE>
-      <CHOICE>Ireland</CHOICE>
-    </CHOICES>   
-  </Field>
-  
   <!-- Project -->
   <Field ID="{35752185-6016-4595-A972-7959148EA585}"
          StaticName="ChangeProjectStatus"
@@ -62,7 +44,7 @@
          Group="CHANGE Fields">
     <CHOICES>
       <CHOICE>Location Approved</CHOICE>
-      <CHOICE>P&amp;L approved by Claus</CHOICE>
+      <CHOICE>P&amp;L approved by CEO</CHOICE>
       <CHOICE>Contract signed</CHOICE>
       <CHOICE>HQ informed</CHOICE>
       <CHOICE>Handover to retail</CHOICE>
