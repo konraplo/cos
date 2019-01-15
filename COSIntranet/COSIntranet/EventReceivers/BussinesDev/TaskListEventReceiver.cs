@@ -4,8 +4,10 @@
     using Change.Intranet.Model;
     using Change.Intranet.Projects;
     using Microsoft.SharePoint;
+    using Microsoft.SharePoint.Utilities;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
 
     /// <summary>
@@ -62,6 +64,15 @@
                 Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("CreateProjectTasks for id:{0}, title:{1}", item.ID, item.Title));
                 SPContentType foundedProjectTask = item.ParentList.ContentTypes[item.ParentList.ContentTypes.BestMatch(ContentTypeIds.ProjectTask)];
 
+                string deptUrl = SPUrlUtility.CombineUrl(item.Web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.Departments);
+                SPList deptList = item.Web.GetList(deptUrl);
+                List<Department> departments = new List<Department>();
+                foreach (SPListItem deptIem in deptList.GetItems(new SPQuery()))
+                {
+                    departments.Add(new Department { Id = deptIem.ID, Title = deptIem.Title });
+                    //item.Web.EnsureUser();
+                }
+
                 List<string> formatedUpdateBatchCommands = new List<string>();
                 int counter = 1;
 
@@ -83,6 +94,16 @@
                            string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
                            Fields.Store,
                            string.Format("{0};#{1}", store.LookupId, store.LookupValue)));
+
+                    if (!string.IsNullOrEmpty(task.ResponsibleDepartment))
+                    {
+                        Department responsibleDepartment = departments.FirstOrDefault(x => x.Title.Equals(task.ResponsibleDepartment));
+                        batchItemSetVar.Append(
+                           string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                           Fields.Department,
+                           string.Format("{0};#{1}", responsibleDepartment.Id, responsibleDepartment.Title)));
+                    }
+
                     batchItemSetVar.Append(
                            string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
                            item.ParentList.Fields[SPBuiltInFieldId.ParentID].InternalName,

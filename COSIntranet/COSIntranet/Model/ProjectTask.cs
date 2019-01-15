@@ -45,7 +45,7 @@
         /// Gets or sets the Responsible .
         /// </summary>
         /// <value>
-        /// Responsible.
+        /// Responsible person or Role
         /// </value>
         public string Responsible
         {

@@ -89,6 +89,7 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
             projectContentType.FieldLinks[SPBuiltInFieldId.AssignedTo].DisplayName = "$Resources:COSIntranet,ChangeProjectCoordinator";
             projectContentType.FieldLinks[SPBuiltInFieldId.TaskStatus].Hidden = true;
             CommonUtilities.AddFieldToContentType(web, projectContentType, storeLookup, true, false, string.Empty);
+
             CommonUtilities.AddFieldToContentType(web, projectContentType, countryLookup, false, true, string.Empty);
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", projectContentType.Name, tasksUrl));
             CommonUtilities.AttachContentTypeToList(tasksList, projectContentType, true, true);
