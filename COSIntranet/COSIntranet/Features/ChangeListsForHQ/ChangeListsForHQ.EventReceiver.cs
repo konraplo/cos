@@ -33,7 +33,7 @@ namespace Change.Intranet.Features.ChangeListsForHQ
                 ProductAssortmentLib(web);
                 SalesTrainingLib(web);
                 DailyOperationLib(web);
-                //ChangeAcademyLib(web);
+                ChangeAcademyLib(web);
                 //HRLib(web);
                 //ITLib(web);
                 //FinanceLib(web);
@@ -420,6 +420,39 @@ namespace Change.Intranet.Features.ChangeListsForHQ
             list.OnQuickLaunch = true;
             list.Update();
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "End add Sales Training");
+        }
+
+        private void ChangeAcademyLib(SPWeb web)
+        {
+            // Change Academy
+            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "Start add Change Academy");
+            SPList list = web.GetList(SPUrlUtility.CombineUrl(web.Url, "Lists/ChangeAcademy"));
+            SPFolderCollection folderColl = list.RootFolder.SubFolders;
+
+            string folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleOnline", "COSIntranet", web.Language);
+            SPFolder online = folderColl.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleLogin", "COSIntranet", web.Language);
+            SPFolder login = online.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleGuideChangeAcademy", "COSIntranet", web.Language);
+            online.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleOnsightEducation", "COSIntranet", web.Language);
+            SPFolder onsightEducation = folderColl.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleBraFitting", "COSIntranet", web.Language);
+            onsightEducation.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleNeighbourSize", "COSIntranet", web.Language);
+            onsightEducation.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleCompendium", "COSIntranet", web.Language);
+            onsightEducation.SubFolders.Add(folderUrl);
+
+            list.OnQuickLaunch = true;
+            list.Update();
+            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "End add Change Academy");
         }
 
         // Uncomment the method below to handle the event raised before a feature is deactivated.
