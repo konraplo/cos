@@ -809,4 +809,16 @@
   <data name="ChangeFolderTitleMarketingGuidelines" xml:space="preserve">
     <value>Local Marketing guidelines</value>
   </data>
+  <data name="ChangeFolderTitleCollectionOverview" xml:space="preserve">
+    <value>Collection overview from design</value>
+  </data>
+  <data name="ChangeFolderTitleCollectionQtyOrderedStyles" xml:space="preserve">
+    <value>List of quantity on ordered styles per collection</value>
+  </data>
+  <data name="ChangeFolderTitlePDS" xml:space="preserve">
+    <value>PDS</value>
+  </data>
+  <data name="ChangeFolderTitleProgramBoards" xml:space="preserve">
+    <value>Program boards</value>
+  </data>
 </root>

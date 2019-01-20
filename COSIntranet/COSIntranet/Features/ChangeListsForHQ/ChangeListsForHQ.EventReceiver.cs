@@ -201,6 +201,15 @@ namespace Change.Intranet.Features.ChangeListsForHQ
             folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitlePDS", "COSIntranet", web.Language);
             catalog.SubFolders.Add(folderUrl);
 
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleProgramBoards", "COSIntranet", web.Language);
+            catalog.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleCollectionOverview", "COSIntranet", web.Language);
+            catalog.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleCollectionQtyOrderedStyles", "COSIntranet", web.Language);
+            catalog.SubFolders.Add(folderUrl);
+
             folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleSizeOverview", "COSIntranet", web.Language);
             catalog.SubFolders.Add(folderUrl);
 

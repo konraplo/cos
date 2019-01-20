@@ -512,6 +512,24 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Collection overview from design.
+        /// </summary>
+        internal static string ChangeFolderTitleCollectionOverview {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleCollectionOverview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List of quantity on ordered styles per collection.
+        /// </summary>
+        internal static string ChangeFolderTitleCollectionQtyOrderedStyles {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleCollectionQtyOrderedStyles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Compendium.
         /// </summary>
         internal static string ChangeFolderTitleCompendium {
@@ -1204,6 +1222,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PDS.
+        /// </summary>
+        internal static string ChangeFolderTitlePDS {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitlePDS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Telephone.
         /// </summary>
         internal static string ChangeFolderTitlePhone {
@@ -1308,6 +1335,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeFolderTitleProductInfo {
             get {
                 return ResourceManager.GetString("ChangeFolderTitleProductInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Program boards.
+        /// </summary>
+        internal static string ChangeFolderTitleProgramBoards {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleProgramBoards", resourceCulture);
             }
         }
         
