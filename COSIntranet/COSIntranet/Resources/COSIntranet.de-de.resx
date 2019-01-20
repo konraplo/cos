@@ -802,4 +802,28 @@
   <data name="ChangeFolderTitleSMS" xml:space="preserve">
     <value>SMS</value>
   </data>
+  <data name="ChangeFolderTitleAustria" xml:space="preserve">
+    <value>Austria</value>
+  </data>
+  <data name="ChangeFolderTitleCAN" xml:space="preserve">
+    <value>CAN</value>
+  </data>
+  <data name="ChangeFolderTitleDE" xml:space="preserve">
+    <value>DE</value>
+  </data>
+  <data name="ChangeFolderTitleDK" xml:space="preserve">
+    <value>DK</value>
+  </data>
+  <data name="ChangeFolderTitleFl" xml:space="preserve">
+    <value>Fl</value>
+  </data>
+  <data name="ChangeFolderTitleNO" xml:space="preserve">
+    <value>NO</value>
+  </data>
+  <data name="ChangeFolderTitlePL" xml:space="preserve">
+    <value>PL</value>
+  </data>
+  <data name="ChangeFolderTitleSE" xml:space="preserve">
+    <value>SE</value>
+  </data>
 </root>

@@ -269,6 +269,161 @@ namespace Change.Intranet.Features.ChangeListsForHQ
             Logger.WriteLog(Logger.Category.Information, "ChangeListsForDivisionsEventReceiver", "End add Product Assortment");
         }
 
+        private void SalesTrainingLib(SPWeb web)
+        {
+            // Sales Training
+            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "Start add Sales Training");
+            SPList list = web.GetList(SPUrlUtility.CombineUrl(web.Url, "Lists/SalesTraining"));
+            SPFolderCollection folderColl = list.RootFolder.SubFolders;
+
+            string folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitle4StepsSalesMethod", "COSIntranet", web.Language);
+            SPFolder stepsSalesMethod = folderColl.Add(folderUrl);
+          
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleCompetitionsInternal", "COSIntranet", web.Language);
+            SPFolder competitionsInternal = folderColl.Add(folderUrl);
+
+            //folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleInternally", "COSIntranet", web.Language);
+            //competitionsInternal.SubFolders.Add(folderUrl);
+
+            //folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleSalesGaming", "COSIntranet", web.Language);
+            //competitionsInternal.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleObjectiveTools", "COSIntranet", web.Language);
+            SPFolder objectiveTools = folderColl.Add(folderUrl);
+
+            //folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleObjectiveTools", "COSIntranet", web.Language);
+            //objectiveTools.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleTipsandTricks", "COSIntranet", web.Language);
+            SPFolder tipsAndTricks = folderColl.Add(folderUrl);
+
+            //folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleSalesTips", "COSIntranet", web.Language);
+            //tipsAndTricks.SubFolders.Add(folderUrl);
+
+            //folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleTipsReturnExchange", "COSIntranet", web.Language);
+            //tipsAndTricks.SubFolders.Add(folderUrl);
+
+            //folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleMaintainTarget", "COSIntranet", web.Language);
+            //tipsAndTricks.SubFolders.Add(folderUrl);
+
+            list.OnQuickLaunch = true;
+            list.Update();
+            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "End add Sales Training");
+        }
+
+        private void DailyOperationLib(SPWeb web)
+        {
+            // Daily Operation
+            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "Start add Daily Operation");
+            SPList list = web.GetList(SPUrlUtility.CombineUrl(web.Url, "Lists/DailyOperation"));
+            SPFolderCollection folderColl = list.RootFolder.SubFolders;
+
+            string folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleStoreExpences", "COSIntranet", web.Language);
+            SPFolder storeExpences = folderColl.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleStoreAcqGuide", "COSIntranet", web.Language);
+            storeExpences.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleEXRulesGiftCard", "COSIntranet", web.Language);
+            SPFolder exRulesGiftCard = folderColl.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleExchangeRules", "COSIntranet", web.Language);
+            SPFolder titleExchangeRules = exRulesGiftCard.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleFl", "COSIntranet", web.Language);
+            titleExchangeRules.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleDK", "COSIntranet", web.Language);
+            titleExchangeRules.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitlePL", "COSIntranet", web.Language);
+            titleExchangeRules.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleSE", "COSIntranet", web.Language);
+            titleExchangeRules.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleNO", "COSIntranet", web.Language);
+            titleExchangeRules.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleDE", "COSIntranet", web.Language);
+            titleExchangeRules.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleCAN", "COSIntranet", web.Language);
+            titleExchangeRules.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleAustria", "COSIntranet", web.Language);
+            titleExchangeRules.SubFolders.Add(folderUrl);
+
+            //folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleOrdinary", "COSIntranet", web.Language);
+            //titleExchangeRules.SubFolders.Add(folderUrl);
+
+            //folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleChristmas", "COSIntranet", web.Language);
+            //titleExchangeRules.SubFolders.Add(folderUrl);
+
+            //folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleSale", "COSIntranet", web.Language);
+            //titleExchangeRules.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleRetailOperationManual", "COSIntranet", web.Language);
+            SPFolder retailOperationManual = folderColl.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleNewsletter", "COSIntranet", web.Language);
+            SPFolder newsletter = folderColl.Add(folderUrl);
+
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleBuddyStores", "COSIntranet", web.Language);
+            SPFolder buddyStores = folderColl.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleNearestContact", "COSIntranet", web.Language);
+            buddyStores.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleMoneyBank", "COSIntranet", web.Language);
+            SPFolder moneyBank = folderColl.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleMoneyHandling", "COSIntranet", web.Language);
+            moneyBank.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleBagsOrdering", "COSIntranet", web.Language);
+            moneyBank.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleDiffReportTemplate", "COSIntranet", web.Language);
+            moneyBank.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleDailyRutines", "COSIntranet", web.Language);
+            SPFolder dailyRutines = folderColl.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleCleaningMaintenance", "COSIntranet", web.Language);
+            dailyRutines.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleSalesFollowUp", "COSIntranet", web.Language);
+            SPFolder salesFollowUp = folderColl.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleDWMFollowup", "COSIntranet", web.Language);
+            salesFollowUp.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleMorningMeetings", "COSIntranet", web.Language);
+            salesFollowUp.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleStoreVisitReport", "COSIntranet", web.Language);
+            SPFolder storeVisitReport = folderColl.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleTemplateGuide", "COSIntranet", web.Language);
+            storeVisitReport.SubFolders.Add(folderUrl);
+
+           
+
+           
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleTRUCashRegister", "COSIntranet", web.Language);
+            SPFolder truCashRegister = folderColl.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleHandling", "COSIntranet", web.Language);
+            truCashRegister.SubFolders.Add(folderUrl);
+
+            list.OnQuickLaunch = true;
+            list.Update();
+            Logger.WriteLog(Logger.Category.Information, "ChangeListsForDivisionsEventReceiver", "End add Sales Training");
+        }
+
         // Uncomment the method below to handle the event raised before a feature is deactivated.
 
         //public override void FeatureDeactivating(SPFeatureReceiverProperties properties)
