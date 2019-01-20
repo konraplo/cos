@@ -876,4 +876,13 @@
   <data name="ChangeFolderTitleWorkenvironment" xml:space="preserve">
     <value>Work environment</value>
   </data>
+  <data name="ChangeFolderTitleAXManual" xml:space="preserve">
+    <value>Manual for AX</value>
+  </data>
+  <data name="ChangeFolderTitleHelpdesk" xml:space="preserve">
+    <value>Helpdesk info</value>
+  </data>
+  <data name="ChangeFolderTitleTV" xml:space="preserve">
+    <value>TV in Store</value>
+  </data>
 </root>

@@ -386,6 +386,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manual for AX.
+        /// </summary>
+        internal static string ChangeFolderTitleAXManual {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleAXManual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ordering bags for the bank.
         /// </summary>
         internal static string ChangeFolderTitleBagsOrdering {
@@ -938,6 +947,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeFolderTitleHandling {
             get {
                 return ResourceManager.GetString("ChangeFolderTitleHandling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Helpdesk info.
+        /// </summary>
+        internal static string ChangeFolderTitleHelpdesk {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleHelpdesk", resourceCulture);
             }
         }
         
@@ -1906,6 +1924,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeFolderTitleTrustpilotManual {
             get {
                 return ResourceManager.GetString("ChangeFolderTitleTrustpilotManual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TV in Store.
+        /// </summary>
+        internal static string ChangeFolderTitleTV {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleTV", resourceCulture);
             }
         }
         

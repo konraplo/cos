@@ -812,6 +812,9 @@
   <data name="ChangeFolderTitleAustria" xml:space="preserve">
     <value>Austria</value>
   </data>
+  <data name="ChangeFolderTitleAXManual" xml:space="preserve">
+    <value>Manual for AX</value>
+  </data>
   <data name="ChangeFolderTitleBusinessDev" xml:space="preserve">
     <value>Business development</value>
   </data>
@@ -853,6 +856,9 @@
   </data>
   <data name="ChangeFolderTitleGymProgram" xml:space="preserve">
     <value>Gym program</value>
+  </data>
+  <data name="ChangeFolderTitleHelpdesk" xml:space="preserve">
+    <value>Helpdesk info</value>
   </data>
   <data name="ChangeFolderTitleIT" xml:space="preserve">
     <value>IT</value>
@@ -901,6 +907,9 @@
   </data>
   <data name="ChangeFolderTitleTRUCustody" xml:space="preserve">
     <value>Theft, robbery and custody</value>
+  </data>
+  <data name="ChangeFolderTitleTV" xml:space="preserve">
+    <value>TV in Store</value>
   </data>
   <data name="ChangeFolderTitleWarehouse" xml:space="preserve">
     <value>Warehouse</value>
