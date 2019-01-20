@@ -926,6 +926,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Local Marketing guidelines.
+        /// </summary>
+        internal static string ChangeFolderTitleMarketingGuidelines {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleMarketingGuidelines", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Material for windows
         ///.
         /// </summary>

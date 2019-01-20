@@ -806,4 +806,7 @@
   <data name="ChangeColTaskDuration" xml:space="preserve">
     <value>Duration</value>
   </data>
+  <data name="ChangeFolderTitleMarketingGuidelines" xml:space="preserve">
+    <value>Local Marketing guidelines</value>
+  </data>
 </root>

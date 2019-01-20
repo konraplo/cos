@@ -771,4 +771,7 @@
   <data name="ChangeLibTitleCountries" xml:space="preserve">
     <value>Countries</value>
   </data>
+  <data name="ChangeFolderTitleMarketingGuidelines" xml:space="preserve">
+    <value>Local Marketing guidelines</value>
+  </data>
 </root>
