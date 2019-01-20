@@ -641,6 +641,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Return dos and donts.
+        /// </summary>
+        internal static string ChangeFolderTitleDosDontsReturn {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleDosDontsReturn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Daily weekly monthly follow up
         ///.
         /// </summary>
@@ -758,6 +767,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeFolderTitleFotoReports {
             get {
                 return ResourceManager.GetString("ChangeFolderTitleFotoReports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Freight pricelist.
+        /// </summary>
+        internal static string ChangeFolderTitleFreightPricelist {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleFreightPricelist", resourceCulture);
             }
         }
         
@@ -1481,6 +1499,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeFolderTitleSmallCampaignsSigns {
             get {
                 return ResourceManager.GetString("ChangeFolderTitleSmallCampaignsSigns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SMS.
+        /// </summary>
+        internal static string ChangeFolderTitleSMS {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleSMS", resourceCulture);
             }
         }
         

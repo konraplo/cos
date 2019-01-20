@@ -216,9 +216,6 @@ namespace Change.Intranet.Features.ChangeListsForHQ
             folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleBasicLookbook", "COSIntranet", web.Language);
             SPFolder basicLookbook = catalog.SubFolders.Add(folderUrl);            
 
-            //folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleOutphasedItems", "COSIntranet", web.Language);
-            //basicLookbook.SubFolders.Add(folderUrl);
-
             folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleCPLookbooks", "COSIntranet", web.Language);
             catalog.SubFolders.Add(folderUrl);
 
@@ -231,8 +228,11 @@ namespace Change.Intranet.Features.ChangeListsForHQ
             folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleMerchandiseFlow", "COSIntranet", web.Language);
             SPFolder mflow = folderColl.Add(folderUrl);
 
-            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleEOSReturn", "COSIntranet", web.Language);
-            mflow.SubFolders.Add(folderUrl);
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleDosDontsReturn", "COSIntranet", web.Language);
+            SPFolder eosReturn = mflow.SubFolders.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleOutphasedItems", "COSIntranet", web.Language);
+            eosReturn.SubFolders.Add(folderUrl);
 
             folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleReceiving", "COSIntranet", web.Language);
             SPFolder receiving = mflow.SubFolders.Add(folderUrl);
@@ -249,20 +249,17 @@ namespace Change.Intranet.Features.ChangeListsForHQ
             folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleContactsFAQ", "COSIntranet", web.Language);
             receiving.SubFolders.Add(folderUrl);
 
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleFreightPricelist", "COSIntranet", web.Language);
+            receiving.SubFolders.Add(folderUrl);
+
             folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleSwapList", "COSIntranet", web.Language);
             receiving.SubFolders.Add(folderUrl);
 
             folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitlePrepackOrderConfirmation", "COSIntranet", web.Language);
             mflow.SubFolders.Add(folderUrl);
 
-            //folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleOtherStoresTransfer", "COSIntranet", web.Language);
-            //SPFolder otherStoresTransfer = mflow.SubFolders.Add(folderUrl);
-
-            //folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleGLSpricelist", "COSIntranet", web.Language);
-            //otherStoresTransfer.SubFolders.Add(folderUrl);
-
-            //folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleManual", "COSIntranet", web.Language);
-            //otherStoresTransfer.SubFolders.Add(folderUrl);
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleSMS", "COSIntranet", web.Language);
+            catalog.SubFolders.Add(folderUrl);
 
             folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleProductInfo", "COSIntranet", web.Language);
             folderColl.Add(folderUrl);

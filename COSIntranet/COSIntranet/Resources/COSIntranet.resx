@@ -815,10 +815,19 @@
   <data name="ChangeFolderTitleCollectionQtyOrderedStyles" xml:space="preserve">
     <value>List of quantity on ordered styles per collection</value>
   </data>
+  <data name="ChangeFolderTitleDosDontsReturn" xml:space="preserve">
+    <value>Return dos and donts</value>
+  </data>
+  <data name="ChangeFolderTitleFreightPricelist" xml:space="preserve">
+    <value>Freight pricelist</value>
+  </data>
   <data name="ChangeFolderTitlePDS" xml:space="preserve">
     <value>PDS</value>
   </data>
   <data name="ChangeFolderTitleProgramBoards" xml:space="preserve">
     <value>Program boards</value>
+  </data>
+  <data name="ChangeFolderTitleSMS" xml:space="preserve">
+    <value>SMS</value>
   </data>
 </root>
