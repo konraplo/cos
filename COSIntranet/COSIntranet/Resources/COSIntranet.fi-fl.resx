@@ -819,4 +819,49 @@
   <data name="ChangeFolderTitleSE" xml:space="preserve">
     <value>SE</value>
   </data>
+  <data name="ChangeFolderTitleBusinessDev" xml:space="preserve">
+    <value>Business development</value>
+  </data>
+  <data name="ChangeFolderTitleDesign" xml:space="preserve">
+    <value>Design</value>
+  </data>
+  <data name="ChangeFolderTitleEcommerce" xml:space="preserve">
+    <value>E-commerce</value>
+  </data>
+  <data name="ChangeFolderTitleFinance" xml:space="preserve">
+    <value>Finance</value>
+  </data>
+  <data name="ChangeFolderTitleIT" xml:space="preserve">
+    <value>IT</value>
+  </data>
+  <data name="ChangeFolderTitleMarketing" xml:space="preserve">
+    <value>Marketing</value>
+  </data>
+  <data name="ChangeFolderTitleOrderMgnt" xml:space="preserve">
+    <value>Order management</value>
+  </data>
+  <data name="ChangeFolderTitlePlanning" xml:space="preserve">
+    <value>Planning</value>
+  </data>
+  <data name="ChangeFolderTitleProcYearwheel" xml:space="preserve">
+    <value>Procedures yearwheel</value>
+  </data>
+  <data name="ChangeFolderTitleProduction" xml:space="preserve">
+    <value>Production</value>
+  </data>
+  <data name="ChangeFolderTitleRetail" xml:space="preserve">
+    <value>Retail</value>
+  </data>
+  <data name="ChangeFolderTitleTechnical" xml:space="preserve">
+    <value>Technical</value>
+  </data>
+  <data name="ChangeFolderTitleTRUCustody" xml:space="preserve">
+    <value>Theft, robbery and custody</value>
+  </data>
+  <data name="ChangeFolderTitleWarehouse" xml:space="preserve">
+    <value>Warehouse</value>
+  </data>
+  <data name="ChangeFolderTitleYear" xml:space="preserve">
+    <value>Year</value>
+  </data>
 </root>

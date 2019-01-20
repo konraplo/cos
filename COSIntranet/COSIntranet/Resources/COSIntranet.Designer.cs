@@ -458,6 +458,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Business development.
+        /// </summary>
+        internal static string ChangeFolderTitleBusinessDev {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleBusinessDev", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CAN.
         /// </summary>
         internal static string ChangeFolderTitleCAN {
@@ -658,6 +667,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Design.
+        /// </summary>
+        internal static string ChangeFolderTitleDesign {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleDesign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Diff report - Template
         ///.
         /// </summary>
@@ -710,6 +728,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeFolderTitleEaster {
             get {
                 return ResourceManager.GetString("ChangeFolderTitleEaster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-commerce.
+        /// </summary>
+        internal static string ChangeFolderTitleEcommerce {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleEcommerce", resourceCulture);
             }
         }
         
@@ -774,6 +801,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeFolderTitleEXRulesGiftCard {
             get {
                 return ResourceManager.GetString("ChangeFolderTitleEXRulesGiftCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finance.
+        /// </summary>
+        internal static string ChangeFolderTitleFinance {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleFinance", resourceCulture);
             }
         }
         
@@ -933,6 +969,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IT.
+        /// </summary>
+        internal static string ChangeFolderTitleIT {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Job advertisements.
         /// </summary>
         internal static string ChangeFolderTitleJobAdvertisements {
@@ -1003,6 +1048,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeFolderTitleManuals {
             get {
                 return ResourceManager.GetString("ChangeFolderTitleManuals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Marketing.
+        /// </summary>
+        internal static string ChangeFolderTitleMarketing {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleMarketing", resourceCulture);
             }
         }
         
@@ -1230,6 +1284,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Order management.
+        /// </summary>
+        internal static string ChangeFolderTitleOrderMgnt {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleOrderMgnt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to How to receive orders.
         /// </summary>
         internal static string ChangeFolderTitleOrdersHowTo {
@@ -1339,6 +1402,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Planning.
+        /// </summary>
+        internal static string ChangeFolderTitlePlanning {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitlePlanning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Products on hangers – all products.
         /// </summary>
         internal static string ChangeFolderTitlePonHAllProducts {
@@ -1411,11 +1483,29 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Procedures yearwheel.
+        /// </summary>
+        internal static string ChangeFolderTitleProcYearwheel {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleProcYearwheel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Product information.
         /// </summary>
         internal static string ChangeFolderTitleProductInfo {
             get {
                 return ResourceManager.GetString("ChangeFolderTitleProductInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Production.
+        /// </summary>
+        internal static string ChangeFolderTitleProduction {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleProduction", resourceCulture);
             }
         }
         
@@ -1443,6 +1533,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeFolderTitleReceiving {
             get {
                 return ResourceManager.GetString("ChangeFolderTitleReceiving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retail.
+        /// </summary>
+        internal static string ChangeFolderTitleRetail {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleRetail", resourceCulture);
             }
         }
         
@@ -1692,6 +1791,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Technical.
+        /// </summary>
+        internal static string ChangeFolderTitleTechnical {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleTechnical", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Template and guide.
         /// </summary>
         internal static string ChangeFolderTitleTemplateGuide {
@@ -1752,6 +1860,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeFolderTitleTRUCashRegister {
             get {
                 return ResourceManager.GetString("ChangeFolderTitleTRUCashRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Theft, robbery and custody.
+        /// </summary>
+        internal static string ChangeFolderTitleTRUCustody {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleTRUCustody", resourceCulture);
             }
         }
         
@@ -1841,11 +1958,29 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Warehouse.
+        /// </summary>
+        internal static string ChangeFolderTitleWarehouse {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleWarehouse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Signs for window - Print i store.
         /// </summary>
         internal static string ChangeFolderTitleWindowSigns {
             get {
                 return ResourceManager.GetString("ChangeFolderTitleWindowSigns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Year.
+        /// </summary>
+        internal static string ChangeFolderTitleYear {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleYear", resourceCulture);
             }
         }
         
