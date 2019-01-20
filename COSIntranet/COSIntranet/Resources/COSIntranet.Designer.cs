@@ -832,6 +832,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Finance calendar.
+        /// </summary>
+        internal static string ChangeFolderTitleFinanceCal {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleFinanceCal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fl.
         /// </summary>
         internal static string ChangeFolderTitleFl {
@@ -1001,6 +1010,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeFolderTitleInternally {
             get {
                 return ResourceManager.GetString("ChangeFolderTitleInternally", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invoice information.
+        /// </summary>
+        internal static string ChangeFolderTitleInvoiceInfo {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleInvoiceInfo", resourceCulture);
             }
         }
         

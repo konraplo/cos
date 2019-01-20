@@ -885,4 +885,10 @@
   <data name="ChangeFolderTitleTV" xml:space="preserve">
     <value>TV in Store</value>
   </data>
+  <data name="ChangeFolderTitleFinanceCal" xml:space="preserve">
+    <value>Finance calendar</value>
+  </data>
+  <data name="ChangeFolderTitleInvoiceInfo" xml:space="preserve">
+    <value>Invoice information</value>
+  </data>
 </root>

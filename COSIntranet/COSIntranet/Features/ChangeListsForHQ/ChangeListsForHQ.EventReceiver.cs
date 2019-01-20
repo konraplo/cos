@@ -36,7 +36,7 @@ namespace Change.Intranet.Features.ChangeListsForHQ
                 ChangeAcademyLib(web);
                 HRLib(web);
                 ITLib(web);
-                //FinanceLib(web);
+                FinanceLib(web);
             }
         }
 
@@ -549,6 +549,24 @@ namespace Change.Intranet.Features.ChangeListsForHQ
             list.OnQuickLaunch = true;
             list.Update();
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "End add IT Structure");
+        }
+
+        private void FinanceLib(SPWeb web)
+        {
+            // Finance
+            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "End add Finance structure");
+            SPList list = web.GetList(SPUrlUtility.CombineUrl(web.Url, "Lists/Finance"));
+            SPFolderCollection folderColl = list.RootFolder.SubFolders;
+
+            string folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleFinanceCal", "COSIntranet", web.Language);
+            folderColl.Add(folderUrl);
+
+            folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleInvoiceInfo", "COSIntranet", web.Language);
+            folderColl.Add(folderUrl);
+
+            list.OnQuickLaunch = true;
+            list.Update();
+            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "End add finance structure");
         }
 
         // Uncomment the method below to handle the event raised before a feature is deactivated.

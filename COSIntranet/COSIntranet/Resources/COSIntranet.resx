@@ -848,6 +848,9 @@
   <data name="ChangeFolderTitleFinance" xml:space="preserve">
     <value>Finance</value>
   </data>
+  <data name="ChangeFolderTitleFinanceCal" xml:space="preserve">
+    <value>Finance calendar</value>
+  </data>
   <data name="ChangeFolderTitleFl" xml:space="preserve">
     <value>Fl</value>
   </data>
@@ -859,6 +862,9 @@
   </data>
   <data name="ChangeFolderTitleHelpdesk" xml:space="preserve">
     <value>Helpdesk info</value>
+  </data>
+  <data name="ChangeFolderTitleInvoiceInfo" xml:space="preserve">
+    <value>Invoice information</value>
   </data>
   <data name="ChangeFolderTitleIT" xml:space="preserve">
     <value>IT</value>
