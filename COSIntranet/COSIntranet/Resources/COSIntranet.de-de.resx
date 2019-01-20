@@ -871,4 +871,16 @@
   <data name="ChangeFolderTitleYear" xml:space="preserve">
     <value>Year</value>
   </data>
+  <data name="ChangeFolderTitleCareepath" xml:space="preserve">
+    <value>Careerpath</value>
+  </data>
+  <data name="ChangeFolderTitleGymProgram" xml:space="preserve">
+    <value>Gym program</value>
+  </data>
+  <data name="ChangeFolderTitlePhonelistHQinfo" xml:space="preserve">
+    <value>Phonelist and local HQ info</value>
+  </data>
+  <data name="ChangeFolderTitleWorkenvironment" xml:space="preserve">
+    <value>Work environment</value>
+  </data>
 </root>

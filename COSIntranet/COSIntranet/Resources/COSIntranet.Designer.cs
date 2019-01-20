@@ -476,6 +476,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Careerpath.
+        /// </summary>
+        internal static string ChangeFolderTitleCareepath {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleCareepath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Catalog and overview.
         /// </summary>
         internal static string ChangeFolderTitleCatalogOverview {
@@ -902,6 +911,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeFolderTitleGuideChangeAcademy {
             get {
                 return ResourceManager.GetString("ChangeFolderTitleGuideChangeAcademy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gym program.
+        /// </summary>
+        internal static string ChangeFolderTitleGymProgram {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleGymProgram", resourceCulture);
             }
         }
         
@@ -1380,6 +1398,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeFolderTitlePhonelist {
             get {
                 return ResourceManager.GetString("ChangeFolderTitlePhonelist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phonelist and local HQ info.
+        /// </summary>
+        internal static string ChangeFolderTitlePhonelistHQinfo {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitlePhonelistHQinfo", resourceCulture);
             }
         }
         
@@ -1972,6 +1999,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeFolderTitleWindowSigns {
             get {
                 return ResourceManager.GetString("ChangeFolderTitleWindowSigns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Work environment.
+        /// </summary>
+        internal static string ChangeFolderTitleWorkenvironment {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleWorkenvironment", resourceCulture);
             }
         }
         
