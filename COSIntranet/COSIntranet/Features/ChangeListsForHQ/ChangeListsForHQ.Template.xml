@@ -1,10 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Feature xmlns="http://schemas.microsoft.com/sharepoint/">
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Version="1.1.2.0">
 <UpgradeActions
   ReceiverAssembly="Change.Intranet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fa27d85e9cfa53d4" 
   ReceiverClass="Change.Intranet.Features.ChangeListsForHQ.ChangeListsForHQEventReceiver">    
 
- <VersionRange EndVersion="1.1.2.0">      
+ <VersionRange EndVersion="1.1.2.0">
+   <ApplyElementManifests>
+     <ElementManifest Location="VisualMerchandise\Elements.xml"/>
+     <ElementManifest Location="ProductAssortment\Elements.xml"/>
+     <ElementManifest Location="Marketing\Elements.xml"/>
+     <ElementManifest Location="SalesTraining\Elements.xml"/>
+     <ElementManifest Location="DailyOperation\Elements.xml"/>
+     <ElementManifest Location="ChangeAcademy\Elements.xml"/>
+     <ElementManifest Location="HR\Elements.xml"/>
+     <ElementManifest Location="Finance\Elements.xml"/>
+     <ElementManifest Location="IT\Elements.xml"/>
+   </ApplyElementManifests>
+   
      <CustomUpgradeAction Name="UpgradeToV1.1">     
    </CustomUpgradeAction>
    
