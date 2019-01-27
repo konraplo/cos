@@ -901,4 +901,7 @@
   <data name="ChangeLibDescriptionStoreOpenings" xml:space="preserve">
     <value />
   </data>
+  <data name="ChangeColStoreOpening" xml:space="preserve">
+    <value>Store opening</value>
+  </data>
 </root>

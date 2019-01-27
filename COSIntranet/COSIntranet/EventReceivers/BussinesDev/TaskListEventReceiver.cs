@@ -53,12 +53,12 @@
             if (item.ContentType.Parent.Id == ContentTypeIds.ProjectTask)
             {
                 Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("update project store/country for id:{0}, title:{1}", item.ID, item.Title));
-                SPFieldLookupValue project = new SPFieldLookupValue(Convert.ToString(item[Fields.ProjectTask]));
-                SPListItem storeItem = item.ParentList.GetItemById(project.LookupId);
-                SPFieldLookupValue store = new SPFieldLookupValue(Convert.ToString(storeItem[Fields.Store]));
-                string storeCountry = ProjectUtilities.GetProjectCountry(item.Web, project.LookupId);
+                SPFieldLookupValue project = new SPFieldLookupValue(Convert.ToString(item[Fields.StoreOpening]));
+                SPListItem projectItem = item.ParentList.GetItemById(project.LookupId);
+                SPFieldLookupValue store = new SPFieldLookupValue(Convert.ToString(projectItem[Fields.Store]));
+                string storeCountry = ProjectUtilities.GetStoreCountry(item.Web, store.LookupId);
                 item[Fields.Country] = storeCountry;
-                item[Fields.Store] = storeItem[Fields.Store];
+                item[Fields.Store] = store;
                 item.Update();
             }
         }

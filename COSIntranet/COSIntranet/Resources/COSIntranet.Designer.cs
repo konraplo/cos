@@ -169,6 +169,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Store opening.
+        /// </summary>
+        internal static string ChangeColStoreOpening {
+            get {
+                return ResourceManager.GetString("ChangeColStoreOpening", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Duration.
         /// </summary>
         internal static string ChangeColTaskDuration {
