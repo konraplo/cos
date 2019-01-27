@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
-  <!-- Parent ContentType: Task (0x0108) -->
-  <ContentType ID="0x0108001845C9025F79452AA25119FB17AEB359"
+  <!-- Parent ContentType: Item (0x01) -->
+  <ContentType ID="0x01000FE9FB11C1CD4CBDBD91C777F61D0FC7"
                Name="$Resources:COSIntranet,ChangeCTProject"
                Group="CHANGE Content Types"
                Description="$Resources:COSIntranet,ChangeCTProjectDescr"
@@ -14,10 +14,7 @@
       <FieldRef ID="{53101f38-dd2e-458c-b245-0c236cc13d1a}" Name="AssignedTo" DisplayName="$Resources:COSIntranet,ChangeProjectCoordinator" />
       <FieldRef ID="{d2311440-1ed6-46ea-b46d-daa643dc3886}" Name="PercentComplete" />
       <FieldRef ID="{7662cd2c-f069-4dba-9e35-082cf976e170}" Name="Description" />
-      <FieldRef ID="{a8eb573e-9e11-481a-a8c9-1104a54b2fbd}" Name="Priority" />
-      <FieldRef ID="{c15b34c3-ce7d-490a-b133-3f4de8801b76}" Name="Status" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ShowInDisplayForm="FALSE"/>
       <FieldRef ID="{35752185-6016-4595-A972-7959148EA585}" Name="ChangeProjectStatus" Required="TRUE"/>
-      <FieldRef ID="{c3a92d97-2b77-4a25-9698-3ab54874bc6f}" Name="Predecessors" Hidden="TRUE"/>
     </FieldRefs>
   </ContentType>
 </Elements>

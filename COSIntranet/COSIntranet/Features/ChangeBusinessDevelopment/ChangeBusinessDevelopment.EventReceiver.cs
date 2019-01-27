@@ -54,6 +54,10 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
             Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", string.Format("add Lookups to:{0}", tasksUrl));
             SPList tasksList = web.GetList(tasksUrl);
 
+            string projectsUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.StoreOpenings);
+            Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", string.Format("add Lookups to:{0}", projectsUrl));
+            SPList projectsList = web.GetList(projectsUrl);
+
             string countriesUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.Countries);
             Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", string.Format("add Lookups to:{0}", tasksUrl));
             SPList countriesList = web.GetList(countriesUrl);
@@ -87,12 +91,11 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
             projectContentType.FieldLinks[SPBuiltInFieldId.Title].DisplayName = "$Resources:COSIntranet,ChangeProjectTitle";
             projectContentType.FieldLinks[SPBuiltInFieldId.TaskDueDate].DisplayName = "$Resources:COSIntranet,ChangeOpeningDate";
             projectContentType.FieldLinks[SPBuiltInFieldId.AssignedTo].DisplayName = "$Resources:COSIntranet,ChangeProjectCoordinator";
-            projectContentType.FieldLinks[SPBuiltInFieldId.TaskStatus].Hidden = true;
             CommonUtilities.AddFieldToContentType(web, projectContentType, storeLookup, true, false, string.Empty);
 
             CommonUtilities.AddFieldToContentType(web, projectContentType, countryLookup, false, true, string.Empty);
-            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", projectContentType.Name, tasksUrl));
-            CommonUtilities.AttachContentTypeToList(tasksList, projectContentType, true, true);
+            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", projectContentType.Name, projectsUrl));
+            CommonUtilities.AttachContentTypeToList(projectsList, projectContentType, true, false);
 
             SPContentType projectTaskContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.ProjectTask];
             CommonUtilities.AddFieldToContentType(web, projectTaskContentType, taskLookup, true, false, "$Resources:COSIntranet,ChangeColParentProject");
@@ -101,7 +104,7 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
             CommonUtilities.AddFieldToContentType(web, projectTaskContentType, countryLookup, false, true, string.Empty);
 
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", projectTaskContentType.Name, tasksUrl));
-            CommonUtilities.AttachContentTypeToList(tasksList, projectTaskContentType, false, true);
+            CommonUtilities.AttachContentTypeToList(tasksList, projectTaskContentType, true, false);
 
             //add ER to Lists
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ER to List, {0}", storesUrl));

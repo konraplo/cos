@@ -895,4 +895,10 @@
   <data name="ChangeFolderTitleInvoiceInfo" xml:space="preserve">
     <value>Invoice information</value>
   </data>
+  <data name="ChangeLibTitleStoreOpenings" xml:space="preserve">
+    <value>Store openings</value>
+  </data>
+  <data name="ChangeLibDescriptionStoreOpenings" xml:space="preserve">
+    <value />
+  </data>
 </root>

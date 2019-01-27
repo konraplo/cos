@@ -25,7 +25,7 @@
         /// <summary>
         /// SPContentTypeId of the Change Project ContentType
         /// </summary>
-        public static SPContentTypeId Project = new SPContentTypeId("0x0108001845C9025F79452AA25119FB17AEB359");
+        public static SPContentTypeId Project = new SPContentTypeId("0x01000FE9FB11C1CD4CBDBD91C777F61D0FC7");
 
         /// <summary>
         /// SPContentTypeId of the Change Project Task ContentType

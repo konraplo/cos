@@ -2235,6 +2235,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string ChangeLibDescriptionStoreOpenings {
+            get {
+                return ResourceManager.GetString("ChangeLibDescriptionStoreOpenings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Information for the store&apos;s inventory, building and merchandising.
         /// </summary>
         internal static string ChangeLibDescriptionVisualMerchandise {
@@ -2366,6 +2375,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeLibTitleSalesTraining {
             get {
                 return ResourceManager.GetString("ChangeLibTitleSalesTraining", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Store openings.
+        /// </summary>
+        internal static string ChangeLibTitleStoreOpenings {
+            get {
+                return ResourceManager.GetString("ChangeLibTitleStoreOpenings", resourceCulture);
             }
         }
         
