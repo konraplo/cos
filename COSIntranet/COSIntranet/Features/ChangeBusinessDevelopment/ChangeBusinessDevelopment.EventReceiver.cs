@@ -66,7 +66,7 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
             Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", "Add lookups");
 
             SPFieldLookup deptLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.Department, "$Resources:COSIntranet,ChangeColDeparment", Fields.Title, deptList, false, false);
-            SPFieldLookup taskLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.ProjectTask, "$Resources:COSIntranet,ChangeColProjectTask", Fields.Title, tasksList, false, false);
+            SPFieldLookup storeOpeningLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.ProjectTask, "$Resources:COSIntranet,ChangeColProjectTask", Fields.Title, tasksList, false, false);
             SPFieldLookup storeLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.Store, "$Resources:COSIntranet,ChangeColStore", Fields.StoreId, storetList, false, false);
             SPFieldLookup countryLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.Country, "$Resources:COSIntranet,ChangeColCountry", Fields.Title, countriesList, false, false);
 
@@ -98,7 +98,7 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
             CommonUtilities.AttachContentTypeToList(projectsList, projectContentType, true, false);
 
             SPContentType projectTaskContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.ProjectTask];
-            CommonUtilities.AddFieldToContentType(web, projectTaskContentType, taskLookup, true, false, "$Resources:COSIntranet,ChangeColParentProject");
+            CommonUtilities.AddFieldToContentType(web, projectTaskContentType, storeOpeningLookup, true, false, "$Resources:COSIntranet,ChangeColParentProject");
             CommonUtilities.AddFieldToContentType(web, projectTaskContentType, storeLookup, false, true, string.Empty);
             CommonUtilities.AddFieldToContentType(web, projectTaskContentType, deptLookup, false, false, "$Resources:COSIntranet,ChangeColResponsibleDepartment");
             CommonUtilities.AddFieldToContentType(web, projectTaskContentType, countryLookup, false, true, string.Empty);

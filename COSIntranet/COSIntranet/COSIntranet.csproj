@@ -58,6 +58,7 @@
     <Compile Include="Common\Fields.cs" />
     <Compile Include="Common\ListUtilities.cs" />
     <Compile Include="Common\Logger.cs" />
+    <Compile Include="EventReceivers\BussinesDev\StoreOpeningEventReceiver.cs" />
     <Compile Include="EventReceivers\BussinesDev\DeptListEventReceiver.cs" />
     <Compile Include="EventReceivers\BussinesDev\StoreListEventReceiver.cs" />
     <Compile Include="EventReceivers\BussinesDev\TaskListEventReceiver.cs" />
