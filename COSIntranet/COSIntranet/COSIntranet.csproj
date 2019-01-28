@@ -167,9 +167,6 @@
     <None Include="Infrastructure\Lists\BusinessDev\ProjectTasks\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{8204a972-4679-478f-8b03-cfac44ee3380}</SharePointProjectItemId>
     </None>
-    <None Include="Infrastructure\Lists\BusinessDev\StoreOpenings\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{19a17989-4db7-4ee1-9ec6-b08c8406e2dc}</SharePointProjectItemId>
-    </None>
     <None Include="Infrastructure\Lists\BusinessDev\Stores\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{8ccbe49c-de21-4630-82c1-d67e4b6dce5b}</SharePointProjectItemId>
     </None>
@@ -301,7 +298,6 @@
     <Content Include="Infrastructure\Lists\BusinessDev\Countries\Elements.xml" />
     <Content Include="Infrastructure\Lists\BusinessDev\Departments\Elements.xml" />
     <Content Include="Infrastructure\Lists\BusinessDev\ProjectTasks\Elements.xml" />
-    <Content Include="Infrastructure\Lists\BusinessDev\StoreOpenings\Elements.xml" />
     <Content Include="Infrastructure\Lists\BusinessDev\Stores\Elements.xml" />
     <Content Include="Infrastructure\Lists\DivisionLevel\ChangeAcademy\Elements.xml" />
     <Content Include="Infrastructure\Lists\DivisionLevel\ChangeAcademy\Elements.xml">
