@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project Title="CHANGE Lingerie Bussines dec Web;" Revision="3" ListDir="$Resources:core,lists_Folder;" xmlns:ows="Microsoft SharePoint" UIVersion="15" HideSiteContentsLink="true">
+<Project Title="CHANGE Lingerie Businnes development Web;" Revision="3" ListDir="$Resources:core,lists_Folder;" xmlns:ows="Microsoft SharePoint" UIVersion="15" HideSiteContentsLink="true">
   <NavBars>
     <NavBar Name="$Resources:core,category_Top;" Separator="&amp;nbsp;&amp;nbsp;&amp;nbsp;" Body="&lt;a ID='onettopnavbar#LABEL_ID#' href='#URL#' accesskey='J'&gt;#LABEL#&lt;/a&gt;" ID="1002" />
     <NavBar Name="$Resources:core,category_NavHome;" Prefix="&lt;table border='0' cellpadding='4' cellspacing='0'&gt;" Body="&lt;tr&gt;&lt;td&gt;&lt;table border='0' cellpadding='0' cellspacing='0'&gt;&lt;tr&gt;&lt;td&gt;&lt;img src='/_layouts/15/images/blank.gif' id='100' alt='' border='0'&gt;&amp;nbsp;&lt;/td&gt;&lt;td valign='top'&gt;&lt;a id='onetleftnavbar#LABEL_ID#' href='#URL#'&gt;#LABEL#&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;" Suffix="&lt;/table&gt;" ID="1031" />
@@ -28,8 +28,8 @@
         <Feature ID="4AEC7207-0D02-4f4f-AA07-B370199CD0C7" />
         <!-- Blog feature -->
         <Feature ID="FAF00902-6BAB-4583-BD02-84DB191801D8" />
-        <!-- Change of Scandinavia Lists for hq -->
-        <Feature ID="87e15c25-5862-4107-a781-a47e6d4daa2d" />
+        <!-- Change of Scandinavia business development artifacts -->
+        <Feature ID="a3417bcf-d184-4f79-be16-a23c50462fa8" />
         <!-- Change of scandinavia composed look -->
         <Feature ID="0de89914-06f0-4c4e-b080-7cffd569018f" />
         <!-- MDS -->

@@ -4,7 +4,7 @@
                BaseTemplateID="1"
                BaseTemplateName="STS"
                Description="Change of Scandinavia bussiness development web template"
-               Name="ChangeBussinesDevelopmentWeb"
+               Name="ChangeBusinessDevelopmentWeb"
                DisplayCategory="CHANGE" Title="Change of Scandinavia bussiness development web template" Subweb="TRUE">
   </WebTemplate>
 </Elements>

@@ -234,8 +234,8 @@
     <None Include="Resources\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{763a5394-7bcd-42f4-90a7-c8076339c2c8}</SharePointProjectItemId>
     </None>
-    <None Include="WebTemplates\ChangeBusinessDevelopment\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{98516748-2c4d-4dac-b147-b927f79edae5}</SharePointProjectItemId>
+    <None Include="WebTemplates\ChangeBusinessDevelopmentWeb\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{d110c909-d550-461d-8ab2-51e6cf789504}</SharePointProjectItemId>
     </None>
     <None Include="WebTemplates\ChangeDivisionWeb\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{b2194afc-74d3-4f51-a2a2-4a1dccf5deb4}</SharePointProjectItemId>
@@ -343,8 +343,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>COSIntranet.Designer.cs</LastGenOutput>
     </Content>
-    <Content Include="WebTemplates\ChangeBusinessDevelopment\Elements.xml" />
-    <Content Include="WebTemplates\ChangeBusinessDevelopment\ONET.XML" />
+    <Content Include="WebTemplates\ChangeBusinessDevelopmentWeb\Elements.xml" />
+    <Content Include="WebTemplates\ChangeBusinessDevelopmentWeb\ONET.XML" />
     <Content Include="WebTemplates\ChangeDivisionWeb\Elements.xml" />
     <Content Include="WebTemplates\ChangeDivisionWeb\ONET.XML" />
     <Content Include="WebTemplates\ChangeHQWeb\Elements.xml" />
