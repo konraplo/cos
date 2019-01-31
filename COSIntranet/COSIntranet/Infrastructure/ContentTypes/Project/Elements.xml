@@ -15,6 +15,7 @@
       <FieldRef ID="{d2311440-1ed6-46ea-b46d-daa643dc3886}" Name="PercentComplete" />
       <FieldRef ID="{7662cd2c-f069-4dba-9e35-082cf976e170}" Name="Description" />
       <FieldRef ID="{35752185-6016-4595-A972-7959148EA585}" Name="ChangeProjectStatus" Required="TRUE"/>
+      <FieldRef ID="{F80CA01D-850D-47C4-83C2-A54EA6D6B1B9}" ReadOnly="TRUE" Name="ChangeProjectTasksLink" />
     </FieldRefs>
   </ContentType>
 </Elements>

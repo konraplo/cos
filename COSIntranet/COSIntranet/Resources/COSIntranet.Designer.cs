@@ -142,6 +142,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tasks.
+        /// </summary>
+        internal static string ChangeColProjectTasksLink {
+            get {
+                return ResourceManager.GetString("ChangeColProjectTasksLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Responsible Department.
         /// </summary>
         internal static string ChangeColResponsibleDepartment {
@@ -2244,7 +2253,7 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to  .
         /// </summary>
         internal static string ChangeLibDescriptionStoreOpenings {
             get {

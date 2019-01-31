@@ -98,6 +98,8 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
             CommonUtilities.AttachContentTypeToList(projectsList, projectContentType, true, false);
 
             SPContentType projectTaskContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.ProjectTask];
+            projectTaskContentType.FieldLinks[Fields.ChangeDeparmentmanager].ReadOnly = true;
+
             CommonUtilities.AddFieldToContentType(web, projectTaskContentType, storeOpeningLookup, true, false, "$Resources:COSIntranet,ChangeColParentProject");
             CommonUtilities.AddFieldToContentType(web, projectTaskContentType, storeLookup, false, true, string.Empty);
             CommonUtilities.AddFieldToContentType(web, projectTaskContentType, deptLookup, false, false, "$Resources:COSIntranet,ChangeColResponsibleDepartment");

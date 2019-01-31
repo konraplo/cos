@@ -20,5 +20,15 @@
         /// GUID of ChangeTaskDuration
         /// </summary>
         public static Guid ChangeTaskDurationId = new Guid("{F3C19AC2-4AE7-45BB-940B-0AFC1CB1A05C}");
+
+        /// <summary>
+        /// GUID of ChangeDeparmentmanager
+        /// </summary>
+        public static Guid ChangeDeparmentmanager = new Guid("{320DC330-92FE-480B-967E-0B205A94AA7D}");
+
+        /// <summary>
+        /// GUID of ChangeProjectTasksLink
+        /// </summary>
+        public static Guid ChangeProjectTasksLink = new Guid("{F80CA01D-850D-47C4-83C2-A54EA6D6B1B9}");
     }
 }

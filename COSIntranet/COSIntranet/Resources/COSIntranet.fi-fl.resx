@@ -900,4 +900,7 @@
   <data name="ChangeColStoreOpening" xml:space="preserve">
     <value>Store opening</value>
   </data>
+  <data name="ChangeColProjectTasksLink" xml:space="preserve">
+    <value>Tasks</value>
+  </data>
 </root>
