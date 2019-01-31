@@ -30,18 +30,27 @@
         public override void ItemUpdated(SPItemEventProperties properties)
         {
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "ItemUpdated");
+            UpdateProjectTaskInforamtions(properties.ListItem);
         }
 
         private void UpdateProjectTaskInforamtions(SPListItem item)
         {
             if (item.ContentType.Parent.Id == ContentTypeIds.ProjectTask)
             {
-                Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("update project store/country for id:{0}, title:{1}", item.ID, item.Title));
+                Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("update project store/country/dept mgr for id:{0}, title:{1}", item.ID, item.Title));
                 EventFiringEnabled = false;
                 SPFieldLookupValue project = new SPFieldLookupValue(Convert.ToString(item[Fields.StoreOpening]));
                 SPListItem projectItem = item.ParentList.GetItemById(project.LookupId);
                 SPFieldLookupValue store = new SPFieldLookupValue(Convert.ToString(projectItem[Fields.Store]));
                 string storeCountry = ProjectUtilities.GetStoreCountry(item.Web, store.LookupId);
+                SPFieldLookupValue dept = new SPFieldLookupValue(Convert.ToString(projectItem[Fields.Department]));
+                if (dept.LookupId > 0)
+                {
+                    string deptUrl = SPUrlUtility.CombineUrl(item.Web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.Departments);
+                    SPList deptList = item.Web.GetList(deptUrl);
+                    SPListItem deptItem = deptList.GetItemById(dept.LookupId);
+                    item[Fields.ChangeDeparmentmanager] = deptItem[Fields.ChangeDeparmentmanager]; 
+                }
                 item[Fields.Country] = storeCountry;
                 item[Fields.Store] = store;
                 item.Update();
