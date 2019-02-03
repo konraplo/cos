@@ -2,7 +2,7 @@
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <!-- Parent ContentType: Item (0x01) -->
   <ContentType ID="0x01000FE9FB11C1CD4CBDBD91C777F61D0FC7"
-               Name="$Resources:COSIntranet,ChangeCTProject"
+               Name="$Resources:COSIntranet,ChangeCTStoreOpeningProject"
                Group="CHANGE Content Types"
                Description="$Resources:COSIntranet,ChangeCTProjectDescr"
                Inherits="TRUE"

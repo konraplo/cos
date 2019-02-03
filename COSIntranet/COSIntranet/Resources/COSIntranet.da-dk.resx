@@ -907,4 +907,7 @@
   <data name="ChangeColProjectTasksLink" xml:space="preserve">
     <value>Tasks</value>
   </data>
+  <data name="ChangeCTStoreOpeningProject" xml:space="preserve">
+    <value>StoreOpeningProject</value>
+  </data>
 </root>

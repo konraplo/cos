@@ -41,6 +41,12 @@ namespace Change.Intranet.EventReceivers.PreventFolderDeleteEventReceiver
         /// <param name="properties"></param>
         public override void ItemUpdating(SPItemEventProperties properties)
         {
+            if (properties.ListItem == null)
+            {
+                base.ItemUpdating(properties);
+                return;
+            }
+
             Logger.WriteLog(Logger.Category.Medium, "PreventFolderDeleteEventReceiver - ItemUpdating", string.Format("ListItem.ID:{0}, List:{1}", properties.ListItem.ID, properties.List.Title));
             if (!properties.Web.UserIsSiteAdmin)
             {

@@ -358,6 +358,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to StoreOpeningProject.
+        /// </summary>
+        internal static string ChangeCTStoreOpeningProject {
+            get {
+                return ResourceManager.GetString("ChangeCTStoreOpeningProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Follow up hour and salary spendings
         ///.
         /// </summary>
