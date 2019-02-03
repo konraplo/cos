@@ -66,7 +66,7 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
             Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", "Add lookups");
 
             SPFieldLookup deptLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.Department, "$Resources:COSIntranet,ChangeColDeparment", Fields.Title, deptList, false, false);
-            SPFieldLookup storeOpeningLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.StoreOpening, "$Resources:COSIntranet,ChangeColStoreOpening", Fields.Title, tasksList, false, false);
+            SPFieldLookup storeOpeningLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.StoreOpening, "$Resources:COSIntranet,ChangeColStoreOpening", Fields.Title, projectsList, false, false);
             SPFieldLookup storeLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.Store, "$Resources:COSIntranet,ChangeColStore", Fields.StoreId, storetList, false, false);
             SPFieldLookup countryLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.Country, "$Resources:COSIntranet,ChangeColCountry", Fields.Title, countriesList, false, false);
 

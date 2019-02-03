@@ -57,7 +57,7 @@
                 List<Department> departments = new List<Department>();
                 foreach (SPListItem deptIem in deptList.GetItems(new SPQuery()))
                 {
-                    departments.Add(new Department { Id = deptIem.ID, Title = deptIem.Title });
+                    departments.Add(new Department { Id = deptIem.ID, Title = deptIem.Title, Manager = Convert.ToString(deptIem[Fields.ChangeDeparmentmanager])  });
                 }
 
                 List<string> formatedUpdateBatchCommands = new List<string>();
@@ -89,6 +89,10 @@
                            string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
                            Fields.Department,
                            string.Format("{0};#{1}", responsibleDepartment.Id, responsibleDepartment.Title)));
+                        batchItemSetVar.Append(
+                          string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                          tasksList.Fields[Fields.ChangeDeparmentmanager].InternalName,
+                          responsibleDepartment.Manager));
                     }
 
                     //batchItemSetVar.Append(

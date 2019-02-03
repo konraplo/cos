@@ -28,5 +28,17 @@
             get;
             set;
         }
+
+        /// <summary>
+        /// Gets or sets the Manager.
+        /// </summary>
+        /// <value>
+        /// The Manager.
+        /// </value>
+        public string Manager
+        {
+            get;
+            set;
+        }
     }
 }
