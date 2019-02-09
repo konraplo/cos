@@ -947,4 +947,7 @@
   <data name="ChangeAgreementType" xml:space="preserve">
     <value>Agreement type</value>
   </data>
+  <data name="ChangeColStoremanager" xml:space="preserve">
+    <value>Store manager</value>
+  </data>
 </root>

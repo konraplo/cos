@@ -12,6 +12,7 @@
       <FieldRef ID="{6CC3F80F-3CBD-47C1-ABDF-E9F87871863D}" Required="FALSE" Name="Storeid" />
       <FieldRef ID="{fc2e188e-ba91-48c9-9dd3-16431afddd50}" Required="FALSE" Name="WorkAddress" />
       <FieldRef ID="{6ca7bd7f-b490-402e-af1b-2813cf087b1e}" Required="FALSE" Name="WorkCity" />
+      <FieldRef ID="{71F7422B-335A-4ADC-B63A-68E8A27A546A}" Required="FALSE" Name="Storemanager" />
     </FieldRefs>
   </ContentType>
 </Elements>

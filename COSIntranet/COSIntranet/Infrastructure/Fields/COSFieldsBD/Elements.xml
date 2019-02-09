@@ -43,7 +43,21 @@
            Type="Text"
            DisplayName="$Resources:COSIntranet,ChangeColStoreid"
            Group="CHANGE Fields"/>
+
+  <Field ID="{71F7422B-335A-4ADC-B63A-68E8A27A546A}"
+           StaticName="Storemanager"
+           Name="Storemanager"
+           Type="User"
+           DisplayName="$Resources:COSIntranet,ChangeColStoremanager"
+           List="UserInfo"
+           Required="FALSE"
+           ShowField="ImnName"
+           UserSelectionMode="PeopleAndGroups"
+           UserSelectionScope="0"
+           Group="CHANGE Fields"/>
+
   
+
   <!-- Project -->
   <Field ID="{35752185-6016-4595-A972-7959148EA585}"
          StaticName="ChangeProjectStatus"
