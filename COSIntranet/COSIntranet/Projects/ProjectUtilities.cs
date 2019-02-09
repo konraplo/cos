@@ -12,6 +12,8 @@
     /// </summary>
     public static class ProjectUtilities
     {
+        public static ProjectTask GrandOpening = new ProjectTask { Title = "Grand opening", Duration = 0, Responsible = DepartmentUtilities.StoreManager };
+
         /// <summary>
         /// Create project opening tasks List
         /// </summary>
@@ -43,6 +45,21 @@
             SPListItem storeItem = storestList.GetItemById(storeItemId);
             SPFieldLookupValue country = new SPFieldLookupValue(Convert.ToString(storeItem[Fields.Country]));
             return string.Format("{0};#{1}", country.LookupId, country.LookupValue);
+        }
+
+        /// <summary>
+        /// Get store country lookup value
+        /// </summary>
+        /// <param name="web"></param>
+        /// <param name="storeItemId"></param>
+        /// <returns></returns>
+        public static string GetStoreManager(SPWeb web, int storeItemId)
+        {
+            string storesUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.Stores);
+            SPList storestList = web.GetList(storesUrl);
+            SPListItem storeItem = storestList.GetItemById(storeItemId);
+            SPFieldLookupValue country = new SPFieldLookupValue();
+            return Convert.ToString(storeItem[Fields.Country]);
         }
 
         /// <summary>

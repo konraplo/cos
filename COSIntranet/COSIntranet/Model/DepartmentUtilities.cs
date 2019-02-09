@@ -14,5 +14,10 @@
         /// Storedesign
         /// </summary>
         public const string Storedesign = "Storedesign";
+
+        /// <summary>
+        /// Store manager
+        /// </summary>
+        public const string StoreManager = "Store manager";
     }
 }

@@ -59,19 +59,19 @@
                     Logger.WriteLog(Logger.Category.Information, typeof(CommonUtilities).FullName, "Helper.CreateLookupField: Parameter 'web' is Null or empty.");
                     throw new ArgumentNullException("web");
                 }
-                if (String.IsNullOrEmpty(groupName))
+                if (string.IsNullOrEmpty(groupName))
                 {
                     Logger.WriteLog(Logger.Category.Information, typeof(CommonUtilities).FullName,"Helper.CreateLookupField:Parameter 'groupName' is Null or empty.");
                 }
-                if (String.IsNullOrEmpty(fieldName))
+                if (string.IsNullOrEmpty(fieldName))
                 {
                     Logger.WriteLog(Logger.Category.Information, typeof(CommonUtilities).FullName,"Helper.CreateLookupField:Parameter 'fieldName' is Null or empty.");
                     throw new ArgumentNullException("fieldName");
                 }
-                if (String.IsNullOrEmpty(lookupFieldDisplayName))
+                if (string.IsNullOrEmpty(lookupFieldDisplayName))
                 {
-                    Logger.WriteLog(Logger.Category.Information, typeof(CommonUtilities).FullName,String.Format("Helper.CreateLookupField:Parameter {0} is Null or empty.", "lookupFieldName"));
-                    throw new ArgumentNullException("lookupFieldName", String.Format("Parameter {0} is Null or empty.", "lookupFieldName"));
+                    Logger.WriteLog(Logger.Category.Information, typeof(CommonUtilities).FullName, string.Format("Helper.CreateLookupField:Parameter {0} is Null or empty.", "lookupFieldName"));
+                    throw new ArgumentNullException("lookupFieldName", string.Format("Parameter {0} is Null or empty.", "lookupFieldName"));
                 }
                 if (lookupList == null)
                 {
@@ -99,7 +99,7 @@
                         lookUp.LookupField = lookupFieldName;//rootWeb.Fields[SPBuiltInFieldId.Title].Title;
                         lookUp.Update(true);
 
-                        Logger.WriteLog(Logger.Category.Information, typeof(CommonUtilities).FullName,String.Format("Lookupfield {0} created and updated.lookUp.LookupField = {1}", lookUp.Title, lookUp.LookupField));
+                        Logger.WriteLog(Logger.Category.Information, typeof(CommonUtilities).FullName, string.Format("Lookupfield {0} created and updated.lookUp.LookupField = {1}", lookUp.Title, lookUp.LookupField));
                     }
                 }
 
@@ -107,7 +107,7 @@
             }
             catch (Exception ex)
             {
-                Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName,String.Format("Helper.CreateLookupField: Error during lookupfieldcreation:{0}", ex.Message));
+                Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName, string.Format("Helper.CreateLookupField: Error during lookupfieldcreation:{0}", ex.Message));
                 throw ex;
 
             }
@@ -193,7 +193,7 @@
 
             if (newContentTypeOrderArray[0] == null)
             {
-                string msg = String.Format("Helper.SetContentTypeAsDefault:wrong contentype guid:{0}.", pCtsID);
+                string msg = string.Format("Helper.SetContentTypeAsDefault:wrong contentype guid:{0}.", pCtsID);
                 Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName, msg);
 
                 throw new ArgumentException(msg, "pCtsID");
@@ -363,7 +363,7 @@
         }
 
         /// <summary>
-        /// 
+        /// Add list items to list using batch query
         /// </summary>
         /// <param name="web"></param>
         /// <param name="formatedAddBatchCommands"></param>
@@ -372,7 +372,7 @@
         {
             StringBuilder methodBuilder = new StringBuilder();
 
-            string batch = String.Empty;
+            string batch = string.Empty;
             string batchFormat = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><ows:Batch OnError=\"Return\">{0}</ows:Batch>";
 
             foreach (string item in formatedAddBatchCommands)
@@ -382,12 +382,90 @@
 
             // put the pieces together.
             //string method = string.Format(methodFormat, itemId, listId, value);
-            batch = String.Format(batchFormat, methodBuilder);
+            batch = string.Format(batchFormat, methodBuilder);
 
             // process batch commands.
             string batchReturn = web.ProcessBatchData(batch);
 
             return batchReturn;
+        }
+
+        /// <summary>
+        /// Add days to date based on working days
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="days"></param>
+        /// <returns></returns>
+        public static DateTime AddBusinessDays(DateTime date, int days)
+        {
+            if (days < 0)
+            {
+                throw new ArgumentException("days cannot be negative", "days");
+            }
+
+            if (days == 0) return date;
+
+            if (date.DayOfWeek == DayOfWeek.Saturday)
+            {
+                date = date.AddDays(2);
+                days -= 1;
+            }
+            else if (date.DayOfWeek == DayOfWeek.Sunday)
+            {
+                date = date.AddDays(1);
+                days -= 1;
+            }
+
+            date = date.AddDays(days / 5 * 7);
+            int extraDays = days % 5;
+
+            if ((int)date.DayOfWeek + extraDays > 5)
+            {
+                extraDays += 2;
+            }
+
+            return date.AddDays(extraDays);
+
+        }
+
+        /// <summary>
+        /// Get working days in time period
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public static int GetBusinessDays(DateTime start, DateTime end)
+        {
+            if (start.DayOfWeek == DayOfWeek.Saturday)
+            {
+                start = start.AddDays(2);
+            }
+            else if (start.DayOfWeek == DayOfWeek.Sunday)
+            {
+                start = start.AddDays(1);
+            }
+
+            if (end.DayOfWeek == DayOfWeek.Saturday)
+            {
+                end = end.AddDays(-1);
+            }
+            else if (end.DayOfWeek == DayOfWeek.Sunday)
+            {
+                end = end.AddDays(-2);
+            }
+
+            int diff = (int)end.Subtract(start).TotalDays;
+
+            int result = diff / 7 * 5 + diff % 7;
+
+            if (end.DayOfWeek < start.DayOfWeek)
+            {
+                return result - 2;
+            }
+            else
+            {
+                return result;
+            }
         }
     }
 }
