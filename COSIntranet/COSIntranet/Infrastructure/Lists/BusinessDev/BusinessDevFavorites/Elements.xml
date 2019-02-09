@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <ListInstance Title="$Resources:COSIntranet,ChangeLibTitleBusiDevFavorites" 
+                OnQuickLaunch="FALSE" 
+                TemplateType="170" 
+                FeatureId="192efa95-e50c-475e-87ab-361cede5dd7f" 
+                Url="Lists/BusinessDevFavorites" 
+                Description="$Resources:COSIntranet,ChangeLibDescriptionBusiDevFavorites"></ListInstance>
+</Elements>

@@ -2140,6 +2140,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Business development promoted links.
+        /// </summary>
+        internal static string ChangeLibDescriptionBusiDevFavorites {
+            get {
+                return ResourceManager.GetString("ChangeLibDescriptionBusiDevFavorites", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change academy and E-Learning
         ///.
         /// </summary>
@@ -2294,6 +2303,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeLibDescriptionVisualMerchandise {
             get {
                 return ResourceManager.GetString("ChangeLibDescriptionVisualMerchandise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Business development links.
+        /// </summary>
+        internal static string ChangeLibTitleBusiDevFavorites {
+            get {
+                return ResourceManager.GetString("ChangeLibTitleBusiDevFavorites", resourceCulture);
             }
         }
         

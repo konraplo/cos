@@ -915,4 +915,10 @@
   <data name="ChangeColStoremanager" xml:space="preserve">
     <value>Store manager</value>
   </data>
+  <data name="ChangeLibDescriptionBusiDevFavorites" xml:space="preserve">
+    <value>Business development promoted links</value>
+  </data>
+  <data name="ChangeLibTitleBusiDevFavorites" xml:space="preserve">
+    <value>Business development links</value>
+  </data>
 </root>
