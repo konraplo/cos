@@ -9,12 +9,14 @@
                Version="0">
     <FieldRefs>
       <FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" DisplayName="$Resources:COSIntranet,ChangeProjectTitle" Required="TRUE" />
-      <FieldRef ID="{64cd368d-2f95-4bfc-a1f9-8d4324ecb007}" Name="StartDate" Required="TRUE" />
+      <FieldRef ID="{64cd368d-2f95-4bfc-a1f9-8d4324ecb007}" Name="StartDate" Required="FALSE" />
       <FieldRef ID="{cd21b4c2-6841-4f9e-a23a-738a65f99889}" Name="DueDate" DisplayName="$Resources:COSIntranet,ChangeOpeningDate" Required="TRUE" />
       <FieldRef ID="{53101f38-dd2e-458c-b245-0c236cc13d1a}" Name="AssignedTo" DisplayName="$Resources:COSIntranet,ChangeProjectCoordinator" />
       <FieldRef ID="{d2311440-1ed6-46ea-b46d-daa643dc3886}" Name="PercentComplete" />
-      <FieldRef ID="{7662cd2c-f069-4dba-9e35-082cf976e170}" Name="Description" />
       <FieldRef ID="{35752185-6016-4595-A972-7959148EA585}" Name="ChangeProjectStatus" Required="TRUE"/>
+      <FieldRef ID="{76DA4052-5813-4B9C-8F4F-7940B92260DC}" Name="ChangeProjectCategory" Required="TRUE"/>
+      <FieldRef ID="{E8B9C796-0E87-49E2-91EB-D7B39B74EC1C}" Name="ChangeAgreementType" Required="TRUE"/>
+      <FieldRef ID="{7662cd2c-f069-4dba-9e35-082cf976e170}" Name="Description" />
       <FieldRef ID="{F80CA01D-850D-47C4-83C2-A54EA6D6B1B9}" ReadOnly="TRUE" Name="ChangeProjectTasksLink" />
     </FieldRefs>
   </ContentType>

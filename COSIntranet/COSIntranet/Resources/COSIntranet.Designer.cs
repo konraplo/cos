@@ -61,6 +61,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Agreement type.
+        /// </summary>
+        internal static string ChangeAgreementType {
+            get {
+                return ResourceManager.GetString("ChangeAgreementType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Country.
         /// </summary>
         internal static string ChangeColCountry {
@@ -2438,6 +2447,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeOpeningDate {
             get {
                 return ResourceManager.GetString("ChangeOpeningDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Category.
+        /// </summary>
+        internal static string ChangeProjectCategory {
+            get {
+                return ResourceManager.GetString("ChangeProjectCategory", resourceCulture);
             }
         }
         

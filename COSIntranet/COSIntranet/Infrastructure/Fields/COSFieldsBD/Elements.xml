@@ -51,17 +51,50 @@
          DisplayName="$Resources:COSIntranet,ChangeProjectStatus"
          Type="Choice"
          Group="CHANGE Fields">
+    <Default>Location Approved</Default>
     <CHOICES>
-      <CHOICE>Location Approved</CHOICE>
-      <CHOICE>P&amp;L approved by CEO</CHOICE>
       <CHOICE>Contract signed</CHOICE>
+      <CHOICE>Drawings approved by CEO</CHOICE>
       <CHOICE>HQ informed</CHOICE>
-      <CHOICE>Handover to retail</CHOICE>
-      <CHOICE>Under invetigation</CHOICE>
+      <CHOICE>Location Approved</CHOICE>
+      <CHOICE>Location took over</CHOICE>
+      <CHOICE>Orders placed</CHOICE>
+      <CHOICE>P&amp;L approved by CEO</CHOICE>
+      <CHOICE>Shipment to store</CHOICE>
+      <CHOICE>Status</CHOICE>
       <CHOICE>Project finished</CHOICE>
     </CHOICES>
   </Field>
 
+  <Field ID="{76DA4052-5813-4B9C-8F4F-7940B92260DC}"
+         StaticName="ChangeProjectCategory"
+         Name="ChangeProjectCategory"
+         DisplayName="$Resources:COSIntranet,ChangeProjectCategory"
+         Type="Choice"
+         Group="CHANGE Fields">
+    <Default>Opening</Default>
+    <CHOICES>
+      <CHOICE>Closing</CHOICE>
+      <CHOICE>Opening</CHOICE>
+      <CHOICE>Relocation</CHOICE>
+      <CHOICE>Renovation</CHOICE>     
+    </CHOICES>
+  </Field>
+
+  <Field ID="{E8B9C796-0E87-49E2-91EB-D7B39B74EC1C}"
+         StaticName="ChangeAgreementType"
+         Name="ChangeAgreementType"
+         DisplayName="$Resources:COSIntranet,ChangeAgreementType"
+         Type="Choice"
+         Group="CHANGE Fields">
+    <Default>Franchise</Default>
+    <CHOICES>
+      <CHOICE>Franchise</CHOICE>
+      <CHOICE>Own</CHOICE>
+    </CHOICES>
+  </Field>
+  
+  <!-- Project task-->
   <Field ID="{F3C19AC2-4AE7-45BB-940B-0AFC1CB1A05C}" 
          Name="ChangeTaskDuration" 
          Type="Number" 

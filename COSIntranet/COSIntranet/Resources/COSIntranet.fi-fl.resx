@@ -730,10 +730,10 @@
     <value>Opening Date</value>
   </data>
   <data name="ChangeProjectCoordinator" xml:space="preserve">
-    <value>Project Coordinator</value>
+    <value>Project coordinator</value>
   </data>
   <data name="ChangeProjectStatus" xml:space="preserve">
-    <value>Project Status</value>
+    <value>Project status</value>
   </data>
   <data name="ChangeProjectTitle" xml:space="preserve">
     <value>Project name</value>
@@ -905,5 +905,11 @@
   </data>
   <data name="ChangeCTStoreOpeningProject" xml:space="preserve">
     <value>StoreOpeningProject</value>
+  </data>
+  <data name="ChangeProjectCategory" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="ChangeAgreementType" xml:space="preserve">
+    <value>Agreement type</value>
   </data>
 </root>

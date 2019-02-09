@@ -913,4 +913,10 @@
   <data name="ChangeCTStoreOpeningProject" xml:space="preserve">
     <value>StoreOpeningProject</value>
   </data>
+  <data name="ChangeProjectCategory" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="ChangeAgreementType" xml:space="preserve">
+    <value>Agreement type</value>
+  </data>
 </root>
