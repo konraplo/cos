@@ -79,6 +79,7 @@
     <Compile Include="Features\ChangeListsForHQ\ChangeListsForHQ.EventReceiver.cs">
       <DependentUpon>ChangeListsForHQ.feature</DependentUpon>
     </Compile>
+    <Compile Include="Model\Country.cs" />
     <Compile Include="Model\Department.cs" />
     <Compile Include="Model\DepartmentUtilities.cs" />
     <Compile Include="Model\ProjectTask.cs" />

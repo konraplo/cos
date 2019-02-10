@@ -17,7 +17,7 @@
       <FieldRef ID="{76DA4052-5813-4B9C-8F4F-7940B92260DC}" Name="ChangeProjectCategory" Required="TRUE"/>
       <FieldRef ID="{E8B9C796-0E87-49E2-91EB-D7B39B74EC1C}" Name="ChangeAgreementType" Required="TRUE"/>
       <FieldRef ID="{7662cd2c-f069-4dba-9e35-082cf976e170}" Name="Description" />
-      <FieldRef ID="{F80CA01D-850D-47C4-83C2-A54EA6D6B1B9}" ReadOnly="TRUE" Name="ChangeProjectTasksLink" />
+      <FieldRef ID="{56587AA8-12EB-43D0-B4DA-83FB0B92CF0B}" ReadOnly="TRUE" Name="ChangeTasksLink" />
     </FieldRefs>
   </ContentType>
 </Elements>

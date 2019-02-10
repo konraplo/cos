@@ -48,6 +48,7 @@
                 // create project plan
                 Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("CreateProjectTasks for id:{0}, title:{1}", item.ID, item.Title));
                 DateTime grandOpening = Convert.ToDateTime(item[SPBuiltInFieldId.TaskDueDate]);
+                string storeMgr = ProjectUtilities.GetStoreManager(item.Web, store.LookupId);
 
                 string tasksUrl = SPUrlUtility.CombineUrl(item.Web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.ProjectTasks);
                 SPList tasksList = item.Web.GetList(tasksUrl);
@@ -70,11 +71,26 @@
                 gradOpeningTask[SPBuiltInFieldId.TaskDueDate] = grandOpening;
                 gradOpeningTask[SPBuiltInFieldId.StartDate] = grandOpening;
                 gradOpeningTask[SPBuiltInFieldId.Title] = ProjectUtilities.GrandOpening.Title;
+                gradOpeningTask[SPBuiltInFieldId.AssignedTo] = storeMgr;
                 gradOpeningTask[Fields.StoreOpening] = string.Format("{0};#{1}", item.ID, item.Title);
                 gradOpeningTask[Fields.Store] = string.Format("{0};#{1}", store.LookupId, store.LookupValue);
                 gradOpeningTask[Fields.ChangeTaskDurationId] = ProjectUtilities.GrandOpening.Duration;
                 gradOpeningTask[Fields.Country] = storeCountry;
                 gradOpeningTask.Update();
+
+                // add Ensure exchange money task
+                SPListItem ensureExchangeMoneyTask = tasksList.AddItem();
+                ensureExchangeMoneyTask[SPBuiltInFieldId.ContentTypeId] = foundedProjectTask.Id;
+                DateTime dueDate = grandOpening.AddDays(-ProjectUtilities.EnsureExchangeMoney.TimeBeforeGrandOpening);
+                ensureExchangeMoneyTask[SPBuiltInFieldId.TaskDueDate] = dueDate;
+                ensureExchangeMoneyTask[SPBuiltInFieldId.StartDate] = dueDate.AddDays(-ProjectUtilities.EnsureExchangeMoney.Duration);
+                ensureExchangeMoneyTask[SPBuiltInFieldId.Title] = ProjectUtilities.EnsureExchangeMoney.Title;
+                ensureExchangeMoneyTask[SPBuiltInFieldId.AssignedTo] = storeMgr;
+                ensureExchangeMoneyTask[Fields.StoreOpening] = string.Format("{0};#{1}", item.ID, item.Title);
+                ensureExchangeMoneyTask[Fields.Store] = string.Format("{0};#{1}", store.LookupId, store.LookupValue);
+                ensureExchangeMoneyTask[Fields.ChangeTaskDurationId] = ProjectUtilities.EnsureExchangeMoney.Duration;
+                ensureExchangeMoneyTask[Fields.Country] = storeCountry;
+                ensureExchangeMoneyTask.Update();
 
                 //foreach (ProjectTask task in ProjectUtilities.CreateStoreOpeningTasks())
                 //{

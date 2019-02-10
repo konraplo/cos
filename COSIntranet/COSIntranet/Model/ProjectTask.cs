@@ -52,5 +52,17 @@
             get;
             set;
         }
+
+        /// <summary>
+        /// Gets or sets the TimeBeforeGrandOpening.
+        /// </summary>
+        /// <value>
+        /// Time ind Days
+        /// </value>
+        public int TimeBeforeGrandOpening
+        {
+            get;
+            set;
+        }
     }
 }

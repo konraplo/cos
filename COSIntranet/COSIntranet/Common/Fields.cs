@@ -27,8 +27,13 @@
         public static Guid ChangeDeparmentmanager = new Guid("{320DC330-92FE-480B-967E-0B205A94AA7D}");
 
         /// <summary>
-        /// GUID of ChangeProjectTasksLink
+        /// GUID of Storemanager
         /// </summary>
-        public static Guid ChangeProjectTasksLink = new Guid("{F80CA01D-850D-47C4-83C2-A54EA6D6B1B9}");
+        public static Guid ChangeStoremanager = new Guid("{71F7422B-335A-4ADC-B63A-68E8A27A546A}");
+
+        /// <summary>
+        /// GUID of ChangeTasksLink
+        /// </summary>
+        public static Guid ChangeProjectTasksLink = new Guid("{56587AA8-12EB-43D0-B4DA-83FB0B92CF0B}");
     }
 }

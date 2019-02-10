@@ -14,9 +14,9 @@
            UserSelectionScope="0"
            Group="CHANGE Fields"/>
 
-  <Field ID="{F80CA01D-850D-47C4-83C2-A54EA6D6B1B9}"
-           StaticName="ChangeProjectTasksLink"
-           Name="ChangeProjectTasksLink"
+  <Field ID="{56587AA8-12EB-43D0-B4DA-83FB0B92CF0B}"
+           StaticName="ChangeTasksLink"
+           Name="ChangeTasksLink"
            Type="URL"
            DisplayName="$Resources:COSIntranet,ChangeColProjectTasksLink"
            Required="FALSE"

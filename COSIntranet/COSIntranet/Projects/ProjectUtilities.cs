@@ -13,6 +13,7 @@
     public static class ProjectUtilities
     {
         public static ProjectTask GrandOpening = new ProjectTask { Title = "Grand opening", Duration = 0, Responsible = DepartmentUtilities.StoreManager };
+        public static ProjectTask EnsureExchangeMoney = new ProjectTask { Title = "Ensure exchange money", Duration = 1, Responsible = DepartmentUtilities.RegionalManager, TimeBeforeGrandOpening = 1};
 
         /// <summary>
         /// Create project opening tasks List
@@ -58,8 +59,7 @@
             string storesUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.Stores);
             SPList storestList = web.GetList(storesUrl);
             SPListItem storeItem = storestList.GetItemById(storeItemId);
-            SPFieldLookupValue country = new SPFieldLookupValue();
-            return Convert.ToString(storeItem[Fields.Country]);
+            return Convert.ToString(storeItem[Fields.ChangeStoremanager]);
         }
 
         /// <summary>
