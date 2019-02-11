@@ -41,7 +41,7 @@
                 // update project country
                 Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("update project store for id:{0}, title:{1}", item.ID, item.Title));
                 SPFieldLookupValue store = new SPFieldLookupValue(Convert.ToString(item[Fields.Store]));
-                string storeCountry = ProjectUtilities.GetStoreCountry(item.Web, store.LookupId);
+                SPFieldLookupValue storeCountry = new SPFieldLookupValue(ProjectUtilities.GetStoreCountry(item.Web, store.LookupId));
                 item[Fields.Country] = storeCountry;
                 item.Update();
 
@@ -62,36 +62,92 @@
                     departments.Add(new Department { Id = deptIem.ID, Title = deptIem.Title, Manager = Convert.ToString(deptIem[Fields.ChangeDeparmentmanager])  });
                 }
 
+                string countryUrl = SPUrlUtility.CombineUrl(item.Web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.Countries);
+                SPList countryList = item.Web.GetList(countryUrl);
+                List<Country> regions = new List<Country>();
+                foreach (SPListItem regionIem in countryList.GetItems(new SPQuery()))
+                {
+                    regions.Add(new Country { Id = regionIem.ID, Title = regionIem.Title, Manager = Convert.ToString(regionIem[Fields.ChangeCountrymanager]) });
+                }
+
                 List<string> formatedUpdateBatchCommands = new List<string>();
                 int counter = 1;
 
-                // add grand opening task
-                SPListItem gradOpeningTask = tasksList.AddItem();
-                gradOpeningTask[SPBuiltInFieldId.ContentTypeId] = foundedProjectTask.Id;
-                gradOpeningTask[SPBuiltInFieldId.TaskDueDate] = grandOpening;
-                gradOpeningTask[SPBuiltInFieldId.StartDate] = grandOpening;
-                gradOpeningTask[SPBuiltInFieldId.Title] = ProjectUtilities.GrandOpening.Title;
-                gradOpeningTask[SPBuiltInFieldId.AssignedTo] = storeMgr;
-                gradOpeningTask[Fields.StoreOpening] = string.Format("{0};#{1}", item.ID, item.Title);
-                gradOpeningTask[Fields.Store] = string.Format("{0};#{1}", store.LookupId, store.LookupValue);
-                gradOpeningTask[Fields.ChangeTaskDurationId] = ProjectUtilities.GrandOpening.Duration;
-                gradOpeningTask[Fields.Country] = storeCountry;
-                gradOpeningTask.Update();
+                foreach (ProjectTask task in ProjectUtilities.CreateStoreOpeningTasks().OrderByDescending(x => x.TimeBeforeGrandOpening))
+                {
+                    DateTime dueDate = grandOpening.AddDays(-task.TimeBeforeGrandOpening);
+                    DateTime startDate = dueDate.AddDays(-task.Duration);
 
-                // add Ensure exchange money task
-                SPListItem ensureExchangeMoneyTask = tasksList.AddItem();
-                ensureExchangeMoneyTask[SPBuiltInFieldId.ContentTypeId] = foundedProjectTask.Id;
-                DateTime dueDate = grandOpening.AddDays(-ProjectUtilities.EnsureExchangeMoney.TimeBeforeGrandOpening);
-                ensureExchangeMoneyTask[SPBuiltInFieldId.TaskDueDate] = dueDate;
-                ensureExchangeMoneyTask[SPBuiltInFieldId.StartDate] = dueDate.AddDays(-ProjectUtilities.EnsureExchangeMoney.Duration);
-                ensureExchangeMoneyTask[SPBuiltInFieldId.Title] = ProjectUtilities.EnsureExchangeMoney.Title;
-                ensureExchangeMoneyTask[SPBuiltInFieldId.AssignedTo] = storeMgr;
-                ensureExchangeMoneyTask[Fields.StoreOpening] = string.Format("{0};#{1}", item.ID, item.Title);
-                ensureExchangeMoneyTask[Fields.Store] = string.Format("{0};#{1}", store.LookupId, store.LookupValue);
-                ensureExchangeMoneyTask[Fields.ChangeTaskDurationId] = ProjectUtilities.EnsureExchangeMoney.Duration;
-                ensureExchangeMoneyTask[Fields.Country] = storeCountry;
-                ensureExchangeMoneyTask.Update();
+                    StringBuilder batchItemSetVar = new StringBuilder();
+                    batchItemSetVar.Append(string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                                                        item.ParentList.Fields[SPBuiltInFieldId.Title].InternalName,
+                                                        task.Title));
+                    batchItemSetVar.Append(
+                            string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                            item.ParentList.Fields[SPBuiltInFieldId.ContentTypeId].InternalName,
+                            Convert.ToString(foundedProjectTask.Id)));
+                    batchItemSetVar.Append(
+                           string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                           Fields.StoreOpening,
+                           string.Format("{0};#{1}", item.ID, item.Title)));
+                    batchItemSetVar.Append(
+                           string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                           Fields.Store,
+                           string.Format("{0};#{1}", store.LookupId, store.LookupValue)));
 
+                    if (!string.IsNullOrEmpty(task.ResponsibleDepartment))
+                    {
+                        Department responsibleDepartment = departments.FirstOrDefault(x => x.Title.Equals(task.ResponsibleDepartment));
+                        batchItemSetVar.Append(
+                           string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                           Fields.Department,
+                           string.Format("{0};#{1}", responsibleDepartment.Id, responsibleDepartment.Title)));
+                        batchItemSetVar.Append(
+                          string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                          tasksList.Fields[Fields.ChangeDeparmentmanager].InternalName,
+                          responsibleDepartment.Manager));
+                    }
+                                        
+                    batchItemSetVar.Append(
+                           string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                           Fields.Country,
+                           storeCountry));
+                    batchItemSetVar.Append(
+                           string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                           tasksList.Fields[Fields.ChangeTaskDurationId].InternalName,
+                           task.Duration));
+                    string responsible = string.Empty;
+
+                    if (task.Responsible.Equals(DepartmentUtilities.StoreManager))
+                    {
+                        responsible = storeMgr;
+                    }
+                    else if (task.Responsible.Equals(DepartmentUtilities.RegionalManager))
+                    {
+                        responsible = regions.FirstOrDefault(x => x.Id.Equals(storeCountry.LookupId)).Manager;
+                    }
+
+                    if (!string.IsNullOrEmpty(responsible))
+                    {
+                        batchItemSetVar.Append(
+                        string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                        tasksList.Fields[SPBuiltInFieldId.AssignedTo].InternalName,
+                        responsible));
+                    }
+
+                    batchItemSetVar.Append(
+                      string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                      tasksList.Fields[SPBuiltInFieldId.TaskDueDate].InternalName,
+                      SPUtility.CreateISO8601DateTimeFromSystemDateTime(dueDate)));
+
+                    batchItemSetVar.Append(
+                      string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                      tasksList.Fields[SPBuiltInFieldId.StartDate].InternalName,
+                      SPUtility.CreateISO8601DateTimeFromSystemDateTime(startDate)));
+                    formatedUpdateBatchCommands.Add(string.Format(CommonUtilities.BATCH_ADD_ITEM_CMD, counter, tasksList.ID.ToString(), batchItemSetVar));
+                    counter++;
+                }
+               
                 //foreach (ProjectTask task in ProjectUtilities.CreateStoreOpeningTasks())
                 //{
                 //    StringBuilder batchItemSetVar = new StringBuilder();
@@ -140,7 +196,7 @@
                 //    counter++;
                 //}
 
-                //string result = CommonUtilities.BatchAddListItems(item.Web, formatedUpdateBatchCommands);
+                string result = CommonUtilities.BatchAddListItems(item.Web, formatedUpdateBatchCommands);
                 EventFiringEnabled = true;
             }
           

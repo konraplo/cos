@@ -14,12 +14,31 @@
     {
         public static ProjectTask GrandOpening = new ProjectTask { Title = "Grand opening", Duration = 0, Responsible = DepartmentUtilities.StoreManager };
         public static ProjectTask EnsureExchangeMoney = new ProjectTask { Title = "Ensure exchange money", Duration = 1, Responsible = DepartmentUtilities.RegionalManager, TimeBeforeGrandOpening = 1};
+        public static ProjectTask FinalCleaning = new ProjectTask { Title = "Final cleaning", Duration = 1, Responsible = DepartmentUtilities.StoreManager, TimeBeforeGrandOpening = 1};
 
         /// <summary>
         /// Create project opening tasks List
         /// </summary>
         /// <returns>Lists with all project opening tasks</returns>
         public static List<ProjectTask> CreateStoreOpeningTasks()
+        {
+            List<ProjectTask> tasks = new List<ProjectTask>();
+            tasks.Add(new ProjectTask { Title = "Grand opening", Duration = 0, Responsible = DepartmentUtilities.StoreManager });
+            tasks.Add(new ProjectTask { Title = "Ensure exchange money", Duration = 1, Responsible = DepartmentUtilities.RegionalManager, TimeBeforeGrandOpening = 1 });
+            tasks.Add(new ProjectTask { Title = "Final cleaning", Duration = 1, Responsible = DepartmentUtilities.StoreManager, TimeBeforeGrandOpening = 1});
+            tasks.Add(new ProjectTask { Title = "Visual Merchandising", Duration = 2, Responsible = DepartmentUtilities.StoreManager, TimeBeforeGrandOpening = 3 });
+            tasks.Add(new ProjectTask { Title = "Cleaning", Duration = 1, Responsible = DepartmentUtilities.StoreManager, TimeBeforeGrandOpening = 4 });
+            //tasks.Add(new ProjectTask { Title = "Drawings begin", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Storedesign });
+            //tasks.Add(new ProjectTask { Title = "Drawings finish", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Storedesign });
+            //tasks.Add(new ProjectTask { Title = "Drawings approved", Duration = 2, Responsible = DepartmentUtilities.RegionalManager });
+            return tasks;
+        }
+
+        /// <summary>
+        /// Create project opening tasks List
+        /// </summary>
+        /// <returns>Lists with all project opening tasks</returns>
+        public static List<ProjectTask> CreateStoreOpeningTasks2()
         {
             List<ProjectTask> tasks = new List<ProjectTask>();
             tasks.Add(new ProjectTask { Title = "Location search end (get DWG drawing, take pictures, premise condition at takeover)", Duration = 2, Responsible = DepartmentUtilities.RegionalManager });

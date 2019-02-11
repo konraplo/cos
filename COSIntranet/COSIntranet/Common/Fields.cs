@@ -32,6 +32,11 @@
         public static Guid ChangeStoremanager = new Guid("{71F7422B-335A-4ADC-B63A-68E8A27A546A}");
 
         /// <summary>
+        /// GUID of Cuntrymanager
+        /// </summary>
+        public static Guid ChangeCountrymanager = new Guid("{6F466362-970F-46CC-BE8F-FD35D6D0B8FC}");
+
+        /// <summary>
         /// GUID of ChangeTasksLink
         /// </summary>
         public static Guid ChangeProjectTasksLink = new Guid("{56587AA8-12EB-43D0-B4DA-83FB0B92CF0B}");
