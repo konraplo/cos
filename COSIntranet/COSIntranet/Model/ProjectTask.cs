@@ -64,5 +64,29 @@
             get;
             set;
         }
+
+        /// <summary>
+        /// Gets or sets the Parent task id.
+        /// </summary>
+        /// <value>
+        /// Parent Task Id.
+        /// </value>
+        public int ParentId
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the parent title.
+        /// </summary>
+        /// <value>
+        /// The parent title.
+        /// </value>
+        public string ParentTitle
+        {
+            get;
+            set;
+        }
     }
 }

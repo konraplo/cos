@@ -28,27 +28,36 @@
             tasks.Add(new ProjectTask { Title = "Final cleaning", Duration = 1, Responsible = DepartmentUtilities.StoreManager, TimeBeforeGrandOpening = 1});
             tasks.Add(new ProjectTask { Title = "Visual Merchandising", Duration = 2, Responsible = DepartmentUtilities.StoreManager, TimeBeforeGrandOpening = 3 });
             tasks.Add(new ProjectTask { Title = "Cleaning", Duration = 1, Responsible = DepartmentUtilities.StoreManager, TimeBeforeGrandOpening = 4 });
-            //tasks.Add(new ProjectTask { Title = "Drawings begin", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Storedesign });
-            //tasks.Add(new ProjectTask { Title = "Drawings finish", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Storedesign });
-            //tasks.Add(new ProjectTask { Title = "Drawings approved", Duration = 2, Responsible = DepartmentUtilities.RegionalManager });
+            tasks.Add(new ProjectTask { Title = "Opening guide handover to Shop manager", Duration = 14, ResponsibleDepartment = DepartmentUtilities.VisualMerchandise, TimeBeforeGrandOpening = 18 });
+            tasks.Add(new ProjectTask { Title = "Rebuilding start", Duration = 7, Responsible = DepartmentUtilities.Contractor, TimeBeforeGrandOpening = 11 });
+            tasks.Add(new ProjectTask { Title = "LATEST Premise handover (3 sets keys to RM, BC, Contractor)", Duration = 3, Responsible = DepartmentUtilities.RegionalManager, TimeBeforeGrandOpening =14 });
+            tasks.Add(new ProjectTask { Title = "HQ kick off meeting", Duration = 1, Responsible = DepartmentUtilities.ProjectCoordinator, TimeBeforeGrandOpening = 61 });
+            tasks.Add(new ProjectTask { Title = "Contractor start up meeting (timetable, drawings etc.)", Duration = 1, Responsible = DepartmentUtilities.Storedesign, TimeBeforeGrandOpening = 62 });
+            tasks.Add(new ProjectTask { Title = "Final project approved (P/L, drawings, plan, Sydleasing number)", Duration = 1, Responsible = DepartmentUtilities.RegionalManager, TimeBeforeGrandOpening = 62 });
+            tasks.Add(new ProjectTask { Title = "Collect final renovation offer from contractor", Duration = 2, Responsible = DepartmentUtilities.Storedesign, TimeBeforeGrandOpening = 64 });
+            tasks.Add(new ProjectTask { Title = "Project schedule finish", Duration = 2, Responsible = DepartmentUtilities.ProjectCoordinator, TimeBeforeGrandOpening = 64 });
+            tasks.Add(new ProjectTask { Title = "Drawings approved", Duration = 2, Responsible = DepartmentUtilities.RegionalManager, TimeBeforeGrandOpening = 64 });
+            tasks.Add(new ProjectTask { Title = "Drawings finish", Duration = 2, Responsible = DepartmentUtilities.Storedesign, TimeBeforeGrandOpening = 66 });
+            tasks.Add(new ProjectTask { Title = "Drawings begin", Duration = 2, Responsible = DepartmentUtilities.Storedesign, TimeBeforeGrandOpening = 68 });
+            tasks.Add(new ProjectTask { Title = "Premise contract signed", Duration = 1, Responsible = DepartmentUtilities.RegionalManager, TimeBeforeGrandOpening = 69 });
+            tasks.Add(new ProjectTask { Title = "Initial P/L signed", Duration = 4, Responsible = DepartmentUtilities.RegionalManager, TimeBeforeGrandOpening = 73 });
+            tasks.Add(new ProjectTask { Title = "Initial building/renovation budget", Duration = 1, Responsible = DepartmentUtilities.Storedesign, TimeBeforeGrandOpening = 74 });
+            tasks.Add(new ProjectTask { Title = "Store design location visit (measurements etc.)", Duration = 1, Responsible = DepartmentUtilities.Storedesign, TimeBeforeGrandOpening = 75 });
+            tasks.Add(new ProjectTask { Title = "Location search end (get DWG drawing, take pictures, premise condition at takeover)", Duration = 4, Responsible = DepartmentUtilities.RegionalManager, TimeBeforeGrandOpening = 77 });
+
             return tasks;
         }
 
         /// <summary>
-        /// Create project opening tasks List
+        /// White Box Handover tasks
         /// </summary>
         /// <returns>Lists with all project opening tasks</returns>
-        public static List<ProjectTask> CreateStoreOpeningTasks2()
+        public static List<ProjectTask> WhiteBoxHandoverTasks(int parentTaskId, string parentTitle)
         {
             List<ProjectTask> tasks = new List<ProjectTask>();
-            tasks.Add(new ProjectTask { Title = "Location search end (get DWG drawing, take pictures, premise condition at takeover)", Duration = 2, Responsible = DepartmentUtilities.RegionalManager });
-            tasks.Add(new ProjectTask { Title = "Store design location visit (measurements etc.)", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Storedesign });
-            tasks.Add(new ProjectTask { Title = "Initial building/renovation budget", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Storedesign });
-            tasks.Add(new ProjectTask { Title = "Initial P/L signed", Duration = 1, Responsible = DepartmentUtilities.RegionalManager });
-            tasks.Add(new ProjectTask { Title = "Premise contract signed", Duration = 4, Responsible = DepartmentUtilities.RegionalManager });
-            tasks.Add(new ProjectTask { Title = "Drawings begin", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Storedesign });
-            tasks.Add(new ProjectTask { Title = "Drawings finish", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Storedesign });
-            tasks.Add(new ProjectTask { Title = "Drawings approved", Duration = 2, Responsible = DepartmentUtilities.RegionalManager });
+            tasks.Add(new ProjectTask { Title = "Sign QS document", Duration = 0, Responsible = DepartmentUtilities.RegionalManager, TimeBeforeGrandOpening = 4, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "FG delivery sheet", Duration = 0, Responsible = DepartmentUtilities.RegionalManager, TimeBeforeGrandOpening = 4, ParentId = parentTaskId, ParentTitle = parentTitle });
+
             return tasks;
         }
 
