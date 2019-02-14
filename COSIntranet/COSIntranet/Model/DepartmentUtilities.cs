@@ -37,6 +37,21 @@ namespace Change.Intranet.Model
         public const string Storedesign = "Storedesign";
 
         /// <summary>
+        /// IT
+        /// </summary>
+        public const string IT = "IT";
+
+        /// <summary>
+        /// Retail
+        /// </summary>
+        public const string Retail = "Retail";
+
+        /// <summary>
+        /// Planning
+        /// </summary>
+        public const string Planning = "Planning";
+
+        /// <summary>
         /// Visual Merchandise
         /// </summary>
         public const string VisualMerchandise = "Visual Merchandise";

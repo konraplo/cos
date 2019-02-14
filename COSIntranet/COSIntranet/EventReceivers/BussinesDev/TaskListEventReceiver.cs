@@ -1,14 +1,10 @@
 ﻿namespace Change.Intranet.EventReceivers.BussinesDev
 {
     using Change.Intranet.Common;
-    using Change.Intranet.Model;
     using Change.Intranet.Projects;
     using Microsoft.SharePoint;
     using Microsoft.SharePoint.Utilities;
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
 
     /// <summary>
     /// Event receivers for CHANGE task list

@@ -52,6 +52,22 @@
         /// White Box Handover tasks
         /// </summary>
         /// <returns>Lists with all project opening tasks</returns>
+        public static List<ProjectTask> WhenNewPartnerTasks(int parentTaskId, string parentTitle)
+        {
+            List<ProjectTask> tasks = new List<ProjectTask>();
+            tasks.Add(new ProjectTask { Title = "Country/region setup in system", Duration = 2, ResponsibleDepartment = DepartmentUtilities.IT, TimeBeforeGrandOpening = 59, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Presentation of POS, Navision and Intranet", Duration = 2, ResponsibleDepartment = DepartmentUtilities.IT, TimeBeforeGrandOpening = 59, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Create pricelist", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 59, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Setup sales reports", Duration = 2, ResponsibleDepartment = DepartmentUtilities.IT, TimeBeforeGrandOpening = 59, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order CLUB Change cards (when new region)", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Planning, TimeBeforeGrandOpening = 59, ParentId = parentTaskId, ParentTitle = parentTitle });
+
+            return tasks;
+        }
+
+        /// <summary>
+        /// When new partner tasks
+        /// </summary>
+        /// <returns>Lists with all project opening tasks</returns>
         public static List<ProjectTask> WhiteBoxHandoverTasks(int parentTaskId, string parentTitle)
         {
             List<ProjectTask> tasks = new List<ProjectTask>();

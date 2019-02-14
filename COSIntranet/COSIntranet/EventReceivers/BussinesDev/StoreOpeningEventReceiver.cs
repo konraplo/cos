@@ -55,44 +55,8 @@
                 SPList tasksList = item.Web.GetList(tasksUrl);
                 SPContentType foundedProjectTask = tasksList.ContentTypes[tasksList.ContentTypes.BestMatch(ContentTypeIds.ProjectTask)];
 
-                SPListItem whiteBoxHandover = tasksList.AddItem();
-                whiteBoxHandover[SPBuiltInFieldId.Title] = "White box handover";
-                whiteBoxHandover[SPBuiltInFieldId.ContentTypeId] = foundedProjectTask.Id;
-                whiteBoxHandover[Fields.Country] = storeCountry;
-                whiteBoxHandover[Fields.StoreOpening] = string.Format("{0};#{1}", item.ID, item.Title);
-                whiteBoxHandover[Fields.Store] = string.Format("{0};#{1}", store.LookupId, store.LookupValue);
-                whiteBoxHandover.Update();
-
-                // compute time period
-                List<ProjectTask> whiteBoxHandoverTasks = ProjectUtilities.WhiteBoxHandoverTasks(whiteBoxHandover.ID, whiteBoxHandover.Title);
-                DateTime dueDate = DateTime.MaxValue;
-                DateTime startDate = DateTime.MinValue;
-                foreach (ProjectTask task in whiteBoxHandoverTasks.OrderByDescending(x => x.TimeBeforeGrandOpening))
-                {
-                    if (dueDate.Equals(DateTime.MaxValue))
-                    {
-                        dueDate = grandOpening.AddDays(-task.TimeBeforeGrandOpening);
-                    }
-                    else if(DateTime.Compare(dueDate, grandOpening.AddDays(-task.TimeBeforeGrandOpening)) < 0)
-                    {
-                        dueDate = grandOpening.AddDays(-task.TimeBeforeGrandOpening);
-                    }
-
-                    if (startDate.Equals(DateTime.MinValue))
-                    {
-                        startDate = dueDate.AddDays(-task.Duration);
-                    }
-                    else if (DateTime.Compare(startDate, dueDate.AddDays(-task.Duration)) > 0)
-                    {
-                        startDate = dueDate.AddDays(-task.Duration);
-                    }
-                }
-
-                whiteBoxHandover[SPBuiltInFieldId.StartDate] = startDate;
-                whiteBoxHandover[SPBuiltInFieldId.TaskDueDate] = dueDate;
-                whiteBoxHandover[Fields.ChangeTaskDurationId] = (dueDate - startDate).TotalDays;
-              
-                whiteBoxHandover.Update();
+                List<ProjectTask> whiteBoxHandoverTasks = CreateSubTasks(item, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.WhiteBoxHandoverTasks, "White box handover") ;
+                //CreateWhiteBoxHanoverTask(item, store, storeCountry, grandOpening, tasksList, foundedProjectTask, out whiteBoxHandoverTasks);
 
                 List<Department> departments = DepartmentUtilities.GetDepartments(item.Web);
 
@@ -109,8 +73,8 @@
 
                 foreach (ProjectTask task in ProjectUtilities.CreateStoreOpeningTasks().Union(whiteBoxHandoverTasks).OrderByDescending(x => x.TimeBeforeGrandOpening))
                 {
-                    dueDate = grandOpening.AddDays(-task.TimeBeforeGrandOpening);
-                    startDate = dueDate.AddDays(-task.Duration);
+                    DateTime dueDate = grandOpening.AddDays(-task.TimeBeforeGrandOpening);
+                    DateTime startDate = dueDate.AddDays(-task.Duration);
 
                     StringBuilder batchItemSetVar = new StringBuilder();
                     batchItemSetVar.Append(string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
@@ -193,10 +157,10 @@
                     {
                         batchItemSetVar.Append(
                            string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
-                           item.ParentList.Fields[SPBuiltInFieldId.ParentID].InternalName,
+                           tasksList.Fields[SPBuiltInFieldId.ParentID].InternalName,
                            string.Format("{0};#{1}", task.ParentId, task.ParentTitle)));
                     }
-                    
+
                     formatedUpdateBatchCommands.Add(string.Format(CommonUtilities.BATCH_ADD_ITEM_CMD, counter, tasksList.ID.ToString(), batchItemSetVar));
                     counter++;
                 }
@@ -207,6 +171,90 @@
 
         }
 
+        private static void CreateWhiteBoxHanoverTask(SPListItem item, SPFieldLookupValue store, SPFieldLookupValue storeCountry, DateTime grandOpening, SPList tasksList, SPContentType foundedProjectTask, out List<ProjectTask> whiteBoxHandoverTasks)
+        {
+            SPListItem whiteBoxHandover = tasksList.AddItem();
+            whiteBoxHandover[SPBuiltInFieldId.Title] = "White box handover";
+            whiteBoxHandover[SPBuiltInFieldId.ContentTypeId] = foundedProjectTask.Id;
+            whiteBoxHandover[Fields.Country] = storeCountry;
+            whiteBoxHandover[Fields.StoreOpening] = string.Format("{0};#{1}", item.ID, item.Title);
+            whiteBoxHandover[Fields.Store] = string.Format("{0};#{1}", store.LookupId, store.LookupValue);
+            whiteBoxHandover.Update();
 
-    }
+            // compute time period
+            whiteBoxHandoverTasks = ProjectUtilities.WhiteBoxHandoverTasks(whiteBoxHandover.ID, whiteBoxHandover.Title);
+            DateTime dueDate = DateTime.MaxValue;
+            DateTime startDate = DateTime.MinValue;
+            foreach (ProjectTask task in whiteBoxHandoverTasks.OrderByDescending(x => x.TimeBeforeGrandOpening))
+            {
+                if (dueDate.Equals(DateTime.MaxValue))
+                {
+                    dueDate = grandOpening.AddDays(-task.TimeBeforeGrandOpening);
+                }
+                else if (DateTime.Compare(dueDate, grandOpening.AddDays(-task.TimeBeforeGrandOpening)) < 0)
+                {
+                    dueDate = grandOpening.AddDays(-task.TimeBeforeGrandOpening);
+                }
+
+                if (startDate.Equals(DateTime.MinValue))
+                {
+                    startDate = dueDate.AddDays(-task.Duration);
+                }
+                else if (DateTime.Compare(startDate, dueDate.AddDays(-task.Duration)) > 0)
+                {
+                    startDate = dueDate.AddDays(-task.Duration);
+                }
+            }
+
+            whiteBoxHandover[SPBuiltInFieldId.StartDate] = startDate;
+            whiteBoxHandover[SPBuiltInFieldId.TaskDueDate] = dueDate;
+            whiteBoxHandover[Fields.ChangeTaskDurationId] = (dueDate - startDate).TotalDays;
+
+            whiteBoxHandover.Update();
+        }
+
+        private static List<ProjectTask> CreateSubTasks(SPListItem item, SPFieldLookupValue store, SPFieldLookupValue storeCountry, DateTime grandOpening, SPList tasksList, SPContentType foundedProjectTask, Func<int, string, List<ProjectTask>> whiteBoxHandoverTasks, string mainTaskTitle)
+        {
+            SPListItem projectTask = tasksList.AddItem();
+            projectTask[SPBuiltInFieldId.Title] = "White box handover";
+            projectTask[SPBuiltInFieldId.ContentTypeId] = foundedProjectTask.Id;
+            projectTask[Fields.Country] = storeCountry;
+            projectTask[Fields.StoreOpening] = string.Format("{0};#{1}", item.ID, item.Title);
+            projectTask[Fields.Store] = string.Format("{0};#{1}", store.LookupId, store.LookupValue);
+            projectTask.Update();
+
+            // compute time period
+            List<ProjectTask> subTasksList = whiteBoxHandoverTasks(projectTask.ID, projectTask.Title);
+            DateTime dueDate = DateTime.MaxValue;
+            DateTime startDate = DateTime.MinValue;
+            foreach (ProjectTask task in subTasksList.OrderByDescending(x => x.TimeBeforeGrandOpening))
+            {
+                if (dueDate.Equals(DateTime.MaxValue))
+                {
+                    dueDate = grandOpening.AddDays(-task.TimeBeforeGrandOpening);
+                }
+                else if (DateTime.Compare(dueDate, grandOpening.AddDays(-task.TimeBeforeGrandOpening)) < 0)
+                {
+                    dueDate = grandOpening.AddDays(-task.TimeBeforeGrandOpening);
+                }
+
+                if (startDate.Equals(DateTime.MinValue))
+                {
+                    startDate = dueDate.AddDays(-task.Duration);
+                }
+                else if (DateTime.Compare(startDate, dueDate.AddDays(-task.Duration)) > 0)
+                {
+                    startDate = dueDate.AddDays(-task.Duration);
+                }
+            }
+
+            projectTask[SPBuiltInFieldId.StartDate] = startDate;
+            projectTask[SPBuiltInFieldId.TaskDueDate] = dueDate;
+            projectTask[Fields.ChangeTaskDurationId] = (dueDate - startDate).TotalDays;
+
+            projectTask.Update();
+
+            return subTasksList;
+        }
+     }
 }
