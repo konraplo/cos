@@ -58,6 +58,12 @@
                 SPListItem whiteBoxHandover = tasksList.AddItem();
                 whiteBoxHandover[SPBuiltInFieldId.Title] = "White box handover";
                 whiteBoxHandover[SPBuiltInFieldId.ContentTypeId] = foundedProjectTask.Id;
+                whiteBoxHandover[Fields.Country] = storeCountry;
+                whiteBoxHandover[Fields.StoreOpening] = string.Format("{0};#{1}", item.ID, item.Title);
+                whiteBoxHandover[Fields.Store] = string.Format("{0};#{1}", store.LookupId, store.LookupValue);
+                whiteBoxHandover.Update();
+
+                // compute time period
                 List<ProjectTask> whiteBoxHandoverTasks = ProjectUtilities.WhiteBoxHandoverTasks(whiteBoxHandover.ID, whiteBoxHandover.Title);
                 DateTime dueDate = DateTime.MaxValue;
                 DateTime startDate = DateTime.MinValue;
@@ -85,9 +91,7 @@
                 whiteBoxHandover[SPBuiltInFieldId.StartDate] = startDate;
                 whiteBoxHandover[SPBuiltInFieldId.TaskDueDate] = dueDate;
                 whiteBoxHandover[Fields.ChangeTaskDurationId] = (dueDate - startDate).TotalDays;
-                whiteBoxHandover[Fields.Country] = storeCountry;
-                whiteBoxHandover[Fields.StoreOpening] = string.Format("{0};#{1}", item.ID, item.Title);
-                whiteBoxHandover[Fields.Store] = string.Format("{0};#{1}", store.LookupId, store.LookupValue);
+              
                 whiteBoxHandover.Update();
 
                 List<Department> departments = DepartmentUtilities.GetDepartments(item.Web);
