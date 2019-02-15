@@ -42,9 +42,29 @@ namespace Change.Intranet.Model
         public const string IT = "IT";
 
         /// <summary>
+        /// HR
+        /// </summary>
+        public const string HR = "HR";
+
+        /// <summary>
+        /// Costumers service
+        /// </summary>
+        public const string CostumersService = "Costumers service";
+
+        /// <summary>
         /// Retail
         /// </summary>
         public const string Retail = "Retail";
+
+        /// <summary>
+        /// Marketing
+        /// </summary>
+        public const string Marketing = "Marketing";
+
+        /// <summary>
+        /// Finance
+        /// </summary>
+        public const string Finance = "Finance";
 
         /// <summary>
         /// Planning

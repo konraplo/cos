@@ -49,7 +49,7 @@
         }
 
         /// <summary>
-        /// White Box Handover tasks
+        /// When new partner tasks
         /// </summary>
         /// <returns>Lists with all project opening tasks</returns>
         public static List<ProjectTask> WhenNewPartnerTasks(int parentTaskId, string parentTitle)
@@ -65,7 +65,7 @@
         }
 
         /// <summary>
-        /// When new partner tasks
+        /// White Box Handover tasks
         /// </summary>
         /// <returns>Lists with all project opening tasks</returns>
         public static List<ProjectTask> WhiteBoxHandoverTasks(int parentTaskId, string parentTitle)
@@ -73,6 +73,44 @@
             List<ProjectTask> tasks = new List<ProjectTask>();
             tasks.Add(new ProjectTask { Title = "Sign QS document", Duration = 0, Responsible = DepartmentUtilities.RegionalManager, TimeBeforeGrandOpening = 4, ParentId = parentTaskId, ParentTitle = parentTitle });
             tasks.Add(new ProjectTask { Title = "FG delivery sheet", Duration = 0, Responsible = DepartmentUtilities.RegionalManager, TimeBeforeGrandOpening = 4, ParentId = parentTaskId, ParentTitle = parentTitle });
+
+            return tasks;
+        }
+
+        /// <summary>
+        /// Create costumer in system tasks
+        /// </summary>
+        /// <returns>Lists with all project opening tasks</returns>
+        public static List<ProjectTask> CreateCostumerInSystemTasks(int parentTaskId, string parentTitle)
+        {
+            List<ProjectTask> tasks = new List<ProjectTask>();
+            tasks.Add(new ProjectTask { Title = "Create costumer in Navision (add similar shop)", Duration = 1, ResponsibleDepartment = DepartmentUtilities.CostumersService, TimeBeforeGrandOpening = 60, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Create costumer in Infostore (Incl. Replanishment setup, mailaddress)", Duration = 1, ResponsibleDepartment = DepartmentUtilities.IT, TimeBeforeGrandOpening = 60, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Create/order phone line/data line (Update project sheet)", Duration = 42, ResponsibleDepartment = DepartmentUtilities.IT, TimeBeforeGrandOpening = 49, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Ensure first FASHION order", Duration = 2, ResponsibleDepartment = DepartmentUtilities.CostumersService, TimeBeforeGrandOpening = 59, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Create/change address in Globase ", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Marketing, TimeBeforeGrandOpening = 59, ParentId = parentTaskId, ParentTitle = parentTitle });
+
+            return tasks;
+        }
+
+        /// <summary>
+        /// Administration tasks
+        /// </summary>
+        /// <returns>Lists with all project opening tasks</returns>
+        public static List<ProjectTask> AdministrationTasks(int parentTaskId, string parentTitle)
+        {
+            List<ProjectTask> tasks = new List<ProjectTask>();
+            tasks.Add(new ProjectTask { Title = "Create bank account", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Finance, TimeBeforeGrandOpening = 50, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Create night deposit agreement", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Finance, TimeBeforeGrandOpening = 59, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order bank bads and codes to the bank", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Finance, TimeBeforeGrandOpening = 59, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order KODA/licence to play music", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Finance, TimeBeforeGrandOpening = 59, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order ensurance", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Finance, TimeBeforeGrandOpening = 59, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Staff hiring", Duration = 2, ResponsibleDepartment = DepartmentUtilities.HR, TimeBeforeGrandOpening = 59, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order theft alarm", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Finance, TimeBeforeGrandOpening = 59, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order renovation and garbage aggreements", Duration = 2, Responsible = DepartmentUtilities.RegionalManager, TimeBeforeGrandOpening = 59, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Register electricity, heat and water", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Finance, TimeBeforeGrandOpening = 59, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order ad for local media (Grand opening + 3 months)", Duration = 2, Responsible = DepartmentUtilities.RegionalManager, TimeBeforeGrandOpening = 59, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Create EDM", Duration = 14, ResponsibleDepartment = DepartmentUtilities.Marketing, TimeBeforeGrandOpening = 59, ParentId = parentTaskId, ParentTitle = parentTitle });
 
             return tasks;
         }
