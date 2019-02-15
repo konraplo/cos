@@ -59,6 +59,7 @@
                 List<ProjectTask> whenNewPartnerTasks = CreateSubTasks(item, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.WhenNewPartnerTasks, "When new partner") ;
                 List<ProjectTask> createCostumerInSystemTasks = CreateSubTasks(item, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.CreateCostumerInSystemTasks, "Create costumer in system") ;
                 List<ProjectTask> administrationTasks = CreateSubTasks(item, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.AdministrationTasks, "Administration") ;
+                List<ProjectTask> rebuildingPeriod = CreateSubTasks(item, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.RebuildingPeriod, "Rebuilding period") ;
 
                 List<Department> departments = DepartmentUtilities.GetDepartments(item.Web);
 
@@ -73,7 +74,7 @@
                 List<string> formatedUpdateBatchCommands = new List<string>();
                 int counter = 1;
 
-                foreach (ProjectTask task in ProjectUtilities.CreateStoreOpeningTasks().Union(whiteBoxHandoverTasks).Union(whenNewPartnerTasks).Union(createCostumerInSystemTasks).Union(administrationTasks).OrderByDescending(x => x.TimeBeforeGrandOpening))
+                foreach (ProjectTask task in ProjectUtilities.CreateStoreOpeningTasks().Union(whiteBoxHandoverTasks).Union(whenNewPartnerTasks).Union(createCostumerInSystemTasks).Union(administrationTasks).Union(rebuildingPeriod).OrderByDescending(x => x.TimeBeforeGrandOpening))
                 {
                     DateTime dueDate = grandOpening.AddDays(-task.TimeBeforeGrandOpening);
                     DateTime startDate = dueDate.AddDays(-task.Duration);
