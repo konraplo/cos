@@ -15,6 +15,7 @@
         public const string Country = "ChangeCountry";
         public const string StoreId = "Storeid";
         public const string Title = "Title";
+        public const string StoreOpeningTask = "StoreOpeningTask";
 
         /// <summary>
         /// GUID of ChangeTaskDuration

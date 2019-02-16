@@ -55,11 +55,24 @@
                 SPList tasksList = item.Web.GetList(tasksUrl);
                 SPContentType foundedProjectTask = tasksList.ContentTypes[tasksList.ContentTypes.BestMatch(ContentTypeIds.ProjectTask)];
 
-                List<ProjectTask> whiteBoxHandoverTasks = CreateSubTasks(item, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.WhiteBoxHandoverTasks, "White box handover") ;
-                List<ProjectTask> whenNewPartnerTasks = CreateSubTasks(item, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.WhenNewPartnerTasks, "When new partner") ;
-                List<ProjectTask> createCostumerInSystemTasks = CreateSubTasks(item, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.CreateCostumerInSystemTasks, "Create costumer in system") ;
-                List<ProjectTask> administrationTasks = CreateSubTasks(item, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.AdministrationTasks, "Administration") ;
-                List<ProjectTask> rebuildingPeriod = CreateSubTasks(item, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.RebuildingPeriod, "Rebuilding period") ;
+                // create store opening task
+                SPListItem projectTask = tasksList.AddItem();
+                projectTask[SPBuiltInFieldId.Title] = item.Title;
+                projectTask[SPBuiltInFieldId.ContentTypeId] = foundedProjectTask.Id;
+                projectTask[Fields.Country] = storeCountry;
+                projectTask[Fields.StoreOpening] = true;
+                projectTask[SPBuiltInFieldId.StartDate] = item[SPBuiltInFieldId.StartDate];
+                projectTask[SPBuiltInFieldId.TaskDueDate] = item[SPBuiltInFieldId.TaskDueDate];
+                projectTask[Fields.StoreOpening] = string.Format("{0};#{1}", item.ID, item.Title);
+                projectTask[Fields.Store] = string.Format("{0};#{1}", store.LookupId, store.LookupValue);
+                projectTask.Update();
+                SPFieldLookupValue projectTaskValue = new SPFieldLookupValue(string.Format("{0};#{1}", projectTask.ID, projectTask.Title));
+
+                List<ProjectTask> whiteBoxHandoverTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.WhiteBoxHandoverTasks, "White box handover") ;
+                List<ProjectTask> whenNewPartnerTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.WhenNewPartnerTasks, "When new partner") ;
+                List<ProjectTask> createCostumerInSystemTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.CreateCostumerInSystemTasks, "Create costumer in system") ;
+                List<ProjectTask> administrationTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.AdministrationTasks, "Administration") ;
+                List<ProjectTask> rebuildingPeriod = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.RebuildingPeriod, "Rebuilding period") ;
 
                 List<Department> departments = DepartmentUtilities.GetDepartments(item.Web);
 
@@ -73,11 +86,21 @@
 
                 List<string> formatedUpdateBatchCommands = new List<string>();
                 int counter = 1;
+                DateTime projectStartDate = DateTime.MinValue;
 
-                foreach (ProjectTask task in ProjectUtilities.CreateStoreOpeningTasks().Union(whiteBoxHandoverTasks).Union(whenNewPartnerTasks).Union(createCostumerInSystemTasks).Union(administrationTasks).Union(rebuildingPeriod).OrderByDescending(x => x.TimeBeforeGrandOpening))
+                foreach (ProjectTask task in ProjectUtilities.CreateStoreOpeningTasks(projectTask.ID).Union(whiteBoxHandoverTasks).Union(whenNewPartnerTasks).Union(createCostumerInSystemTasks).Union(administrationTasks).Union(rebuildingPeriod).OrderByDescending(x => x.TimeBeforeGrandOpening))
                 {
                     DateTime dueDate = grandOpening.AddDays(-task.TimeBeforeGrandOpening);
                     DateTime startDate = dueDate.AddDays(-task.Duration);
+
+                    if (projectStartDate.Equals(DateTime.MinValue))
+                    {
+                        projectStartDate = startDate;
+                    }
+                    else if (DateTime.Compare(projectStartDate, startDate) > 0)
+                    {
+                        projectStartDate = startDate;
+                    }
 
                     StringBuilder batchItemSetVar = new StringBuilder();
                     batchItemSetVar.Append(string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
@@ -169,6 +192,16 @@
                 }
 
                 string result = CommonUtilities.BatchAddListItems(item.Web, formatedUpdateBatchCommands);
+
+                if (!projectStartDate.Equals(DateTime.MinValue))
+                {
+                    projectTask[SPBuiltInFieldId.StartDate] = SPUtility.CreateISO8601DateTimeFromSystemDateTime(projectStartDate);
+                    projectTask.Update();
+
+                    item[SPBuiltInFieldId.StartDate] = SPUtility.CreateISO8601DateTimeFromSystemDateTime(projectStartDate);
+                    item.Update();
+                }
+
                 EventFiringEnabled = true;
             }
 
@@ -183,10 +216,10 @@
         /// <param name="grandOpening"></param>
         /// <param name="tasksList"></param>
         /// <param name="foundedProjectTask"></param>
-        /// <param name="whiteBoxHandoverTasks"></param>
+        /// <param name="subTasks"></param>
         /// <param name="mainTaskTitle"></param>
         /// <returns></returns>        
-        private static List<ProjectTask> CreateSubTasks(SPListItem item, SPFieldLookupValue store, SPFieldLookupValue storeCountry, DateTime grandOpening, SPList tasksList, SPContentType foundedProjectTask, Func<int, string, List<ProjectTask>> whiteBoxHandoverTasks, string mainTaskTitle)
+        private static List<ProjectTask> CreateSubTasks(SPListItem item, SPFieldLookupValue projectTaskValue, SPFieldLookupValue store, SPFieldLookupValue storeCountry, DateTime grandOpening, SPList tasksList, SPContentType foundedProjectTask, Func<int, string, List<ProjectTask>> subTasks, string mainTaskTitle)
         {
             SPListItem projectTask = tasksList.AddItem();
             projectTask[SPBuiltInFieldId.Title] = mainTaskTitle;
@@ -194,10 +227,11 @@
             projectTask[Fields.Country] = storeCountry;
             projectTask[Fields.StoreOpening] = string.Format("{0};#{1}", item.ID, item.Title);
             projectTask[Fields.Store] = string.Format("{0};#{1}", store.LookupId, store.LookupValue);
+            projectTask[SPBuiltInFieldId.ParentID] = projectTaskValue;
             projectTask.Update();
 
             // compute time period
-            List<ProjectTask> subTasksList = whiteBoxHandoverTasks(projectTask.ID, projectTask.Title);
+            List<ProjectTask> subTasksList = subTasks(projectTask.ID, projectTask.Title);
             DateTime dueDate = DateTime.MaxValue;
             DateTime startDate = DateTime.MinValue;
             foreach (ProjectTask task in subTasksList.OrderByDescending(x => x.TimeBeforeGrandOpening))

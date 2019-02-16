@@ -117,5 +117,13 @@
          DisplayName="$Resources:COSIntranet,ChangeColTaskDuration" 
          Group="CHANGE Fields">
   </Field>
+
+  <Field ID="{7D4D22A0-2776-4837-A308-10296F4CCF55}"
+         Name="StoreOpeningTask"
+         Type="Boolean"
+         DisplayName="Store opening task"
+         Group="CHANGE Fields">
+    <Default>0</Default>
+  </Field>
 </Elements>
 
