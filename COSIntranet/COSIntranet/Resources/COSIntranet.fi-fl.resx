@@ -921,4 +921,22 @@
   <data name="ChangeLibTitleBusiDevFavorites" xml:space="preserve">
     <value>Business development links</value>
   </data>
+  <data name="ChangeLibTitleDrawings" xml:space="preserve">
+    <value>Drawings</value>
+  </data>
+  <data name="ChangeLibTitleEvaluation" xml:space="preserve">
+    <value>Evaluation</value>
+  </data>
+  <data name="ChangeLibTitleGeneralInformation" xml:space="preserve">
+    <value>General Information</value>
+  </data>
+  <data name="ChangeLibTitleLogistic" xml:space="preserve">
+    <value>Logistic</value>
+  </data>
+  <data name="ChangeLibTitleManualandInstructions" xml:space="preserve">
+    <value>Manual and Instructions</value>
+  </data>
+  <data name="ChangeLibTitlePictures" xml:space="preserve">
+    <value>Pictures</value>
+  </data>
 </root>

@@ -43,9 +43,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Microsoft.SharePoint" />
@@ -167,6 +171,24 @@
     </None>
     <None Include="Infrastructure\Lists\BusinessDev\Departments\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{851960c8-e714-478e-95bf-3b0555a1114d}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\BusinessDev\Drawings\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{1894f763-1ef1-420d-9f0c-d8107f134370}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\BusinessDev\Evaluation\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{2dd80967-a291-4cfb-b327-99cc0a1ad940}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\BusinessDev\GeneralInformation\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{1cf1e00d-642f-4677-901e-ea00a653c3f4}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\BusinessDev\Logistic\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{0c6fa871-e767-477d-962f-0b2a722575b0}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\BusinessDev\ManualandInstructions\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{dbce4196-4b8e-49de-8c4d-829b38564a2b}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\BusinessDev\Pictures\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{4b19717c-b085-44f9-a4a6-69822bd3fc00}</SharePointProjectItemId>
     </None>
     <None Include="Infrastructure\Lists\BusinessDev\ProjectTasks\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{8204a972-4679-478f-8b03-cfac44ee3380}</SharePointProjectItemId>
@@ -308,6 +330,12 @@
     <Content Include="Infrastructure\Lists\BusinessDev\BusinessDevFavorites\Elements.xml" />
     <Content Include="Infrastructure\Lists\BusinessDev\Countries\Elements.xml" />
     <Content Include="Infrastructure\Lists\BusinessDev\Departments\Elements.xml" />
+    <Content Include="Infrastructure\Lists\BusinessDev\Drawings\Elements.xml" />
+    <Content Include="Infrastructure\Lists\BusinessDev\Evaluation\Elements.xml" />
+    <Content Include="Infrastructure\Lists\BusinessDev\GeneralInformation\Elements.xml" />
+    <Content Include="Infrastructure\Lists\BusinessDev\Logistic\Elements.xml" />
+    <Content Include="Infrastructure\Lists\BusinessDev\ManualandInstructions\Elements.xml" />
+    <Content Include="Infrastructure\Lists\BusinessDev\Pictures\Elements.xml" />
     <Content Include="Infrastructure\Lists\BusinessDev\ProjectTasks\Elements.xml" />
     <Content Include="Infrastructure\Lists\BusinessDev\StoreOpenings\Elements.xml" />
     <Content Include="Infrastructure\Lists\BusinessDev\Stores\Elements.xml" />

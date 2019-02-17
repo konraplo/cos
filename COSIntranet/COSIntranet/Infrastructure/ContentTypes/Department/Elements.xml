@@ -9,7 +9,7 @@
                Version="0">
     <FieldRefs>
       <FieldRef ID="{320DC330-92FE-480B-967E-0B205A94AA7D}" Required="TRUE" Name="Deparmentmanager" />
-      <FieldRef ID="{56587AA8-12EB-43D0-B4DA-83FB0B92CF0B}" ReadOnly="TRUE" Name="ChangeProjectTasksLink" />
+      <FieldRef ID="{56587AA8-12EB-43D0-B4DA-83FB0B92CF0B}" Name="ChangeProjectTasksLink" />
     </FieldRefs>
   </ContentType>
 </Elements>

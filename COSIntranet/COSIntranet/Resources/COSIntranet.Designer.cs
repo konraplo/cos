@@ -2352,11 +2352,38 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Drawings.
+        /// </summary>
+        internal static string ChangeLibTitleDrawings {
+            get {
+                return ResourceManager.GetString("ChangeLibTitleDrawings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Evaluation.
+        /// </summary>
+        internal static string ChangeLibTitleEvaluation {
+            get {
+                return ResourceManager.GetString("ChangeLibTitleEvaluation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Finance.
         /// </summary>
         internal static string ChangeLibTitleFinance {
             get {
                 return ResourceManager.GetString("ChangeLibTitleFinance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to General Information.
+        /// </summary>
+        internal static string ChangeLibTitleGeneralInformation {
+            get {
+                return ResourceManager.GetString("ChangeLibTitleGeneralInformation", resourceCulture);
             }
         }
         
@@ -2379,6 +2406,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Logistic.
+        /// </summary>
+        internal static string ChangeLibTitleLogistic {
+            get {
+                return ResourceManager.GetString("ChangeLibTitleLogistic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Managers.
         /// </summary>
         internal static string ChangeLibTitleManagers {
@@ -2388,11 +2424,29 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manual and Instructions.
+        /// </summary>
+        internal static string ChangeLibTitleManualandInstructions {
+            get {
+                return ResourceManager.GetString("ChangeLibTitleManualandInstructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Marketing.
         /// </summary>
         internal static string ChangeLibTitleMarketing {
             get {
                 return ResourceManager.GetString("ChangeLibTitleMarketing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pictures.
+        /// </summary>
+        internal static string ChangeLibTitlePictures {
+            get {
+                return ResourceManager.GetString("ChangeLibTitlePictures", resourceCulture);
             }
         }
         
