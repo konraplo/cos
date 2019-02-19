@@ -1104,6 +1104,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Order templates.
+        /// </summary>
+        internal static string ChangeFolderTitleLogisticOrderTemplates {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleLogisticOrderTemplates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Local yearlywheel template 
         ///.
         /// </summary>
@@ -1165,6 +1174,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeFolderTitleMarketingGuidelines {
             get {
                 return ResourceManager.GetString("ChangeFolderTitleMarketingGuidelines", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Template.
+        /// </summary>
+        internal static string ChangeFolderTitleMarketingTemplate {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleMarketingTemplate", resourceCulture);
             }
         }
         

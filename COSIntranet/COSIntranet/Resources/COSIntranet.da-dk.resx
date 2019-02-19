@@ -943,4 +943,10 @@
   <data name="ChangeLibTitleManualandInstructions" xml:space="preserve">
     <value>Manual and Instructions</value>
   </data>
+  <data name="ChangeFolderTitleLogisticOrderTemplates" xml:space="preserve">
+    <value>Order templates</value>
+  </data>
+  <data name="ChangeFolderTitleMarketingTemplate" xml:space="preserve">
+    <value>Template</value>
+  </data>
 </root>

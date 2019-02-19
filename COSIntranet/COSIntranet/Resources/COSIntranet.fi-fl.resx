@@ -921,6 +921,12 @@
   <data name="ChangeLibTitleBusiDevFavorites" xml:space="preserve">
     <value>Business development links</value>
   </data>
+  <data name="ChangeFolderTitleLogisticOrderTemplates" xml:space="preserve">
+    <value>Order templates</value>
+  </data>
+  <data name="ChangeFolderTitleMarketingTemplate" xml:space="preserve">
+    <value>Template</value>
+  </data>
   <data name="ChangeLibTitleDrawings" xml:space="preserve">
     <value>Drawings</value>
   </data>

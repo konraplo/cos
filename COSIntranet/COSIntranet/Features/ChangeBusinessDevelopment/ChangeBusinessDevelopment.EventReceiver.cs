@@ -31,7 +31,39 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
 
                 // add folder strucure
                 Logger.WriteLog(Logger.Category.Information, "ChangeBusinessDevelopmentEventReceiver", "add folder strucure");
+                LogisticLib(web);
+                MarketingLib(web);
             }
+        }
+
+        private static void LogisticLib(SPWeb web)
+        {
+            // Logistic
+            Logger.WriteLog(Logger.Category.Information, "ChangeBusinessDevelopmentEventReceiver", "Start add Logistic");
+            SPList list = web.GetList(SPUrlUtility.CombineUrl(web.Url, "Lists/Logistic"));
+            SPFolderCollection folderColl = list.RootFolder.SubFolders;
+
+            string folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleLogisticOrderTemplates", "COSIntranet", web.Language);
+            SPFolder orderTemplates = folderColl.Add(folderUrl);
+           
+            list.OnQuickLaunch = true;
+            list.Update();
+            Logger.WriteLog(Logger.Category.Information, "ChangeBusinessDevelopmentEventReceiver", "End add Logistic");
+        }
+
+        private static void MarketingLib(SPWeb web)
+        {
+            // Logistic
+            Logger.WriteLog(Logger.Category.Information, "ChangeBusinessDevelopmentEventReceiver", "Start add Marketing");
+            SPList list = web.GetList(SPUrlUtility.CombineUrl(web.Url, "Lists/Marketing"));
+            SPFolderCollection folderColl = list.RootFolder.SubFolders;
+
+            string folderUrl = SPUtility.GetLocalizedString("$Resources:ChangeFolderTitleMarketingTemplate", "COSIntranet", web.Language);
+            SPFolder orderTemplates = folderColl.Add(folderUrl);
+
+            list.OnQuickLaunch = true;
+            list.Update();
+            Logger.WriteLog(Logger.Category.Information, "ChangeBusinessDevelopmentEventReceiver", "End add Marketing");
         }
 
         /// <summary>
@@ -40,30 +72,30 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
         /// <param name="web"></param>
         private void AddFieldsCtErToLists(SPWeb web)
         {
-            Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", "Find lists");
+            Logger.WriteLog(Logger.Category.Information, "ChangeBusinessDevelopmentEventReceiver", "Find lists");
 
             string deptUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.Departments);
-            Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", string.Format("add Lookups to:{0}", deptUrl));
+            Logger.WriteLog(Logger.Category.Information, "ChangeBusinessDevelopmentEventReceiver", string.Format("add Lookups to:{0}", deptUrl));
             SPList deptList = web.GetList(deptUrl);
 
             string storesUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.Stores);
-            Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", string.Format("add Lookups to:{0}", storesUrl));
+            Logger.WriteLog(Logger.Category.Information, "ChangeBusinessDevelopmentEventReceiver", string.Format("add Lookups to:{0}", storesUrl));
             SPList storetList = web.GetList(storesUrl);
 
             string tasksUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.ProjectTasks);
-            Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", string.Format("add Lookups to:{0}", tasksUrl));
+            Logger.WriteLog(Logger.Category.Information, "ChangeBusinessDevelopmentEventReceiver", string.Format("add Lookups to:{0}", tasksUrl));
             SPList tasksList = web.GetList(tasksUrl);
 
             string projectsUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.StoreOpenings);
-            Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", string.Format("add Lookups to:{0}", projectsUrl));
+            Logger.WriteLog(Logger.Category.Information, "ChangeBusinessDevelopmentEventReceiver", string.Format("add Lookups to:{0}", projectsUrl));
             SPList projectsList = web.GetList(projectsUrl);
 
             string countriesUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.Countries);
-            Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", string.Format("add Lookups to:{0}", tasksUrl));
+            Logger.WriteLog(Logger.Category.Information, "ChangeBusinessDevelopmentEventReceiver", string.Format("add Lookups to:{0}", tasksUrl));
             SPList countriesList = web.GetList(countriesUrl);
 
             // add lookups
-            Logger.WriteLog(Logger.Category.Information, "ChangeListsForHQEventReceiver", "Add lookups");
+            Logger.WriteLog(Logger.Category.Information, "ChangeBusinessDevelopmentEventReceiver", "Add lookups");
 
             SPFieldLookup deptLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.Department, "$Resources:COSIntranet,ChangeColDeparment", Fields.Title, deptList, false, false);
             SPFieldLookup storeOpeningLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.StoreOpening, "$Resources:COSIntranet,ChangeColStoreOpening", Fields.Title, projectsList, false, false);
