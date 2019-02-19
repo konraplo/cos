@@ -72,6 +72,11 @@ namespace Change.Intranet.Model
         public const string Planning = "Planning";
 
         /// <summary>
+        /// Order Management
+        /// </summary>
+        public const string OrderManagement = "Order Management";
+
+        /// <summary>
         /// Visual Merchandise
         /// </summary>
         public const string VisualMerchandise = "Visual Merchandise";

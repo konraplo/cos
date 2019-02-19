@@ -52,6 +52,58 @@
         /// When new partner tasks
         /// </summary>
         /// <returns>Lists with all project opening tasks</returns>
+        public static List<ProjectTask> LogistikTasks(int parentTaskId, string parentTitle)
+        {
+            List<ProjectTask> tasks = new List<ProjectTask>();
+            tasks.Add(new ProjectTask { Title = "Order CLUB Change cards (when new Country/region)", Duration = 90, ResponsibleDepartment = DepartmentUtilities.Planning, TimeBeforeGrandOpening = 90, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Arrival date / Shop furnitures incl wallpaper", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 28, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Arrival date / fitting/ mannequin/ store supply", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 18, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Arrival date/ Flooring, carpet for fitting room if applicable", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 28, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Arrival date/ Light", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 28, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Arrival date/ Facade signs to store", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 28, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Arrival date/ Costumer counter if applicable", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 28, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Arrival date/ Products", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 18, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Arrival date/ Marketing POS", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 18, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Prepack/ reserve overview updated for OM", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Planning, TimeBeforeGrandOpening = 28, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Basic order created", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Planning, TimeBeforeGrandOpening = 28, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Fashion order created", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Planning, TimeBeforeGrandOpening = 28, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Old fashion Order created", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Planning, TimeBeforeGrandOpening = 28, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order floor, note ETA warehouse in shipping overview", Duration = 21, ResponsibleDepartment = DepartmentUtilities.Retail, Responsible = DepartmentUtilities.ProjectCoordinator, TimeBeforeGrandOpening = 47, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Note if some products are not ordered in the shipping overview", Duration = 21, ResponsibleDepartment = DepartmentUtilities.Retail, Responsible = DepartmentUtilities.ProjectCoordinator, TimeBeforeGrandOpening = 47, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order Light, note ETA warehouse in shipping overview", Duration = 21, ResponsibleDepartment = DepartmentUtilities.Retail, Responsible = DepartmentUtilities.ProjectCoordinator, TimeBeforeGrandOpening = 47, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order Facade sign, note ETA warehouse in shipping overview", Duration = 21, ResponsibleDepartment = DepartmentUtilities.Retail, Responsible = DepartmentUtilities.ProjectCoordinator, TimeBeforeGrandOpening = 47, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order wallpaper", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Retail, Responsible = DepartmentUtilities.ProjectCoordinator, TimeBeforeGrandOpening = 35, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order furniture", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Retail, Responsible = DepartmentUtilities.ProjectCoordinator, TimeBeforeGrandOpening = 35, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order sound system, note ETA warehouse in shipping overview", Duration = 21, ResponsibleDepartment = DepartmentUtilities.Retail, Responsible = DepartmentUtilities.ProjectCoordinator, TimeBeforeGrandOpening = 47, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order Alarmgates", Duration = 21, ResponsibleDepartment = DepartmentUtilities.Retail, Responsible = DepartmentUtilities.ProjectCoordinator, TimeBeforeGrandOpening = 47, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order Lightbox, note ETA warehouse in shipping overview", Duration = 21, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 47, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order TV, note ETA warehouse in shipping overview", Duration = 21, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 47, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order Wardrope, note ETA warehouse in shipping overview", Duration = 21, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 47, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order costumer counter", Duration = 21, ResponsibleDepartment = DepartmentUtilities.Retail, Responsible = DepartmentUtilities.ProjectCoordinator, TimeBeforeGrandOpening = 47, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order Mannequin", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Retail, Responsible = DepartmentUtilities.ProjectCoordinator, TimeBeforeGrandOpening = 28, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order carpet, note ETA warehouse in shipping overview", Duration = 21, ResponsibleDepartment = DepartmentUtilities.Retail, Responsible = DepartmentUtilities.ProjectCoordinator, TimeBeforeGrandOpening = 47, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order fittings", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Retail, Responsible = DepartmentUtilities.ProjectCoordinator, TimeBeforeGrandOpening = 28, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order store supply (incl. Store kit)", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 28, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Note picking date for all Products in the shipping overview", Duration = 7, ResponsibleDepartment = DepartmentUtilities.OrderManagement, TimeBeforeGrandOpening = 54, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Note packing date for all Products in the shipping overview", Duration = 7, ResponsibleDepartment = DepartmentUtilities.OrderManagement, TimeBeforeGrandOpening = 54, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Note Shipping date for all Products in the shipping overview", Duration = 7, ResponsibleDepartment = DepartmentUtilities.OrderManagement, TimeBeforeGrandOpening = 54, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Note Arrival date for all Products in the shipping overview", Duration = 7, ResponsibleDepartment = DepartmentUtilities.OrderManagement, TimeBeforeGrandOpening = 54, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Note order numbers for all Products in the shipping overview", Duration = 0, ResponsibleDepartment = DepartmentUtilities.OrderManagement, TimeBeforeGrandOpening = 26, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Place basic order in AX", Duration = 10, ResponsibleDepartment = DepartmentUtilities.OrderManagement, TimeBeforeGrandOpening = 26, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Place furniture order in AX", Duration = 7, ResponsibleDepartment = DepartmentUtilities.OrderManagement, TimeBeforeGrandOpening = 26, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Place Store supply order in AX", Duration = 10, ResponsibleDepartment = DepartmentUtilities.OrderManagement, TimeBeforeGrandOpening = 26, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Place fitting order in AX", Duration = 10, ResponsibleDepartment = DepartmentUtilities.OrderManagement, TimeBeforeGrandOpening = 26, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Place Mannequin order in AX", Duration = 10, ResponsibleDepartment = DepartmentUtilities.OrderManagement, TimeBeforeGrandOpening = 26, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Place Fashion order in AX", Duration = 10, ResponsibleDepartment = DepartmentUtilities.OrderManagement, TimeBeforeGrandOpening = 26, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Redirect preorders in system", Duration = 10, ResponsibleDepartment = DepartmentUtilities.OrderManagement, TimeBeforeGrandOpening = 26, ParentId = parentTaskId, ParentTitle = parentTitle });
+
+            return tasks;
+        }
+
+        /// <summary>
+        /// When new partner tasks
+        /// </summary>
+        /// <returns>Lists with all project opening tasks</returns>
         public static List<ProjectTask> WhenNewPartnerTasks(int parentTaskId, string parentTitle)
         {
             List<ProjectTask> tasks = new List<ProjectTask>();

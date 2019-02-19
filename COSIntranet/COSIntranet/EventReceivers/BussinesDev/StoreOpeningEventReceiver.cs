@@ -68,11 +68,12 @@
                 projectTask.Update();
                 SPFieldLookupValue projectTaskValue = new SPFieldLookupValue(string.Format("{0};#{1}", projectTask.ID, projectTask.Title));
 
-                List<ProjectTask> whiteBoxHandoverTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.WhiteBoxHandoverTasks, "White box handover") ;
-                List<ProjectTask> whenNewPartnerTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.WhenNewPartnerTasks, "When new partner") ;
-                List<ProjectTask> createCostumerInSystemTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.CreateCostumerInSystemTasks, "Create costumer in system") ;
-                List<ProjectTask> administrationTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.AdministrationTasks, "Administration") ;
-                List<ProjectTask> rebuildingPeriod = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.RebuildingPeriod, "Rebuilding period") ;
+                List<ProjectTask> logistikTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.LogistikTasks, "Logistik") ;
+                //List<ProjectTask> whiteBoxHandoverTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.WhiteBoxHandoverTasks, "White box handover") ;
+                //List<ProjectTask> whenNewPartnerTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.WhenNewPartnerTasks, "When new partner") ;
+                //List<ProjectTask> createCostumerInSystemTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.CreateCostumerInSystemTasks, "Create costumer in system") ;
+                //List<ProjectTask> administrationTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.AdministrationTasks, "Administration") ;
+                //List<ProjectTask> rebuildingPeriod = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.RebuildingPeriod, "Rebuilding period") ;
 
                 List<Department> departments = DepartmentUtilities.GetDepartments(item.Web);
 
@@ -88,7 +89,8 @@
                 int counter = 1;
                 DateTime projectStartDate = DateTime.MinValue;
 
-                foreach (ProjectTask task in ProjectUtilities.CreateStoreOpeningTasks(projectTask.ID).Union(whiteBoxHandoverTasks).Union(whenNewPartnerTasks).Union(createCostumerInSystemTasks).Union(administrationTasks).Union(rebuildingPeriod).OrderByDescending(x => x.TimeBeforeGrandOpening))
+                //foreach (ProjectTask task in ProjectUtilities.CreateStoreOpeningTasks(projectTask.ID).Union(whiteBoxHandoverTasks).Union(whenNewPartnerTasks).Union(createCostumerInSystemTasks).Union(administrationTasks).Union(rebuildingPeriod).OrderByDescending(x => x.TimeBeforeGrandOpening))
+                foreach (ProjectTask task in logistikTasks.OrderByDescending(x => x.TimeBeforeGrandOpening))
                 {
                     DateTime dueDate = grandOpening.AddDays(-task.TimeBeforeGrandOpening);
                     DateTime startDate = dueDate.AddDays(-task.Duration);
