@@ -51,7 +51,7 @@
         /// <summary>
         /// When new partner tasks
         /// </summary>
-        /// <returns>Lists with all project opening tasks</returns>
+        /// <returns>Lists with all logistik tasks</returns>
         public static List<ProjectTask> LogistikTasks(int parentTaskId, string parentTitle)
         {
             List<ProjectTask> tasks = new List<ProjectTask>();
@@ -96,6 +96,15 @@
             tasks.Add(new ProjectTask { Title = "Place Mannequin order in AX", Duration = 10, ResponsibleDepartment = DepartmentUtilities.OrderManagement, TimeBeforeGrandOpening = 26, ParentId = parentTaskId, ParentTitle = parentTitle });
             tasks.Add(new ProjectTask { Title = "Place Fashion order in AX", Duration = 10, ResponsibleDepartment = DepartmentUtilities.OrderManagement, TimeBeforeGrandOpening = 26, ParentId = parentTaskId, ParentTitle = parentTitle });
             tasks.Add(new ProjectTask { Title = "Redirect preorders in system", Duration = 10, ResponsibleDepartment = DepartmentUtilities.OrderManagement, TimeBeforeGrandOpening = 26, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order VM POS, note ETA Warehouse in Shipping overview", Duration = 28, ResponsibleDepartment = DepartmentUtilities.Marketing, TimeBeforeGrandOpening = 44, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Place print order in Marketing if print is needed", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 46, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "1 st shipment Mesurements and weight of all the goods are send to Order Management", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Warehouse, TimeBeforeGrandOpening = 28, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Retail confirmed first delivery", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 19, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "1st order shipped from Warehouse", Duration = 7, ResponsibleDepartment = DepartmentUtilities.OrderManagement, TimeBeforeGrandOpening = 26, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "2st order shipped from Warehouse", Duration = 7, ResponsibleDepartment = DepartmentUtilities.OrderManagement, TimeBeforeGrandOpening = 16, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "2nd shipmentMesurements and weight of all the goods are send to Order Management", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Warehouse, TimeBeforeGrandOpening = 18, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "1st shipment Upload Pictures and Pallet info", Duration = 0, ResponsibleDepartment = DepartmentUtilities.Warehouse, TimeBeforeGrandOpening = 26, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Retail confirmed second delivery", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 9, ParentId = parentTaskId, ParentTitle = parentTitle });
 
             return tasks;
         }

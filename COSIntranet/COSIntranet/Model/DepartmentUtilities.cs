@@ -57,6 +57,11 @@ namespace Change.Intranet.Model
         public const string Retail = "Retail";
 
         /// <summary>
+        /// Warehouse
+        /// </summary>
+        public const string Warehouse = "Warehouse";
+
+        /// <summary>
         /// Marketing
         /// </summary>
         public const string Marketing = "Marketing";
