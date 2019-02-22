@@ -60,7 +60,7 @@
                 projectTask[SPBuiltInFieldId.Title] = item.Title;
                 projectTask[SPBuiltInFieldId.ContentTypeId] = foundedProjectTask.Id;
                 projectTask[Fields.Country] = storeCountry;
-                projectTask[Fields.StoreOpening] = true;
+                projectTask[Fields.StoreOpening] = 1;
                 projectTask[SPBuiltInFieldId.StartDate] = item[SPBuiltInFieldId.StartDate];
                 projectTask[SPBuiltInFieldId.TaskDueDate] = item[SPBuiltInFieldId.TaskDueDate];
                 projectTask[Fields.StoreOpening] = string.Format("{0};#{1}", item.ID, item.Title);
@@ -69,11 +69,11 @@
                 SPFieldLookupValue projectTaskValue = new SPFieldLookupValue(string.Format("{0};#{1}", projectTask.ID, projectTask.Title));
 
                 List<ProjectTask> logistikTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.LogistikTasks, "Logistik") ;
-                //List<ProjectTask> whiteBoxHandoverTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.WhiteBoxHandoverTasks, "White box handover") ;
                 //List<ProjectTask> whenNewPartnerTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.WhenNewPartnerTasks, "When new partner") ;
-                //List<ProjectTask> createCostumerInSystemTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.CreateCostumerInSystemTasks, "Create costumer in system") ;
+                List<ProjectTask> projectPreperationTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.ProjectPreperationTasks, "Project preperation");
                 List<ProjectTask> administrationTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.AdministrationTasks, "Administration");
-                //List<ProjectTask> rebuildingPeriod = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.RebuildingPeriod, "Rebuilding period") ;
+                List<ProjectTask> preperationOfStoreTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.PreperationOfStoreTasks, "Preperation of store");
+                //List<ProjectTask> postGrandOpeningTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.PostGrandOpeningTasks, "Post Grand opening");
 
                 List<Department> departments = DepartmentUtilities.GetDepartments(item.Web);
 
@@ -88,9 +88,9 @@
                 List<string> formatedUpdateBatchCommands = new List<string>();
                 int counter = 1;
                 DateTime projectStartDate = DateTime.MinValue;
+                DateTime projectDueDate = DateTime.MaxValue;
 
-                //foreach (ProjectTask task in ProjectUtilities.CreateStoreOpeningTasks(projectTask.ID).Union(whiteBoxHandoverTasks).Union(whenNewPartnerTasks).Union(createCostumerInSystemTasks).Union(administrationTasks).Union(rebuildingPeriod).OrderByDescending(x => x.TimeBeforeGrandOpening))
-                foreach (ProjectTask task in logistikTasks.Union(administrationTasks).OrderByDescending(x => x.TimeBeforeGrandOpening))
+                foreach (ProjectTask task in ProjectUtilities.CreateMilestoneTasks(projectTask.ID).Union(logistikTasks).Union(administrationTasks).Union(projectPreperationTasks).Union(preperationOfStoreTasks).OrderByDescending(x => x.TimeBeforeGrandOpening))
                 {
                     DateTime dueDate = grandOpening.AddDays(-task.TimeBeforeGrandOpening);
                     DateTime startDate = dueDate.AddDays(-task.Duration);
@@ -102,6 +102,15 @@
                     else if (DateTime.Compare(projectStartDate, startDate) > 0)
                     {
                         projectStartDate = startDate;
+                    }
+
+                    if (projectDueDate.Equals(DateTime.MaxValue))
+                    {
+                        projectDueDate = grandOpening.AddDays(-task.TimeBeforeGrandOpening);
+                    }
+                    else if (DateTime.Compare(projectDueDate, grandOpening.AddDays(-task.TimeBeforeGrandOpening)) < 0)
+                    {
+                        projectDueDate = grandOpening.AddDays(-task.TimeBeforeGrandOpening);
                     }
 
                     StringBuilder batchItemSetVar = new StringBuilder();
@@ -202,6 +211,12 @@
 
                     item[SPBuiltInFieldId.StartDate] = SPUtility.CreateISO8601DateTimeFromSystemDateTime(projectStartDate);
                     item.Update();
+                }
+
+                if (!projectDueDate.Equals(DateTime.MaxValue))
+                {
+                    projectTask[SPBuiltInFieldId.TaskDueDate] = SPUtility.CreateISO8601DateTimeFromSystemDateTime(projectDueDate);
+                    projectTask.Update();
                 }
 
                 EventFiringEnabled = true;
