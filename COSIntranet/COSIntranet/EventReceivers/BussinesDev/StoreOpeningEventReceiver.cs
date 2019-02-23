@@ -76,6 +76,10 @@
                 List<ProjectTask> administrationTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.AdministrationTasks, "Administration");
                 List<ProjectTask> preperationOfStoreTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.PreperationOfStoreTasks, "Preperation of store");
                 List<ProjectTask> rebuildingPeriodBuilingTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.RebuildingPeriodBuilingTasks, "Rebuilding period - builing");
+                List<ProjectTask> rebuildingPeriodDemolitionTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.RebuildingPeriodDemolitionTasks, "Rebuilding period - demolition");
+                List<ProjectTask> rebuildingPeriodElectricityTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.RebuildingPeriodElectricityTasks, "Rebuilding period - Electricity");
+                List<ProjectTask> rebuildingPeriodMountingTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.RebuildingPeriodMountingTasks, "Rebuilding period - Mounting");
+                List<ProjectTask> storePreperationTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.StorePreperationTasks, "Store preperation");
                 List<ProjectTask> postGrandOpeningTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.PostGrandOpeningTasks, "Post Grand opening");
 
                 List<Department> departments = DepartmentUtilities.GetDepartments(item.Web);
@@ -102,6 +106,10 @@
                                              Union(purchaseCleaningTasks).
                                              Union(purchaseOfficeEquipmentTasks).
                                              Union(rebuildingPeriodBuilingTasks).
+                                             Union(rebuildingPeriodDemolitionTasks).
+                                             Union(rebuildingPeriodElectricityTasks).
+                                             Union(rebuildingPeriodMountingTasks).
+                                             Union(storePreperationTasks).
                                              Union(postGrandOpeningTasks).OrderByDescending(x => x.TimeBeforeGrandOpening))
                 {
                     DateTime dueDate = grandOpening.AddDays(-task.TimeBeforeGrandOpening);
