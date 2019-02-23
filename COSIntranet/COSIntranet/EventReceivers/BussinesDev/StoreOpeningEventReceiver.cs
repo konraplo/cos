@@ -60,7 +60,7 @@
                 projectTask[SPBuiltInFieldId.Title] = item.Title;
                 projectTask[SPBuiltInFieldId.ContentTypeId] = foundedProjectTask.Id;
                 projectTask[Fields.Country] = storeCountry;
-                projectTask[Fields.StoreOpening] = 1;
+                projectTask[Fields.StoreOpeningTask] = true;
                 projectTask[SPBuiltInFieldId.StartDate] = item[SPBuiltInFieldId.StartDate];
                 projectTask[SPBuiltInFieldId.TaskDueDate] = item[SPBuiltInFieldId.TaskDueDate];
                 projectTask[Fields.StoreOpening] = string.Format("{0};#{1}", item.ID, item.Title);
@@ -69,11 +69,14 @@
                 SPFieldLookupValue projectTaskValue = new SPFieldLookupValue(string.Format("{0};#{1}", projectTask.ID, projectTask.Title));
 
                 List<ProjectTask> logistikTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.LogistikTasks, "Logistik") ;
-                //List<ProjectTask> whenNewPartnerTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.WhenNewPartnerTasks, "When new partner") ;
+                List<ProjectTask> purchaseBathroomKitchenTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.PurchaseBathroomKitchenTasks, "Purchase, bathroom & Kitchen");
+                List<ProjectTask> purchaseCleaningTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.PurchaseCleaningTasks, "Purchase, Cleaning");
+                List<ProjectTask> purchaseOfficeEquipmentTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.PurchaseOfficeEquipmentTasks, "Purchase, office equipment");
                 List<ProjectTask> projectPreperationTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.ProjectPreperationTasks, "Project preperation");
                 List<ProjectTask> administrationTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.AdministrationTasks, "Administration");
                 List<ProjectTask> preperationOfStoreTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.PreperationOfStoreTasks, "Preperation of store");
-                //List<ProjectTask> postGrandOpeningTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.PostGrandOpeningTasks, "Post Grand opening");
+                List<ProjectTask> rebuildingPeriodBuilingTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.RebuildingPeriodBuilingTasks, "Rebuilding period - builing");
+                List<ProjectTask> postGrandOpeningTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.PostGrandOpeningTasks, "Post Grand opening");
 
                 List<Department> departments = DepartmentUtilities.GetDepartments(item.Web);
 
@@ -90,7 +93,16 @@
                 DateTime projectStartDate = DateTime.MinValue;
                 DateTime projectDueDate = DateTime.MaxValue;
 
-                foreach (ProjectTask task in ProjectUtilities.CreateMilestoneTasks(projectTask.ID).Union(logistikTasks).Union(administrationTasks).Union(projectPreperationTasks).Union(preperationOfStoreTasks).OrderByDescending(x => x.TimeBeforeGrandOpening))
+                foreach (ProjectTask task in ProjectUtilities.CreateMilestoneTasks(projectTask.ID).
+                                             Union(logistikTasks).
+                                             Union(administrationTasks).
+                                             Union(projectPreperationTasks).
+                                             Union(preperationOfStoreTasks).
+                                             Union(purchaseBathroomKitchenTasks).
+                                             Union(purchaseCleaningTasks).
+                                             Union(purchaseOfficeEquipmentTasks).
+                                             Union(rebuildingPeriodBuilingTasks).
+                                             Union(postGrandOpeningTasks).OrderByDescending(x => x.TimeBeforeGrandOpening))
                 {
                     DateTime dueDate = grandOpening.AddDays(-task.TimeBeforeGrandOpening);
                     DateTime startDate = dueDate.AddDays(-task.Duration);

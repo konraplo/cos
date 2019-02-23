@@ -143,7 +143,7 @@
         /// <summary>
         /// Preperation of store
         /// </summary>
-        /// <returns>Lists with all Post Grand opening tasks</returns>
+        /// <returns>Lists with all Preperation of store tasks</returns>
         public static List<ProjectTask> PreperationOfStoreTasks(int parentTaskId, string parentTitle)
         {
             List<ProjectTask> tasks = new List<ProjectTask>();
@@ -153,14 +153,81 @@
         }
 
         /// <summary>
-        /// White Box Handover tasks
+        /// Purchase, bathroom & Kitchen tasks
         /// </summary>
-        /// <returns>Lists with all project opening tasks</returns>
-        public static List<ProjectTask> WhiteBoxHandoverTasks(int parentTaskId, string parentTitle)
+        /// <returns>Lists with all Purchase, bathroom & Kitchen tasks</returns>
+        public static List<ProjectTask> PurchaseBathroomKitchenTasks(int parentTaskId, string parentTitle)
         {
             List<ProjectTask> tasks = new List<ProjectTask>();
-            tasks.Add(new ProjectTask { Title = "Sign QS document", Duration = 0, Responsible = DepartmentUtilities.RegionalManager, TimeBeforeGrandOpening = 4, ParentId = parentTaskId, ParentTitle = parentTitle });
-            tasks.Add(new ProjectTask { Title = "FG delivery sheet", Duration = 0, Responsible = DepartmentUtilities.RegionalManager, TimeBeforeGrandOpening = 4, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Soap", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Towels", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Kithsentovels", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Knifes, forkes, spoons", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Coffemachine", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Plates", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Glasses", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Cups", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Garbage bags big and small ", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Toilet paper", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Toilet cleaner", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Dish washing", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+
+            return tasks;
+        }
+
+        /// <summary>
+        /// Purchase, Cleaning tasks
+        /// </summary>
+        /// <returns>Lists with all Purchase, Cleaning tasks tasks</returns>
+        public static List<ProjectTask> PurchaseCleaningTasks(int parentTaskId, string parentTitle)
+        {
+            List<ProjectTask> tasks = new List<ProjectTask>();
+            tasks.Add(new ProjectTask { Title = "Vacuumcleaner and bags", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Swab for the floor plus proper cleaning products for the woodenfloors", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Windowcleaner", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Windowwiper", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Dusters", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+
+            return tasks;
+        }
+
+        /// <summary>
+        /// Purchase, office equipment tasks
+        /// </summary>
+        /// <returns>Lists with all Purchase, office equipment tasks tasks</returns>
+        public static List<ProjectTask> PurchaseOfficeEquipmentTasks(int parentTaskId, string parentTitle)
+        {
+            List<ProjectTask> tasks = new List<ProjectTask>();
+            tasks.Add(new ProjectTask { Title = "Tape", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Stapler", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "A4 paper", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Calendar", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Scissors", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Carpenterknife", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Pens", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Calculator", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Dymo", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
+
+            return tasks;
+        }
+
+        /// <summary>
+        /// Rebuilding period - builing tasks
+        /// </summary>
+        /// <returns>Lists with all Rebuilding period - builing tasks</returns>
+        public static List<ProjectTask> RebuildingPeriodBuilingTasks(int parentTaskId, string parentTitle)
+        {
+            List<ProjectTask> tasks = new List<ProjectTask>();
+            tasks.Add(new ProjectTask { Title = "Fill existing Celing", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 13, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Paint existing ceiling", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 12, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Mount new ceiling", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 14, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Mount floor", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 11, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Build new walls", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 14, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Fine filler the walls", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 13, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Rough filler the walls", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 12, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Stock in backroom", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 12, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Facade Paint the Facade", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 12, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Window Mount foil on the window (hoarding)", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 7, ParentId = parentTaskId, ParentTitle = parentTitle });
 
             return tasks;
         }
