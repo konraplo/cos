@@ -5,6 +5,7 @@
     using System.Collections.Generic;
     using System.Text;
     using Microsoft.SharePoint;
+    using Microsoft.SharePoint.Utilities;
 
     /// <summary>
     /// Helpermethods with solutionwide accessible methods and functions.
@@ -40,6 +41,11 @@
         /// </summary>
         public const string BATCH_ITEM_SET_VAR = "<SetVar Name=\"urn:schemas-microsoft-com:office:office#{0}\">{1}</SetVar>";
 
+        private const string GetFolderByPrefix = "<Where>" +
+                                                    "<And>" +
+                                                        "<Eq><FieldRef Name='FSObjType'/><Value Type='Lookup'>1</Value></Eq>" +
+                                                        "<BeginsWith><FieldRef Name='FileLeafRef'/><Value Type='File'>{0}</Value></BeginsWith>" +
+                                                    "</And></Where>";
         /// <summary>
         /// This method creates a lookup site column if not exists.
         /// </summary>
@@ -112,6 +118,15 @@
                 throw ex;
 
             }
+        }
+
+        public static SPListItemCollection GetFoldersByPrefix(SPWeb web, SPList list, string prefix)
+        {
+            SPQuery query = new SPQuery();
+            query.Query = string.Format(GetFolderByPrefix, prefix);
+            query.ViewAttributes = "Scope='RecursiveAll'";
+            return list.GetItems(query);
+
         }
 
         /// <summary>

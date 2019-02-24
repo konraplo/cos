@@ -41,6 +41,258 @@
             SPFieldLookupValue storeCountry = new SPFieldLookupValue(ProjectUtilities.GetStoreCountry(item.Web, store.LookupId));
             string type = Convert.ToString(item[Fields.ChangeProjectCategory]);
             string projectFolderName = string.Format("{0}_{1}_{2}_{3}", item.ID, store.LookupValue, storeCountry.LookupValue, type);
+            UpdateFolderStrucutreMarketingLib(item.Web, projectFolderName, item.ID);
+            UpdateFolderStrucutreDrawingsLib(item.Web, projectFolderName, item.ID);
+            UpdateFolderStrucutreGeneralInformationLib(item.Web, projectFolderName, item.ID);
+            UpdateFolderStrucutreLogisticLib(item.Web, projectFolderName, item.ID);
+            UpdateFolderStrucutrePicturesLib(item.Web, projectFolderName, item.ID);
+            UpdateFolderStrucutreEvaluationLib(item.Web, projectFolderName, item.ID);
+        }
+
+        private static void UpdateFolderStrucutreMarketingLib(SPWeb web, string projectFolder,int itemId)
+        {
+            // Marketing
+            Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutreMarketingLib", "Start update Marketing");
+            SPList list = null;
+            try
+            {
+                list = web.GetList(SPUrlUtility.CombineUrl(web.Url, "Lists/Marketing"));
+            }
+            catch (Exception)
+            {
+                Logger.WriteLog(Logger.Category.Unexpected, "UpdateFolderStrucutreMarketingLib", "List not found");
+                return;
+            }
+
+            SPListItemCollection items = CommonUtilities.GetFoldersByPrefix(web, list, string.Format("{0}_", itemId));
+
+            //Get the name and Url for the folder 
+            if (items.Count > 0)
+            {
+                SPListItem firstItem = items[0];
+                firstItem[SPBuiltInFieldId.FileLeafRef] = projectFolder;
+                firstItem.Update();
+            }
+            else
+            {
+                SPFolderCollection folderColl = list.RootFolder.SubFolders;
+
+                string folderUrl = projectFolder;
+                SPFolder projectFolderObj = folderColl.Add(folderUrl);
+                folderUrl = "From Marketing to partner";
+                projectFolderObj.SubFolders.Add(folderUrl);
+                folderUrl = "From partner to Marketing";
+                projectFolderObj.SubFolders.Add(folderUrl);
+
+                list.Update();
+            }
+
+           
+            Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutreMarketingLib", "End update Marketing");
+        }
+
+        private static void UpdateFolderStrucutreDrawingsLib(SPWeb web, string projectFolder, int itemId)
+        {
+            // Drawings
+            Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutreDrawingsLib", "Start update Drawings");
+           
+            SPList list = null;
+            try
+            {
+                list = web.GetList(SPUrlUtility.CombineUrl(web.Url, "Lists/Drawings"));
+            }
+            catch (Exception)
+            {
+                Logger.WriteLog(Logger.Category.Unexpected, "UpdateFolderStrucutreMarketingLib", "List not found");
+                return;
+            }
+
+            SPListItemCollection items = CommonUtilities.GetFoldersByPrefix(web, list, string.Format("{0}_", itemId));
+
+            //Get the name and Url for the folder 
+            if (items.Count > 0)
+            {
+                SPListItem firstItem = items[0];
+                firstItem[SPBuiltInFieldId.FileLeafRef] = projectFolder;
+                firstItem.Update();
+            }
+            else
+            {
+                SPFolderCollection folderColl = list.RootFolder.SubFolders;
+
+                string folderUrl = projectFolder;
+                SPFolder projectFolderObj = folderColl.Add(folderUrl);
+                folderUrl = "Center before opening";
+                projectFolderObj.SubFolders.Add(folderUrl);
+                folderUrl = "Recieved from center";
+                projectFolderObj.SubFolders.Add(folderUrl);
+                folderUrl = "Final - PDF";
+                SPFolder finalPDF = projectFolderObj.SubFolders.Add(folderUrl);
+                folderUrl = "Final - CAD";
+                projectFolderObj.SubFolders.Add(folderUrl);
+                folderUrl = "Not approved";
+                finalPDF.SubFolders.Add(folderUrl);
+
+                list.Update();
+            }
+
+
+            Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutreDrawingsLib", "End update Drawings");
+        }
+
+        private static void UpdateFolderStrucutreGeneralInformationLib(SPWeb web, string projectFolder, int itemId)
+        {
+            // Marketing
+            Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutreGeneralInformationLib", "Start update GeneralInformation");
+            SPList list = web.GetList(SPUrlUtility.CombineUrl(web.Url, "Lists/GeneralInformation"));
+            if (list == null)
+            {
+                return;
+            }
+
+            SPListItemCollection items = CommonUtilities.GetFoldersByPrefix(web, list, string.Format("{0}_", itemId));
+
+            //Get the name and Url for the folder 
+            if (items.Count > 0)
+            {
+                SPListItem firstItem = items[0];
+                firstItem[SPBuiltInFieldId.FileLeafRef] = projectFolder;
+                firstItem.Update();
+            }
+            else
+            {
+                SPFolderCollection folderColl = list.RootFolder.SubFolders;
+
+                string folderUrl = projectFolder;
+                SPFolder projectFolderObj = folderColl.Add(folderUrl);
+
+                list.Update();
+            }
+
+
+            Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutreGeneralInformationLib", "End update GeneralInformation");
+        }
+
+        private static void UpdateFolderStrucutreLogisticLib(SPWeb web, string projectFolder, int itemId)
+        {
+            // Logistic
+            Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutreLogisticLib", "Start update Logistic");
+            SPList list = null;
+            try
+            {
+                list = web.GetList(SPUrlUtility.CombineUrl(web.Url, "Lists/Logistic"));
+            }
+            catch (Exception)
+            {
+                Logger.WriteLog(Logger.Category.Unexpected, "UpdateFolderStrucutreLogisticLib", "List not found");
+                return;
+            }
+           
+            SPListItemCollection items = CommonUtilities.GetFoldersByPrefix(web, list, string.Format("{0}_", itemId));
+
+            //Get the name and Url for the folder 
+            if (items.Count > 0)
+            {
+                SPListItem firstItem = items[0];
+                firstItem[SPBuiltInFieldId.FileLeafRef] = projectFolder;
+                firstItem.Update();
+            }
+            else
+            {
+                SPFolderCollection folderColl = list.RootFolder.SubFolders;
+
+                string folderUrl = projectFolder;
+                SPFolder projectFolderObj = folderColl.Add(folderUrl);
+                folderUrl = "Order";
+                projectFolderObj.SubFolders.Add(folderUrl);
+                folderUrl = "Order confirmation";
+                projectFolderObj.SubFolders.Add(folderUrl);
+
+                list.Update();
+            }
+
+
+            Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutreLogisticLib", "End update Logistic");
+        }
+
+        private static void UpdateFolderStrucutrePicturesLib(SPWeb web, string projectFolder, int itemId)
+        {
+            // Marketing
+            Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutrePicturesLib", "Start update Pictures");
+            SPList list = null;
+            try
+            {
+                list = web.GetList(SPUrlUtility.CombineUrl(web.Url, "Lists/Pictures"));
+            }
+            catch (Exception)
+            {
+                Logger.WriteLog(Logger.Category.Unexpected, "UpdateFolderStrucutrePicturesLib", "List not found");
+                return;
+            }
+
+            SPListItemCollection items = CommonUtilities.GetFoldersByPrefix(web, list, string.Format("{0}_", itemId));
+
+            //Get the name and Url for the folder 
+            if (items.Count > 0)
+            {
+                SPListItem firstItem = items[0];
+                firstItem[SPBuiltInFieldId.FileLeafRef] = projectFolder;
+                firstItem.Update();
+            }
+            else
+            {
+                SPFolderCollection folderColl = list.RootFolder.SubFolders;
+
+                string folderUrl = projectFolder;
+                SPFolder projectFolderObj = folderColl.Add(folderUrl);
+                folderUrl = "From Warehouse";
+                projectFolderObj.SubFolders.Add(folderUrl);
+                folderUrl = "Center, after opening";
+                projectFolderObj.SubFolders.Add(folderUrl);
+
+                list.Update();
+            }
+
+
+            Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutrePicturesLib", "End update Pictures");
+        }
+
+        private static void UpdateFolderStrucutreEvaluationLib(SPWeb web, string projectFolder, int itemId)
+        {
+            // Evaluation
+            Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutreEvaluationLib", "Start update Evaluation");
+            SPList list = null;
+            try
+            {
+                list = web.GetList(SPUrlUtility.CombineUrl(web.Url, "Lists/Evaluation"));
+            }
+            catch (Exception)
+            {
+                Logger.WriteLog(Logger.Category.Unexpected, "UpdateFolderStrucutreEvaluationLib", "List not found");
+                return;
+            }
+
+            SPListItemCollection items = CommonUtilities.GetFoldersByPrefix(web, list, string.Format("{0}_", itemId));
+
+            //Get the name and Url for the folder 
+            if (items.Count > 0)
+            {
+                SPListItem firstItem = items[0];
+                firstItem[SPBuiltInFieldId.FileLeafRef] = projectFolder;
+                firstItem.Update();
+            }
+            else
+            {
+                SPFolderCollection folderColl = list.RootFolder.SubFolders;
+
+                string folderUrl = projectFolder;
+                SPFolder projectFolderObj = folderColl.Add(folderUrl);
+
+                list.Update();
+            }
+
+
+            Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutreEvaluationLib", "End update Evaluation");
         }
 
         private void CreateProjectTasks(SPListItem item)
