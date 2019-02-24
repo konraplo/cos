@@ -66,6 +66,7 @@
                 projectTask[Fields.StoreOpening] = string.Format("{0};#{1}", item.ID, item.Title);
                 projectTask[Fields.Store] = string.Format("{0};#{1}", store.LookupId, store.LookupValue);
                 projectTask.Update();
+                Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("created store opening task id:{0}, title:{1}", projectTask.ID, projectTask.Title));
                 SPFieldLookupValue projectTaskValue = new SPFieldLookupValue(string.Format("{0};#{1}", projectTask.ID, projectTask.Title));
 
                 List<ProjectTask> logistikTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.LogistikTasks, "Logistik") ;
@@ -256,8 +257,9 @@
         /// <param name="subTasks"></param>
         /// <param name="mainTaskTitle"></param>
         /// <returns></returns>        
-        private static List<ProjectTask> CreateSubTasks(SPListItem item, SPFieldLookupValue projectTaskValue, SPFieldLookupValue store, SPFieldLookupValue storeCountry, DateTime grandOpening, SPList tasksList, SPContentType foundedProjectTask, Func<int, string, List<ProjectTask>> subTasks, string mainTaskTitle)
+        private List<ProjectTask> CreateSubTasks(SPListItem item, SPFieldLookupValue projectTaskValue, SPFieldLookupValue store, SPFieldLookupValue storeCountry, DateTime grandOpening, SPList tasksList, SPContentType foundedProjectTask, Func<int, string, List<ProjectTask>> subTasks, string mainTaskTitle)
         {
+            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("CreateSubTasks project:{0}, parent title:{1}", projectTaskValue.LookupValue, mainTaskTitle));
             SPListItem projectTask = tasksList.AddItem();
             projectTask[SPBuiltInFieldId.Title] = mainTaskTitle;
             projectTask[SPBuiltInFieldId.ContentTypeId] = foundedProjectTask.Id;

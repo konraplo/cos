@@ -47,6 +47,11 @@ namespace Change.Intranet.Model
         public const string HR = "HR";
 
         /// <summary>
+        /// IS
+        /// </summary>
+        public const string IS = "IS";
+
+        /// <summary>
         /// Costumers service
         /// </summary>
         public const string CostumersService = "Costumers service";

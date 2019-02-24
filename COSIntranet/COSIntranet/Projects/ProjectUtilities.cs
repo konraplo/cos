@@ -308,6 +308,17 @@
         public static List<ProjectTask> SystemPreperationTasks(int parentTaskId, string parentTitle)
         {
             List<ProjectTask> tasks = new List<ProjectTask>();
+            tasks.Add(new ProjectTask { Title = "Adding the store KPIs and sales budget in PBI / AX", Duration = 7, ResponsibleDepartment = DepartmentUtilities.Finance, TimeBeforeGrandOpening = 54, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Country / region setup in system (only when new market)", Duration = 0, ResponsibleDepartment = DepartmentUtilities.IS, TimeBeforeGrandOpening = 61, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Create store in AX", Duration = 0, ResponsibleDepartment = DepartmentUtilities.IS, TimeBeforeGrandOpening = 61, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Create Store Email", Duration = 7, ResponsibleDepartment = DepartmentUtilities.IT, TimeBeforeGrandOpening = 54, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Create store manager Email", Duration = 7, ResponsibleDepartment = DepartmentUtilities.IT, TimeBeforeGrandOpening = 54, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order phone, note Store ETD in Shipment overview", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 60, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order phone line and add number in information sheet", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 60, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order Internet and add IP adress in Information sheet", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 60, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Order Phone, note Store ETD in Shipment overview", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 60, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Replanishment setup", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 28, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "Set assortment (when new Country/region)", Duration = 7, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 54, ParentId = parentTaskId, ParentTitle = parentTitle });
             tasks.Add(new ProjectTask { Title = "Order POS package", Duration = 14, ResponsibleDepartment = DepartmentUtilities.IT, TimeBeforeGrandOpening = 39, ParentId = parentTaskId, ParentTitle = parentTitle });
             tasks.Add(new ProjectTask { Title = "Order Printer", Duration = 14, ResponsibleDepartment = DepartmentUtilities.IT, TimeBeforeGrandOpening = 39, ParentId = parentTaskId, ParentTitle = parentTitle });
             tasks.Add(new ProjectTask { Title = "POS package ETA Warehouse", Duration = 2, ResponsibleDepartment = DepartmentUtilities.IT, TimeBeforeGrandOpening = 25, ParentId = parentTaskId, ParentTitle = parentTitle });
