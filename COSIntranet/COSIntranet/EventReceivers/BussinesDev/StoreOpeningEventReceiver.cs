@@ -30,6 +30,17 @@
         public override void ItemUpdated(SPItemEventProperties properties)
         {
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "ItemUpdated");
+
+            this.UpdateFolderStrucutre(properties.ListItem);
+        }
+
+        private void UpdateFolderStrucutre(SPListItem item)
+        {
+            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "UpdateFolderStrucutre");
+            SPFieldLookupValue store = new SPFieldLookupValue(Convert.ToString(item[Fields.Store]));
+            SPFieldLookupValue storeCountry = new SPFieldLookupValue(ProjectUtilities.GetStoreCountry(item.Web, store.LookupId));
+            string type = Convert.ToString(item[Fields.ChangeProjectCategory]);
+            string projectFolderName = string.Format("{0}_{1}_{2}_{3}", item.ID, store.LookupValue, storeCountry.LookupValue, type);
         }
 
         private void CreateProjectTasks(SPListItem item)

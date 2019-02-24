@@ -41,5 +41,10 @@
         /// GUID of ChangeTasksLink
         /// </summary>
         public static Guid ChangeProjectTasksLink = new Guid("{56587AA8-12EB-43D0-B4DA-83FB0B92CF0B}");
+
+        /// <summary>
+        /// GUID of ChangeProjectCategory
+        /// </summary>
+        public static Guid ChangeProjectCategory = new Guid("{76DA4052-5813-4B9C-8F4F-7940B92260DC}");
     }
 }

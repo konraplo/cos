@@ -100,6 +100,19 @@
     <None Include="ComposedLook\Theme\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{0c5a1f1c-450a-451d-9ffb-cdb58e264074}</SharePointProjectItemId>
     </None>
+    <Content Include="DocumentTemplates\BusinessDevDocTemplates\Alarm_gate_Manual.pdf" />
+    <None Include="DocumentTemplates\BusinessDevDocTemplates\Customer_counter_Mono_Alpha_error_manual.ppt" />
+    <None Include="DocumentTemplates\BusinessDevDocTemplates\Customer_counter_Mono_Bacum_installation_guide.pdf" />
+    <None Include="DocumentTemplates\BusinessDevDocTemplates\Customor_counter_Mono_Alpha_Installation_and_service_manual.pdf" />
+    <None Include="DocumentTemplates\BusinessDevDocTemplates\Media_player_installation_manual.pdf" />
+    <None Include="DocumentTemplates\BusinessDevDocTemplates\POS_installation_guide_2_1.pdf" />
+    <None Include="DocumentTemplates\BusinessDevDocTemplates\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{0338b093-cfbf-4354-a460-e2caead89395}</SharePointProjectItemId>
+    </None>
+    <None Include="DocumentTemplates\BusinessDevDocTemplates\shop_fixture_manual.pdf" />
+    <None Include="DocumentTemplates\BusinessDevDocTemplates\Store_opening_guide_retail.pptx" />
+    <None Include="DocumentTemplates\BusinessDevDocTemplates\Tablet_how_to_connect_to_WiFi.ppt" />
+    <None Include="DocumentTemplates\BusinessDevDocTemplates\VM_guideline.pptx" />
     <None Include="EventReceivers\InboxEventReceiver\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{16579f80-edd5-4554-9529-2ea9fac4d437}</SharePointProjectItemId>
     </None>
@@ -276,6 +289,8 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="ComposedLook\Theme\Elements.xml" />
+    <Content Include="DocumentTemplates\BusinessDevDocTemplates\Elements.xml" />
+    <Content Include="DocumentTemplates\BusinessDevDocTemplates\Sample.txt" />
     <Content Include="EventReceivers\InboxEventReceiver\Elements.xml" />
     <Content Include="Features\ChangeWebTemplates\ChangeWebTemplates.Template.xml">
       <DependentUpon>ChangeWebTemplates.feature</DependentUpon>

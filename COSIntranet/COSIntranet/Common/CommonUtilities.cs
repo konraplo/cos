@@ -1,6 +1,7 @@
 ﻿namespace Change.Intranet.Common
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Text;
     using Microsoft.SharePoint;
@@ -110,6 +111,47 @@
                 Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName, string.Format("Helper.CreateLookupField: Error during lookupfieldcreation:{0}", ex.Message));
                 throw ex;
 
+            }
+        }
+
+        /// <summary>
+        /// Add document to document Library
+        /// </summary>
+        /// <param name="pLibrary"></param>
+        /// <param name="pContent"></param>
+        /// <param name="pFileName"></param>
+        /// <param name="pDocProperties"></param>
+        /// <returns></returns>
+        public static int AddDocumentToLibrary(SPDocumentLibrary pLibrary, string libraryRelativeFolderUrl, byte[] pContent, string pFileName, Hashtable pDocProperties)
+        {
+            if (pLibrary == null)
+            {
+                throw new ArgumentNullException("web", String.Format("Parameter {0} is Null or empty.", "web"));
+            }
+
+            try
+            {
+                SPFolder folder;
+                if (!string.IsNullOrEmpty(libraryRelativeFolderUrl))
+                {
+                    folder = pLibrary.ParentWeb.GetFolder(string.Format("{0}/{1}", pLibrary.RootFolder.ServerRelativeUrl, libraryRelativeFolderUrl));
+
+                }
+                else
+                {
+                    folder = pLibrary.RootFolder;
+                }
+
+                SPFile file = folder.Files.Add(pFileName, pContent, pDocProperties, true);
+
+                file.Update();
+
+                return file.ListItemAllFields.ID;
+            }
+            catch (Exception exception)
+            {
+                Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName, string.Format("Helper.AddDocumentToLibrary: Error during  document adding:{0}", exception.Message));
+                throw;
             }
         }
 

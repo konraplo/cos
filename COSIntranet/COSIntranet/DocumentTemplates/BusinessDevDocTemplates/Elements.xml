@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="ManualAndInstruction" Url="Lists/ManualandInstructions">
+    <File Path="BusinessDevDocTemplates\Alarm_gate_Manual.pdf" Url="Alarm_gate_Manual.pdf" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
+    <File Path="BusinessDevDocTemplates\Customer_counter_Mono_Alpha_error_manual.ppt" Url="Customer_counter_Mono_Alpha_error_manual.ppt" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
+    <File Path="BusinessDevDocTemplates\Customer_counter_Mono_Bacum_installation_guide.pdf" Url="Customer_counter_Mono_Bacum_installation_guide.pdf" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
+    <File Path="BusinessDevDocTemplates\Customor_counter_Mono_Alpha_Installation_and_service_manual.pdf" Url="Customor_counter_Mono_Alpha_Installation_and_service_manual.pdf" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
+    <File Path="BusinessDevDocTemplates\Media_player_installation_manual.pdf" Url="Media_player_installation_manual.pdf" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
+    <File Path="BusinessDevDocTemplates\POS_installation_guide_2_1.pdf" Url="POS_installation_guide_2_1.pdf" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
+    <File Path="BusinessDevDocTemplates\shop_fixture_manual.pdf" Url="shop_fixture_manual.pdf" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
+    <File Path="BusinessDevDocTemplates\Store_opening_guide_retail.pptx" Url="Store_opening_guide_retail.pptx" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
+    <File Path="BusinessDevDocTemplates\Tablet_how_to_connect_to_WiFi.ppt" Url="Tablet_how_to_connect_to_WiFi.ppt" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
+    <File Path="BusinessDevDocTemplates\VM_guideline.pptx" Url="VM_guideline.pptx" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
+  </Module>
+</Elements>

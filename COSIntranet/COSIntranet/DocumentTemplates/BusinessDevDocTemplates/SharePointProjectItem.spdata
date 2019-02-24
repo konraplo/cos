@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectItem Type="Microsoft.VisualStudio.SharePoint.Module" DefaultFile="Elements.xml" SupportedTrustLevels="All" SupportedDeploymentScopes="Web, Site" xmlns="http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel">
+  <Files>
+    <ProjectItemFile Source="Elements.xml" Target="BusinessDevDocTemplates\" Type="ElementManifest" />
+    <ProjectItemFile Source="Sample.txt" Target="BusinessDevDocTemplates\" Type="ElementFile" />
+    <ProjectItemFile Source="Alarm_gate_Manual.pdf" Target="BusinessDevDocTemplates\" Type="ElementFile" />
+    <ProjectItemFile Source="Customer_counter_Mono_Alpha_error_manual.ppt" Target="BusinessDevDocTemplates\" Type="ElementFile" />
+    <ProjectItemFile Source="Customer_counter_Mono_Bacum_installation_guide.pdf" Target="BusinessDevDocTemplates\" Type="ElementFile" />
+    <ProjectItemFile Source="Customor_counter_Mono_Alpha_Installation_and_service_manual.pdf" Target="BusinessDevDocTemplates\" Type="ElementFile" />
+    <ProjectItemFile Source="Media_player_installation_manual.pdf" Target="BusinessDevDocTemplates\" Type="ElementFile" />
+    <ProjectItemFile Source="POS_installation_guide_2_1.pdf" Target="BusinessDevDocTemplates\" Type="ElementFile" />
+    <ProjectItemFile Source="shop_fixture_manual.pdf" Target="BusinessDevDocTemplates\" Type="ElementFile" />
+    <ProjectItemFile Source="Store_opening_guide_retail.pptx" Target="BusinessDevDocTemplates\" Type="ElementFile" />
+    <ProjectItemFile Source="Tablet_how_to_connect_to_WiFi.ppt" Target="BusinessDevDocTemplates\" Type="ElementFile" />
+    <ProjectItemFile Source="VM_guideline.pptx" Target="BusinessDevDocTemplates\" Type="ElementFile" />
+  </Files>
+</ProjectItem>
