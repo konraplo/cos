@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectItem Type="Microsoft.VisualStudio.SharePoint.Module" DefaultFile="Elements.xml" SupportedTrustLevels="All" SupportedDeploymentScopes="Web, Site" xmlns="http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel">
+  <Files>
+    <ProjectItemFile Source="Elements.xml" Target="EvaluationTemplates\" Type="ElementManifest" />
+    <ProjectItemFile Source="Quality_report_contractor.doc" Target="EvaluationTemplates\" Type="ElementFile" />
+    <ProjectItemFile Source="Quality_report_departments.xls" Target="EvaluationTemplates\" Type="ElementFile" />
+  </Files>
+</ProjectItem>

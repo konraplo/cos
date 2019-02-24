@@ -2,7 +2,6 @@
 <ProjectItem Type="Microsoft.VisualStudio.SharePoint.Module" DefaultFile="Elements.xml" SupportedTrustLevels="All" SupportedDeploymentScopes="Web, Site" xmlns="http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel">
   <Files>
     <ProjectItemFile Source="Elements.xml" Target="BusinessDevDocTemplates\" Type="ElementManifest" />
-    <ProjectItemFile Source="Sample.txt" Target="BusinessDevDocTemplates\" Type="ElementFile" />
     <ProjectItemFile Source="Alarm_gate_Manual.pdf" Target="BusinessDevDocTemplates\" Type="ElementFile" />
     <ProjectItemFile Source="Customer_counter_Mono_Alpha_error_manual.ppt" Target="BusinessDevDocTemplates\" Type="ElementFile" />
     <ProjectItemFile Source="Customer_counter_Mono_Bacum_installation_guide.pdf" Target="BusinessDevDocTemplates\" Type="ElementFile" />

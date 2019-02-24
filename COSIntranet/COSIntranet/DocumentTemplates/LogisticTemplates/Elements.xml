@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="Logistic" Url="Lists/Logistic">
+    <File Path="LogisticTemplates\HS_codes.xls" Url="HS_codes.xls" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
+  </Module>
+</Elements>

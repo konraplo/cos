@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="Marketing">
+    <File Path="MarketingTemplates\Marketin_order.xlsx" Url="MarketingTemplates/Marketin_order.xlsx" />
+    <File Path="MarketingTemplates\Marketing_overview.xlsx" Url="MarketingTemplates/Marketing_overview.xlsx" />
+    <File Path="MarketingTemplates\Marketing_Timeline.xlsx" Url="MarketingTemplates/Marketing_Timeline.xlsx" />
+  </Module>
+</Elements>

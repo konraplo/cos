@@ -113,6 +113,26 @@
     <None Include="DocumentTemplates\BusinessDevDocTemplates\Store_opening_guide_retail.pptx" />
     <None Include="DocumentTemplates\BusinessDevDocTemplates\Tablet_how_to_connect_to_WiFi.ppt" />
     <None Include="DocumentTemplates\BusinessDevDocTemplates\VM_guideline.pptx" />
+    <None Include="DocumentTemplates\EvaluationTemplates\Quality_report_contractor.doc" />
+    <None Include="DocumentTemplates\EvaluationTemplates\Quality_report_departments.xls" />
+    <None Include="DocumentTemplates\EvaluationTemplates\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{8a6e99ac-6358-413d-8bab-395e82f55c4a}</SharePointProjectItemId>
+    </None>
+    <None Include="DocumentTemplates\GeneralInformationTemplates\Costruction_Scope_of_Work.docx" />
+    <None Include="DocumentTemplates\GeneralInformationTemplates\Frontpage.xlsx" />
+    <None Include="DocumentTemplates\GeneralInformationTemplates\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{7814065f-e0c1-4af1-bb86-fcad81ec5848}</SharePointProjectItemId>
+    </None>
+    <None Include="DocumentTemplates\LogisticTemplates\HS_codes.xls" />
+    <None Include="DocumentTemplates\LogisticTemplates\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{bbba311f-f79d-4673-b4e3-3fa25c81dff5}</SharePointProjectItemId>
+    </None>
+    <None Include="DocumentTemplates\MarketingTemplates\Marketing_overview.xlsx" />
+    <None Include="DocumentTemplates\MarketingTemplates\Marketing_Timeline.xlsx" />
+    <None Include="DocumentTemplates\MarketingTemplates\Marketin_order.xlsx" />
+    <None Include="DocumentTemplates\MarketingTemplates\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{51065ff0-acd4-4dd9-bfcd-c79805d02d31}</SharePointProjectItemId>
+    </None>
     <None Include="EventReceivers\InboxEventReceiver\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{16579f80-edd5-4554-9529-2ea9fac4d437}</SharePointProjectItemId>
     </None>
@@ -290,7 +310,10 @@
   <ItemGroup>
     <Content Include="ComposedLook\Theme\Elements.xml" />
     <Content Include="DocumentTemplates\BusinessDevDocTemplates\Elements.xml" />
-    <Content Include="DocumentTemplates\BusinessDevDocTemplates\Sample.txt" />
+    <Content Include="DocumentTemplates\EvaluationTemplates\Elements.xml" />
+    <Content Include="DocumentTemplates\GeneralInformationTemplates\Elements.xml" />
+    <Content Include="DocumentTemplates\LogisticTemplates\Elements.xml" />
+    <Content Include="DocumentTemplates\MarketingTemplates\Elements.xml" />
     <Content Include="EventReceivers\InboxEventReceiver\Elements.xml" />
     <Content Include="Features\ChangeWebTemplates\ChangeWebTemplates.Template.xml">
       <DependentUpon>ChangeWebTemplates.feature</DependentUpon>
