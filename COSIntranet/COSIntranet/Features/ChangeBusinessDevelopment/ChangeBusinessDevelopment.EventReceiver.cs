@@ -156,6 +156,7 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ER to List, {0}", projectsUrl));
             CommonUtilities.AddListEventReceiver(projectsList, SPEventReceiverType.ItemAdded, Assembly.GetExecutingAssembly().FullName, "Change.Intranet.EventReceivers.BussinesDev.StoreOpeningEventReceiver", false);
             CommonUtilities.AddListEventReceiver(projectsList, SPEventReceiverType.ItemUpdated, Assembly.GetExecutingAssembly().FullName, "Change.Intranet.EventReceivers.BussinesDev.StoreOpeningEventReceiver", false);
+            CommonUtilities.AddListEventReceiver(projectsList, SPEventReceiverType.ItemDeleted, Assembly.GetExecutingAssembly().FullName, "Change.Intranet.EventReceivers.BussinesDev.StoreOpeningEventReceiver", false);
 
         }
 

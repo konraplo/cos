@@ -6,7 +6,9 @@
     using Microsoft.SharePoint;
     using Microsoft.SharePoint.Utilities;
     using System;
+    using System.Collections;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Text;
 
@@ -22,6 +24,7 @@
         {
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "ItemAdded");
             CreateProjectTasks(properties.ListItem);
+            this.UpdateFolderStrucutre(properties.ListItem);
         }
 
         /// <summary>
@@ -32,6 +35,19 @@
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "ItemUpdated");
 
             this.UpdateFolderStrucutre(properties.ListItem);
+        }
+
+        public override void ItemDeleted(SPItemEventProperties properties)
+        {
+            base.ItemDeleted(properties);
+            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "ItemDeleted");
+            RemoveProjectFolder(properties.Web, "Marketing", properties.ListItemId);
+            RemoveProjectFolder(properties.Web, "Drawings", properties.ListItemId);
+            RemoveProjectFolder(properties.Web, "GeneralInformation", properties.ListItemId);
+            RemoveProjectFolder(properties.Web, "Logistic", properties.ListItemId);
+            RemoveProjectFolder(properties.Web, "Pictures", properties.ListItemId);
+            RemoveProjectFolder(properties.Web, "Evaluation", properties.ListItemId);
+
         }
 
         private void UpdateFolderStrucutre(SPListItem item)
@@ -47,6 +63,30 @@
             UpdateFolderStrucutreLogisticLib(item.Web, projectFolderName, item.ID);
             UpdateFolderStrucutrePicturesLib(item.Web, projectFolderName, item.ID);
             UpdateFolderStrucutreEvaluationLib(item.Web, projectFolderName, item.ID);
+        }
+
+        private void RemoveProjectFolder(SPWeb web, string listUrl, int itemId)
+        {
+            Logger.WriteLog(Logger.Category.Information, "RemoveProjectFolder", string.Format("Remove project folder:{0} from {1}", itemId, listUrl));
+            SPList list = null;
+            try
+            {
+                list = web.GetList(SPUrlUtility.CombineUrl(web.Url, string.Format("Lists/{0}", listUrl)));
+                SPListItemCollection items = CommonUtilities.GetFoldersByPrefix(web, list, string.Format("{0}_", itemId));
+
+                //Get the name and Url for the folder 
+                if (items.Count > 0)
+                {
+                    SPListItem firstItem = items[0];
+                    firstItem.Delete();
+                    list.Update();
+                }
+            }
+            catch (Exception)
+            {
+                Logger.WriteLog(Logger.Category.Unexpected, "RemoveProjectFolder", "List not found");
+                return;
+            }
         }
 
         private static void UpdateFolderStrucutreMarketingLib(SPWeb web, string projectFolder,int itemId)
@@ -79,16 +119,51 @@
 
                 string folderUrl = projectFolder;
                 SPFolder projectFolderObj = folderColl.Add(folderUrl);
-                folderUrl = "From Marketing to partner";
-                projectFolderObj.SubFolders.Add(folderUrl);
-                folderUrl = "From partner to Marketing";
-                projectFolderObj.SubFolders.Add(folderUrl);
 
+                string fromMarketingToPartnerFolderUrl = "From Marketing to partner";
+                SPFolder fromMarketingToPartner = projectFolderObj.SubFolders.Add(fromMarketingToPartnerFolderUrl);
+                folderUrl = "Center Channels";
+                fromMarketingToPartner.SubFolders.Add(folderUrl);
+                folderUrl = "Own Channels";
+                fromMarketingToPartner.SubFolders.Add(folderUrl);
+                folderUrl = "External Channels";
+                fromMarketingToPartner.SubFolders.Add(folderUrl);
+
+                folderUrl = "From partner to Marketing";
+                SPFolder fromPartnerToMarketing = projectFolderObj.SubFolders.Add(folderUrl);
+                folderUrl = "Center information";
+                fromPartnerToMarketing.SubFolders.Add(folderUrl);
                 list.Update();
+
+                string rootDirectory = SPUtility.GetCurrentGenericSetupPath(@"TEMPLATE\FEATURES\COSIntranet_ChangeBusinessDevelopment\MarketingTemplates");
+                string docPath = string.Format(@"{0}\{1}", rootDirectory, @"Marketin_order.xlsx".TrimStart('\\'));
+                string trargetFolderRelativeUrl = string.Format(@"{0}/{1}", projectFolder, fromPartnerToMarketing); 
+                AddFileToLibrary(list, trargetFolderRelativeUrl, docPath);
+                docPath = string.Format(@"{0}\{1}", rootDirectory, @"Marketing_Timeline.xlsx".TrimStart('\\'));
+                AddFileToLibrary(list, trargetFolderRelativeUrl, docPath);
+                docPath = string.Format(@"{0}\{1}", rootDirectory, @"Marketing_overview.xlsx".TrimStart('\\'));
+                AddFileToLibrary(list, trargetFolderRelativeUrl, docPath);
             }
 
-           
+
             Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutreMarketingLib", "End update Marketing");
+        }
+
+        private static void AddFileToLibrary(SPList list, string fromMarketingToPartnerFolderUrl, string docPath)
+        {
+            if (File.Exists(docPath))
+            {
+                Logger.WriteLog(Logger.Category.Information, "AddFileToLibrary", string.Format("library:{0} folder:{1} file{2}", list.Title, fromMarketingToPartnerFolderUrl, docPath));
+
+                string fileName = Path.GetFileName(docPath);
+                FileStream stream = new FileStream(docPath, FileMode.Open, FileAccess.Read);
+                BinaryReader myReader = new BinaryReader(stream);
+                byte[] content = myReader.ReadBytes((int)stream.Length);
+                myReader.Close();
+                stream.Close();
+
+                CommonUtilities.AddDocumentToLibrary((SPDocumentLibrary)list, fromMarketingToPartnerFolderUrl, content, fileName, new Hashtable());
+            }
         }
 
         private static void UpdateFolderStrucutreDrawingsLib(SPWeb web, string projectFolder, int itemId)
@@ -165,8 +240,14 @@
 
                 string folderUrl = projectFolder;
                 SPFolder projectFolderObj = folderColl.Add(folderUrl);
-
+                string rootDirectory = SPUtility.GetCurrentGenericSetupPath(@"TEMPLATE\FEATURES\COSIntranet_ChangeBusinessDevelopment\GeneralInformationTemplates");
                 list.Update();
+
+                string docPath = string.Format(@"{0}\{1}", rootDirectory, @"Costruction_Scope_of_Work.docx".TrimStart('\\'));
+                AddFileToLibrary(list, folderUrl, docPath);
+                docPath = string.Format(@"{0}\{1}", rootDirectory, @"Frontpage.xlsx".TrimStart('\\'));
+                AddFileToLibrary(list, folderUrl, docPath);
+
             }
 
 
@@ -289,6 +370,13 @@
                 SPFolder projectFolderObj = folderColl.Add(folderUrl);
 
                 list.Update();
+
+                string rootDirectory = SPUtility.GetCurrentGenericSetupPath(@"TEMPLATE\FEATURES\COSIntranet_ChangeBusinessDevelopment\EvaluationTemplates");
+
+                string docPath = string.Format(@"{0}\{1}", rootDirectory, @"Quality_report_contractor.doc".TrimStart('\\'));
+                AddFileToLibrary(list, folderUrl, docPath);
+                docPath = string.Format(@"{0}\{1}", rootDirectory, @"Quality_report_departments.xls".TrimStart('\\'));
+                AddFileToLibrary(list, folderUrl, docPath);
             }
 
 
