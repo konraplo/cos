@@ -169,6 +169,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Shipping days.
+        /// </summary>
+        internal static string ChangeColShippingDays {
+            get {
+                return ResourceManager.GetString("ChangeColShippingDays", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Store.
         /// </summary>
         internal static string ChangeColStore {

@@ -949,4 +949,7 @@
   <data name="ChangeFolderTitleMarketingTemplate" xml:space="preserve">
     <value>Template</value>
   </data>
+  <data name="ChangeColShippingDays" xml:space="preserve">
+    <value>Shipping days</value>
+  </data>
 </root>

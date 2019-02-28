@@ -46,5 +46,10 @@
         /// GUID of ChangeProjectCategory
         /// </summary>
         public static Guid ChangeProjectCategory = new Guid("{76DA4052-5813-4B9C-8F4F-7940B92260DC}");
+
+        /// <summary>
+        /// GUID of ChangeShippingDays
+        /// </summary>
+        public static Guid ChangeShippingDays = new Guid("{42d28f90-7c2b-4792-99de-b15126916322}");
     }
 }

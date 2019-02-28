@@ -17,6 +17,8 @@
     /// </summary>
     public class StoreOpeningEventReceiver : SPItemEventReceiver
     {
+        public delegate List<ProjectTask> CreateProjectTasksList(int parentTaskId, string parentTitle, int shippingDays);
+
         /// <summary>
         /// Ein Element wurde hinzugefügt..
         /// </summary>
@@ -129,15 +131,15 @@
                 folderUrl = "External Channels";
                 fromMarketingToPartner.SubFolders.Add(folderUrl);
 
-                folderUrl = "From partner to Marketing";
-                SPFolder fromPartnerToMarketing = projectFolderObj.SubFolders.Add(folderUrl);
+                string fromPartnerToMarketingFolderUrl = "From partner to Marketing";
+                SPFolder fromPartnerToMarketing = projectFolderObj.SubFolders.Add(fromPartnerToMarketingFolderUrl);
                 folderUrl = "Center information";
                 fromPartnerToMarketing.SubFolders.Add(folderUrl);
                 list.Update();
 
                 string rootDirectory = SPUtility.GetCurrentGenericSetupPath(@"TEMPLATE\FEATURES\COSIntranet_ChangeBusinessDevelopment\MarketingTemplates");
                 string docPath = string.Format(@"{0}\{1}", rootDirectory, @"Marketin_order.xlsx".TrimStart('\\'));
-                string trargetFolderRelativeUrl = string.Format(@"{0}/{1}", projectFolder, fromPartnerToMarketing); 
+                string trargetFolderRelativeUrl = string.Format(@"{0}/{1}", projectFolder, fromPartnerToMarketingFolderUrl); 
                 AddFileToLibrary(list, trargetFolderRelativeUrl, docPath);
                 docPath = string.Format(@"{0}\{1}", rootDirectory, @"Marketing_Timeline.xlsx".TrimStart('\\'));
                 AddFileToLibrary(list, trargetFolderRelativeUrl, docPath);
@@ -420,19 +422,20 @@
                 Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("created store opening task id:{0}, title:{1}", projectTask.ID, projectTask.Title));
                 SPFieldLookupValue projectTaskValue = new SPFieldLookupValue(string.Format("{0};#{1}", projectTask.ID, projectTask.Title));
 
-                List<ProjectTask> logistikTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.LogistikTasks, "Logistik") ;
-                List<ProjectTask> purchaseBathroomKitchenTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.PurchaseBathroomKitchenTasks, "Purchase, bathroom & Kitchen");
-                List<ProjectTask> purchaseCleaningTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.PurchaseCleaningTasks, "Purchase, Cleaning");
-                List<ProjectTask> purchaseOfficeEquipmentTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.PurchaseOfficeEquipmentTasks, "Purchase, office equipment");
-                List<ProjectTask> projectPreperationTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.ProjectPreperationTasks, "Project preperation");
-                List<ProjectTask> administrationTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.AdministrationTasks, "Administration");
-                List<ProjectTask> preperationOfStoreTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.PreperationOfStoreTasks, "Preperation of store");
-                List<ProjectTask> rebuildingPeriodBuilingTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.RebuildingPeriodBuilingTasks, "Rebuilding period - builing");
-                List<ProjectTask> rebuildingPeriodDemolitionTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.RebuildingPeriodDemolitionTasks, "Rebuilding period - demolition");
-                List<ProjectTask> rebuildingPeriodElectricityTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.RebuildingPeriodElectricityTasks, "Rebuilding period - Electricity");
-                List<ProjectTask> rebuildingPeriodMountingTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.RebuildingPeriodMountingTasks, "Rebuilding period - Mounting");
-                List<ProjectTask> storePreperationTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.StorePreperationTasks, "Store preperation");
-                List<ProjectTask> postGrandOpeningTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.PostGrandOpeningTasks, "Post Grand opening");
+                int shippingDays = Convert.ToInt32(item[Fields.ChangeShippingDays]);
+                List<ProjectTask> logistikTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.LogistikTasks, "Logistik", shippingDays) ;
+                List<ProjectTask> purchaseBathroomKitchenTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.PurchaseBathroomKitchenTasks, "Purchase, bathroom & Kitchen", shippingDays);
+                List<ProjectTask> purchaseCleaningTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.PurchaseCleaningTasks, "Purchase, Cleaning", shippingDays);
+                List<ProjectTask> purchaseOfficeEquipmentTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.PurchaseOfficeEquipmentTasks, "Purchase, office equipment", shippingDays);
+                List<ProjectTask> projectPreperationTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.ProjectPreperationTasks, "Project preperation", shippingDays);
+                List<ProjectTask> administrationTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.AdministrationTasks, "Administration", shippingDays);
+                List<ProjectTask> preperationOfStoreTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.PreperationOfStoreTasks, "Preperation of store", shippingDays);
+                List<ProjectTask> rebuildingPeriodBuilingTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.RebuildingPeriodBuilingTasks, "Rebuilding period - builing", shippingDays);
+                List<ProjectTask> rebuildingPeriodDemolitionTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.RebuildingPeriodDemolitionTasks, "Rebuilding period - demolition", shippingDays);
+                List<ProjectTask> rebuildingPeriodElectricityTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.RebuildingPeriodElectricityTasks, "Rebuilding period - Electricity", shippingDays);
+                List<ProjectTask> rebuildingPeriodMountingTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.RebuildingPeriodMountingTasks, "Rebuilding period - Mounting", shippingDays);
+                List<ProjectTask> storePreperationTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.StorePreperationTasks, "Store preperation", shippingDays);
+                List<ProjectTask> postGrandOpeningTasks = CreateSubTasks(item, projectTaskValue, store, storeCountry, grandOpening, tasksList, foundedProjectTask, ProjectUtilities.PostGrandOpeningTasks, "Post Grand opening", shippingDays);
 
                 List<Department> departments = DepartmentUtilities.GetDepartments(item.Web);
 
@@ -608,7 +611,7 @@
         /// <param name="subTasks"></param>
         /// <param name="mainTaskTitle"></param>
         /// <returns></returns>        
-        private List<ProjectTask> CreateSubTasks(SPListItem item, SPFieldLookupValue projectTaskValue, SPFieldLookupValue store, SPFieldLookupValue storeCountry, DateTime grandOpening, SPList tasksList, SPContentType foundedProjectTask, Func<int, string, List<ProjectTask>> subTasks, string mainTaskTitle)
+        private List<ProjectTask> CreateSubTasks(SPListItem item, SPFieldLookupValue projectTaskValue, SPFieldLookupValue store, SPFieldLookupValue storeCountry, DateTime grandOpening, SPList tasksList, SPContentType foundedProjectTask, CreateProjectTasksList subTasks, string mainTaskTitle, int shippingDays)
         {
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("CreateSubTasks project:{0}, parent title:{1}", projectTaskValue.LookupValue, mainTaskTitle));
             SPListItem projectTask = tasksList.AddItem();
@@ -621,7 +624,7 @@
             projectTask.Update();
 
             // compute time period
-            List<ProjectTask> subTasksList = subTasks(projectTask.ID, projectTask.Title);
+            List<ProjectTask> subTasksList = subTasks(projectTask.ID, projectTask.Title, shippingDays);
             DateTime dueDate = DateTime.MaxValue;
             DateTime startDate = DateTime.MinValue;
             foreach (ProjectTask task in subTasksList.OrderByDescending(x => x.TimeBeforeGrandOpening))

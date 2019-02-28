@@ -63,10 +63,10 @@
         }
 
         /// <summary>
-        /// When new partner tasks
+        /// logistik tasks
         /// </summary>
         /// <returns>Lists with all logistik tasks</returns>
-        public static List<ProjectTask> LogistikTasks(int parentTaskId, string parentTitle)
+        public static List<ProjectTask> LogistikTasks(int parentTaskId, string parentTitle, int shippingDays)
         {
             List<ProjectTask> tasks = new List<ProjectTask>();
             tasks.Add(new ProjectTask { Title = "Order CLUB Change cards (when new Country/region)", Duration = 90, ResponsibleDepartment = DepartmentUtilities.Planning, TimeBeforeGrandOpening = 90, ParentId = parentTaskId, ParentTitle = parentTitle });
@@ -114,8 +114,8 @@
             tasks.Add(new ProjectTask { Title = "Place print order in Marketing if print is needed", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 46, ParentId = parentTaskId, ParentTitle = parentTitle });
             tasks.Add(new ProjectTask { Title = "1 st shipment Mesurements and weight of all the goods are send to Order Management", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Warehouse, TimeBeforeGrandOpening = 28, ParentId = parentTaskId, ParentTitle = parentTitle });
             tasks.Add(new ProjectTask { Title = "Retail confirmed first delivery", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 19, ParentId = parentTaskId, ParentTitle = parentTitle });
-            tasks.Add(new ProjectTask { Title = "1st order shipped from Warehouse", Duration = 7, ResponsibleDepartment = DepartmentUtilities.OrderManagement, TimeBeforeGrandOpening = 26, ParentId = parentTaskId, ParentTitle = parentTitle });
-            tasks.Add(new ProjectTask { Title = "2st order shipped from Warehouse", Duration = 7, ResponsibleDepartment = DepartmentUtilities.OrderManagement, TimeBeforeGrandOpening = 16, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "1st order shipped from Warehouse", Duration = shippingDays, ResponsibleDepartment = DepartmentUtilities.OrderManagement, TimeBeforeGrandOpening = 26, ParentId = parentTaskId, ParentTitle = parentTitle });
+            tasks.Add(new ProjectTask { Title = "2st order shipped from Warehouse", Duration = shippingDays, ResponsibleDepartment = DepartmentUtilities.OrderManagement, TimeBeforeGrandOpening = 16, ParentId = parentTaskId, ParentTitle = parentTitle });
             tasks.Add(new ProjectTask { Title = "2nd shipmentMesurements and weight of all the goods are send to Order Management", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Warehouse, TimeBeforeGrandOpening = 18, ParentId = parentTaskId, ParentTitle = parentTitle });
             tasks.Add(new ProjectTask { Title = "1st shipment Upload Pictures and Pallet info", Duration = 0, ResponsibleDepartment = DepartmentUtilities.Warehouse, TimeBeforeGrandOpening = 26, ParentId = parentTaskId, ParentTitle = parentTitle });
             tasks.Add(new ProjectTask { Title = "Retail confirmed second delivery", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 9, ParentId = parentTaskId, ParentTitle = parentTitle });
@@ -127,7 +127,7 @@
         /// Post Grand opening tasks
         /// </summary>
         /// <returns>Lists with all Post Grand opening tasks</returns>
-        public static List<ProjectTask> PostGrandOpeningTasks(int parentTaskId, string parentTitle)
+        public static List<ProjectTask> PostGrandOpeningTasks(int parentTaskId, string parentTitle, int shippingDays)
         {
             List<ProjectTask> tasks = new List<ProjectTask>();
             tasks.Add(new ProjectTask { Title = "Sign QS document", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = -1, ParentId = parentTaskId, ParentTitle = parentTitle });
@@ -141,7 +141,7 @@
         /// Preperation of store
         /// </summary>
         /// <returns>Lists with all Preperation of store tasks</returns>
-        public static List<ProjectTask> PreperationOfStoreTasks(int parentTaskId, string parentTitle)
+        public static List<ProjectTask> PreperationOfStoreTasks(int parentTaskId, string parentTitle, int shippingDays)
         {
             List<ProjectTask> tasks = new List<ProjectTask>();
             tasks.Add(new ProjectTask { Title = "VM opening guide uploaded", Duration = 14, ResponsibleDepartment = DepartmentUtilities.Marketing, TimeBeforeGrandOpening = 14, ParentId = parentTaskId, ParentTitle = parentTitle });
@@ -153,7 +153,7 @@
         /// Purchase, bathroom & Kitchen tasks
         /// </summary>
         /// <returns>Lists with all Purchase, bathroom & Kitchen tasks</returns>
-        public static List<ProjectTask> PurchaseBathroomKitchenTasks(int parentTaskId, string parentTitle)
+        public static List<ProjectTask> PurchaseBathroomKitchenTasks(int parentTaskId, string parentTitle, int shippingDays)
         {
             List<ProjectTask> tasks = new List<ProjectTask>();
             tasks.Add(new ProjectTask { Title = "Soap", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
@@ -176,7 +176,7 @@
         /// Purchase, Cleaning tasks
         /// </summary>
         /// <returns>Lists with all Purchase, Cleaning tasks tasks</returns>
-        public static List<ProjectTask> PurchaseCleaningTasks(int parentTaskId, string parentTitle)
+        public static List<ProjectTask> PurchaseCleaningTasks(int parentTaskId, string parentTitle, int shippingDays)
         {
             List<ProjectTask> tasks = new List<ProjectTask>();
             tasks.Add(new ProjectTask { Title = "Vacuumcleaner and bags", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
@@ -192,7 +192,7 @@
         /// Purchase, office equipment tasks
         /// </summary>
         /// <returns>Lists with all Purchase, office equipment tasks tasks</returns>
-        public static List<ProjectTask> PurchaseOfficeEquipmentTasks(int parentTaskId, string parentTitle)
+        public static List<ProjectTask> PurchaseOfficeEquipmentTasks(int parentTaskId, string parentTitle, int shippingDays)
         {
             List<ProjectTask> tasks = new List<ProjectTask>();
             tasks.Add(new ProjectTask { Title = "Tape", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
@@ -212,7 +212,7 @@
         /// Rebuilding period - builing tasks
         /// </summary>
         /// <returns>Lists with all Rebuilding period - builing tasks</returns>
-        public static List<ProjectTask> RebuildingPeriodBuilingTasks(int parentTaskId, string parentTitle)
+        public static List<ProjectTask> RebuildingPeriodBuilingTasks(int parentTaskId, string parentTitle, int shippingDays)
         {
             List<ProjectTask> tasks = new List<ProjectTask>();
             tasks.Add(new ProjectTask { Title = "Fill existing Celing", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 13, ParentId = parentTaskId, ParentTitle = parentTitle });
@@ -233,7 +233,7 @@
         /// Rebuilding period - Electricity tasks
         /// </summary>
         /// <returns>Lists with all Rebuilding period - Electricity tasks</returns>
-        public static List<ProjectTask> RebuildingPeriodElectricityTasks(int parentTaskId, string parentTitle)
+        public static List<ProjectTask> RebuildingPeriodElectricityTasks(int parentTaskId, string parentTitle, int shippingDays)
         {
             List<ProjectTask> tasks = new List<ProjectTask>();
             tasks.Add(new ProjectTask { Title = "Mount light", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 8, ParentId = parentTaskId, ParentTitle = parentTitle });
@@ -255,7 +255,7 @@
         /// Rebuilding period - Mounting tasks
         /// </summary>
         /// <returns>Lists with all Rebuilding period - Mounting tasks</returns>
-        public static List<ProjectTask> RebuildingPeriodMountingTasks(int parentTaskId, string parentTitle)
+        public static List<ProjectTask> RebuildingPeriodMountingTasks(int parentTaskId, string parentTitle, int shippingDays)
         {
             List<ProjectTask> tasks = new List<ProjectTask>();
             tasks.Add(new ProjectTask { Title = "Mount all interior", Duration = 2, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 10, ParentId = parentTaskId, ParentTitle = parentTitle });
@@ -276,7 +276,7 @@
         /// Rebuilding period - demolition tasks
         /// </summary>
         /// <returns>Lists with all Rebuilding period - demolition tasks</returns>
-        public static List<ProjectTask> RebuildingPeriodDemolitionTasks(int parentTaskId, string parentTitle)
+        public static List<ProjectTask> RebuildingPeriodDemolitionTasks(int parentTaskId, string parentTitle, int shippingDays)
         {
             List<ProjectTask> tasks = new List<ProjectTask>();
             tasks.Add(new ProjectTask { Title = "Remove existing floor", Duration = 1, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 15, ParentId = parentTaskId, ParentTitle = parentTitle });
@@ -290,7 +290,7 @@
         /// Store preperation
         /// </summary>
         /// <returns>Lists with all Store preperation tasks</returns>
-        public static List<ProjectTask> StorePreperationTasks(int parentTaskId, string parentTitle)
+        public static List<ProjectTask> StorePreperationTasks(int parentTaskId, string parentTitle, int shippingDays)
         {
             List<ProjectTask> tasks = new List<ProjectTask>();
             tasks.Add(new ProjectTask { Title = "Cleaning", Duration = 1, Responsible = DepartmentUtilities.StoreManager, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 6, ParentId = parentTaskId, ParentTitle = parentTitle });
@@ -305,7 +305,7 @@
         /// System preperation
         /// </summary>
         /// <returns>Lists with all System preperation tasks</returns>
-        public static List<ProjectTask> SystemPreperationTasks(int parentTaskId, string parentTitle)
+        public static List<ProjectTask> SystemPreperationTasks(int parentTaskId, string parentTitle, int shippingDays)
         {
             List<ProjectTask> tasks = new List<ProjectTask>();
             tasks.Add(new ProjectTask { Title = "Adding the store KPIs and sales budget in PBI / AX", Duration = 7, ResponsibleDepartment = DepartmentUtilities.Finance, TimeBeforeGrandOpening = 54, ParentId = parentTaskId, ParentTitle = parentTitle });
@@ -340,7 +340,7 @@
         /// Project preperation tasks
         /// </summary>
         /// <returns>Lists with all Project preperation tasks</returns>
-        public static List<ProjectTask> ProjectPreperationTasks(int parentTaskId, string parentTitle)
+        public static List<ProjectTask> ProjectPreperationTasks(int parentTaskId, string parentTitle, int shippingDays)
         {
             List<ProjectTask> tasks = new List<ProjectTask>();
             tasks.Add(new ProjectTask { Title = "Location search end (get DWG drawing, take pictures, premise condition at takeover)", Duration = 1,Responsible = DepartmentUtilities.RegionalManager, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 69, ParentId = parentTaskId, ParentTitle = parentTitle });
@@ -378,8 +378,8 @@
         /// <summary>
         /// Administration tasks
         /// </summary>
-        /// <returns>Lists with all project opening tasks</returns>
-        public static List<ProjectTask> AdministrationTasks(int parentTaskId, string parentTitle)
+        /// <returns>Lists with all Administration tasks</returns>
+        public static List<ProjectTask> AdministrationTasks(int parentTaskId, string parentTitle, int shippingDays)
         {
             List<ProjectTask> tasks = new List<ProjectTask>();
             tasks.Add(new ProjectTask { Title = "Fill out FrontPage", Duration = 7, ResponsibleDepartment = DepartmentUtilities.Retail, TimeBeforeGrandOpening = 68, ParentId = parentTaskId, ParentTitle = parentTitle });
@@ -426,8 +426,8 @@
         /// <summary>
         /// Rebuilding period
         /// </summary>
-        /// <returns>Lists with all project opening tasks</returns>
-        public static List<ProjectTask> RebuildingPeriod(int parentTaskId, string parentTitle)
+        /// <returns>Lists with all Rebuilding period tasks</returns>
+        public static List<ProjectTask> RebuildingPeriod(int parentTaskId, string parentTitle, int shippingDays)
         {
             List<ProjectTask> tasks = new List<ProjectTask>();
             tasks.Add(new ProjectTask { Title = "Order floor", Duration = 21, ResponsibleDepartment = DepartmentUtilities.Storedesign, TimeBeforeGrandOpening = 39, ParentId = parentTaskId, ParentTitle = parentTitle });

@@ -56,6 +56,14 @@
            UserSelectionScope="0"
            Group="CHANGE Fields"/>
 
+  <Field ID="{42d28f90-7c2b-4792-99de-b15126916322}"
+         Name="ChangeShippingDays"
+         Type="Number"
+         Decimals="0"
+         Percentage="FALSE"
+         DisplayName="$Resources:COSIntranet,ChangeColShippingDays"
+         Group="CHANGE Fields">
+  </Field>
   
 
   <!-- Project -->
