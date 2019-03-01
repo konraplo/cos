@@ -19,6 +19,7 @@
       <FieldRef ID="{c15b34c3-ce7d-490a-b133-3f4de8801b76}" Name="Status" />
       <FieldRef ID="{c3a92d97-2b77-4a25-9698-3ab54874bc6f}" Name="Predecessors" Hidden="TRUE"/>
       <FieldRef ID="{320DC330-92FE-480B-967E-0B205A94AA7D}" Name="Deparmentmanager" />
+      <FieldRef ID="{f6a7df6c-9e68-4201-90d7-f3e736aa3236}" Name="ChangeTaskDisplayName" ReadOnly="TRUE"/>
       <FieldRef ID="{7D4D22A0-2776-4837-A308-10296F4CCF55}" Name="StoreOpeningTask" Hidden="TRUE" />
     </FieldRefs>
   </ContentType>

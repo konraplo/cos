@@ -88,6 +88,7 @@
 
                     item[Fields.Country] = storeCountry;
                     item[Fields.Store] = store;
+                    item[Fields.ChangeTaskDisplayNameId] = string.Format("({0}) {1}", project.LookupValue, item.Title);
                     item.Update();
                 }
             }

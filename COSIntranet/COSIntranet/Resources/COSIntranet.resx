@@ -983,4 +983,7 @@
   <data name="ChangeColShippingDays" xml:space="preserve">
     <value>Shipping days</value>
   </data>
+  <data name="ChangeTaskDisplayName" xml:space="preserve">
+    <value>Display name</value>
+  </data>
 </root>

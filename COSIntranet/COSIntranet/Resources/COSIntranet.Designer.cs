@@ -2593,5 +2593,14 @@ namespace Change.Intranet.Resources {
                 return ResourceManager.GetString("ChangeProjectTitle", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display name.
+        /// </summary>
+        internal static string ChangeTaskDisplayName {
+            get {
+                return ResourceManager.GetString("ChangeTaskDisplayName", resourceCulture);
+            }
+        }
     }
 }

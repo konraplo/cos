@@ -16,6 +16,12 @@
         public const string StoreId = "Storeid";
         public const string Title = "Title";
         public const string StoreOpeningTask = "StoreOpeningTask";
+        public const string ChangeTaskDisplayName = "ChangeTaskDisplayName";
+
+        /// <summary>
+        /// GUID of ChangeTaskDisplayName
+        /// </summary>
+        public static Guid ChangeTaskDisplayNameId = new Guid("{f6a7df6c-9e68-4201-90d7-f3e736aa3236}");
 
         /// <summary>
         /// GUID of ChangeTaskDuration

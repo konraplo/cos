@@ -123,7 +123,13 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
             projectContentType.FieldLinks[SPBuiltInFieldId.Title].DisplayName = "$Resources:COSIntranet,ChangeProjectTitle";
             projectContentType.FieldLinks[SPBuiltInFieldId.TaskDueDate].DisplayName = "$Resources:COSIntranet,ChangeOpeningDate";
             projectContentType.FieldLinks[SPBuiltInFieldId.AssignedTo].DisplayName = "$Resources:COSIntranet,ChangeProjectCoordinator";
+            projectContentType.FieldLinks[SPBuiltInFieldId.StartDate].ReadOnly = true;
+            projectsList.Fields[SPBuiltInFieldId.PercentComplete].ShowInNewForm = false;
+            projectsList.Fields[SPBuiltInFieldId.TaskDueDate].ShowInEditForm = false;
+
             CommonUtilities.AddFieldToContentType(web, projectContentType, storeLookup, true, false, string.Empty);
+            projectsList.Fields[Fields.ChangeShippingDays].ShowInEditForm = false;
+            projectsList.Fields[Fields.ChangeProjectCategory].ShowInEditForm = false;
 
             CommonUtilities.AddFieldToContentType(web, projectContentType, countryLookup, false, true, string.Empty);
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", projectContentType.Name, projectsUrl));

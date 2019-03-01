@@ -493,6 +493,11 @@
                                                         item.ParentList.Fields[SPBuiltInFieldId.Title].InternalName,
                                                         task.Title));
                     batchItemSetVar.Append(
+                           string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                           tasksList.Fields[Fields.ChangeTaskDisplayNameId].InternalName,
+                           string.Format("({0}) {1}", item.Title, task.Title)));
+
+                    batchItemSetVar.Append(
                             string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
                             item.ParentList.Fields[SPBuiltInFieldId.ContentTypeId].InternalName,
                             Convert.ToString(foundedProjectTask.Id)));
@@ -504,7 +509,7 @@
                            string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
                            Fields.Store,
                            string.Format("{0};#{1}", store.LookupId, store.LookupValue)));
-
+                    
                     if (!string.IsNullOrEmpty(task.ResponsibleDepartment))
                     {
                         Department responsibleDepartment = departments.FirstOrDefault(x => x.Title.Equals(task.ResponsibleDepartment));

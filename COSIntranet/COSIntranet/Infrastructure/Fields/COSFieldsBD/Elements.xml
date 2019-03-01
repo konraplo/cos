@@ -133,5 +133,13 @@
          Group="CHANGE Fields">
     <Default>0</Default>
   </Field>
+
+  <Field ID="{f6a7df6c-9e68-4201-90d7-f3e736aa3236}"
+           StaticName="ChangeTaskDisplayName"
+           Name="ChangeTaskDisplayName"
+           Type="Text"
+           DisplayName="$Resources:COSIntranet,ChangeTaskDisplayName"
+           Group="CHANGE Fields"/>
+  
 </Elements>
 

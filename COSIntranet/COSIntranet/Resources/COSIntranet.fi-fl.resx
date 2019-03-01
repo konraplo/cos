@@ -948,4 +948,7 @@
   <data name="ChangeLibTitlePictures" xml:space="preserve">
     <value>Pictures</value>
   </data>
+  <data name="ChangeTaskDisplayName" xml:space="preserve">
+    <value>Display name</value>
+  </data>
 </root>
