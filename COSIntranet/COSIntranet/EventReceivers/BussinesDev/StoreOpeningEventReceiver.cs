@@ -418,6 +418,7 @@
                 projectTask[SPBuiltInFieldId.TaskDueDate] = item[SPBuiltInFieldId.TaskDueDate];
                 projectTask[Fields.StoreOpening] = string.Format("{0};#{1}", item.ID, item.Title);
                 projectTask[Fields.Store] = string.Format("{0};#{1}", store.LookupId, store.LookupValue);
+                projectTask[Fields.ChangeTaskDisplayNameId] = item.Title;
                 projectTask.Update();
                 Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("created store opening task id:{0}, title:{1}", projectTask.ID, projectTask.Title));
                 SPFieldLookupValue projectTaskValue = new SPFieldLookupValue(string.Format("{0};#{1}", projectTask.ID, projectTask.Title));
@@ -626,6 +627,7 @@
             projectTask[Fields.StoreOpening] = string.Format("{0};#{1}", item.ID, item.Title);
             projectTask[Fields.Store] = string.Format("{0};#{1}", store.LookupId, store.LookupValue);
             projectTask[SPBuiltInFieldId.ParentID] = projectTaskValue;
+            projectTask[Fields.ChangeTaskDisplayNameId] = string.Format("({0}) {1}", item.Title, mainTaskTitle);
             projectTask.Update();
 
             // compute time period
