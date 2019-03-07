@@ -524,6 +524,10 @@
                               string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
                               tasksList.Fields[Fields.ChangeDeparmentmanager].InternalName,
                               responsibleDepartment.Manager));
+                            if (responsibleDepartment.Title.Equals(DepartmentUtilities.Retail))
+                            {
+                                task.Responsible = DepartmentUtilities.RegionalManager;
+                            }
                         }
                     }
 
