@@ -27,6 +27,7 @@
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "ItemAdded");
             CreateProjectTasks(properties.ListItem);
             this.UpdateFolderStrucutre(properties.ListItem);
+            this.SendNotification(properties.ListItem);
         }
 
         /// <summary>
@@ -50,6 +51,12 @@
             RemoveProjectFolder(properties.Web, "Pictures", properties.ListItemId);
             RemoveProjectFolder(properties.Web, "Evaluation", properties.ListItemId);
 
+        }
+
+        private void SendNotification(SPListItem item)
+        {
+            // test sent email
+            //CommonUtilities.SendEmail(item.Web, "third@kp.local", "test", "test");
         }
 
         private void UpdateFolderStrucutre(SPListItem item)

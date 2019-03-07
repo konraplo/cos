@@ -524,5 +524,56 @@
                 return result;
             }
         }
+
+        /// <summary>
+        /// Send eamil from sharepoint to user.
+        /// </summary>
+        /// <param name="pWeb"></param>
+        /// <param name="pTo"></param>
+        /// <param name="pBody"></param>
+        /// <param name="pSubject"></param>
+        /// <returns>true if mail was successfully send</returns>
+        public static bool SendEmail(SPWeb pWeb, string pTo, string pBody, string pSubject)
+        {
+            if (pWeb == null)
+            {
+                throw new ArgumentNullException("pWeb");
+            }
+            if (string.IsNullOrEmpty(pTo))
+            {
+                throw new ArgumentNullException("pTo");
+            }
+
+            System.Collections.Specialized.StringDictionary messageHeaders = new System.Collections.Specialized.StringDictionary();
+            //Get the “from email address” from “Outgoing e-mail settings”
+            string from = pWeb.Site.WebApplication.OutboundMailSenderAddress;
+            messageHeaders.Add("from", from);
+            messageHeaders.Add("to", pTo);
+            messageHeaders.Add("subject", pSubject);
+
+            bool isOK = false;
+            SPSecurity.RunWithElevatedPrivileges(delegate
+            {
+                try
+                {
+                    isOK = SPUtility.SendEmail(pWeb, messageHeaders, pBody);
+                    if (isOK)
+                    {
+                        Logger.WriteLog(Logger.Category.Information, typeof(CommonUtilities).FullName, "Email sent.");
+                    }
+                    else
+                    {
+                        Logger.WriteLog(Logger.Category.Information, typeof(CommonUtilities).FullName, "Email not sent.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName, string.Format("Problem with send email '{0}' to user '{1}' with error communicate '{2}' ", pSubject, pTo, ex.Message));
+                    throw new InvalidOperationException(string.Format("Problem with send email '{0}' to user '{1}' with error communicate '{2}' ", pSubject, pTo, ex.Message));
+                }
+            });
+
+            return isOK;
+        }
     }
 }
