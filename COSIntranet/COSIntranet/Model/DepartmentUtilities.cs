@@ -64,7 +64,7 @@ namespace Change.Intranet.Model
         /// <summary>
         /// Retail
         /// </summary>
-        public const string RetailDevelopment = "Retail developement";
+        public const string RetailDevelopment = "Retail development";
 
         /// <summary>
         /// Accounting
