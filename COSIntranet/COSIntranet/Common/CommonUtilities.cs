@@ -5,6 +5,7 @@
     using System.Collections.Generic;
     using System.Text;
     using Microsoft.SharePoint;
+    using Microsoft.SharePoint.Administration;
     using Microsoft.SharePoint.Utilities;
 
     /// <summary>
@@ -12,6 +13,8 @@
     /// </summary>
     public static class CommonUtilities
     {
+        public  const string ChangeNotificationTimerJobName = "Change Notification Timer job";
+
         /// <summary>
         /// batch comand to delete items
         /// </summary>
@@ -574,6 +577,33 @@
             });
 
             return isOK;
+        }
+
+        /// Iterates through all site collections od the WebApplication and returns the ID of the Site, where the "Core Lists"-Feature is activated
+        /// </summary>
+        /// <param name="webApp">SPWebApplication to search for the SiteCollection</param>
+        /// <returns>GUID of the PMCockpit SiteCollection. Returns Guid.Empty if not found</returns>
+        public static Guid FindBusinessDevelopmentSiteId(SPWebApplication webApp)
+        {
+            if (webApp == null) throw new ArgumentNullException("WebApplication must be not NULL! (FindBusinessDevelopmentSiteId)");
+
+            Guid busiDevArtifactsFeatureGuid = new Guid("a3417bcf-d184-4f79-be16-a23c50462fa8");
+            Guid retval = Guid.Empty;
+
+            try
+            {
+                foreach (SPSite site in webApp.Sites)
+                {
+                    bool featureFound = (site.RootWeb.Features[busiDevArtifactsFeatureGuid] != null);
+                    if (featureFound) return site.ID;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).Name, string.Format("FindBusinessDevelopmentSiteId error:{0}", ex.Message));
+            }
+
+            return retval;
         }
     }
 }

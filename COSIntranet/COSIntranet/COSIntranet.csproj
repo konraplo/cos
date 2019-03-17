@@ -83,6 +83,9 @@
     <Compile Include="Features\ChangeListsForHQ\ChangeListsForHQ.EventReceiver.cs">
       <DependentUpon>ChangeListsForHQ.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\ChangeTimerjobs\ChangeTimerjobs.EventReceiver.cs">
+      <DependentUpon>ChangeTimerjobs.feature</DependentUpon>
+    </Compile>
     <Compile Include="Model\Country.cs" />
     <Compile Include="Model\Department.cs" />
     <Compile Include="Model\DepartmentUtilities.cs" />
@@ -94,6 +97,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>COSIntranet.resx</DependentUpon>
     </Compile>
+    <Compile Include="TimerJobs\Notifications\ChangeNotificationTimerJob.cs" />
+    <Compile Include="TimerJobs\Notifications\ChangeNotificationTimerJobExecuter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ComposedLook\Theme\cos_pal015.spcolor" />
@@ -162,6 +167,9 @@
     </None>
     <None Include="Features\ChangeBusinessDevelopment\ChangeBusinessDevelopment.feature">
       <FeatureId>{b9b7171c-4203-4385-8c6c-03b692f361a9}</FeatureId>
+    </None>
+    <None Include="Features\ChangeTimerjobs\ChangeTimerjobs.feature">
+      <FeatureId>{5eb45999-28b7-4c04-954d-722a8d088175}</FeatureId>
     </None>
     <None Include="Infrastructure\ContentTypes\CorporateNews\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{56ed91e7-59d0-4551-a7ef-10c9cf8db858}</SharePointProjectItemId>
@@ -338,6 +346,9 @@
     </Content>
     <Content Include="Features\ChangeBusinessDevelopment\ChangeBusinessDevelopment.Template.xml">
       <DependentUpon>ChangeBusinessDevelopment.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\ChangeTimerjobs\ChangeTimerjobs.Template.xml">
+      <DependentUpon>ChangeTimerjobs.feature</DependentUpon>
     </Content>
     <Content Include="Infrastructure\ContentTypes\CorporateNews\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\Country\Elements.xml" />
