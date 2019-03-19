@@ -582,28 +582,64 @@
         /// Iterates through all site collections od the WebApplication and returns the ID of the Site, where the "Core Lists"-Feature is activated
         /// </summary>
         /// <param name="webApp">SPWebApplication to search for the SiteCollection</param>
-        /// <returns>GUID of the PMCockpit SiteCollection. Returns Guid.Empty if not found</returns>
-        public static Guid FindBusinessDevelopmentSiteId(SPWebApplication webApp)
+        /// <returns>GUID of the Change SiteCollection. Returns Guid.Empty if not found</returns>
+        public static Guid FindChangeSiteId(SPWebApplication webApp)
         {
             if (webApp == null) throw new ArgumentNullException("WebApplication must be not NULL! (FindBusinessDevelopmentSiteId)");
 
-            Guid busiDevArtifactsFeatureGuid = new Guid("a3417bcf-d184-4f79-be16-a23c50462fa8");
+            Guid cosinfrastructureFeatureGuid = new Guid("8ff949de-0a18-409e-b853-91b80cceee58");
             Guid retval = Guid.Empty;
 
             try
             {
                 foreach (SPSite site in webApp.Sites)
                 {
-                    bool featureFound = (site.RootWeb.Features[busiDevArtifactsFeatureGuid] != null);
+                    bool featureFound = (site.RootWeb.Features[cosinfrastructureFeatureGuid] != null);
                     if (featureFound) return site.ID;
                 }
             }
             catch (Exception ex)
             {
-                Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).Name, string.Format("FindBusinessDevelopmentSiteId error:{0}", ex.Message));
+                Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).Name, string.Format("FindChangeSiteId error:{0}", ex.Message));
             }
 
             return retval;
+        }
+
+        /// Iterates through all site collections od the WebApplication and returns the ID of the Site, where the "Core Lists"-Feature is activated
+        /// </summary>
+        /// <param name="webApp">SPWebApplication to search for the SiteCollection</param>
+        /// <returns>string of the business development site. Returns string.Empty if not found</returns>
+        public static string FindBusinessDevelopmentSiteId(SPWebApplication webApp)
+        {
+            if (webApp == null) throw new ArgumentNullException("WebApplication must be not NULL! (FindBusinessDevelopmentSiteId)");
+
+            Guid siteId = FindChangeSiteId(webApp);
+            if (!siteId.Equals(Guid.Empty))
+            {
+                try
+                {
+                    Guid busiDevArtifactsFeatureGuid = new Guid("a3417bcf-d184-4f79-be16-a23c50462fa8");
+                    using (SPSite site = new SPSite(siteId))
+                    {
+                        foreach (SPWeb web in site.AllWebs)
+                        {
+                            bool featureFound = (web.Features[busiDevArtifactsFeatureGuid] != null);
+                            string url = web.Url;
+                            web.Dispose();
+                            if (featureFound) return url;
+
+                        }
+                    }
+                   
+                }
+                catch (Exception ex)
+                {
+                    Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).Name, string.Format("FindBusinessDevelopmentSiteId error:{0}", ex.Message));
+                }
+            }
+
+            return string.Empty;
         }
     }
 }
