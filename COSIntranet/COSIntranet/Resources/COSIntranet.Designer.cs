@@ -1854,6 +1854,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stock count.
+        /// </summary>
+        internal static string ChangeFolderTitleStockCount {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleStockCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Guide to acquisitions to the store.
         /// </summary>
         internal static string ChangeFolderTitleStoreAcqGuide {
