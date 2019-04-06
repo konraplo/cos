@@ -2611,5 +2611,27 @@ namespace Change.Intranet.Resources {
                 return ResourceManager.GetString("ChangeTaskDisplayName", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First reminder
+        ///Please be aware for the deadline for your task {0} is tomorrow ({1}). Please remember to register in the system when the task is completed.
+        /// 
+        ///Have a nice day.
+        ///.
+        /// </summary>
+        internal static string ChangeTaskOverdueFirstReminderBody {
+            get {
+                return ResourceManager.GetString("ChangeTaskOverdueFirstReminderBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Task reminder.
+        /// </summary>
+        internal static string ChangeTaskOverdueFirstReminderTitle {
+            get {
+                return ResourceManager.GetString("ChangeTaskOverdueFirstReminderTitle", resourceCulture);
+            }
+        }
     }
 }
