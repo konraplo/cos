@@ -52,6 +52,27 @@
                                     </And></Where>";
 
         /// <summary>
+        /// resx key for project created notification subject
+        /// </summary>
+        private const string ChangeTaskOverdueFirstReminderTitle = "ChangeTaskOverdueFirstReminderTitle";
+
+        /// <summary>
+        /// resx key for project created notification body
+        /// </summary>
+        private const string ChangeTaskOverdueFirstReminderBody = "ChangeTaskOverdueFirstReminderBody";
+
+
+        /// <summary>
+        /// resx key for project created notification subject
+        /// </summary>
+        private const string ChangeTaskOverdueSecondReminderTitle = "ChangeTaskOverdueSecondReminderTitle";
+
+        /// <summary>
+        /// resx key for project created notification body
+        /// </summary>
+        private const string ChangeTaskOverdueSecondReminderBody = "ChangeTaskOverdueSecondReminderBody";
+
+        /// <summary>
         /// This Method is an extract of the timer job execute method.
         /// </summary>
         /// <param name="notificationTimerJob">Jobdefinition of the notification Timerjob.</param>
@@ -73,12 +94,18 @@
                             // late tasks
                             query.Query = queryStringLateTasks;
                             SPListItemCollection projectTasks = list.GetItems(query);
-                            SendNotificationForTasksOwners(web, projectTasks, string.Empty, string.Empty);
+                            string subject = SPUtility.GetLocalizedString(string.Format("$Resources:COSIntranet,{0}", ChangeTaskOverdueSecondReminderTitle), "COSIntranet", web.Language);
+                            string body = SPUtility.GetLocalizedString(string.Format("$Resources:COSIntranet,{0}", ChangeTaskOverdueSecondReminderBody), "COSIntranet", web.Language);
+
+                            SendNotificationForTasksOwners(web, projectTasks, subject, body, 2);
 
                             // tasks at risk
                             query.Query = queryTasksAtRisk;
                             projectTasks = list.GetItems(query);
-                            SendNotificationForTasksOwners(web, projectTasks, string.Empty, string.Empty);
+                            subject = SPUtility.GetLocalizedString(string.Format("$Resources:COSIntranet,{0}", ChangeTaskOverdueFirstReminderTitle), "COSIntranet", web.Language);
+                            body = SPUtility.GetLocalizedString(string.Format("$Resources:COSIntranet,{0}", ChangeTaskOverdueFirstReminderBody), "COSIntranet", web.Language);
+
+                            SendNotificationForTasksOwners(web, projectTasks, subject, body, 1);
                         }
                     }
 
@@ -90,14 +117,14 @@
             }
         }
 
-        private static void SendNotificationForTasksOwners(SPWeb web, SPListItemCollection projectTasks, string mailTitle, string mailBody)
+        private static void SendNotificationForTasksOwners(SPWeb web, SPListItemCollection projectTasks, string mailTitle, string mailBody, int reminderCount)
         {
             foreach (SPListItem taskItem in projectTasks)
             {
                 string taskOwner = Convert.ToString(taskItem[SPBuiltInFieldId.AssignedTo]);
                 string taskName = taskItem.Title;
                 DateTime dueDate = Convert.ToDateTime(taskItem[SPBuiltInFieldId.TaskDueDate]);
-                Logger.WriteLog(Logger.Category.Information, typeof(ChangeNotificationTimerJobExecuter).FullName, string.Format("task:{0}, owner:{1}, duedate:{2}", taskName, taskOwner, dueDate.ToShortDateString()));
+                Logger.WriteLog(Logger.Category.Information, typeof(ChangeNotificationTimerJobExecuter).FullName, string.Format("task:{0}, owner:{1}, due date:{2}", taskName, taskOwner, dueDate.ToShortDateString()));
                 if (!string.IsNullOrEmpty(taskOwner))
                 {
                     SPFieldUserValue user = new SPFieldUserValue(web, taskOwner);
@@ -105,7 +132,14 @@
                     {
                         // send reminder
                         Logger.WriteLog(Logger.Category.Information, typeof(ChangeNotificationTimerJobExecuter).FullName, string.Format("send reminder to :{0}", user.User.Email));
-
+                        if (reminderCount == 1) //first reminder
+                        {
+                            CommonUtilities.SendEmail(web, user.User.Email, string.Format(mailBody, taskItem.Title, dueDate.ToShortDateString()), mailTitle);
+                        }
+                        else //second reminder
+                        {
+                            CommonUtilities.SendEmail(web, user.User.Email, string.Format(mailBody, taskItem.Title, dueDate.ToShortDateString()), mailTitle);
+                        }
                     }
                 }
 

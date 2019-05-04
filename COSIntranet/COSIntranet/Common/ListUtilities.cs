@@ -11,6 +11,16 @@ namespace Change.Intranet.Common
     public static class ListUtilities
     {
         /// <summary>
+        /// resx key for project created notification subject
+        /// </summary>
+        public const string ChangeProjectCreatedMailSubject = "ChangeProjectCreatedMailSubject";
+
+        /// <summary>
+        /// resx key for project created notification body
+        /// </summary>
+        public const string ChangeProjectCreatedMailBody = "ChangeProjectCreatedMailBody";
+
+        /// <summary>
         /// Dictionrary with mapping ListTitleResxKey - List url
         /// </summary>
         public static Dictionary<string, string> ListUrlMappings =  new Dictionary<string, string>

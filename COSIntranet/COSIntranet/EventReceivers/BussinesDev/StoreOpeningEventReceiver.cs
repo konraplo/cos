@@ -53,10 +53,23 @@
 
         }
 
-        private void SendNotification(SPListItem item)
+        private void SendNotification(SPListItem storeOpeningItem)
         {
-            // test sent email
-            //CommonUtilities.SendEmail(item.Web, "third@kp.local", "test", "test");
+            string projectCoordinator = Convert.ToString(storeOpeningItem[SPBuiltInFieldId.AssignedTo]);
+            string projectName = storeOpeningItem.Title;
+            Logger.WriteLog(Logger.Category.Information, typeof(StoreOpeningEventReceiver).FullName, string.Format("project:{0}, owner:{1}", projectName, projectCoordinator));
+            if (!string.IsNullOrEmpty(projectCoordinator))
+            {
+                SPFieldUserValue user = new SPFieldUserValue(storeOpeningItem.Web, projectCoordinator);
+                if (!string.IsNullOrEmpty(user.User.Email))
+                {
+                    // send reminder
+                    Logger.WriteLog(Logger.Category.Information, typeof(StoreOpeningEventReceiver).FullName, string.Format("send reminder to :{0}", user.User.Email));
+                    string subject = SPUtility.GetLocalizedString(string.Format("$Resources:COSIntranet,{0}", ListUtilities.ChangeProjectCreatedMailSubject), "COSIntranet", storeOpeningItem.Web.Language);
+                    string body = SPUtility.GetLocalizedString(string.Format("$Resources:COSIntranet,{0}", ListUtilities.ChangeProjectCreatedMailBody), "COSIntranet", storeOpeningItem.Web.Language);
+                    //CommonUtilities.SendEmail(storeOpeningItem.Web, user.User.Email, body, subject);
+                }
+            }
         }
 
         private void UpdateFolderStrucutre(SPListItem item)

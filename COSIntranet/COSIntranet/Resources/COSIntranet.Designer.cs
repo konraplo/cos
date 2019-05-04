@@ -2586,6 +2586,24 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ChangeProjectCreatedMailBody.
+        /// </summary>
+        internal static string ChangeProjectCreatedMailBody {
+            get {
+                return ResourceManager.GetString("ChangeProjectCreatedMailBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ChangeProjectCreatedMailSubject.
+        /// </summary>
+        internal static string ChangeProjectCreatedMailSubject {
+            get {
+                return ResourceManager.GetString("ChangeProjectCreatedMailSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Project Status.
         /// </summary>
         internal static string ChangeProjectStatus {
@@ -2631,6 +2649,26 @@ namespace Change.Intranet.Resources {
         internal static string ChangeTaskOverdueFirstReminderTitle {
             get {
                 return ResourceManager.GetString("ChangeTaskOverdueFirstReminderTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Second reminder
+        ///Please be aware that the deadline for your task {0} is overdue. Please solve the task immediately and register in the system when the task is completed. If you have questions or challenges, please contact your project coordinator.
+        ///Have a nice day.
+        /// </summary>
+        internal static string ChangeTaskOverdueSecondReminderBody {
+            get {
+                return ResourceManager.GetString("ChangeTaskOverdueSecondReminderBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Task reminder.
+        /// </summary>
+        internal static string ChangeTaskOverdueSecondReminderTitle {
+            get {
+                return ResourceManager.GetString("ChangeTaskOverdueSecondReminderTitle", resourceCulture);
             }
         }
     }

@@ -971,4 +971,18 @@ Please be aware for the deadline for your task {0} is tomorrow ({1}). Please rem
 Have a nice day.
 </value>
   </data>
+  <data name="ChangeProjectCreatedMailSubject" xml:space="preserve">
+    <value>ChangeProjectCreatedMailSubject</value>
+  </data>
+  <data name="ChangeProjectCreatedMailBody" xml:space="preserve">
+    <value>ChangeProjectCreatedMailBody</value>
+  </data>
+  <data name="ChangeTaskOverdueSecondReminderTitle" xml:space="preserve">
+    <value>Task reminder</value>
+  </data>
+  <data name="ChangeTaskOverdueSecondReminderBody" xml:space="preserve">
+    <value>Second reminder
+Please be aware that the deadline for your task {0} is overdue. Please solve the task immediately and register in the system when the task is completed. If you have questions or challenges, please contact your project coordinator.
+Have a nice day</value>
+  </data>
 </root>
