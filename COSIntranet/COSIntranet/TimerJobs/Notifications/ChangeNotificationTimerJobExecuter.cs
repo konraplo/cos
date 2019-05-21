@@ -97,7 +97,7 @@
                             string subject = SPUtility.GetLocalizedString(string.Format("$Resources:COSIntranet,{0}", ChangeTaskOverdueSecondReminderTitle), "COSIntranet", web.Language);
                             string body = SPUtility.GetLocalizedString(string.Format("$Resources:COSIntranet,{0}", ChangeTaskOverdueSecondReminderBody), "COSIntranet", web.Language);
 
-                            SendNotificationForTasksOwners(web, projectTasks, subject, body, 2);
+                            //SendNotificationForTasksOwners(web, projectTasks, subject, body, 2);
 
                             // tasks at risk
                             query.Query = queryTasksAtRisk;
@@ -105,7 +105,7 @@
                             subject = SPUtility.GetLocalizedString(string.Format("$Resources:COSIntranet,{0}", ChangeTaskOverdueFirstReminderTitle), "COSIntranet", web.Language);
                             body = SPUtility.GetLocalizedString(string.Format("$Resources:COSIntranet,{0}", ChangeTaskOverdueFirstReminderBody), "COSIntranet", web.Language);
 
-                            SendNotificationForTasksOwners(web, projectTasks, subject, body, 1);
+                            //SendNotificationForTasksOwners(web, projectTasks, subject, body, 1);
                         }
                     }
 

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="04418360-3dcd-4604-a635-e5aecdae2851" solutionId="04418360-3dcd-4604-a635-e5aecdae2851" resetWebServer="false" sharePointProductVersion="16.0" name="COSContracts" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="996ecdfe-0998-43a7-8db8-c33d651cd15c" />
+    <featureReference itemId="ea18109b-3ad0-44d2-9bdc-811ff78f3965" />
+  </features>
+</package>

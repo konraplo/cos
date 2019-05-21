@@ -1,0 +1,139 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4E1E10CE-9079-43CC-96AE-B69927E71699}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Change.Contracts</RootNamespace>
+    <AssemblyName>Change.Contracts</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetOfficeVersion>16.0</TargetOfficeVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <MinimumOfficeToolsVersion>14.0</MinimumOfficeToolsVersion>
+    <SandboxedSolution>False</SandboxedSolution>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.SharePoint" />
+    <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Features\ChangeContractsInfrastructure\ChangeContractsInfrastructure.feature">
+      <FeatureId>{996ecdfe-0998-43a7-8db8-c33d651cd15c}</FeatureId>
+    </None>
+    <None Include="Features\ChangeContractsLists\ChangeContractsLists.feature">
+      <FeatureId>{ea18109b-3ad0-44d2-9bdc-811ff78f3965}</FeatureId>
+    </None>
+    <None Include="Infrastructure\ContentTypes\CHANGEContract\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{9395f3fc-e759-4418-917f-89b86ad3d859}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\ContentTypes\CHANGECustomerProfitCenter\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{2b865689-d13d-4d09-8a84-313cea8c5e52}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\ContentTypes\CHANGECustomer\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{c8a9c0c5-7370-4b14-9db6-1da9bc841497}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\ContentTypes\CHANGEGroupEntity\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{aa71c859-1112-4a64-bba6-0e867233a7ce}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\ContentTypes\CHANGEVendorGroupEntity\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{5dd14001-8667-4910-bfb1-34728abf7646}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\ContentTypes\CHANGEVendor\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{91b038fc-4827-45e3-bc1d-2e1d5400e3f4}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Fields\CHANGEContractsFields\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{4c5d000b-5f89-45da-ac9a-40ce7982854c}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\Contracts\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{3da71892-6e08-4a8e-89dd-3000c3d11576}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\CustomerProfitCenter\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{a5d8264b-ce9d-40ea-92ef-0702d79d1d1f}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\Customers\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{3062b2ca-5ec2-4fef-8409-51e81cc5dd38}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\GroupEntity\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{ba2d4f15-074a-4515-9534-67802aed0afb}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\VendorGroupEntity\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{c41ed8bb-07b9-4d9f-90b7-9e3e51fb5e73}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\Vendors\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{8aebc15f-37ef-4bff-ae8d-17809831b95d}</SharePointProjectItemId>
+    </None>
+    <None Include="key.snk" />
+    <None Include="Package\Package.package">
+      <PackageId>{04418360-3dcd-4604-a635-e5aecdae2851}</PackageId>
+    </None>
+    <None Include="Package\Package.Template.xml">
+      <DependentUpon>Package.package</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Features\ChangeContractsInfrastructure\ChangeContractsInfrastructure.Template.xml">
+      <DependentUpon>ChangeContractsInfrastructure.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\ChangeContractsLists\ChangeContractsLists.Template.xml">
+      <DependentUpon>ChangeContractsLists.feature</DependentUpon>
+    </Content>
+    <Content Include="Infrastructure\ContentTypes\CHANGEContract\Elements.xml" />
+    <Content Include="Infrastructure\ContentTypes\CHANGECustomerProfitCenter\Elements.xml" />
+    <Content Include="Infrastructure\ContentTypes\CHANGECustomer\Elements.xml" />
+    <Content Include="Infrastructure\ContentTypes\CHANGEGroupEntity\Elements.xml" />
+    <Content Include="Infrastructure\ContentTypes\CHANGEVendorGroupEntity\Elements.xml" />
+    <Content Include="Infrastructure\ContentTypes\CHANGEVendor\Elements.xml" />
+    <Content Include="Infrastructure\Fields\CHANGEContractsFields\Elements.xml" />
+    <Content Include="Infrastructure\Lists\Contracts\Elements.xml" />
+    <Content Include="Infrastructure\Lists\CustomerProfitCenter\Elements.xml" />
+    <Content Include="Infrastructure\Lists\Customers\Elements.xml" />
+    <Content Include="Infrastructure\Lists\GroupEntity\Elements.xml" />
+    <Content Include="Infrastructure\Lists\VendorGroupEntity\Elements.xml" />
+    <Content Include="Infrastructure\Lists\Vendors\Elements.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" Condition="'$(VSToolsPath)' != ''" />
+</Project>

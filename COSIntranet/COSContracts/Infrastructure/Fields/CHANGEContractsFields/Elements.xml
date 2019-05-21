@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">  
+  <Field
+       ID="{b640b1f8-a030-4e8c-a80b-accd9ccf97ab}"
+       Name="CHANGEContractsFields"
+       DisplayName="CHANGE Contracts Fields"
+       Type="Text"
+       Required="FALSE"
+       Group="Custom Site Columns">
+  </Field>
+</Elements>
