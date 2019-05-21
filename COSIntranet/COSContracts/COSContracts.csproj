@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TimerJobs\ChangeContractsNotificationTimerJob.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Features\ChangeContractsInfrastructure\ChangeContractsInfrastructure.feature">
@@ -108,7 +109,9 @@
       <DependentUpon>Package.package</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Common\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Features\ChangeContractsInfrastructure\ChangeContractsInfrastructure.Template.xml">
       <DependentUpon>ChangeContractsInfrastructure.feature</DependentUpon>
