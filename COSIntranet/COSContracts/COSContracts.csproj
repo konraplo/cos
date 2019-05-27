@@ -53,6 +53,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\COSContracts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>COSContracts.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\COSContracts.en-us.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>COSContracts.en-us.resx</DependentUpon>
+    </Compile>
     <Compile Include="TimerJobs\ChangeContractsNotificationTimerJob.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +124,9 @@
     <None Include="Package\Package.Template.xml">
       <DependentUpon>Package.package</DependentUpon>
     </None>
+    <None Include="Resources\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{995fe8e2-5e7e-4a7f-96df-3f3002fda6fc}</SharePointProjectItemId>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
@@ -142,6 +155,18 @@
     <Content Include="Infrastructure\Lists\GroupEntity\Elements.xml" />
     <Content Include="Infrastructure\Lists\ContractSubtype\Elements.xml" />
     <Content Include="Infrastructure\Lists\Vendors\Elements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\COSContracts.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>COSContracts.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\COSContracts.en-us.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>COSContracts.en-us.Designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

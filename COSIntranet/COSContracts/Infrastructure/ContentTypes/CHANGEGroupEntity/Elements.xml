@@ -2,9 +2,9 @@
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <!-- Parent ContentType: Item (0x01) -->
   <ContentType ID="0x0100E344B5D6D69640888293940AF91C134B"
-               Name="CHANGEGroupEntity"
+               Name="$Resources:COSContracts,ChangeCTGroupEntity"
                Group="CHANGE Contracts Content Types"
-               Description="My Content Type"
+               Description="$Resources:COSContracts,ChangeCTGroupEntityDescr"
                Inherits="TRUE"
                Version="0">
     <FieldRefs>
