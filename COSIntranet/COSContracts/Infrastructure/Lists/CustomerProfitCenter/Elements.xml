@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
-  <ListInstance Title="CustomerProfitCenter"
+  <ListInstance Title="$Resources:COSContracts,ChangeListTitleCustomerPC"
                 OnQuickLaunch="TRUE"
                 TemplateType="100"
                 FeatureId="00bfea71-de22-43b2-a848-c05709900100"
                 Url="Lists/CustomerProfitCenter"
-                Description="My List Instance">
+                Description="">
   </ListInstance>
 </Elements>

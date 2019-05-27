@@ -167,5 +167,68 @@ namespace Change.Contracts.Resources {
                 return ResourceManager.GetString("ChangeCTVendorDescr", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contracts.
+        /// </summary>
+        internal static string ChangeListTitleContracts {
+            get {
+                return ResourceManager.GetString("ChangeListTitleContracts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contract subtype.
+        /// </summary>
+        internal static string ChangeListTitleContractSubtype {
+            get {
+                return ResourceManager.GetString("ChangeListTitleContractSubtype", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer profit center.
+        /// </summary>
+        internal static string ChangeListTitleCustomerPC {
+            get {
+                return ResourceManager.GetString("ChangeListTitleCustomerPC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customers.
+        /// </summary>
+        internal static string ChangeListTitleCustomers {
+            get {
+                return ResourceManager.GetString("ChangeListTitleCustomers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to External contacts.
+        /// </summary>
+        internal static string ChangeListTitleExternalContacts {
+            get {
+                return ResourceManager.GetString("ChangeListTitleExternalContacts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Group entities.
+        /// </summary>
+        internal static string ChangeListTitleGroupEntity {
+            get {
+                return ResourceManager.GetString("ChangeListTitleGroupEntity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vendors.
+        /// </summary>
+        internal static string ChangeListTitleVendors {
+            get {
+                return ResourceManager.GetString("ChangeListTitleVendors", resourceCulture);
+            }
+        }
     }
 }

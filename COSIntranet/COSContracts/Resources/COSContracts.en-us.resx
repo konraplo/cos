@@ -133,4 +133,25 @@
   <data name="ChangeCTVendor" xml:space="preserve">
     <value>CHANGE Vendor</value>
   </data>
+  <data name="ChangeListTitleContracts" xml:space="preserve">
+    <value>Contracts</value>
+  </data>
+  <data name="ChangeListTitleContractSubtype" xml:space="preserve">
+    <value>Contract subtype</value>
+  </data>
+  <data name="ChangeListTitleCustomerPC" xml:space="preserve">
+    <value>Customer profit center</value>
+  </data>
+  <data name="ChangeListTitleCustomers" xml:space="preserve">
+    <value>Customers</value>
+  </data>
+  <data name="ChangeListTitleExternalContacts" xml:space="preserve">
+    <value>External contacts</value>
+  </data>
+  <data name="ChangeListTitleGroupEntity" xml:space="preserve">
+    <value>Group entities</value>
+  </data>
+  <data name="ChangeListTitleVendors" xml:space="preserve">
+    <value>Vendors</value>
+  </data>
 </root>
