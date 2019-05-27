@@ -3,7 +3,7 @@
   <!-- Parent ContentType: Item (0x01) -->
   <ContentType ID="0x010046659AEEFDA14270AF680421AD589C7B"
                Name="CHANGECustomer"
-               Group="Custom Content Types"
+               Group="CHANGE Contracts Content Types"
                Description="My Content Type"
                Inherits="TRUE"
                Version="0">

@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
-  <!-- Parent ContentType: Item (0x01) -->
-  <ContentType ID="0x0100116954ED24DA48F1929A22BC298FABA3"
-               Name="CHANGEVendorGroupEntity"
-               Group="Custom Content Types"
+  <!-- Parent ContentType: Contract (0x0106) -->
+  <ContentType ID="0x010600116954ED24DA48F1929A22BC298FABA3"
+               Name="CHANGEExternalContact"
+               Group="CHANGE Contracts Content Types"
                Description="My Content Type"
                Inherits="TRUE"
                Version="0">

@@ -62,6 +62,9 @@
     <None Include="Features\ChangeContractsLists\ChangeContractsLists.feature">
       <FeatureId>{ea18109b-3ad0-44d2-9bdc-811ff78f3965}</FeatureId>
     </None>
+    <None Include="Features\ChangeContractsTimerjobs\ChangeContractsTimerjobs.feature">
+      <FeatureId>{d2727ca9-381c-4561-984f-e7f415d34929}</FeatureId>
+    </None>
     <None Include="Infrastructure\ContentTypes\CHANGEContract\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{9395f3fc-e759-4418-917f-89b86ad3d859}</SharePointProjectItemId>
     </None>
@@ -74,7 +77,7 @@
     <None Include="Infrastructure\ContentTypes\CHANGEGroupEntity\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{aa71c859-1112-4a64-bba6-0e867233a7ce}</SharePointProjectItemId>
     </None>
-    <None Include="Infrastructure\ContentTypes\CHANGEVendorGroupEntity\SharePointProjectItem.spdata">
+    <None Include="Infrastructure\ContentTypes\CHANGEExternalContact\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{5dd14001-8667-4910-bfb1-34728abf7646}</SharePointProjectItemId>
     </None>
     <None Include="Infrastructure\ContentTypes\CHANGEVendor\SharePointProjectItem.spdata">
@@ -92,10 +95,13 @@
     <None Include="Infrastructure\Lists\Customers\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{3062b2ca-5ec2-4fef-8409-51e81cc5dd38}</SharePointProjectItemId>
     </None>
+    <None Include="Infrastructure\Lists\ExternalContacts\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{c9d5a85d-7f29-4129-97fe-ad9bac4b0c97}</SharePointProjectItemId>
+    </None>
     <None Include="Infrastructure\Lists\GroupEntity\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{ba2d4f15-074a-4515-9534-67802aed0afb}</SharePointProjectItemId>
     </None>
-    <None Include="Infrastructure\Lists\VendorGroupEntity\SharePointProjectItem.spdata">
+    <None Include="Infrastructure\Lists\ContractSubtype\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{c41ed8bb-07b9-4d9f-90b7-9e3e51fb5e73}</SharePointProjectItemId>
     </None>
     <None Include="Infrastructure\Lists\Vendors\SharePointProjectItem.spdata">
@@ -119,18 +125,22 @@
     <Content Include="Features\ChangeContractsLists\ChangeContractsLists.Template.xml">
       <DependentUpon>ChangeContractsLists.feature</DependentUpon>
     </Content>
+    <Content Include="Features\ChangeContractsTimerjobs\ChangeContractsTimerjobs.Template.xml">
+      <DependentUpon>ChangeContractsTimerjobs.feature</DependentUpon>
+    </Content>
     <Content Include="Infrastructure\ContentTypes\CHANGEContract\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\CHANGECustomerProfitCenter\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\CHANGECustomer\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\CHANGEGroupEntity\Elements.xml" />
-    <Content Include="Infrastructure\ContentTypes\CHANGEVendorGroupEntity\Elements.xml" />
+    <Content Include="Infrastructure\ContentTypes\CHANGEExternalContact\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\CHANGEVendor\Elements.xml" />
     <Content Include="Infrastructure\Fields\CHANGEContractsFields\Elements.xml" />
     <Content Include="Infrastructure\Lists\Contracts\Elements.xml" />
     <Content Include="Infrastructure\Lists\CustomerProfitCenter\Elements.xml" />
     <Content Include="Infrastructure\Lists\Customers\Elements.xml" />
+    <Content Include="Infrastructure\Lists\ExternalContacts\Elements.xml" />
     <Content Include="Infrastructure\Lists\GroupEntity\Elements.xml" />
-    <Content Include="Infrastructure\Lists\VendorGroupEntity\Elements.xml" />
+    <Content Include="Infrastructure\Lists\ContractSubtype\Elements.xml" />
     <Content Include="Infrastructure\Lists\Vendors\Elements.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

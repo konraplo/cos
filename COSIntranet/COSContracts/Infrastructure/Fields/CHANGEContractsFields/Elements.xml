@@ -6,6 +6,6 @@
        DisplayName="CHANGE Contracts Fields"
        Type="Text"
        Required="FALSE"
-       Group="Custom Site Columns">
+       Group="CHANGE Contracts Fields">
   </Field>
 </Elements>
