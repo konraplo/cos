@@ -2,9 +2,9 @@
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <ListInstance Title="$Resources:COSContracts,ChangeListTitleContracts"
                 OnQuickLaunch="TRUE"
-                TemplateType="100"
-                FeatureId="00bfea71-de22-43b2-a848-c05709900100"
-                Url="Lists/Contracts"
-                Description="">
+                TemplateType="101"
+                FeatureId="00bfea71-e717-4e80-aa17-d0c71b360101"
+                Url="ChangeContracts"
+                Description="My List Instance">
   </ListInstance>
 </Elements>

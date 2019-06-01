@@ -61,6 +61,24 @@ namespace Change.Contracts.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CHANGE Contract subtype.
+        /// </summary>
+        internal static string CHANGEContractSubType {
+            get {
+                return ResourceManager.GetString("CHANGEContractSubType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create contract subtype.
+        /// </summary>
+        internal static string CHANGEContractSubTypeDescr {
+            get {
+                return ResourceManager.GetString("CHANGEContractSubTypeDescr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CHANGE Contract.
         /// </summary>
         internal static string ChangeCTContract {

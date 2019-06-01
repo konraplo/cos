@@ -52,6 +52,13 @@
     <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\CommonUtilities.cs" />
+    <Compile Include="Common\ContentTypeIds.cs" />
+    <Compile Include="Common\ListUtilities.cs" />
+    <Compile Include="Common\Logger.cs" />
+    <Compile Include="Features\ChangeContractsLists\ChangeContractsLists.EventReceiver.cs">
+      <DependentUpon>ChangeContractsLists.feature</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\COSContracts.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -75,6 +82,9 @@
     <None Include="Features\ChangeContractsTimerjobs\ChangeContractsTimerjobs.feature">
       <FeatureId>{d2727ca9-381c-4561-984f-e7f415d34929}</FeatureId>
     </None>
+    <None Include="Infrastructure\ContentTypes\CHANGEContractSubType\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{26ca98e4-e01d-49d7-b380-e4669be61dd8}</SharePointProjectItemId>
+    </None>
     <None Include="Infrastructure\ContentTypes\CHANGEContract\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{9395f3fc-e759-4418-917f-89b86ad3d859}</SharePointProjectItemId>
     </None>
@@ -96,8 +106,8 @@
     <None Include="Infrastructure\Fields\CHANGEContractsFields\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{4c5d000b-5f89-45da-ac9a-40ce7982854c}</SharePointProjectItemId>
     </None>
-    <None Include="Infrastructure\Lists\Contracts\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{3da71892-6e08-4a8e-89dd-3000c3d11576}</SharePointProjectItemId>
+    <None Include="Infrastructure\Lists\ChangeContracts\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{3847a373-e66b-4cfa-85b0-2c7f7668e99e}</SharePointProjectItemId>
     </None>
     <None Include="Infrastructure\Lists\CustomerProfitCenter\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{a5d8264b-ce9d-40ea-92ef-0702d79d1d1f}</SharePointProjectItemId>
@@ -128,9 +138,7 @@
       <SharePointProjectItemId>{995fe8e2-5e7e-4a7f-96df-3f3002fda6fc}</SharePointProjectItemId>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Common\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Features\ChangeContractsInfrastructure\ChangeContractsInfrastructure.Template.xml">
       <DependentUpon>ChangeContractsInfrastructure.feature</DependentUpon>
@@ -141,6 +149,7 @@
     <Content Include="Features\ChangeContractsTimerjobs\ChangeContractsTimerjobs.Template.xml">
       <DependentUpon>ChangeContractsTimerjobs.feature</DependentUpon>
     </Content>
+    <Content Include="Infrastructure\ContentTypes\CHANGEContractSubType\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\CHANGEContract\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\CHANGECustomerProfitCenter\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\CHANGECustomer\Elements.xml" />
@@ -148,7 +157,7 @@
     <Content Include="Infrastructure\ContentTypes\CHANGEExternalContact\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\CHANGEVendor\Elements.xml" />
     <Content Include="Infrastructure\Fields\CHANGEContractsFields\Elements.xml" />
-    <Content Include="Infrastructure\Lists\Contracts\Elements.xml" />
+    <Content Include="Infrastructure\Lists\ChangeContracts\Elements.xml" />
     <Content Include="Infrastructure\Lists\CustomerProfitCenter\Elements.xml" />
     <Content Include="Infrastructure\Lists\Customers\Elements.xml" />
     <Content Include="Infrastructure\Lists\ExternalContacts\Elements.xml" />

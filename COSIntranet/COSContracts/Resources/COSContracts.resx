@@ -154,4 +154,10 @@
   <data name="ChangeListTitleVendors" xml:space="preserve">
     <value>Vendors</value>
   </data>
+  <data name="CHANGEContractSubType" xml:space="preserve">
+    <value>CHANGE Contract subtype</value>
+  </data>
+  <data name="CHANGEContractSubTypeDescr" xml:space="preserve">
+    <value>Create contract subtype</value>
+  </data>
 </root>

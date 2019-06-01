@@ -5,6 +5,6 @@
                 TemplateType="100"
                 FeatureId="00bfea71-de22-43b2-a848-c05709900100"
                 Url="Lists/Customers"
-                Description="My List Instance">
+                Description="">
   </ListInstance>
 </Elements>

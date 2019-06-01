@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <!-- Parent ContentType: Item (0x01) -->
-  <ContentType ID="0x010046659AEEFDA14270AF680421AD589C7B"
-               Name="$Resources:COSContracts,ChangeCTCustomer"
+  <ContentType ID="0x0100825961710DCF4339A21FDD203EA7A34B"
+               Name="$Resources:COSContracts,CHANGEContractSubType"
                Group="CHANGE Contracts Content Types"
-               Description="$Resources:COSContracts,ChangeCTCustomerDescr"
+               Description="$Resources:COSContracts,CHANGEContractSubTypeDescr"
                Inherits="TRUE"
                Version="0">
     <FieldRefs>
