@@ -70,22 +70,28 @@ namespace Change.Contracts.Features.ChangeContractsLists
             SPList vendorsList = web.GetList(vendorsUrl);
 
             // add lookups
-            //Logger.WriteLog(Logger.Category.Information, "ChangeBusinessDevelopmentEventReceiver", "Add lookups");
+            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "Add lookups");
 
-            //SPFieldLookup deptLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.Department, "$Resources:COSIntranet,ChangeColDeparment", Fields.Title, contractsList, false, false);
-            //SPFieldLookup storeOpeningLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.StoreOpening, "$Resources:COSIntranet,ChangeColStoreOpening", Fields.Title, externalContactsList, false, false);
-            //SPFieldLookup storeLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.ContractSubtype, "$Resources:COSIntranet,ChangeColStore", Fields.StoreId, contractSubtypeList, false, false);
-            //SPFieldLookup countryLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.Country, "$Resources:COSIntranet,ChangeColCountry", Fields.Title, groupEntityList, false, false);
+            SPFieldLookup custLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeContractsFieldsGroup, Fields.Customer, "$Resources:COSContracts,ChangeColCustomer", Fields.Title, contractsList, true, false);
+            SPFieldLookup custProfitCenterLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeContractsFieldsGroup, Fields.CustomerProfitCenter, "$Resources:COSContracts,ChangeColCustPCenter", Fields.Title, customerProfitCenterList, true, false);
+            SPFieldLookup groupEntityLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeContractsFieldsGroup, Fields.GroupEntity, "$Resources:COSIntranet,ChangeColGroupEntity", Fields.Title, groupEntityList, false, false);
+            SPFieldLookup contractSubtypeLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeContractsFieldsGroup, Fields.ContractSubtype, "$Resources:COSIntranet,ChangeColContractSubtype", Fields.Title, contractSubtypeList, false, false);
+            SPFieldLookup vendorLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeContractsFieldsGroup, Fields.Vendor, "$Resources:COSIntranet,ChangeColVendor", Fields.Title, vendorsList, true, false);
+            SPFieldLookup externalCustContactLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeContractsFieldsGroup, Fields.ExternalContactCust, "$Resources:COSIntranet,ChangeColExtCustContact", Fields.Title, externalContactsList, false, false);
+            SPFieldLookup externalVendorContactLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeContractsFieldsGroup, Fields.ExternalContactVendor, "$Resources:COSIntranet,ChangeColExtVendorContact", Fields.Title, externalContactsList, false, false);
 
             // add ct to lists
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "add ct to lists");
             SPContentType contractContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.Contract];
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", contractContentType.Name, contractUrl));
             SPContentType contractListContentType = CommonUtilities.AttachContentTypeToList(contractsList, contractContentType, true, false);
-            //CommonUtilities.AddFieldToContentType(web, deptListContentType, deptLookup, false, false, "$Resources:COSIntranet,ChangeColParentdeparment");
+            CommonUtilities.AddFieldToContentType(web, contractListContentType, custLookup, true, false, "$Resources:COSContracts,ChangeColCustomer");
+            CommonUtilities.AddFieldToContentType(web, contractListContentType, externalCustContactLookup, false, false, "$Resources:COSContracts,ChangeColExtCustContact");
+            CommonUtilities.AddFieldToContentType(web, contractListContentType, contractSubtypeLookup, false, false, "$Resources:COSContracts,ChangeColContractSubtype");
+            CommonUtilities.AddFieldToContentType(web, contractListContentType, vendorLookup, true, false, "$Resources:COSContracts,ChangeColVendor");
+            CommonUtilities.AddFieldToContentType(web, contractListContentType, externalVendorContactLookup, false, false, "$Resources:COSContracts,ChangeColExtVendorContact");
 
             SPContentType contractSubtypeContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.ContractSubtype];
-            //CommonUtilities.AddFieldToContentType(web, storeContentType, countryLookup, true, false, string.Empty);
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", contractSubtypeContentType.Name, contractSubtypeUrl));
             CommonUtilities.AttachContentTypeToList(contractSubtypeList, contractSubtypeContentType, true, false);
 
@@ -95,7 +101,9 @@ namespace Change.Contracts.Features.ChangeContractsLists
 
             SPContentType customerContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.Customer];
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", customerContentType.Name, customersUrl));
-            CommonUtilities.AttachContentTypeToList(customersList, customerContentType, true, false);
+            SPContentType customerListContentType = CommonUtilities.AttachContentTypeToList(customersList, customerContentType, true, false);
+            CommonUtilities.AddFieldToContentType(web, customerListContentType, custProfitCenterLookup, true, false, "$Resources:COSContracts,ChangeColCustPCenter");
+            CommonUtilities.AddFieldToContentType(web, customerListContentType, groupEntityLookup, false, false, "$Resources:COSContracts,ChangeColGroupEntity");
 
             SPContentType externalContactsContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.ExternalContact];
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", externalContactsContentType.Name, externalContactsUrl));
@@ -107,9 +115,10 @@ namespace Change.Contracts.Features.ChangeContractsLists
 
             SPContentType vendorsContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.Vendor];
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", vendorsContentType.Name, vendorsUrl));
-            CommonUtilities.AttachContentTypeToList(vendorsList, vendorsContentType, true, false);           
+            SPContentType vendorListContentType = CommonUtilities.AttachContentTypeToList(vendorsList, vendorsContentType, true, false);
+            CommonUtilities.AddFieldToContentType(web, vendorListContentType, groupEntityLookup, false, false, "$Resources:COSContracts,ChangeColGroupEntity");
 
-            
+
         }
 
         // Uncomment the method below to handle the event raised before a feature is deactivated.

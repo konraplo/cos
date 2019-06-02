@@ -160,4 +160,25 @@
   <data name="CHANGEContractSubTypeDescr" xml:space="preserve">
     <value>Create contract subtype</value>
   </data>
+  <data name="ChangeColCustomer" xml:space="preserve">
+    <value>Customer</value>
+  </data>
+  <data name="ChangeColCustPCenter" xml:space="preserve">
+    <value>Customer profit center</value>
+  </data>
+  <data name="ChangeColGroupEntity" xml:space="preserve">
+    <value>Group entity</value>
+  </data>
+  <data name="ChangeColContractSubtype" xml:space="preserve">
+    <value>Subtype</value>
+  </data>
+  <data name="ChangeColVendor" xml:space="preserve">
+    <value>Vendor</value>
+  </data>
+  <data name="ChangeColExtCustContact" xml:space="preserve">
+    <value>Customer external contact</value>
+  </data>
+  <data name="ChangeColExtVendorContact" xml:space="preserve">
+    <value>Vendor external contact</value>
+  </data>
 </root>

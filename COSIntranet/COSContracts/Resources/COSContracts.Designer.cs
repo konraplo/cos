@@ -61,6 +61,69 @@ namespace Change.Contracts.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Subtype.
+        /// </summary>
+        internal static string ChangeColContractSubtype {
+            get {
+                return ResourceManager.GetString("ChangeColContractSubtype", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer.
+        /// </summary>
+        internal static string ChangeColCustomer {
+            get {
+                return ResourceManager.GetString("ChangeColCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer profit center.
+        /// </summary>
+        internal static string ChangeColCustPCenter {
+            get {
+                return ResourceManager.GetString("ChangeColCustPCenter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer external contact.
+        /// </summary>
+        internal static string ChangeColExtCustContact {
+            get {
+                return ResourceManager.GetString("ChangeColExtCustContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vendor external contact.
+        /// </summary>
+        internal static string ChangeColExtVendorContact {
+            get {
+                return ResourceManager.GetString("ChangeColExtVendorContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Group entity.
+        /// </summary>
+        internal static string ChangeColGroupEntity {
+            get {
+                return ResourceManager.GetString("ChangeColGroupEntity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vendor.
+        /// </summary>
+        internal static string ChangeColVendor {
+            get {
+                return ResourceManager.GetString("ChangeColVendor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CHANGE Contract subtype.
         /// </summary>
         internal static string CHANGEContractSubType {
