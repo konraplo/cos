@@ -8,6 +8,7 @@
                Inherits="TRUE"
                Version="0">
     <FieldRefs>
+      <FieldRef ID="{a3962a53-2601-4da0-9b63-d061ab66b05e}" Name="ChangeContracCustomerAddress" />
     </FieldRefs>
   </ContentType>
 </Elements>

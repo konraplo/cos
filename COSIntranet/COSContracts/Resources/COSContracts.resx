@@ -181,4 +181,16 @@
   <data name="ChangeColExtVendorContact" xml:space="preserve">
     <value>Vendor external contact</value>
   </data>
+  <data name="ChangeColContractSubTypeDesc" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ChangeColContractVendorAddress" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="ChangeColContracVendorOtherInfo" xml:space="preserve">
+    <value>Other info</value>
+  </data>
+  <data name="ChangeColContractCustomerAddress" xml:space="preserve">
+    <value>Address</value>
+  </data>
 </root>

@@ -8,6 +8,8 @@
                Inherits="TRUE"
                Version="0">
     <FieldRefs>
+      <FieldRef ID="{273bd709-feae-4556-b2d4-62a57933e54c}" Name="ChangeProjectTasksLink" />
+
     </FieldRefs>
   </ContentType>
 </Elements>

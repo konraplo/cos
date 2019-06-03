@@ -1,11 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Elements xmlns="http://schemas.microsoft.com/sharepoint/">  
-  <Field
-       ID="{b640b1f8-a030-4e8c-a80b-accd9ccf97ab}"
-       Name="CHANGEContractsFields"
-       DisplayName="CHANGE Contracts Fields"
-       Type="Text"
-       Required="FALSE"
-       Group="CHANGE Contracts Fields">
-  </Field>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <!-- Contract subtype -->
+  <Field ID="{273bd709-feae-4556-b2d4-62a57933e54c}"
+           StaticName="ChangeContractSubTypeDesc"
+           Name="ChangeContractSubTypeDesc"
+           Type="Note"
+           DisplayName="$Resources:COSIntranet,ChangeColContractSubTypeDesc"
+           Group="CHANGE Contracts Fields"/>
+  
+  <!-- Vendor -->
+  <Field ID="{cf6bc475-3fe3-45f4-abe1-6aca72b73c11}"
+             StaticName="ChangeContracVendorAddress"
+             Name="ChangeContractVendorAddress"
+             Type="Note"
+             DisplayName="$Resources:COSIntranet,ChangeColContractVendorAddress"
+             Group="CHANGE Contracts Fields"/>
+  
+  <Field ID="{a3ff6533-1338-49ac-bd38-635cf491d977}"
+           StaticName="ChangeContracVendorOtherInfo"
+           Name="ChangeContracVendorOtherInfo"
+           Type="Note"
+           DisplayName="$Resources:COSIntranet,ChangeColContracVendorOtherInfo"
+           Group="CHANGE Contracts Fields"/>
+  
+  <!-- Customer -->
+  <Field ID="{a3962a53-2601-4da0-9b63-d061ab66b05e}"
+             StaticName="ChangeContracCustomerAddress"
+             Name="ChangeContractCustomerAddress"
+             Type="Note"
+             DisplayName="$Resources:COSIntranet,ChangeColContractCustomerAddress"
+             Group="CHANGE Contracts Fields"/>
 </Elements>

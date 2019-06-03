@@ -61,11 +61,47 @@ namespace Change.Contracts.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address.
+        /// </summary>
+        internal static string ChangeColContractCustomerAddress {
+            get {
+                return ResourceManager.GetString("ChangeColContractCustomerAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Subtype.
         /// </summary>
         internal static string ChangeColContractSubtype {
             get {
                 return ResourceManager.GetString("ChangeColContractSubtype", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        internal static string ChangeColContractSubTypeDesc {
+            get {
+                return ResourceManager.GetString("ChangeColContractSubTypeDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address.
+        /// </summary>
+        internal static string ChangeColContractVendorAddress {
+            get {
+                return ResourceManager.GetString("ChangeColContractVendorAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other info.
+        /// </summary>
+        internal static string ChangeColContracVendorOtherInfo {
+            get {
+                return ResourceManager.GetString("ChangeColContracVendorOtherInfo", resourceCulture);
             }
         }
         
