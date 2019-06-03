@@ -5,29 +5,135 @@
            StaticName="ChangeContractSubTypeDesc"
            Name="ChangeContractSubTypeDesc"
            Type="Note"
-           DisplayName="$Resources:COSIntranet,ChangeColContractSubTypeDesc"
+           DisplayName="$Resources:COSContracts,ChangeColContractSubTypeDesc"
            Group="CHANGE Contracts Fields"/>
   
   <!-- Vendor -->
   <Field ID="{cf6bc475-3fe3-45f4-abe1-6aca72b73c11}"
              StaticName="ChangeContracVendorAddress"
              Name="ChangeContractVendorAddress"
-             Type="Note"
-             DisplayName="$Resources:COSIntranet,ChangeColContractVendorAddress"
+             Type="Text"
+             DisplayName="$Resources:COSContracts,ChangeColContractVendorAddress"
              Group="CHANGE Contracts Fields"/>
   
   <Field ID="{a3ff6533-1338-49ac-bd38-635cf491d977}"
            StaticName="ChangeContracVendorOtherInfo"
            Name="ChangeContracVendorOtherInfo"
            Type="Note"
-           DisplayName="$Resources:COSIntranet,ChangeColContracVendorOtherInfo"
+           DisplayName="$Resources:COSContracts,ChangeColContracVendorOtherInfo"
            Group="CHANGE Contracts Fields"/>
   
   <!-- Customer -->
   <Field ID="{a3962a53-2601-4da0-9b63-d061ab66b05e}"
              StaticName="ChangeContracCustomerAddress"
              Name="ChangeContractCustomerAddress"
-             Type="Note"
-             DisplayName="$Resources:COSIntranet,ChangeColContractCustomerAddress"
+             Type="Text"
+             DisplayName="$Resources:COSContracts,ChangeColContractCustomerAddress"
              Group="CHANGE Contracts Fields"/>
+
+  <!-- Contract -->
+  <Field ID="{ca9c8201-69ae-4619-babe-ea5d4a2e669a}"
+             StaticName="ChangeContracContractNo"
+             Name="ChangeContractContractNo"
+             Type="Note"
+             DisplayName="$Resources:COSContracts,ChangeColContractContractNo"
+             Group="CHANGE Contracts Fields"/>
+
+  <Field ID="{8c222fe8-f4a9-4e59-a75c-bf111672c947}"
+          StaticName="ChangeContractContractStatus"
+         Name="ChangeContractContractStatus"
+         Type="Choice" 
+         DisplayName="$Resources:COSContracts,ChangeColContractStatus" 
+         Required="TRUE" 
+         Format="Dropdown" 
+         Group="CHANGE Contracts Fields">
+    <Default>Not started</Default>
+    <CHOICES>
+      <CHOICE>Not started</CHOICE>
+      <CHOICE>Active</CHOICE>
+      <CHOICE>Expired</CHOICE>
+      <CHOICE>On hold</CHOICE>
+      <CHOICE>One time</CHOICE>
+    </CHOICES>
+  </Field>
+
+  <Field ID="{192b4250-5c19-4db7-a852-ef90eb02efdd}"
+         StaticName="ChangeContractContractType"
+        Name="ChangeContractContractType"
+        Type="Choice"
+        DisplayName="$Resources:COSContracts,ChangeColContractType"
+        Required="TRUE"
+        Format="Dropdown"
+        Group="CHANGE Contracts Fields">
+    <Default>Customer</Default>
+    <CHOICES>
+      <CHOICE>Customer</CHOICE>
+      <CHOICE>Vendor</CHOICE>
+    </CHOICES>
+  </Field>
+
+  <Field ID="{69f46885-7a38-4b33-97bd-dfbb1476fd3f}"
+           StaticName="ChangeContractCustContactPerson"
+           Name="ChangeContractCustContactPerson"
+           Type="User"
+           DisplayName="$Resources:COSContracts,ChangeColCustContactPerson"
+           List="UserInfo"
+           Required="TRUE"
+           ShowField="ImnName"
+           UserSelectionMode="PeopleAndGroups"
+           UserSelectionScope="0"
+           Group="CHANGE Contracts Fields"/>
+
+  <Field ID="{e9ba1a1f-0f8b-44db-b97f-4e58072d7995}"
+        StaticName="ChangeContractContractSubstance "
+       Name="ChangeContractContractSubstance"
+       Type="Choice"
+       DisplayName="$Resources:COSContracts,ChangeColContractSubstance "
+       Required="TRUE"
+       Format="Dropdown"
+       Group="CHANGE Contracts Fields">
+    <Default>Guaranty</Default>
+    <CHOICES>
+      <CHOICE>Guaranty</CHOICE>
+      <CHOICE>Loan</CHOICE>
+      <CHOICE>Intercompany Agreement</CHOICE>
+      <CHOICE>Rental</CHOICE>
+      <CHOICE>Related party agreement</CHOICE>
+      <CHOICE>Purchase Agreement</CHOICE>
+      <CHOICE>Franchisee Agreement</CHOICE>
+      <CHOICE>Take Over Agreement</CHOICE>
+      <CHOICE>Lease</CHOICE>
+      <CHOICE>Supplies</CHOICE>
+      <CHOICE>Services</CHOICE>
+    </CHOICES>
+
+  </Field>
+
+  <Field ID="{5e07d147-c509-4888-ae60-a46e450843cc}"
+             StaticName="ChangeContractSubtype2"
+             Name="ChangeContractSubtype2"
+             Type="Text"
+             DisplayName="$Resources:COSContracts,ChangeColContractSubtype2"
+             Group="CHANGE Contracts Fields"/>
+
+  <Field ID="{9e8c992b-83e4-4833-b873-d89a6c432650}"
+           StaticName="ChangeContractVendorContactPerson"
+           Name="ChangeContractVendorContactPerson"
+           Type="User"
+           DisplayName="$Resources:COSContracts,ChangeColVendorContactPerson"
+           List="UserInfo"
+           Required="TRUE"
+           ShowField="ImnName"
+           UserSelectionMode="PeopleAndGroups"
+           UserSelectionScope="0"
+           Group="CHANGE Contracts Fields"/>
+  
+  <Field ID="{5d788eb7-48a3-48ee-b05f-b89c38a0ef77}" 
+         StaticName="ChangeContractSignDate" 
+         Name="ChangeContractSignDate"
+         Type="DateTime" 
+         DisplayName="$Resources:COSContracts,ChangeColContractSignDate" 
+         Format="DateOnly" 
+         Group="CHANGE Contracts Contracts"/>
+
 </Elements>

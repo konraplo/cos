@@ -8,6 +8,14 @@
                Inherits="TRUE"
                Version="0">
     <FieldRefs>
+      <FieldRef ID="{ca9c8201-69ae-4619-babe-ea5d4a2e669a}" Name="ChangeContracContractNo" />
+      <FieldRef ID="{192b4250-5c19-4db7-a852-ef90eb02efdd}" Name="ChangeContractContractType" Required="TRUE"/>
+      <FieldRef ID="{8c222fe8-f4a9-4e59-a75c-bf111672c947}" Name="ChangeContractContractStatus" Required="TRUE"/>
+      <FieldRef ID="{69f46885-7a38-4b33-97bd-dfbb1476fd3f}" Name="ChangeContractCustContactPerson" Required="TRUE"/>
+      <FieldRef ID="{e9ba1a1f-0f8b-44db-b97f-4e58072d7995}" Name="ChangeContractContractSubstance" Required="TRUE"/>
+      <FieldRef ID="{5e07d147-c509-4888-ae60-a46e450843cc}" Name="ChangeColContractSubtype2" />
+      <FieldRef ID="{9e8c992b-83e4-4833-b873-d89a6c432650}" Name="ChangeContractVendorContactPerson" />
+      <FieldRef ID="{5d788eb7-48a3-48ee-b05f-b89c38a0ef77}" Name="ChangeContractSignDate" />
     </FieldRefs>
   </ContentType>
 </Elements>

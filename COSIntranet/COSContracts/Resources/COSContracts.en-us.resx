@@ -193,4 +193,25 @@
   <data name="ChangeColContractCustomerAddress" xml:space="preserve">
     <value>Address</value>
   </data>
+  <data name="ChangeColContractContractNo" xml:space="preserve">
+    <value>Contract No.</value>
+  </data>
+  <data name="ChangeColContractStatus" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="ChangeColCustContactPerson" xml:space="preserve">
+    <value>Customer contact person</value>
+  </data>
+  <data name="ChangeColContractSubstance" xml:space="preserve">
+    <value>Contract substance</value>
+  </data>
+  <data name="ChangeColContractSubtype2" xml:space="preserve">
+    <value>Subtype2</value>
+  </data>
+  <data name="ChangeColContractSignDate" xml:space="preserve">
+    <value>Contract sign date</value>
+  </data>
+  <data name="ChangeColVendorContactPerson" xml:space="preserve">
+    <value>Vendor contact person</value>
+  </data>
 </root>
