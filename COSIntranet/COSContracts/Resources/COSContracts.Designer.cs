@@ -61,6 +61,24 @@ namespace Change.Contracts.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Auto prolongation.
+        /// </summary>
+        internal static string ChangeColContractAutoProlongation {
+            get {
+                return ResourceManager.GetString("ChangeColContractAutoProlongation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto prolongation period.
+        /// </summary>
+        internal static string ChangeColContractAutoProlonPeriod {
+            get {
+                return ResourceManager.GetString("ChangeColContractAutoProlonPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contract No..
         /// </summary>
         internal static string ChangeColContractContractNo {
@@ -79,11 +97,38 @@ namespace Change.Contracts.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Earliest cancelation date.
+        /// </summary>
+        internal static string ChangeColContractEarliestCancelationDate {
+            get {
+                return ResourceManager.GetString("ChangeColContractEarliestCancelationDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End date.
+        /// </summary>
+        internal static string ChangeColContractEndDate {
+            get {
+                return ResourceManager.GetString("ChangeColContractEndDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contract sign date.
         /// </summary>
         internal static string ChangeColContractSignDate {
             get {
                 return ResourceManager.GetString("ChangeColContractSignDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start date.
+        /// </summary>
+        internal static string ChangeColContractStartDate {
+            get {
+                return ResourceManager.GetString("ChangeColContractStartDate", resourceCulture);
             }
         }
         
@@ -138,6 +183,15 @@ namespace Change.Contracts.Resources {
         internal static string ChangeColContractVendorAddress {
             get {
                 return ResourceManager.GetString("ChangeColContractVendorAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning date.
+        /// </summary>
+        internal static string ChangeColContractWarnDate {
+            get {
+                return ResourceManager.GetString("ChangeColContractWarnDate", resourceCulture);
             }
         }
         

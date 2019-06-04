@@ -214,4 +214,22 @@
   <data name="ChangeColVendorContactPerson" xml:space="preserve">
     <value>Vendor contact person</value>
   </data>
+  <data name="ChangeColContractStartDate" xml:space="preserve">
+    <value>Start date</value>
+  </data>
+  <data name="ChangeColContractEndDate" xml:space="preserve">
+    <value>End date</value>
+  </data>
+  <data name="ChangeColContractWarnDate" xml:space="preserve">
+    <value>Warning date</value>
+  </data>
+  <data name="ChangeColContractAutoProlongation" xml:space="preserve">
+    <value>Auto prolongation</value>
+  </data>
+  <data name="ChangeColContractAutoProlonPeriod" xml:space="preserve">
+    <value>Auto prolongation period</value>
+  </data>
+  <data name="ChangeColContractEarliestCancelationDate" xml:space="preserve">
+    <value>Earliest cancelation date</value>
+  </data>
 </root>

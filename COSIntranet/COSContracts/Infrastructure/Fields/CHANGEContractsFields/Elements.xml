@@ -134,6 +134,52 @@
          Type="DateTime" 
          DisplayName="$Resources:COSContracts,ChangeColContractSignDate" 
          Format="DateOnly" 
-         Group="CHANGE Contracts Contracts"/>
+         Group="CHANGE Contracts Fields"/>
+  
+  <Field ID="{467be0c0-f2f9-4d3b-8e75-8162eaea1756}"
+         StaticName="ChangeContractStartDate"
+         Name="ChangeContractStartDate"
+         Type="DateTime"
+         DisplayName="$Resources:COSContracts,ChangeColContractStartDate"
+         Format="DateOnly"
+         Group="CHANGE Contracts Fields"/>
+  
+  <Field ID="{22fbb0b8-11e9-4f69-975d-669294116948}"
+         StaticName="ChangeContractEndDate"
+         Name="ChangeContractEndDate"
+         Type="DateTime"
+         DisplayName="$Resources:COSContracts,ChangeColContractEndDate"
+         Format="DateOnly"
+         Group="CHANGE Contracts Fields"/>
 
+  <Field ID="{2d849d1d-9f93-4514-ab9b-8caea5a85569}"
+        StaticName="ChangeContractWarnDate"
+        Name="ChangeContractWarnDate"
+        Type="DateTime"
+        DisplayName="$Resources:COSContracts,ChangeColContractWarnDate"
+        Format="DateOnly"
+        Group="CHANGE Contracts Fields"/>
+
+  <Field ID="{b3c9cc36-c550-40d6-a46a-0faefd9cf88d}"
+         Name="ChangeContractAutoProlongation"
+         Type="Boolean"
+         DisplayName="$Resources:COSContracts,ChangeColContractAutoProlongation"
+         Group="CHANGE Contracts Fields">
+    <Default>0</Default>
+  </Field>
+
+  <Field ID="{cd603bec-b786-4243-a5c9-f99a3550bab3}"
+             StaticName="ChangeContractAutoProlonPeriod"
+             Name="ChangeContractAutoProlonPeriod"
+             Type="Text"
+             DisplayName="$Resources:COSContracts,ChangeColContractAutoProlonPeriod"
+             Group="CHANGE Contracts Fields"/>
+  
+  <Field ID="{b2b12ef8-1c49-4f71-8df6-61990026a867}"
+        StaticName="ChangeContractEarliestCancelDate"
+        Name="ChangeContractEarliestCancelDate"
+        Type="DateTime"
+        DisplayName="$Resources:COSContracts,ChangeColContractEarliestCancelationDate"
+        Format="DateOnly"
+        Group="CHANGE Contracts Fields"/>
 </Elements>

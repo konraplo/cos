@@ -13,9 +13,15 @@
       <FieldRef ID="{8c222fe8-f4a9-4e59-a75c-bf111672c947}" Name="ChangeContractContractStatus" Required="TRUE"/>
       <FieldRef ID="{69f46885-7a38-4b33-97bd-dfbb1476fd3f}" Name="ChangeContractCustContactPerson" Required="TRUE"/>
       <FieldRef ID="{e9ba1a1f-0f8b-44db-b97f-4e58072d7995}" Name="ChangeContractContractSubstance" Required="TRUE"/>
-      <FieldRef ID="{5e07d147-c509-4888-ae60-a46e450843cc}" Name="ChangeColContractSubtype2" />
+      <FieldRef ID="{5e07d147-c509-4888-ae60-a46e450843cc}" Name="ChangeContractSubtype2" />
       <FieldRef ID="{9e8c992b-83e4-4833-b873-d89a6c432650}" Name="ChangeContractVendorContactPerson" />
       <FieldRef ID="{5d788eb7-48a3-48ee-b05f-b89c38a0ef77}" Name="ChangeContractSignDate" />
+      <FieldRef ID="{467be0c0-f2f9-4d3b-8e75-8162eaea1756}" Name="ChangeContractStartDate" Required="TRUE"/>
+      <FieldRef ID="{22fbb0b8-11e9-4f69-975d-669294116948}" Name="ChangeContractEndDate" Required="TRUE"/>
+      <FieldRef ID="{2d849d1d-9f93-4514-ab9b-8caea5a85569}" Name="ChangeContractWarnDate"/>
+      <FieldRef ID="{b3c9cc36-c550-40d6-a46a-0faefd9cf88d}" Name="ChangeContractAutoProlongation"/>
+      <FieldRef ID="{cd603bec-b786-4243-a5c9-f99a3550bab3}" Name="ChangeContractAutoProlonPeriod"/>
+      <FieldRef ID="{b2b12ef8-1c49-4f71-8df6-61990026a867}" Name="ChangeContractEarliestCancelDate"/>
     </FieldRefs>
   </ContentType>
 </Elements>
