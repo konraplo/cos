@@ -232,4 +232,22 @@
   <data name="ChangeColContractEarliestCancelationDate" xml:space="preserve">
     <value>Earliest cancelation date</value>
   </data>
+  <data name="ChangeColContractTerminationNP" xml:space="preserve">
+    <value>Termination notice period</value>
+  </data>
+  <data name="ChangeColContractPenalty" xml:space="preserve">
+    <value>Penalty</value>
+  </data>
+  <data name="ChangeColContractGeneralAppendix" xml:space="preserve">
+    <value>General / Appendix</value>
+  </data>
+  <data name="ChangeCTContractDocuDescr" xml:space="preserve">
+    <value>ChangeCTContractDocuDescr</value>
+  </data>
+  <data name="ChangeCTContractDocu" xml:space="preserve">
+    <value>CHANGE Contract document</value>
+  </data>
+  <data name="ChangeColContractValueOfPenalty" xml:space="preserve">
+    <value>Value of penalty</value>
+  </data>
 </root>

@@ -83,6 +83,10 @@ namespace Change.Contracts.Features.ChangeContractsLists
             // add ct to lists
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "add ct to lists");
             SPContentType contractContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.Contract];
+            SPContentType contractDocumentContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.ContractDocument];
+            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", contractDocumentContentType.Name, contractUrl));
+            CommonUtilities.AttachContentTypeToList(contractsList, contractDocumentContentType, false, false);
+
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", contractContentType.Name, contractUrl));
             SPContentType contractListContentType = CommonUtilities.AttachContentTypeToList(contractsList, contractContentType, true, false);
             CommonUtilities.AddFieldToContentType(web, contractListContentType, custLookup, true, false, "$Resources:COSContracts,ChangeColCustomer");

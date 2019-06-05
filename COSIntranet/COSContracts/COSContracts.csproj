@@ -83,6 +83,9 @@
     <None Include="Features\ChangeContractsTimerjobs\ChangeContractsTimerjobs.feature">
       <FeatureId>{d2727ca9-381c-4561-984f-e7f415d34929}</FeatureId>
     </None>
+    <None Include="Infrastructure\ContentTypes\CHANGEContractDocument\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{59b3b551-4902-451e-92f2-3b766904e2a6}</SharePointProjectItemId>
+    </None>
     <None Include="Infrastructure\ContentTypes\CHANGEContractSubType\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{26ca98e4-e01d-49d7-b380-e4669be61dd8}</SharePointProjectItemId>
     </None>
@@ -150,6 +153,7 @@
     <Content Include="Features\ChangeContractsTimerjobs\ChangeContractsTimerjobs.Template.xml">
       <DependentUpon>ChangeContractsTimerjobs.feature</DependentUpon>
     </Content>
+    <Content Include="Infrastructure\ContentTypes\CHANGEContractDocument\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\CHANGEContractSubType\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\CHANGEContract\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\CHANGECustomerProfitCenter\Elements.xml" />
@@ -164,7 +168,9 @@
     <Content Include="Infrastructure\Lists\ExternalContacts\Elements.xml" />
     <Content Include="Infrastructure\Lists\GroupEntity\Elements.xml" />
     <Content Include="Infrastructure\Lists\ContractSubtype\Elements.xml" />
-    <Content Include="Infrastructure\Lists\Vendors\Elements.xml" />
+    <Content Include="Infrastructure\Lists\Vendors\Elements.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\COSContracts.resx">

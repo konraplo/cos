@@ -115,6 +115,24 @@ namespace Change.Contracts.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to General / Appendix.
+        /// </summary>
+        internal static string ChangeColContractGeneralAppendix {
+            get {
+                return ResourceManager.GetString("ChangeColContractGeneralAppendix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Penalty.
+        /// </summary>
+        internal static string ChangeColContractPenalty {
+            get {
+                return ResourceManager.GetString("ChangeColContractPenalty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contract sign date.
         /// </summary>
         internal static string ChangeColContractSignDate {
@@ -174,6 +192,24 @@ namespace Change.Contracts.Resources {
         internal static string ChangeColContractSubTypeDesc {
             get {
                 return ResourceManager.GetString("ChangeColContractSubTypeDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Termination notice period.
+        /// </summary>
+        internal static string ChangeColContractTerminationNP {
+            get {
+                return ResourceManager.GetString("ChangeColContractTerminationNP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value of penalty.
+        /// </summary>
+        internal static string ChangeColContractValueOfPenalty {
+            get {
+                return ResourceManager.GetString("ChangeColContractValueOfPenalty", resourceCulture);
             }
         }
         
@@ -309,6 +345,24 @@ namespace Change.Contracts.Resources {
         internal static string ChangeCTContractDescr {
             get {
                 return ResourceManager.GetString("ChangeCTContractDescr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CHANGE Contract document.
+        /// </summary>
+        internal static string ChangeCTContractDocu {
+            get {
+                return ResourceManager.GetString("ChangeCTContractDocu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create contract document.
+        /// </summary>
+        internal static string ChangeCTContractDocuDescr {
+            get {
+                return ResourceManager.GetString("ChangeCTContractDocuDescr", resourceCulture);
             }
         }
         

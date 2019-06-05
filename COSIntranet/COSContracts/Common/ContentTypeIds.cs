@@ -23,6 +23,11 @@
         public static SPContentTypeId Contract = new SPContentTypeId("0x0120D52000212A0B99C39645CDBE3E278A5246E5DF");
 
         /// <summary>
+        /// SPContentTypeId of the Change Contract Document
+        /// </summary>
+        public static SPContentTypeId ContractDocument = new SPContentTypeId("0x010100A6B0F4956C484C4CB1BB5B8F0618F5F3");
+
+        /// <summary>
         /// SPContentTypeId of the Change ExternalContacts ContentType
         /// </summary>
         public static SPContentTypeId ExternalContact = new SPContentTypeId("0x010600116954ED24DA48F1929A22BC298FABA3");

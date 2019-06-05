@@ -182,4 +182,43 @@
         DisplayName="$Resources:COSContracts,ChangeColContractEarliestCancelationDate"
         Format="DateOnly"
         Group="CHANGE Contracts Fields"/>
+
+  <Field ID="{ae085701-6d5c-46b6-b432-3d69ec95ed07}"
+             StaticName="ChangeContractTerminationNP"
+             Name="ChangeContractTerminationNP"
+             Type="Text"
+             DisplayName="$Resources:COSContracts,ChangeColContractTerminationNP"
+             Group="CHANGE Contracts Fields"/>
+
+  <Field ID="{87fee892-53bc-4ff8-aaf0-23648abe00d3}"
+         Name="ChangeContractPenalty"
+         Type="Boolean"
+         DisplayName="$Resources:COSContracts,ChangeColContractPenalty"
+         Group="CHANGE Contracts Fields">
+    <Default>0</Default>
+  </Field>
+
+  <Field ID="{31133353-b33c-4545-b3fa-98494618add6}"
+             StaticName="ChangeContractValueOfPenalty"
+             Name="ChangeContractValueOfPenalty"
+             Type="Text"
+             DisplayName="$Resources:COSContracts,ChangeColContractValueOfPenalty"
+             Group="CHANGE Contracts Fields"/>
+  
+  <!-- Contract Document -->
+  <Field ID="{94059a05-82b4-4d89-a870-763357eff8cb}"
+         StaticName="ChangeContractContractGeneralAppendix"
+        Name="ChangeContractGeneralAppendix"
+        Type="Choice"
+        DisplayName="$Resources:COSContracts,ChangeColContractGeneralAppendix"
+        Required="TRUE"
+        Format="Dropdown"
+        Group="CHANGE Contracts Fields">
+    <Default>General</Default>
+    <CHOICES>
+      <CHOICE>General</CHOICE>
+      <CHOICE>Appendix</CHOICE>
+    </CHOICES>
+  </Field>
+
 </Elements>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <!-- Parent ContentType: Document (0x0101) -->
+  <ContentType ID="0x010100A6B0F4956C484C4CB1BB5B8F0618F5F3"
+               Name="$Resources:COSContracts,ChangeCTContractDocu"
+               Group="CHANGE Contracts Content Types"
+               Description="$Resources:COSContracts,ChangeCTContractDocuDescr"
+               Inherits="TRUE"
+               Version="0">
+    <FieldRefs>
+      <FieldRef ID="{94059a05-82b4-4d89-a870-763357eff8cb}" Name="ChangeContractContractGeneralAppendix"/>
+    </FieldRefs>
+  </ContentType>
+</Elements>

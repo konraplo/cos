@@ -22,6 +22,9 @@
       <FieldRef ID="{b3c9cc36-c550-40d6-a46a-0faefd9cf88d}" Name="ChangeContractAutoProlongation"/>
       <FieldRef ID="{cd603bec-b786-4243-a5c9-f99a3550bab3}" Name="ChangeContractAutoProlonPeriod"/>
       <FieldRef ID="{b2b12ef8-1c49-4f71-8df6-61990026a867}" Name="ChangeContractEarliestCancelDate"/>
+      <FieldRef ID="{ae085701-6d5c-46b6-b432-3d69ec95ed07}" Name="ChangeContractTerminationNP"/>
+      <FieldRef ID="{87fee892-53bc-4ff8-aaf0-23648abe00d3}" Name="ChangeContractPenalty"/>
+      <FieldRef ID="{31133353-b33c-4545-b3fa-98494618add6}" Name="ChangeContractValueOfPenalty"/>
     </FieldRefs>
   </ContentType>
 </Elements>
