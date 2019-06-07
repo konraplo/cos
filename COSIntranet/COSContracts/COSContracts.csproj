@@ -83,6 +83,9 @@
     <None Include="Features\ChangeContractsTimerjobs\ChangeContractsTimerjobs.feature">
       <FeatureId>{d2727ca9-381c-4561-984f-e7f415d34929}</FeatureId>
     </None>
+    <None Include="InfrastructureFiles\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{14446ef1-694a-4517-b2dd-d961f293fc3f}</SharePointProjectItemId>
+    </None>
     <None Include="Infrastructure\ContentTypes\CHANGEContractDocument\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{59b3b551-4902-451e-92f2-3b766904e2a6}</SharePointProjectItemId>
     </None>
@@ -153,6 +156,10 @@
     <Content Include="Features\ChangeContractsTimerjobs\ChangeContractsTimerjobs.Template.xml">
       <DependentUpon>ChangeContractsTimerjobs.feature</DependentUpon>
     </Content>
+    <Content Include="InfrastructureFiles\Elements.xml" />
+    <Content Include="InfrastructureFiles\Images\logo.png" />
+    <Content Include="InfrastructureFiles\Scripts\jquery-3.1.0.min.js" />
+    <Content Include="InfrastructureFiles\Scripts\scriptContractSubstance.js" />
     <Content Include="Infrastructure\ContentTypes\CHANGEContractDocument\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\CHANGEContractSubType\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\CHANGEContract\Elements.xml" />

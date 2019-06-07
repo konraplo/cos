@@ -223,7 +223,7 @@
                             SetContentTypeAsDefault(list.ParentWeb.Lists[list.ID], addedCts.Id);
                         }
 
-                        return addedCts;
+                        return list.ContentTypes[addedCts.Id];
                     }
                 }
             }

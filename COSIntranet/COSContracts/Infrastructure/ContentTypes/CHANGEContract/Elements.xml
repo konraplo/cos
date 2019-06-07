@@ -25,6 +25,13 @@
       <FieldRef ID="{ae085701-6d5c-46b6-b432-3d69ec95ed07}" Name="ChangeContractTerminationNP"/>
       <FieldRef ID="{87fee892-53bc-4ff8-aaf0-23648abe00d3}" Name="ChangeContractPenalty"/>
       <FieldRef ID="{31133353-b33c-4545-b3fa-98494618add6}" Name="ChangeContractValueOfPenalty"/>
+      <FieldRef ID="{ae244fd9-6d97-400a-b93f-8522131deb6d}" Name="ChangeContractPenaltyCurrency"/>
+      <FieldRef ID="{f7982303-4cec-4c4a-aef6-e031016a9d1d}" Name="ChangeContractPaymentSchedule"/>
+      <FieldRef ID="{5c1209e9-2fc8-4866-baea-0e769e4096ff}" Name="ChangeContractCurrency"/>
+      <FieldRef ID="{225c2c72-d97c-45d7-be6a-f8d8dddd503b}" Name="ChangeContractTotalValue"/>
+      <FieldRef ID="{e7c6f6f3-f485-402b-bcb3-d3aab2eaf5b5}" Name="ChangeContractYearlyValue"/>
+      <FieldRef ID="{673ce0cf-ea23-4193-a730-904d1a5ee077}" Name="ChangeContractCollateralDesc"/>
+      <FieldRef ID="{56caf30d-7d50-4460-abdd-e28b20f58b6e}" Name="ChangeContractCollateralValue"/>
     </FieldRefs>
   </ContentType>
 </Elements>

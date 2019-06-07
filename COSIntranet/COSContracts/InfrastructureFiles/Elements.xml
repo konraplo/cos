@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="InfrastructureFiles" Url="SiteAssets">
+    <File Path="InfrastructureFiles\Scripts\jquery-3.1.0.min.js" Url="Scripts/jquery-3.1.0.min.js" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
+    <File Path="InfrastructureFiles\Images\logo.png" Url="Images/logo.png" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
+    <File Path="InfrastructureFiles\Scripts\scriptContractSubstance.js" Url="Scripts/scriptContractSubstance.js" Type="GhostableInLibrary" ReplaceContent="TRUE"/>
+  </Module>
+</Elements>

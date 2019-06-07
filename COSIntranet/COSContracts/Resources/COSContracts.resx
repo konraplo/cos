@@ -250,4 +250,28 @@
   <data name="ChangeColContractValueOfPenalty" xml:space="preserve">
     <value>Value of penalty</value>
   </data>
+  <data name="ChangeColContractPenaltyCurrency" xml:space="preserve">
+    <value>Currency of penalty</value>
+  </data>
+  <data name="ChangeColContractPaymentSchedule" xml:space="preserve">
+    <value>Payment schedule</value>
+  </data>
+  <data name="ChangeColContractCurrency" xml:space="preserve">
+    <value>Contract currency</value>
+  </data>
+  <data name="ChangeColContractTotalValue" xml:space="preserve">
+    <value>Contract total value</value>
+  </data>
+  <data name="ChangeColContractYearlyValue" xml:space="preserve">
+    <value>Contract yearly value</value>
+  </data>
+  <data name="ChangeColContractCollateralDesc" xml:space="preserve">
+    <value>Collateral description</value>
+  </data>
+  <data name="ChangeColContractCollateralValue" xml:space="preserve">
+    <value>Collateral value</value>
+  </data>
+  <data name="ChangeColContractType" xml:space="preserve">
+    <value>Type</value>
+  </data>
 </root>

@@ -205,6 +205,70 @@
              DisplayName="$Resources:COSContracts,ChangeColContractValueOfPenalty"
              Group="CHANGE Contracts Fields"/>
   
+  <Field ID="{ae244fd9-6d97-400a-b93f-8522131deb6d}"
+            StaticName="ChangeContractPenaltyCurrency"
+            Name="ChangeContractPenaltyCurrency"
+            Type="Text"
+            DisplayName="$Resources:COSContracts,ChangeColContractPenaltyCurrency"
+            Group="CHANGE Contracts Fields"/>
+
+  <Field ID="{f7982303-4cec-4c4a-aef6-e031016a9d1d}"
+         StaticName="ChangeContractPaymentSchedule"
+        Name="ChangeContractPaymentSchedule"
+        Type="Choice"
+        DisplayName="$Resources:COSContracts,ChangeColContractPaymentSchedule"
+        Required="TRUE"
+        Format="Dropdown"
+        Group="CHANGE Contracts Fields">
+    <Default>Monthly</Default>
+    <CHOICES>
+      <CHOICE>Monthly</CHOICE>
+      <CHOICE>Yearly</CHOICE>
+      <CHOICE>Quarterly</CHOICE>
+    </CHOICES>
+  </Field>
+
+  <Field ID="{5c1209e9-2fc8-4866-baea-0e769e4096ff}"
+            StaticName="ChangeContractCurrency"
+            Name="ChangeContractCurrency"
+            Type="Text"
+            DisplayName="$Resources:COSContracts,ChangeColContractCurrency"
+          Group="CHANGE Contracts Fields"/>
+
+  <Field ID="{225c2c72-d97c-45d7-be6a-f8d8dddd503b}"
+         Name="ChangeContractTotalValue"
+         Type="Number"
+         Decimals="0"
+         Percentage="FALSE"
+         DisplayName="$Resources:COSContracts,ChangeColContractTotalValue"
+         Group="CHANGE Contracts Fields">
+  </Field>
+
+  <Field ID="{e7c6f6f3-f485-402b-bcb3-d3aab2eaf5b5}"
+         Name="ChangeContractYearlyValue"
+         Type="Number"
+         Decimals="0"
+         Percentage="FALSE"
+         DisplayName="$Resources:COSContracts,ChangeColContractYearlyValue"
+         Group="CHANGE Contracts Fields">
+  </Field>
+
+  <Field ID="{673ce0cf-ea23-4193-a730-904d1a5ee077}"
+            StaticName="ChangeContractCollateralDesc"
+            Name="ChangeContractCollateralDesc"
+            Type="Text"
+            DisplayName="$Resources:COSContracts,ChangeColContractCollateralDesc"
+            Group="CHANGE Contracts Fields"/>
+
+  <Field ID="{56caf30d-7d50-4460-abdd-e28b20f58b6e}"
+         Name="ChangeContractCollateralValue"
+         Type="Number"
+         Decimals="0"
+         Percentage="FALSE"
+         DisplayName="$Resources:COSContracts,ChangeColContractCollateralValue"
+         Group="CHANGE Contracts Fields">
+  </Field>
+  
   <!-- Contract Document -->
   <Field ID="{94059a05-82b4-4d89-a870-763357eff8cb}"
          StaticName="ChangeContractContractGeneralAppendix"

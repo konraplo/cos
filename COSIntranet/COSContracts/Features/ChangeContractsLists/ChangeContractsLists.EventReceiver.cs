@@ -88,12 +88,12 @@ namespace Change.Contracts.Features.ChangeContractsLists
             CommonUtilities.AttachContentTypeToList(contractsList, contractDocumentContentType, false, false);
 
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", contractContentType.Name, contractUrl));
+            CommonUtilities.AddFieldToContentType(web, contractContentType, custLookup, true, false, "$Resources:COSContracts,ChangeColCustomer");
+            CommonUtilities.AddFieldToContentType(web, contractContentType, externalCustContactLookup, false, false, "$Resources:COSContracts,ChangeColExtCustContact");
+            CommonUtilities.AddFieldToContentType(web, contractContentType, contractSubtypeLookup, false, false, "$Resources:COSContracts,ChangeColContractSubtype");
+            CommonUtilities.AddFieldToContentType(web, contractContentType, vendorLookup, true, false, "$Resources:COSContracts,ChangeColVendor");
+            CommonUtilities.AddFieldToContentType(web, contractContentType, externalVendorContactLookup, false, false, "$Resources:COSContracts,ChangeColExtVendorContact");
             SPContentType contractListContentType = CommonUtilities.AttachContentTypeToList(contractsList, contractContentType, true, false);
-            CommonUtilities.AddFieldToContentType(web, contractListContentType, custLookup, true, false, "$Resources:COSContracts,ChangeColCustomer");
-            CommonUtilities.AddFieldToContentType(web, contractListContentType, externalCustContactLookup, false, false, "$Resources:COSContracts,ChangeColExtCustContact");
-            CommonUtilities.AddFieldToContentType(web, contractListContentType, contractSubtypeLookup, false, false, "$Resources:COSContracts,ChangeColContractSubtype");
-            CommonUtilities.AddFieldToContentType(web, contractListContentType, vendorLookup, true, false, "$Resources:COSContracts,ChangeColVendor");
-            CommonUtilities.AddFieldToContentType(web, contractListContentType, externalVendorContactLookup, false, false, "$Resources:COSContracts,ChangeColExtVendorContact");
 
             SPContentType contractSubtypeContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.ContractSubtype];
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", contractSubtypeContentType.Name, contractSubtypeUrl));

@@ -79,11 +79,38 @@ namespace Change.Contracts.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Collateral description.
+        /// </summary>
+        internal static string ChangeColContractCollateralDesc {
+            get {
+                return ResourceManager.GetString("ChangeColContractCollateralDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Collateral value.
+        /// </summary>
+        internal static string ChangeColContractCollateralValue {
+            get {
+                return ResourceManager.GetString("ChangeColContractCollateralValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contract No..
         /// </summary>
         internal static string ChangeColContractContractNo {
             get {
                 return ResourceManager.GetString("ChangeColContractContractNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contract currency.
+        /// </summary>
+        internal static string ChangeColContractCurrency {
+            get {
+                return ResourceManager.GetString("ChangeColContractCurrency", resourceCulture);
             }
         }
         
@@ -124,11 +151,29 @@ namespace Change.Contracts.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Payment schedule.
+        /// </summary>
+        internal static string ChangeColContractPaymentSchedule {
+            get {
+                return ResourceManager.GetString("ChangeColContractPaymentSchedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Penalty.
         /// </summary>
         internal static string ChangeColContractPenalty {
             get {
                 return ResourceManager.GetString("ChangeColContractPenalty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Currency of penalty.
+        /// </summary>
+        internal static string ChangeColContractPenaltyCurrency {
+            get {
+                return ResourceManager.GetString("ChangeColContractPenaltyCurrency", resourceCulture);
             }
         }
         
@@ -205,6 +250,24 @@ namespace Change.Contracts.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contract total value.
+        /// </summary>
+        internal static string ChangeColContractTotalValue {
+            get {
+                return ResourceManager.GetString("ChangeColContractTotalValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        internal static string ChangeColContractType {
+            get {
+                return ResourceManager.GetString("ChangeColContractType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Value of penalty.
         /// </summary>
         internal static string ChangeColContractValueOfPenalty {
@@ -228,6 +291,15 @@ namespace Change.Contracts.Resources {
         internal static string ChangeColContractWarnDate {
             get {
                 return ResourceManager.GetString("ChangeColContractWarnDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contract yearly value.
+        /// </summary>
+        internal static string ChangeColContractYearlyValue {
+            get {
+                return ResourceManager.GetString("ChangeColContractYearlyValue", resourceCulture);
             }
         }
         
