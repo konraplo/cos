@@ -60,6 +60,9 @@
     <Compile Include="Features\ChangeContractsLists\ChangeContractsLists.EventReceiver.cs">
       <DependentUpon>ChangeContractsLists.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\ChangeContractsTimerjobs\ChangeContractsTimerjobs.EventReceiver.cs">
+      <DependentUpon>ChangeContractsTimerjobs.feature</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\COSContracts.Designer.cs">
       <AutoGen>True</AutoGen>

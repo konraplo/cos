@@ -13,7 +13,7 @@
     /// </summary>
     public static class CommonUtilities
     {
-        public const string ChangeNotificationTimerJobName = "Change Notification Timer job";
+        public const string ChangeNotificationTimerJobName = "Change Contracts Timer job";
 
         /// <summary>
         /// batch comand to delete items
