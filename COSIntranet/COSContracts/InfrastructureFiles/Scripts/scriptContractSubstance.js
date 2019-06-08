@@ -16,7 +16,7 @@ $(document).ready(function () {
 
     function manageContractSubstanceSubTypes() {
         var contractSubstanceElementId = "ChangeContractContractSubstance_e9ba1a1f-0f8b-44db-b97f-4e58072d7995";
-        var subTypeElementId = "ChangeContractSubtype_398dedbe-68b4-476a-936b-41f47308b09a";
+        var subTypeElementId = "ChangeContractSubtype_";
         var contractSubstanceSubTypesDict = {
             "Guaranty": [],
             "Loan": [],
