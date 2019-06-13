@@ -1699,6 +1699,33 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 3.Sales Coach planning tools.
+        /// </summary>
+        internal static string ChangeFolderTitleSalePlaningTools {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleSalePlaningTools", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1.Sales Coach administrative tools to follow up from distanace.
+        /// </summary>
+        internal static string ChangeFolderTitleSalesAdmDistanceTools {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleSalesAdmDistanceTools", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2.Sales Coach administrative tools to follow up in store.
+        /// </summary>
+        internal static string ChangeFolderTitleSalesAdmStoreTools {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleSalesAdmStoreTools", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sales follow up.
         /// </summary>
         internal static string ChangeFolderTitleSalesFollowUp {
@@ -1717,6 +1744,24 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 5.HR staff Development tools.
+        /// </summary>
+        internal static string ChangeFolderTitleSalesHRStaffTools {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleSalesHRStaffTools", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 4.HR employment tools.
+        /// </summary>
+        internal static string ChangeFolderTitleSalesHRTools {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleSalesHRTools", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sales tips.
         /// </summary>
         internal static string ChangeFolderTitleSalesTips {
@@ -1731,6 +1776,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeFolderTitleSalesTrainingMethod {
             get {
                 return ResourceManager.GetString("ChangeFolderTitleSalesTrainingMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 6.Sales Coach training tools.
+        /// </summary>
+        internal static string ChangeFolderTitleSalesTrainingTools {
+            get {
+                return ResourceManager.GetString("ChangeFolderTitleSalesTrainingTools", resourceCulture);
             }
         }
         

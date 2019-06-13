@@ -975,4 +975,22 @@ Have a nice day</value>
   <data name="ChangeTaskOverdueSecondReminderTitle" xml:space="preserve">
     <value>Task reminder</value>
   </data>
+  <data name="ChangeFolderTitleSalePlaningTools" xml:space="preserve">
+    <value>3.Sales Coach planning tools</value>
+  </data>
+  <data name="ChangeFolderTitleSalesAdmDistanceTools" xml:space="preserve">
+    <value>1.Sales Coach administrative tools to follow up from distanace</value>
+  </data>
+  <data name="ChangeFolderTitleSalesAdmStoreTools" xml:space="preserve">
+    <value>2.Sales Coach administrative tools to follow up in store</value>
+  </data>
+  <data name="ChangeFolderTitleSalesHRStaffTools" xml:space="preserve">
+    <value>5.HR staff Development tools</value>
+  </data>
+  <data name="ChangeFolderTitleSalesHRTools" xml:space="preserve">
+    <value>4.HR employment tools</value>
+  </data>
+  <data name="ChangeFolderTitleSalesTrainingTools" xml:space="preserve">
+    <value>6.Sales Coach training tools</value>
+  </data>
 </root>
