@@ -2649,7 +2649,7 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ChangeProjectCreatedMailSubject.
+        ///   Looks up a localized string similar to {0} in {1}.
         /// </summary>
         internal static string ChangeProjectCreatedMailSubject {
             get {

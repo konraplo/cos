@@ -67,6 +67,8 @@
                     Logger.WriteLog(Logger.Category.Information, typeof(StoreOpeningEventReceiver).FullName, string.Format("send reminder to :{0}", user.User.Email));
                     string subject = SPUtility.GetLocalizedString(string.Format("$Resources:COSIntranet,{0}", ListUtilities.ChangeProjectCreatedMailSubject), "COSIntranet", storeOpeningItem.Web.Language);
                     string body = SPUtility.GetLocalizedString(string.Format("$Resources:COSIntranet,{0}", ListUtilities.ChangeProjectCreatedMailBody), "COSIntranet", storeOpeningItem.Web.Language);
+                    string category = Convert.ToString(storeOpeningItem[Fields.ChangeProjectCategory]);
+                    subject = string.Format(subject, category, projectName);
                     //CommonUtilities.SendEmail(storeOpeningItem.Web, user.User.Email, body, subject);
                 }
             }

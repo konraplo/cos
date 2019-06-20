@@ -1000,7 +1000,7 @@ Have a nice day.
 </value>
   </data>
   <data name="ChangeProjectCreatedMailSubject" xml:space="preserve">
-    <value>ChangeProjectCreatedMailSubject</value>
+    <value>{0} in {1}</value>
   </data>
   <data name="ChangeProjectCreatedMailBody" xml:space="preserve">
     <value>ChangeProjectCreatedMailBody</value>

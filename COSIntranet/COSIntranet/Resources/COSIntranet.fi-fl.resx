@@ -965,7 +965,7 @@ Please be aware for the deadline for your task {0} is tomorrow ({1}). Please rem
     <value>ChangeProjectCreatedMailSubject</value>
   </data>
   <data name="ChangeProjectCreatedMailBody" xml:space="preserve">
-    <value>ChangeProjectCreatedMailBody</value>
+    <value>{0} in {1}</value>
   </data>
   <data name="ChangeTaskOverdueSecondReminderBody" xml:space="preserve">
     <value>Second reminder
