@@ -57,6 +57,8 @@
     <Compile Include="Common\Fields.cs" />
     <Compile Include="Common\ListUtilities.cs" />
     <Compile Include="Common\Logger.cs" />
+    <Compile Include="EventReceivers\CustomersListEventReceiver\CustomersListEventReceiver.cs" />
+    <Compile Include="EventReceivers\VendorsListEventReceiver\VendorsListEventReceiver.cs" />
     <Compile Include="Features\ChangeContractsLists\ChangeContractsLists.EventReceiver.cs">
       <DependentUpon>ChangeContractsLists.feature</DependentUpon>
     </Compile>
@@ -77,6 +79,12 @@
     <Compile Include="TimerJobs\ChangeContractsNotificationTimerJob.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="EventReceivers\CustomersListEventReceiver\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{0dbd9383-90f2-4902-b036-7dee1c154cae}</SharePointProjectItemId>
+    </None>
+    <None Include="EventReceivers\VendorsListEventReceiver\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{d4d92f68-2520-4bb9-b3ea-6d41e81a541c}</SharePointProjectItemId>
+    </None>
     <None Include="Features\ChangeContractsInfrastructure\ChangeContractsInfrastructure.feature">
       <FeatureId>{996ecdfe-0998-43a7-8db8-c33d651cd15c}</FeatureId>
     </None>
@@ -115,6 +123,9 @@
     </None>
     <None Include="Infrastructure\Fields\CHANGEContractsFields\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{4c5d000b-5f89-45da-ac9a-40ce7982854c}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Fields\CHANGEContractsFields_1_1_2_0\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{d5cdc929-3e5a-42fa-800a-9a5712638caa}</SharePointProjectItemId>
     </None>
     <None Include="Infrastructure\Lists\ChangeContracts\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{3847a373-e66b-4cfa-85b0-2c7f7668e99e}</SharePointProjectItemId>
@@ -172,6 +183,7 @@
     <Content Include="Infrastructure\ContentTypes\CHANGEExternalContact\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\CHANGEVendor\Elements.xml" />
     <Content Include="Infrastructure\Fields\CHANGEContractsFields\Elements.xml" />
+    <Content Include="Infrastructure\Fields\CHANGEContractsFields_1_1_2_0\Elements.xml" />
     <Content Include="Infrastructure\Lists\ChangeContracts\Elements.xml" />
     <Content Include="Infrastructure\Lists\CustomerProfitCenter\Elements.xml" />
     <Content Include="Infrastructure\Lists\Customers\Elements.xml" />

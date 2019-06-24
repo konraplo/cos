@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">  
+  <Field
+       ID="{8e8e5164-0db1-4927-91b6-0d3cbe01ee3f}"
+       Name="ChangeContractGroupEntityValue"
+       DisplayName="Group entity value"
+       Type="Text"
+       Required="FALSE"
+       Group="CHANGE Contracts Fields">
+  </Field>
+  <Field
+      ID="{87e52492-eefe-40ee-87e0-a7daec055810}"
+      Name="ChangeContractCustPCValue"
+      DisplayName="Customer profit center value"
+      Type="Text"
+      Required="FALSE"
+      Group="CHANGE Contracts Fields">
+  </Field>
+</Elements>

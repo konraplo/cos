@@ -1,7 +1,6 @@
 using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Security.Permissions;
 using Change.Contracts.Common;
 using Microsoft.SharePoint;
 using Microsoft.SharePoint.Utilities;
@@ -30,6 +29,8 @@ namespace Change.Contracts.Features.ChangeContractsLists
             {
                 Logger.WriteLog(Logger.Category.Information, ReceiverName, "add CT and ER");
                 AddFieldsCtErToLists(web);
+                Upgradeto112(web);
+                Upgradeto113(web);
             }
         }
 
@@ -148,8 +149,113 @@ namespace Change.Contracts.Features.ChangeContractsLists
 
         // Uncomment the method below to handle the event raised when a feature is upgrading.
 
-        //public override void FeatureUpgrading(SPFeatureReceiverProperties properties, string upgradeActionName, System.Collections.Generic.IDictionary<string, string> parameters)
-        //{
-        //}
+        public override void FeatureUpgrading(SPFeatureReceiverProperties properties, string upgradeActionName, System.Collections.Generic.IDictionary<string, string> parameters)
+        {
+            Logger.WriteLog(Logger.Category.Unexpected, this.GetType().Name, string.Format("Upgrading Feature:{0}", upgradeActionName));
+            try
+            {
+
+                SPWeb web = properties.Feature.Parent as SPWeb;
+
+                switch (upgradeActionName)
+                {
+
+                    case "UpgradeToV1.2":
+                        Upgradeto112(web);
+                        break;
+                    case "UpgradeToV1.3":
+                        Upgradeto113(web);
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(Logger.Category.Unexpected, this.GetType().Name, string.Format("Error while Upgrading Feature:{0}", ex.Message));
+                throw;
+            }
+        }
+
+        private void Upgradeto112(SPWeb web)
+        {
+            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "Upgradeto112");
+            SPField groupEntityValue = web.Fields.GetFieldByInternalName(Fields.GroupEntityValue);
+            groupEntityValue.ReadOnlyField = true;
+            groupEntityValue.ShowInDisplayForm = false;
+            groupEntityValue.Update();
+            SPField custPCValue = web.Fields.GetFieldByInternalName(Fields.CustPCValue);
+            custPCValue.ReadOnlyField = true;
+            custPCValue.ShowInDisplayForm = false;
+            custPCValue.Update();
+
+            SPContentType vendor = web.Site.RootWeb.ContentTypes[ContentTypeIds.Vendor];
+            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add filed:{0} to ct:{1}", groupEntityValue.InternalName, vendor.Name));
+            CommonUtilities.AddFieldToContentType(web, vendor, groupEntityValue, false, true, "Vendor group entity value");
+
+            SPContentType customer = web.Site.RootWeb.ContentTypes[ContentTypeIds.Customer];
+            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add filed:{0} to ct:{1}", groupEntityValue.InternalName, customer.Name));
+            CommonUtilities.AddFieldToContentType(web, customer, groupEntityValue, false, true, "Customer group entity value");
+            CommonUtilities.AddFieldToContentType(web, customer, custPCValue, false, true, "Customer profit center");            
+        }
+
+        private void Upgradeto113(SPWeb web)
+        {
+            // update all exsitng vendors
+            SPQuery query = new SPQuery();
+            SPList listVendors = web.GetList(SPUtility.ConcatUrls(web.Url, ListUtilities.Urls.Vendors));
+
+            SPListItemCollection vendors = listVendors.GetItems(query);
+
+            foreach (SPListItem listItem in vendors)
+            {
+                string groupEntity = Convert.ToString(listItem[Fields.GroupEntity]);
+                Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("List:{0}, item:{1}, value:{2}", ListUtilities.Urls.Vendors, listItem.Title, groupEntity));
+                if (!string.IsNullOrEmpty(groupEntity))
+                {
+                    SPFieldLookupValue geLookupValue = new SPFieldLookupValue(groupEntity);
+                    listItem[Fields.GroupEntityValueId] = geLookupValue.LookupValue;
+                    listItem.SystemUpdate(false);
+                }
+            }
+
+            SPList listCustomers = web.GetList(SPUtility.ConcatUrls(web.Url, ListUtilities.Urls.Customers));
+
+            SPListItemCollection customers = listCustomers.GetItems(query);
+
+            foreach (SPListItem listItem in customers)
+            {
+                string groupEntity = Convert.ToString(listItem[Fields.GroupEntity]);
+                Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("List:{0}, item:{1}, value:{2}", ListUtilities.Urls.Customers, listItem.Title, groupEntity));
+                if (!string.IsNullOrEmpty(groupEntity))
+                {
+                    SPFieldLookupValue geLookupValue = new SPFieldLookupValue(groupEntity);
+                    listItem[Fields.GroupEntityValueId] = geLookupValue.LookupValue;
+                }
+
+                string profitCenter = Convert.ToString(listItem[Fields.CustomerProfitCenter]);
+                Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("List:{0}, item:{1}, value:{2}", ListUtilities.Urls.Customers, listItem.Title, profitCenter));
+                if (!string.IsNullOrEmpty(profitCenter))
+                {
+                    SPFieldLookupValue pcLookupValue = new SPFieldLookupValue(profitCenter);
+                    listItem[Fields.CustPCValueId] = pcLookupValue.LookupValue;
+                }
+
+                listItem.SystemUpdate(false);
+
+            }
+
+            string vendorsUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.Vendors);
+            SPList vendorsList = web.GetList(vendorsUrl);
+            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ER to List, {0}", vendorsUrl));
+            CommonUtilities.AddListEventReceiver(vendorsList, SPEventReceiverType.ItemAdded, Assembly.GetExecutingAssembly().FullName, "Change.Contracts.EventReceivers.VendorsListEventReceiver.VendorsListEventReceiver", false);
+            CommonUtilities.AddListEventReceiver(vendorsList, SPEventReceiverType.ItemUpdated, Assembly.GetExecutingAssembly().FullName, "Change.Contracts.EventReceivers.VendorsListEventReceiver.VendorsListEventReceiver", false);
+
+            string customersUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.Customers);
+            SPList customersList = web.GetList(customersUrl);
+            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ER to List, {0}", customersUrl));
+            CommonUtilities.AddListEventReceiver(customersList, SPEventReceiverType.ItemAdded, Assembly.GetExecutingAssembly().FullName, "Change.Contracts.EventReceivers.CustomersListEventReceiver.CustomersListEventReceiver", false);
+            CommonUtilities.AddListEventReceiver(customersList, SPEventReceiverType.ItemUpdated, Assembly.GetExecutingAssembly().FullName, "Change.Contracts.EventReceivers.CustomersListEventReceiver.CustomersListEventReceiver", false);
+
+        }
+
     }
 }
