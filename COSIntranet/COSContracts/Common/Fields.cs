@@ -19,6 +19,7 @@
         public static Guid GroupEntityValueId = new Guid("{8e8e5164-0db1-4927-91b6-0d3cbe01ee3f}");
         public const string CustPCValue = "ChangeContractCustPCValue";
         public static Guid CustPCValueId = new Guid("{87e52492-eefe-40ee-87e0-a7daec055810}");
+        public static Guid ChangeContractWarnDate = new Guid("{2d849d1d-9f93-4514-ab9b-8caea5a85569}");
         public const string Title = "Title";
 
     }

@@ -385,6 +385,24 @@ namespace Change.Contracts.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ChangeContractOverdueBody.
+        /// </summary>
+        internal static string ChangeContractOverdueBody {
+            get {
+                return ResourceManager.GetString("ChangeContractOverdueBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ChangeContractOverdueTitle.
+        /// </summary>
+        internal static string ChangeContractOverdueTitle {
+            get {
+                return ResourceManager.GetString("ChangeContractOverdueTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CHANGE Contract subtype.
         /// </summary>
         internal static string CHANGEContractSubType {

@@ -274,4 +274,10 @@
   <data name="ChangeColContractType" xml:space="preserve">
     <value>Type</value>
   </data>
+  <data name="ChangeContractOverdueTitle" xml:space="preserve">
+    <value>ChangeContractOverdueTitle</value>
+  </data>
+  <data name="ChangeContractOverdueBody" xml:space="preserve">
+    <value>ChangeContractOverdueBody</value>
+  </data>
 </root>

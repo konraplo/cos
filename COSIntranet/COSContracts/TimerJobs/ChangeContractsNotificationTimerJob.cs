@@ -1,5 +1,6 @@
 ﻿namespace Change.Contracts.TimerJobs
 {
+    using Change.Contracts.Common;
     using Microsoft.SharePoint.Administration;
     using System;
 
@@ -33,9 +34,9 @@
         /// </summary>
         /// <param name="jobName">Name of the job</param>
         /// <param name="webApplication">WebApplication object</param>
-        public ChangeContractsNotificationTimerJob(string jobName, SPWebApplication webApplication) : base(jobName, webApplication, null, SPJobLockType.ContentDatabase)
+        public ChangeContractsNotificationTimerJob(string jobName, SPWebApplication webApplication) : base(jobName, webApplication, null, SPJobLockType.Job)
         {
-            //this.Title = CommonUtilities.ChangeNotificationTimerJobName;
+            this.Title = CommonUtilities.ChangeNotificationTimerJobName;
         }
 
         /// <summary>
@@ -44,9 +45,9 @@
         /// <param name="targetInstanceId">ID of the job instance</param>
         public override void Execute(Guid targetInstanceId)
         {
-            //Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "Entered Executemethod.");
-            //ChangeNotificationTimerJobExecuter executer = new ChangeNotificationTimerJobExecuter();
-            //executer.Execute(this);
+            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "Entered Executemethod.");
+            ChangeContractsNotificationTimerJobExecutor executer = new ChangeContractsNotificationTimerJobExecutor();
+            executer.Execute(this);
         }
     }
 }
