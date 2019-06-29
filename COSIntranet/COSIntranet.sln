@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COSIntranet", "COSIntranet\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COSContracts", "COSContracts\COSContracts.csproj", "{4E1E10CE-9079-43CC-96AE-B69927E71699}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{940D1CCA-9585-4B35-B9F5-9652A3535B60}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{4E1E10CE-9079-43CC-96AE-B69927E71699}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E1E10CE-9079-43CC-96AE-B69927E71699}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4E1E10CE-9079-43CC-96AE-B69927E71699}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{940D1CCA-9585-4B35-B9F5-9652A3535B60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{940D1CCA-9585-4B35-B9F5-9652A3535B60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{940D1CCA-9585-4B35-B9F5-9652A3535B60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{940D1CCA-9585-4B35-B9F5-9652A3535B60}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

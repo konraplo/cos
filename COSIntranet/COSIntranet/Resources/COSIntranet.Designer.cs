@@ -2640,7 +2640,16 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ChangeProjectCreatedMailBody.
+        ///   Looks up a localized string similar to Dear All,                                                          
+        ///Please be informed that we are opening a new store in “{0}”
+        ///Front Page is ready on Intranet → General information
+        ///Expected opening:
+        ///{1}
+        ///1st delivery to store (furniture): 
+        ///{2}
+        ///2nd delivery to store (merchandise + store supply + fittings + mannequins + marketing materials + POS): 
+        ///{3}
+        ///.
         /// </summary>
         internal static string ChangeProjectCreatedMailBody {
             get {

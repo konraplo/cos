@@ -17,6 +17,8 @@
     /// </summary>
     public class StoreOpeningEventReceiver : SPItemEventReceiver
     {
+        private const string GrandOpeningDateFormat = "{0:MMMM dd, yyyy}";
+        private const string DeliveryDateFormat = "{0:dd-MM-yyyy}";
         public delegate List<ProjectTask> CreateProjectTasksList(int parentTaskId, string parentTitle, int shippingDays);
 
         /// <summary>
@@ -69,6 +71,12 @@
                     string body = SPUtility.GetLocalizedString(string.Format("$Resources:COSIntranet,{0}", ListUtilities.ChangeProjectCreatedMailBody), "COSIntranet", storeOpeningItem.Web.Language);
                     string category = Convert.ToString(storeOpeningItem[Fields.ChangeProjectCategory]);
                     subject = string.Format(subject, category, projectName);
+
+                    DateTime grandOpening = Convert.ToDateTime(storeOpeningItem[SPBuiltInFieldId.TaskDueDate]);
+                    DateTime firstDelivery = grandOpening.AddDays(-13);
+                    DateTime secondDelivery = grandOpening.AddDays(-7);
+                    body = string.Format(body, projectName, string.Format(GrandOpeningDateFormat, grandOpening), string.Format(DeliveryDateFormat, firstDelivery), string.Format(DeliveryDateFormat, secondDelivery));
+
                     //CommonUtilities.SendEmail(storeOpeningItem.Web, user.User.Email, body, subject);
                 }
             }
