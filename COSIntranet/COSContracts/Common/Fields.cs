@@ -20,7 +20,10 @@
         public const string CustPCValue = "ChangeContractCustPCValue";
         public static Guid CustPCValueId = new Guid("{87e52492-eefe-40ee-87e0-a7daec055810}");
         public static Guid ChangeContractWarnDate = new Guid("{2d849d1d-9f93-4514-ab9b-8caea5a85569}");
+        public static Guid ChangeContractContractStatus = new Guid("{8c222fe8-f4a9-4e59-a75c-bf111672c947}");
         public const string Title = "Title";
+        public const string StatusActive = "Active";
+        public const string StatusExpired = "Expired";
 
     }
 }

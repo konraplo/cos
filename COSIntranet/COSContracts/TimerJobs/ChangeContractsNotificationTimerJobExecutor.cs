@@ -5,21 +5,29 @@
     using Microsoft.SharePoint.Administration;
     using Microsoft.SharePoint.Utilities;
     using System;
+    using static Change.Contracts.Common.ListUtilities;
 
     /// <summary>
-    /// An instance of this class is called from the timer job that handles the Change Contracts Notification.
+    /// An instance of this class is called from the timer job that handles the Change Contracts Notification/Actions.
     /// </summary>
     public class ChangeContractsNotificationTimerJobExecutor
     {
         private const string queryLateContracts =
-                                   @"<Where>
-                                     <Lt>
-                                        <FieldRef Name='DueDate' />
+                                    @"<Where>
+                                     <And>
+                                      <Lt>
+                                        <FieldRef Name='ChangeContractWarnDate' />
                                         <Value Type='DateTime'>
-                                            <Today/>
+                                          <Today/>
                                         </Value>
-                                     </Lt>
+                                      </Lt>
+                                      <Eq>
+                                        <FieldRef Name='ChangeContractContractStatus' />
+                                        <Value Type='Text'>Active</Value>
+                                      </Eq>
+                                    </And>
                                    </Where>";
+
         /// <summary>
         /// resx key for project created notification subject
         /// </summary>
@@ -52,6 +60,7 @@
                             string body = SPUtility.GetLocalizedString(string.Format("$Resources:COSContracts,{0}", ChangeContractOverdueBody), "COSContracts", web.Language);
 
                             SendNotificationForLateContracts(web, projectTasks, subject, body);
+                            SetContractStatus(web, Fields.StatusExpired);
                         }
                     }
 
@@ -79,5 +88,28 @@
             }
         }
 
+        /// <summary>
+        /// Set contract status for late contracts
+        /// </summary>
+        /// <param name="web">Contracts web</param>
+        /// <param name="status">Contract status</param>
+        private static void SetContractStatus(SPWeb web, string status)
+        {
+            SPList list = web.GetList(SPUtility.ConcatUrls(web.Url, Urls.Contracts));
+            SPQuery query = new SPQuery();
+
+            // late contracts
+            query.Query = queryLateContracts;
+            SPListItemCollection contracts = list.GetItems(query);
+
+            using (DisableEventFiring scope = new DisableEventFiring())
+            {
+                foreach (SPListItem contractItem in contracts)
+                {
+                    contractItem[Fields.ChangeContractContractStatus] = status;
+                    contractItem.SystemUpdate(false);
+                }
+            }
+        }
     }
 }
