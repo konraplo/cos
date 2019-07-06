@@ -171,6 +171,9 @@
     <None Include="Features\ChangeTimerjobs\ChangeTimerjobs.feature">
       <FeatureId>{5eb45999-28b7-4c04-954d-722a8d088175}</FeatureId>
     </None>
+    <None Include="Features\ChangeBusinessDevUIActions\ChangeBusinessDevUIActions.feature">
+      <FeatureId>{25a6f7eb-817b-425a-b2dd-5fac68843eaf}</FeatureId>
+    </None>
     <None Include="Infrastructure\ContentTypes\CorporateNews\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{56ed91e7-59d0-4551-a7ef-10c9cf8db858}</SharePointProjectItemId>
     </None>
@@ -301,6 +304,9 @@
     <None Include="Resources\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{763a5394-7bcd-42f4-90a7-c8076339c2c8}</SharePointProjectItemId>
     </None>
+    <None Include="UIActions\BusinessDev\StoreProjectActions\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{5b9b35aa-f1e5-4f60-a1d6-11ec277e311f}</SharePointProjectItemId>
+    </None>
     <None Include="WebTemplates\ChangeBusinessDevelopmentWeb\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{d110c909-d550-461d-8ab2-51e6cf789504}</SharePointProjectItemId>
     </None>
@@ -349,6 +355,9 @@
     </Content>
     <Content Include="Features\ChangeTimerjobs\ChangeTimerjobs.Template.xml">
       <DependentUpon>ChangeTimerjobs.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\ChangeBusinessDevUIActions\ChangeBusinessDevUIActions.Template.xml">
+      <DependentUpon>ChangeBusinessDevUIActions.feature</DependentUpon>
     </Content>
     <Content Include="Infrastructure\ContentTypes\CorporateNews\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\Country\Elements.xml" />
@@ -425,6 +434,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>COSIntranet.Designer.cs</LastGenOutput>
     </Content>
+    <Content Include="UIActions\BusinessDev\StoreProjectActions\Elements.xml" />
     <Content Include="WebTemplates\ChangeBusinessDevelopmentWeb\Elements.xml" />
     <Content Include="WebTemplates\ChangeBusinessDevelopmentWeb\ONET.XML" />
     <Content Include="WebTemplates\ChangeDivisionWeb\Elements.xml" />

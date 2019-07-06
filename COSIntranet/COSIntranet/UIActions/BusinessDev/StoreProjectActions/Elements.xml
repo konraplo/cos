@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <CustomAction Id="ChangeCTAction2"
+               Location="EditControlBlock"
+               Title="Test Change CTS2"
+               RegistrationId="0x01000FE9FB11C1CD4CBDBD91C777F61D0FC7"
+               Rights="ReadListItems"
+               RegistrationType="ContentType"
+               ImageUrl="/_layouts/15/IMAGES/DOCLINK.GIF"
+               Sequence="12">
+    <!--<UrlAction Url="javascript:OpenPopUpPageWithTitle('{SiteUrl}/_layouts/CustomAction2/MyCustomApplicationPage.aspx?List={ListId}&amp;ID={ItemId}', RefreshOnDialogClose, 600, 400,'My Custom Action')"/> -->
+    <!--<UrlAction Url="~site/_layouts/CustomAction2/MyCustomApplicationPage.aspx?List={ListId}&amp;ID={ItemId}"/>-->
+    <UrlAction Url="javascript:alert('underconstruction2' + {ItemId})" />
+  </CustomAction>
+</Elements>
