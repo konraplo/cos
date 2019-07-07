@@ -17,5 +17,6 @@
     <ProjectItemFile Source="Images\sameSystemLink.PNG" Target="InfrastructureFiles\Images\" Type="ElementFile" />
     <ProjectItemFile Source="Scripts\COS.HideBlogToolsWP.js" Target="InfrastructureFiles\Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="Scripts\jquery-3.1.0.min.js" Target="InfrastructureFiles\Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="Scripts\COS.CustomUI.js" Target="InfrastructureFiles\Scripts\" Type="ElementFile" />
   </Files>
 </ProjectItem>
