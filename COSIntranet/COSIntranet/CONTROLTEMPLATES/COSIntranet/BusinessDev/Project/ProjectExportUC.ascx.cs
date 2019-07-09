@@ -10,9 +10,16 @@
 
     public partial class ProjectExportUC : UserControl, IFormBaseView
     {
+        private int projectItemID = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            string projectId = Request["ProjectId"];
+            if (!string.IsNullOrEmpty(projectId))
+            {
+                projectItemID = Convert.ToInt32(projectId);
+            }
+
             if (!IsPostBack)
             {
                 this.ActivateView(UIHelper.MainViewPanel.DataViewPanel);
@@ -55,7 +62,19 @@
 
                     //--------------------------
                     //code for long running operation is here
-                    Thread.Sleep(5000);
+                    if (this.projectItemID > 0)
+                    {
+                        if (cbExportProject.Checked)
+                        {
+                            // exprot project docu
+                        }
+
+                        if (cbRemoveProject.Checked)
+                        {
+                            // remove all project releted stuff
+                        }
+                        Thread.Sleep(5000);
+                    }
 
 
                     //---------------------

@@ -6,7 +6,8 @@
 <%@ Import Namespace="Microsoft.SharePoint" %> 
 <%@ Register Tagprefix="WebPartPages" Namespace="Microsoft.SharePoint.WebPartPages" Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ProjectExportUC.ascx.cs" Inherits="Change.Intranet.CONTROLTEMPLATES.COSIntranet.BusinessDev.Project.ProjectExportUC" %>
-
+<%@ Register TagPrefix="wssuc" TagName="InputFormSection" src="~/_controltemplates/15/InputFormSection.ascx" %>
+<%@ Register TagPrefix="wssuc" TagName="InputFormControl" src="~/_controltemplates/15/InputFormControl.ascx" %>
 
 <table>
     <tr>
@@ -17,14 +18,31 @@
                 </asp:View> 
                 <asp:View ID="mmView" runat="server">
                     <table>                                              
-                        
                         <tr>
-                            <td>
-                               Under
-                            </td>                           
-                            <td>
-                                Construction
-                            </td>
+                            <td colspan="2">
+                            <wssuc:InputFormSection runat="server" ID="exportSection" onKeyDown="onKeyPress()" title="Export project documents" Description="">
+				                <Template_InputFormControls>
+					                <wssuc:InputFormControl ID="exportSectionFormControl" runat="server">
+						                <Template_Control>
+                                            <asp:CheckBox runat="server" ID="cbExportProject" Text="Export all project project documents as .zip archive" ></asp:CheckBox>
+						                </Template_Control>
+					                </wssuc:InputFormControl>
+				                </Template_InputFormControls>
+			                </wssuc:InputFormSection>
+                           </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                            <wssuc:InputFormSection runat="server" ID="removeProjectSection" onKeyDown="onKeyPress()" title="Remove project" Description="">
+				                <Template_InputFormControls>
+					                <wssuc:InputFormControl ID="removeFormControl" runat="server">
+						                <Template_Control>
+                                            <asp:CheckBox runat="server" ID="cbRemoveProject" Text="Remove project after export"></asp:CheckBox>
+						                </Template_Control>
+					                </wssuc:InputFormControl>
+				                </Template_InputFormControls>
+			                </wssuc:InputFormSection>
+                           </td>
                         </tr>
                         <tr>
                             <td colspan="2" align="right">

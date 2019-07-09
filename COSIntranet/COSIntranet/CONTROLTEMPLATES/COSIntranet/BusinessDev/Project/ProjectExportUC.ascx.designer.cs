@@ -49,6 +49,60 @@ namespace Change.Intranet.CONTROLTEMPLATES.COSIntranet.BusinessDev.Project {
         protected global::System.Web.UI.WebControls.View mmView;
         
         /// <summary>
+        /// exportSection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UserControl exportSection;
+        
+        /// <summary>
+        /// exportSectionFormControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UserControl exportSectionFormControl;
+        
+        /// <summary>
+        /// cbExportProject control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbExportProject;
+        
+        /// <summary>
+        /// removeProjectSection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UserControl removeProjectSection;
+        
+        /// <summary>
+        /// removeFormControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UserControl removeFormControl;
+        
+        /// <summary>
+        /// cbRemoveProject control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbRemoveProject;
+        
+        /// <summary>
         /// btnSave control.
         /// </summary>
         /// <remarks>
