@@ -394,6 +394,24 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The export project process may take some time...&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Please be patient..
+        /// </summary>
+        internal static string ChangeExportProjectLongOpDesc {
+            get {
+                return ResourceManager.GetString("ChangeExportProjectLongOpDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export project.
+        /// </summary>
+        internal static string ChangeExportProjectLongOpTitle {
+            get {
+                return ResourceManager.GetString("ChangeExportProjectLongOpTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Follow up hour and salary spendings
         ///.
         /// </summary>

@@ -1009,4 +1009,10 @@ Have a nice day</value>
   <data name="ChangeFolderTitleSalesTrainingTools" xml:space="preserve">
     <value>6.Sales Coach training tools</value>
   </data>
+  <data name="ChangeExportProjectLongOpTitle" xml:space="preserve">
+    <value>Export project</value>
+  </data>
+  <data name="ChangeExportProjectLongOpDesc" xml:space="preserve">
+    <value>The export project process may take some time...&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Please be patient.</value>
+  </data>
 </root>

@@ -1,13 +1,13 @@
-﻿using Change.Intranet.CONTROLTEMPLATES.COSIntranet.Common;
-using System;
-using System.Threading;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-
-
-namespace Change.Intranet.CONTROLTEMPLATES.COSIntranet.BusinessDev.Project
+﻿namespace Change.Intranet.CONTROLTEMPLATES.COSIntranet.BusinessDev.Project
 {
+    using Change.Intranet.Common;
+    using Change.Intranet.CONTROLTEMPLATES.COSIntranet.Common;
+    using Microsoft.SharePoint;
+    using Microsoft.SharePoint.Utilities;
+    using System;
+    using System.Threading;
+    using System.Web.UI;
+
     public partial class ProjectExportUC : UserControl, IFormBaseView
     {
 
@@ -32,7 +32,7 @@ namespace Change.Intranet.CONTROLTEMPLATES.COSIntranet.BusinessDev.Project
         }
 
         /// <summary>
-        /// save risk item and close modal dialog
+        /// export project and close modal dialog
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -44,9 +44,34 @@ namespace Change.Intranet.CONTROLTEMPLATES.COSIntranet.BusinessDev.Project
                 return;
             }
 
-            Thread.Sleep(5000);
-            ((DialogLayoutsPageBase)this.Page).EndOperation();
-            //EndOperation(1, "");
+            try
+            {
+                using (SPLongOperation longOp = new SPLongOperation(this.Page))
+                {
+                    //longOp.LeadingHTML = SPUtility.GetLocalizedString("$Resources:ChangeExportProjectLongOpTitle", "COSIntranet", SPContext.Current.Web.Language);//"Test1";
+                    longOp.LeadingHTML = SPUtility.GetLocalizedString("$Resources:ChangeExportProjectLongOpDesc", "COSIntranet", SPContext.Current.Web.Language);//"Test1";
+                    //longOp.TrailingHTML = SPUtility.GetLocalizedString("$Resources:ChangeExportProjectLongOpDesc", "COSIntranet", SPContext.Current.Web.Language); //"Test2";
+                    longOp.Begin();
+
+                    //--------------------------
+                    //code for long running operation is here
+                    Thread.Sleep(5000);
+
+
+                    //---------------------
+                    ((DialogLayoutsPageBase)this.Page).EndOperation();
+                }
+            }
+            catch (ThreadAbortException)
+            {
+                /* Thrown when redirected */
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(Logger.Category.Unexpected, typeof(ProjectExportUC).FullName, ex.Message);
+                SPUtility.TransferToErrorPage(ex.ToString());
+            }
+           
         }
     }
 }

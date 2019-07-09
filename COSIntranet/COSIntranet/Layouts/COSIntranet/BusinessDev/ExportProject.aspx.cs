@@ -2,7 +2,6 @@
 {
     using System;
     using Change.Intranet.CONTROLTEMPLATES.COSIntranet.Common;
-    using Change.Intranet.CONTROLTEMPLATES.COSIntranet.BusinessDev.Project;
 
     public partial class ExportProject : DialogLayoutsPageBase
     {
