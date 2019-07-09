@@ -26,5 +26,5 @@ function CloseCallback(strReturnValue, target) {
 }
 
 function closeDialog(strMessage) {
-    window.frameElement.commonModalDialogClose(SP.UI.DialogResult.cancel, strMessage);
+    window.frameElement.commonModalDialogClose(0, strMessage);
 }

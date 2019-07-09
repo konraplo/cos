@@ -6,14 +6,15 @@
 <%@ Import Namespace="Microsoft.SharePoint" %>
 <%@ Assembly Name="Microsoft.Web.CommandUI, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
 <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ExportProject.aspx.cs" Inherits="Change.Intranet.Layouts.COSIntranet.BusinessDev.ExportProject" DynamicMasterPageFile="~masterurl/default.master" %>
-<%@ Register TagPrefix="cosuc" TagName="ProjectExport" src="~/_controltemplates/COSIntranet/BusinessDev/Project/ProjectExportUC.ascx" %>
+<%@ Register Src="~/_controltemplates/15/COSIntranet/BusinessDev/Project/ProjectExportUC.ascx" TagPrefix="cosuc" TagName="ProjectExportUC" %>
+
 
 <asp:Content ID="PageHead" ContentPlaceHolderID="PlaceHolderAdditionalPageHead" runat="server">
 
 </asp:Content>
 
 <asp:Content ID="Main" ContentPlaceHolderID="PlaceHolderMain" runat="server">
-    <cosuc:ProjectExport ID="ProjectExport" runat="server" />
+    <cosuc:ProjectExportUC runat="server" id="ProjectExportUC" />
 </asp:Content>
 
 <asp:Content ID="PageTitle" ContentPlaceHolderID="PlaceHolderPageTitle" runat="server">

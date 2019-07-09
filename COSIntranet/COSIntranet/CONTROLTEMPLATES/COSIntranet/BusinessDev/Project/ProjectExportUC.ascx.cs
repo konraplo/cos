@@ -1,5 +1,6 @@
 ﻿using Change.Intranet.CONTROLTEMPLATES.COSIntranet.Common;
 using System;
+using System.Threading;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
@@ -43,6 +44,7 @@ namespace Change.Intranet.CONTROLTEMPLATES.COSIntranet.BusinessDev.Project
                 return;
             }
 
+            Thread.Sleep(5000);
             ((DialogLayoutsPageBase)this.Page).EndOperation();
             //EndOperation(1, "");
         }
