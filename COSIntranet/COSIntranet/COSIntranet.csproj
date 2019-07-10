@@ -73,6 +73,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CONTROLTEMPLATES\COSIntranet\Common\IFormBaseView.cs" />
+    <Compile Include="CONTROLTEMPLATES\COSIntranet\Common\ProjectHelper.cs" />
     <Compile Include="CONTROLTEMPLATES\COSIntranet\Common\UIHelper.cs" />
     <Compile Include="EventReceivers\BussinesDev\StoreOpeningEventReceiver.cs" />
     <Compile Include="EventReceivers\BussinesDev\DeptListEventReceiver.cs" />

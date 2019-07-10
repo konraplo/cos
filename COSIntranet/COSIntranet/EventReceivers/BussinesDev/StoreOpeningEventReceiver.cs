@@ -1,6 +1,7 @@
 ﻿namespace Change.Intranet.EventReceivers.BussinesDev
 {
     using Change.Intranet.Common;
+    using Change.Intranet.CONTROLTEMPLATES.COSIntranet.Common;
     using Change.Intranet.Model;
     using Change.Intranet.Projects;
     using Microsoft.SharePoint;
@@ -46,13 +47,7 @@
         {
             base.ItemDeleted(properties);
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "ItemDeleted");
-            RemoveProjectFolder(properties.Web, "Marketing", properties.ListItemId);
-            RemoveProjectFolder(properties.Web, "Drawings", properties.ListItemId);
-            RemoveProjectFolder(properties.Web, "GeneralInformation", properties.ListItemId);
-            RemoveProjectFolder(properties.Web, "Logistic", properties.ListItemId);
-            RemoveProjectFolder(properties.Web, "Pictures", properties.ListItemId);
-            RemoveProjectFolder(properties.Web, "Evaluation", properties.ListItemId);
-
+            ProjectHelper.RemoveAllProjectFolder(properties.Web, properties.ListItemId);
         }
 
         private void SendNotification(SPListItem storeOpeningItem)
@@ -97,30 +92,7 @@
             UpdateFolderStrucutreEvaluationLib(item.Web, projectFolderName, item.ID);
         }
 
-        private void RemoveProjectFolder(SPWeb web, string listUrl, int itemId)
-        {
-            Logger.WriteLog(Logger.Category.Information, "RemoveProjectFolder", string.Format("Remove project folder:{0} from {1}", itemId, listUrl));
-            SPList list = null;
-            try
-            {
-                list = web.GetList(SPUrlUtility.CombineUrl(web.Url, string.Format("Lists/{0}", listUrl)));
-                SPListItemCollection items = CommonUtilities.GetFoldersByPrefix(web, list, string.Format("{0}_", itemId));
-
-                //Get the name and Url for the folder 
-                if (items.Count > 0)
-                {
-                    SPListItem firstItem = items[0];
-                    firstItem.Delete();
-                    list.Update();
-                }
-            }
-            catch (Exception)
-            {
-                Logger.WriteLog(Logger.Category.Unexpected, "RemoveProjectFolder", "List not found");
-                return;
-            }
-        }
-
+        
         private static void UpdateFolderStrucutreMarketingLib(SPWeb web, string projectFolder,int itemId)
         {
             // Marketing
