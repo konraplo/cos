@@ -45,13 +45,34 @@
         /// Remove all project releted folders form libs
         /// </summary>
         /// <param name="web">Busines dev web</param>
-        /// <param name="listUrl">Project library url</param>
         /// <param name="itemId">Project item id</param>
         public static void RemoveAllProjectFolder(SPWeb web, int itemId)
         {
             foreach (string listUrl in projectLibrarieUrls)
             {
                 RemoveProjectFolder(web, listUrl, itemId);
+            }
+        }
+
+        /// <summary>
+        /// Remove project. WARNNING! After delete fire ER!
+        /// </summary>
+        /// <param name="web">Busines dev web</param>
+        /// <param name="itemId">Project item id</param>
+        public static void RemoveProject(SPWeb web, int itemId)
+        {
+            try
+            {
+                SPList list = web.GetList(SPUrlUtility.CombineUrl(web.Url, ListUtilities.Urls.StoreOpenings));
+                Logger.WriteLog(Logger.Category.Information, "RemoveProject", string.Format("Remove project :{0} from {1}", itemId, list.RootFolder.Url));
+                SPListItem project = list.GetItemById(itemId);
+                project.Delete();
+                list.Update();
+            }
+            catch (Exception e)
+            {
+                Logger.WriteLog(Logger.Category.Unexpected, "RemoveProject", e.Message);
+                throw;
             }
         }
     }

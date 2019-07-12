@@ -5,7 +5,10 @@
     using Microsoft.SharePoint;
     using Microsoft.SharePoint.Utilities;
     using System;
+    using System.Globalization;
+    using System.Text;
     using System.Threading;
+    using System.Web;
     using System.Web.UI;
 
     public partial class ProjectExportUC : UserControl, IFormBaseView
@@ -24,6 +27,20 @@
             {
                 this.ActivateView(UIHelper.MainViewPanel.DataViewPanel);
             }
+        }
+
+        protected override void OnPreRender(EventArgs e)
+        {
+            string successStatus = Request["success"];
+            if (!string.IsNullOrEmpty(successStatus))
+            {
+                if (successStatus.Equals("1"))
+                {
+                    EndOperationWriteBinaryData();
+                }
+            }
+
+            base.OnPreRender(e);
         }
 
         public void ActivateView(UIHelper.MainViewPanel pPanel)
@@ -71,14 +88,19 @@
 
                         if (cbRemoveProject.Checked)
                         {
-                            // remove all project releted stuff
+                            // remove project and all project releted stuff
+                            //ProjectHelper.RemoveProject(SPContext.Current.Web, this.projectItemID);
                         }
                         Thread.Sleep(5000);
                     }
 
 
                     //---------------------
-                    ((DialogLayoutsPageBase)this.Page).EndOperation();
+                    ((DialogLayoutsPageBase)this.Page).EndOperation(1, string.Concat(Request.Url.ToString(), "&success=1"));
+                    //EndOperationWriteBinaryData();
+                    //longOp.End(Request.Url.ToString(), SPRedirectFlags.DoNotEndResponse, HttpContext.Current, "success=1");
+                    //longOp.End(@"http://sharcha-p15/_layouts/15/COSIntranet/BusinessDev/ExportProject.aspx?ProjectId=3&success=1", SPRedirectFlags.Default, HttpContext.Current, "success=1");
+                    //EndOperationWriteBinaryData();
                 }
             }
             catch (ThreadAbortException)
@@ -91,6 +113,22 @@
                 SPUtility.TransferToErrorPage(ex.ToString());
             }
            
+        }
+
+        public void EndOperationWriteBinaryData()
+        {
+            string test = "test";
+            byte[] data = Encoding.ASCII.GetBytes(test); ;
+
+            //((DialogLayoutsPageBase)this.Page).EndOperation();
+            Response.Clear();
+            Response.ClearContent();
+            //HttpContext.Current.Response.ClearHeaders();
+            Response.AppendHeader("Content-Disposition", "attachment; filename=" + "dupa.txt");
+            //Response.Write(string.Format(CultureInfo.InvariantCulture, "<script type=\"text/javascript\">window.frameElement.commonModalDialogClose({0}, {1});</script>", new object[] { "1", "null" }));
+            Response.BinaryWrite(data);
+            Response.Flush();
+            Response.End();
         }
     }
 }
