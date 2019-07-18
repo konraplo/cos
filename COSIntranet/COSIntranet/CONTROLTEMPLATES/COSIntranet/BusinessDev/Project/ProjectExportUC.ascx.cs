@@ -81,6 +81,7 @@
                     //longOp.TrailingHTML = SPUtility.GetLocalizedString("$Resources:ChangeExportProjectLongOpDesc", "COSIntranet", SPContext.Current.Web.Language); //"Test2";
                     longOp.Begin();
 
+                    string callBackUrl = string.Empty;
                     //--------------------------
                     //code for long running operation is here
                     if (this.projectItemID > 0)
@@ -89,6 +90,7 @@
                         {
                             // Export project documentation
                             zipPackageName = ProjectHelper.ArchiveProject(SPContext.Current.Web, this.projectItemID, UIHelper.ZipFileSavingPlace.LocalServerTempFolder);
+                            callBackUrl = string.Concat(SPContext.Current.Web.Url, Request.Url.PathAndQuery, "&success=1", string.Format("&packagename={0}", zipPackageName));
                         }
 
                         if (cbRemoveProject.Checked)
@@ -101,8 +103,8 @@
 
                     //---------------------
                     //((DialogLayoutsPageBase)this.Page).EndOperation(1, string.Concat(Request.Url.ToString(), "&success=1", string.Format("&packagename={0}", zipPackageName)));
-                    ((DialogLayoutsPageBase)this.Page).EndOperation(1, string.Concat(SPContext.Current.Web.Url, Request.Url.PathAndQuery, "&success=1", string.Format("&packagename={0}", zipPackageName)));
-                    EndOperationWriteBinaryData(zipPackageName, UIHelper.ZipFileSavingPlace.LocalServerTempFolder);
+                    ((DialogLayoutsPageBase)this.Page).EndOperation(1, callBackUrl);
+                    //EndOperationWriteBinaryData(zipPackageName, UIHelper.ZipFileSavingPlace.LocalServerTempFolder);
                     //longOp.End(Request.Url.ToString(), SPRedirectFlags.DoNotEndResponse, HttpContext.Current, "success=1");
                     //longOp.End(@"http://sharcha-p15/_layouts/15/COSIntranet/BusinessDev/ExportProject.aspx?ProjectId=3&success=1", SPRedirectFlags.Default, HttpContext.Current, "success=1");
                     //EndOperationWriteBinaryData();
