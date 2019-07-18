@@ -79,6 +79,9 @@
                 string mailAddress = "konrad.plocharski@wp.pl";//Convert.ToString(taskItem[SPBuiltInFieldId.AssignedTo]);
                 string conractName = taskItem.Title;
                 DateTime warnDate = Convert.ToDateTime(taskItem[Fields.ChangeContractWarnDate]);
+                DateTime endDate = Convert.ToDateTime(taskItem[Fields.ChangeContractEndDate]);
+                SPFieldLookupValue customer = new SPFieldLookupValue(Convert.ToString(taskItem[Fields.ChangeContractEndDate]));
+                SPFieldLookupValue vendor = new SPFieldLookupValue(Convert.ToString(taskItem[Fields.ChangeContractEndDate]));
                 Logger.WriteLog(Logger.Category.Information, typeof(ChangeContractsNotificationTimerJobExecutor).FullName, string.Format("contract:{0}, warndate date:{1}", conractName, warnDate.ToShortDateString()));
                 if (!string.IsNullOrEmpty(mailAddress))
                 {

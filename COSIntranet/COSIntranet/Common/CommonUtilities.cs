@@ -13,7 +13,7 @@
     /// </summary>
     public static class CommonUtilities
     {
-        public  const string ChangeNotificationTimerJobName = "Change Notification Timer job";
+        public const string ChangeNotificationTimerJobName = "Change Notification Timer job";
 
         /// <summary>
         /// batch comand to delete items
@@ -71,11 +71,11 @@
                 }
                 if (string.IsNullOrEmpty(groupName))
                 {
-                    Logger.WriteLog(Logger.Category.Information, typeof(CommonUtilities).FullName,"Helper.CreateLookupField:Parameter 'groupName' is Null or empty.");
+                    Logger.WriteLog(Logger.Category.Information, typeof(CommonUtilities).FullName, "Helper.CreateLookupField:Parameter 'groupName' is Null or empty.");
                 }
                 if (string.IsNullOrEmpty(fieldName))
                 {
-                    Logger.WriteLog(Logger.Category.Information, typeof(CommonUtilities).FullName,"Helper.CreateLookupField:Parameter 'fieldName' is Null or empty.");
+                    Logger.WriteLog(Logger.Category.Information, typeof(CommonUtilities).FullName, "Helper.CreateLookupField:Parameter 'fieldName' is Null or empty.");
                     throw new ArgumentNullException("fieldName");
                 }
                 if (string.IsNullOrEmpty(lookupFieldDisplayName))
@@ -85,7 +85,7 @@
                 }
                 if (lookupList == null)
                 {
-                    Logger.WriteLog(Logger.Category.Information, typeof(CommonUtilities).FullName,"Helper.CreateLookupField:Parameter 'lookupList' is Null or empty.");
+                    Logger.WriteLog(Logger.Category.Information, typeof(CommonUtilities).FullName, "Helper.CreateLookupField:Parameter 'lookupList' is Null or empty.");
                     throw new ArgumentNullException("lookupList");
                 }
 
@@ -126,7 +126,7 @@
         public static SPListItemCollection GetFoldersByPrefix(SPWeb web, SPList list, string prefix)
         {
             SPQuery query = new SPQuery();
-            query.Query = string.Format(GetFolderByPrefix, prefix);
+            query.Query = string.Format(CommonUtilities.GetFolderByPrefix, prefix);
             query.ViewAttributes = "Scope='RecursiveAll'";
             return list.GetItems(query);
 
@@ -185,12 +185,12 @@
             //check preconditions
             if (list == null)
             {
-                Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName,"Helper.AttachContentTypeToList:Parameter 'list' is NULL.");
+                Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName, "Helper.AttachContentTypeToList:Parameter 'list' is NULL.");
                 throw new ArgumentNullException("list");
             }
             if (contentType == null)
             {
-                Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName,"Helper.AttachContentTypeToList:Parameter 'contentType' is NULL.");
+                Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName, "Helper.AttachContentTypeToList:Parameter 'contentType' is NULL.");
                 throw new ArgumentNullException("contentType");
             }
 
@@ -292,19 +292,19 @@
             //preconditions
             if (pWeb == null)
             {
-                Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName,"Helper.AttachContentTypeToList:Parameter 'web' is NULL.");
+                Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName, "Helper.AttachContentTypeToList:Parameter 'web' is NULL.");
                 throw new ArgumentNullException("pWeb");
             }
 
             if (pField == null)
             {
-                Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName,"Helper.AttachContentTypeToList:Parameter 'pField' is NULL.");
+                Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName, "Helper.AttachContentTypeToList:Parameter 'pField' is NULL.");
                 throw new ArgumentNullException("pField");
             }
 
             if (pContentType == null)
             {
-                Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName,"Helper.AttachContentTypeToList:Parameter 'pField' is NULL.");
+                Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName, "Helper.AttachContentTypeToList:Parameter 'pField' is NULL.");
                 throw new ArgumentNullException("pField");
             }
 
@@ -318,9 +318,9 @@
                     {
 
                         fieldLink = new SPFieldLink(pField);
-                        
+
                         pContentType.FieldLinks.Add(fieldLink);
-                        
+
                     }
                     else
                     {
@@ -631,7 +631,7 @@
 
                         }
                     }
-                   
+
                 }
                 catch (Exception ex)
                 {

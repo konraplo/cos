@@ -394,7 +394,7 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The export project process may take some time...&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Please be patient..
+        ///   Looks up a localized string similar to The export project process may take some time...Please be patient..
         /// </summary>
         internal static string ChangeExportProjectLongOpDesc {
             get {

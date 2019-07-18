@@ -8,8 +8,8 @@
     return false;
 }
 
-function OpenDialogFromLayout(strPageURL) {
-    var layoutUrl = SP.Utilities.Utility.getLayoutsPageUrl(strPageURL, 300, 400);
+function OpenDialogFromLayout(strPageURL, dialogWidth, dialogHeight) {
+    var layoutUrl = SP.Utilities.Utility.getLayoutsPageUrl(strPageURL, dialogWidth, dialogHeight);
 
     return OpenDialog(layoutUrl);
 }

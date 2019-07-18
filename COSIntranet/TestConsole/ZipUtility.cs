@@ -8,7 +8,7 @@ namespace TestConsole
 {
     using System;
     using System.IO;
-
+    using System.Text;
     using Ionic.Zip;
 
     using Microsoft.SharePoint;
@@ -154,7 +154,7 @@ namespace TestConsole
         /// </example>
         public void AddFile(string fileName, byte[] fileBinary)
         {
-            this.zipPackage.AddEntry(fileName, fileBinary);
+            ZipEntry entry = this.zipPackage.AddEntry(fileName, fileBinary);            
         }
 
         /// <summary>
@@ -193,6 +193,29 @@ namespace TestConsole
             this.dataStream = file.OpenBinaryStream();
             this.AddFile(file.Name, this.dataStream);
         }
+
+        public void AddFile(string fileName, Stream fileData, string directoryName = "")
+        {
+            if (string.IsNullOrEmpty(directoryName))
+            {
+                this.zipPackage.AddEntry(fileName, fileData);
+            }
+            else
+            {
+                ZipEntry entry = this.zipPackage.AddFile(fileName, directoryName);
+                Stream str = entry.InputStream;
+                byte[] bytes = Encoding.ASCII.GetBytes("dduuppaa");
+                str.Write(bytes, 0, (int)fileData.Length);
+                str.Flush();
+            }
+        }
+
+        /// *************************** PR *********************************
+        public void AddDirectoryByName(string directoryName)
+        {
+            this.zipPackage.AddDirectoryByName(directoryName);
+        }
+        /// *************************** PR *********************************
 
         /// <summary>
         /// Saves generated package to external stream

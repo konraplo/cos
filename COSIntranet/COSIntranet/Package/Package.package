@@ -1,5 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="6326d6d3-981a-48e9-b30e-0aeda6882d5b" solutionId="6326d6d3-981a-48e9-b30e-0aeda6882d5b" resetWebServer="false" sharePointProductVersion="16.0" name="COSIntranet" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <assemblies>
+    <customAssembly location="Ionic.Zip.dll" deploymentTarget="GlobalAssemblyCache" sourcePath="..\packages\Ionic.Zip.1.9.1.8\lib\Ionic.Zip.dll">
+      <safeControls>
+        <safeControl assemblyName="IonicZip" namespaceName="Ionic.Zip" typeName="*" isSafeAgainstScript="false" />
+      </safeControls>
+    </customAssembly>
+  </assemblies>
   <features>
     <featureReference itemId="e88eedf4-3e70-4006-aafd-56b45ce67aa9" />
     <featureReference itemId="38a0d90f-f468-4c6c-a42d-301f8cf347ee" />

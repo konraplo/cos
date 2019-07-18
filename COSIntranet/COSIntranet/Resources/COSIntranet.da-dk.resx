@@ -1013,6 +1013,6 @@ Have a nice day</value>
     <value>Export project</value>
   </data>
   <data name="ChangeExportProjectLongOpDesc" xml:space="preserve">
-    <value>The export project process may take some time...&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Please be patient.</value>
+    <value>The export project process may take some time...Please be patient.</value>
   </data>
 </root>

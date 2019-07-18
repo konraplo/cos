@@ -42,6 +42,9 @@
     <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ionic.Zip.1.9.1.8\lib\Ionic.Zip.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -62,6 +65,8 @@
     <Compile Include="Common\Fields.cs" />
     <Compile Include="Common\ListUtilities.cs" />
     <Compile Include="Common\Logger.cs" />
+    <Compile Include="Common\ProjectHelper.cs" />
+    <Compile Include="Common\ZipUtility.cs" />
     <Compile Include="CONTROLTEMPLATES\COSIntranet\BusinessDev\Project\ProjectExportUC.ascx.cs">
       <DependentUpon>ProjectExportUC.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -73,7 +78,6 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CONTROLTEMPLATES\COSIntranet\Common\IFormBaseView.cs" />
-    <Compile Include="CONTROLTEMPLATES\COSIntranet\Common\ProjectHelper.cs" />
     <Compile Include="CONTROLTEMPLATES\COSIntranet\Common\UIHelper.cs" />
     <Compile Include="EventReceivers\BussinesDev\StoreOpeningEventReceiver.cs" />
     <Compile Include="EventReceivers\BussinesDev\DeptListEventReceiver.cs" />
@@ -322,6 +326,7 @@
     <None Include="Layouts\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{0673253a-a445-4189-a0c2-7079d7371a49}</SharePointProjectItemId>
     </None>
+    <None Include="packages.config" />
     <None Include="Package\Package.package">
       <PackageId>{6326d6d3-981a-48e9-b30e-0aeda6882d5b}</PackageId>
     </None>
@@ -463,7 +468,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>COSIntranet.Designer.cs</LastGenOutput>
     </Content>
-    <Content Include="UIActions\BusinessDev\StoreProjectActions\Elements.xml" />
+    <Content Include="UIActions\BusinessDev\StoreProjectActions\Elements.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="WebTemplates\ChangeBusinessDevelopmentWeb\Elements.xml" />
     <Content Include="WebTemplates\ChangeBusinessDevelopmentWeb\ONET.XML" />
     <Content Include="WebTemplates\ChangeDivisionWeb\Elements.xml" />

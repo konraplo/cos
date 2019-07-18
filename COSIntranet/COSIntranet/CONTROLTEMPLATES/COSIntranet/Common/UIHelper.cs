@@ -11,5 +11,11 @@
             ErroViewPanel = 0,
             DataViewPanel = 1,
         };
+
+        public enum ZipFileSavingPlace
+        {
+            SharePointAssetsList = 0,
+            LocalServerTempFolder = 1,
+        };
     }
 }

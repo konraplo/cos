@@ -19,7 +19,7 @@ namespace TestConsole
         /// <summary>
         /// File name prefix used in generated zip file name
         /// </summary>
-        public static readonly string ZipFileNamePrefix = "Saldenexport";
+        public static readonly string ZipFileNamePrefix = "ProjectExport";
 
         /// <summary>
         /// File type used in generated zip file name

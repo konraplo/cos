@@ -4,6 +4,7 @@ using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Utilities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,6 +40,8 @@ namespace TestConsole
             //Console.WriteLine(string.Format("{0},{1},{2}", string.Format("{0:MMMM dd, yyyy}", grandOpening), string.Format("{0:dd-MM-yyyy}", firstDelivery), string.Format("{0:dd-MM-yyyy}", secondDelivery)));
 
             TestSetContractStatus(@"http://sharcha-p15/sites/contracts");
+
+            //CreateZipFile();
         }
 
         private static void TestSetContractStatus(string siteUrl)
@@ -69,6 +72,26 @@ namespace TestConsole
                     contractItem.SystemUpdate(false);
                 }
             }
+        }
+
+        private static void CreateZipFile()
+        {
+            ZipUtility zipUtility = new ZipUtility("ZipDefaultName", "zip");
+
+            zipUtility.AddDirectoryByName("DUPA1_Folder");
+            zipUtility.AddDirectoryByName("DUPA2_Folder");
+
+            FileStream file = File.Open("testDupa.txt", FileMode.Open);
+            zipUtility.AddFile("TESTDUPA", file);
+
+            file = File.Open("testDupa1.txt", FileMode.Open);
+            //zipUtility.AddFile("testdupa1", file);
+            zipUtility.AddFile("DUPA2_Folder\\testdupa1", file);
+
+            //zipUtility.AddFile("testdupa", file, "DUPA2_Folder");
+            //zipUtility.AddFile("DUPA2_Folder\\testdupa", file);
+
+            zipUtility.SavePackageToFile(Directory.GetCurrentDirectory());
         }
     }
 }

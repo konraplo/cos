@@ -534,5 +534,24 @@
             SPFieldLookupValue store = new SPFieldLookupValue(Convert.ToString(storeItem[Fields.Store]));
             return GetStoreCountry(web, store.LookupId);
         }
+
+        /// <summary>
+        /// Archive project releted folder to zip file
+        /// </summary>
+        /// <param name="web">Busines dev web</param>
+        /// <param name="itemId">Project item id</param>
+        public static string GetProjectsFolderName(SPWeb web, int projectId)
+        {
+            string projectFolderName = string.Empty;
+            SPList list = web.GetList(SPUrlUtility.CombineUrl(web.ServerRelativeUrl, ListUtilities.Urls.StoreOpenings));
+            SPListItem projectItem = list.GetItemById(projectId);
+
+            SPFieldLookupValue store = new SPFieldLookupValue(Convert.ToString(projectItem[Fields.Store]));
+            SPFieldLookupValue storeCountry = new SPFieldLookupValue(Projects.ProjectUtilities.GetStoreCountry(projectItem.Web, store.LookupId));
+            string type = Convert.ToString(projectItem[Fields.ChangeProjectCategory]);
+            projectFolderName = string.Format("{0}_{1}_{2}_{3}", projectItem.ID, store.LookupValue, storeCountry.LookupValue, type);
+
+            return projectFolderName;
+        }
     }
 }

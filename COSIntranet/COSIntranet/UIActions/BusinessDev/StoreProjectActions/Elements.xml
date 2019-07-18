@@ -10,7 +10,7 @@
                Sequence="12">
     <!--<UrlAction Url="javascript:OpenPopUpPageWithTitle('{SiteUrl}/_layouts/CustomAction2/MyCustomApplicationPage.aspx?List={ListId}&amp;ID={ItemId}', RefreshOnDialogClose, 600, 400,'My Custom Action')"/> -->
     <!--<UrlAction Url="~site/_layouts/CustomAction2/MyCustomApplicationPage.aspx?List={ListId}&amp;ID={ItemId}"/>-->
-    <UrlAction Url="javascript:OpenDialogFromLayout('/COSIntranet/BusinessDev/ExportProject.aspx?ProjectId=' + {ItemId})" />
+    <UrlAction Url="javascript:OpenDialogFromLayout('/COSIntranet/BusinessDev/ExportProject.aspx?ProjectId=' + {ItemId}, 300, 400)" />
   </CustomAction>
   <CustomAction Id="ChangeCustomUIScripts"
                ScriptSrc="~SiteCollection/SiteAssets/Scripts/COS.CustomUI.js"
