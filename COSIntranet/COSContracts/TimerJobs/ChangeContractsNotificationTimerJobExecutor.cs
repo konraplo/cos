@@ -41,12 +41,13 @@
         internal void Execute(ChangeContractsNotificationTimerJob notificationTimerJob)
         {
             SPWebApplication webApplication = notificationTimerJob.WebApplication;
-            string siteUrl = CommonUtilities.FindBusinessDevelopmentSiteId(webApplication);
-            if (!string.IsNullOrEmpty(siteUrl))
+            Guid contractInfratrustureFeatureId = Guid.Parse("{02077383-5ff0-4e15-8173-928214ff7c13}");
+            Guid siteId = CommonUtilities.FindSiteCollIdByFeature(webApplication, contractInfratrustureFeatureId);
+            if (!Guid.Empty.Equals(siteId))
             {
                 try
                 {
-                    using (SPSite site = new SPSite(siteUrl))
+                    using (SPSite site = new SPSite(siteId))
                     {
                         using (SPWeb web = site.OpenWeb())
                         {
@@ -60,7 +61,7 @@
                             string body = SPUtility.GetLocalizedString(string.Format("$Resources:COSContracts,{0}", ChangeContractOverdueBody), "COSContracts", web.Language);
 
                             SendNotificationForLateContracts(web, projectTasks, subject, body);
-                            SetContractStatus(web, Fields.StatusExpired);
+                            //SetContractStatus(web, Fields.StatusExpired);
                         }
                     }
 
@@ -80,11 +81,16 @@
                 string conractName = taskItem.Title;
                 DateTime warnDate = Convert.ToDateTime(taskItem[Fields.ChangeContractWarnDate]);
                 DateTime endDate = Convert.ToDateTime(taskItem[Fields.ChangeContractEndDate]);
-                SPFieldLookupValue customer = new SPFieldLookupValue(Convert.ToString(taskItem[Fields.ChangeContractEndDate]));
-                SPFieldLookupValue vendor = new SPFieldLookupValue(Convert.ToString(taskItem[Fields.ChangeContractEndDate]));
+                int diffMonth = ((endDate.Year - warnDate.Year) * 12) + endDate.Month - warnDate.Month;
+                SPFieldLookupValue customer = new SPFieldLookupValue(Convert.ToString(taskItem[Fields.Customer]));
+                SPFieldLookupValue vendor = new SPFieldLookupValue(Convert.ToString(taskItem[Fields.Vendor]));
+
+                string itemUrl = string.Format("{0}/{1}?ID={2}", web.Url, taskItem.ParentList.Forms[PAGETYPE.PAGE_DISPLAYFORM].Url, taskItem.ID);
+
                 Logger.WriteLog(Logger.Category.Information, typeof(ChangeContractsNotificationTimerJobExecutor).FullName, string.Format("contract:{0}, warndate date:{1}", conractName, warnDate.ToShortDateString()));
                 if (!string.IsNullOrEmpty(mailAddress))
                 {
+                    mailBody = string.Format(mailBody, conractName, customer.LookupValue, vendor.LookupValue, diffMonth, itemUrl);
                     //CommonUtilities.SendEmail(web, user.User.Email, string.Format(mailBody, taskItem.Title, dueDate.ToShortDateString()), mailTitle);
                 }
 

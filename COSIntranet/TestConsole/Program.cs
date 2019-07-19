@@ -34,6 +34,18 @@ namespace TestConsole
 
         static void Main(string[] args)
         {
+            DateTime warningDate = DateTime.Parse("7/23/2019 8:33:21 AM");
+            DateTime endDate = DateTime.Parse("8/19/2019 10:10:11 AM");
+            int diffMonth = ((endDate.Year - warningDate.Year) * 12) + endDate.Month - warningDate.Month;
+            //var dateSpan = DateTimeSpan.CompareDates(compareTo, now);
+            //Console.WriteLine("Years: " + dateSpan.Years);
+            Console.WriteLine("Months: " + diffMonth);
+            //Console.WriteLine("Days: " + dateSpan.Days);
+            //Console.WriteLine("Hours: " + dateSpan.Hours);
+            //Console.WriteLine("Minutes: " + dateSpan.Minutes);
+            //Console.WriteLine("Seconds: " + dateSpan.Seconds);
+            //Console.WriteLine("Milliseconds: " + dateSpan.Milliseconds);
+
             //DateTime grandOpening = DateTime.Now;
             //DateTime firstDelivery = grandOpening.AddDays(-13);
             //DateTime secondDelivery = grandOpening.AddDays(-7);

@@ -385,7 +385,13 @@ namespace Change.Contracts.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ChangeContractOverdueBody.
+        ///   Looks up a localized string similar to Good morning, 
+        ///I would like to inform you that contract {0} concluded between {1} and {2} will expire in {3} months.
+        ///See contract documents under the link:
+        ///{4}
+        ///  
+        ///Best regards
+        ///.
         /// </summary>
         internal static string ChangeContractOverdueBody {
             get {
@@ -394,7 +400,7 @@ namespace Change.Contracts.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ChangeContractOverdueTitle.
+        ///   Looks up a localized string similar to Contract information.
         /// </summary>
         internal static string ChangeContractOverdueTitle {
             get {

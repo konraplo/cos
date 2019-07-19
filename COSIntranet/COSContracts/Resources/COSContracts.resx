@@ -275,9 +275,15 @@
     <value>Type</value>
   </data>
   <data name="ChangeContractOverdueTitle" xml:space="preserve">
-    <value>ChangeContractOverdueTitle</value>
+    <value>Contract information</value>
   </data>
   <data name="ChangeContractOverdueBody" xml:space="preserve">
-    <value>ChangeContractOverdueBody</value>
+    <value>Good morning, 
+I would like to inform you that contract {0} concluded between {1} and {2} will expire in {3} months.
+See contract documents under the link:
+{4}
+  
+Best regards
+</value>
   </data>
 </root>
