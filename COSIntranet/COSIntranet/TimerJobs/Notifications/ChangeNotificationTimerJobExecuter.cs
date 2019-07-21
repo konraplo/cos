@@ -97,15 +97,16 @@
                             string subject = SPUtility.GetLocalizedString(string.Format("$Resources:COSIntranet,{0}", ChangeTaskOverdueSecondReminderTitle), "COSIntranet", web.Language);
                             string body = SPUtility.GetLocalizedString(string.Format("$Resources:COSIntranet,{0}", ChangeTaskOverdueSecondReminderBody), "COSIntranet", web.Language);
 
-                            //SendNotificationForTasksOwners(web, projectTasks, subject, body, 2);
+                            SendNotificationForTasksOwners(web, projectTasks, subject, body, 2);
 
                             // tasks at risk
+                            query = new SPQuery();
                             query.Query = queryTasksAtRisk;
                             projectTasks = list.GetItems(query);
                             subject = SPUtility.GetLocalizedString(string.Format("$Resources:COSIntranet,{0}", ChangeTaskOverdueFirstReminderTitle), "COSIntranet", web.Language);
                             body = SPUtility.GetLocalizedString(string.Format("$Resources:COSIntranet,{0}", ChangeTaskOverdueFirstReminderBody), "COSIntranet", web.Language);
 
-                            //SendNotificationForTasksOwners(web, projectTasks, subject, body, 1);
+                            SendNotificationForTasksOwners(web, projectTasks, subject, body, 1);
                         }
                     }
 
@@ -138,7 +139,7 @@
                         }
                         else //second reminder
                         {
-                            CommonUtilities.SendEmail(web, user.User.Email, string.Format(mailBody, taskItem.Title, dueDate.ToShortDateString()), mailTitle);
+                            CommonUtilities.SendEmail(web, user.User.Email, string.Format(mailBody, taskItem.Title), mailTitle);
                         }
                     }
                 }

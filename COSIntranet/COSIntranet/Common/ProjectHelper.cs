@@ -12,6 +12,19 @@
     /// </summary>
     public static class ProjectHelper
     {
+        public const string GET_STORE_OPENING_TASK = @"<Where>
+                                                                  <And>
+                                                                    <Eq>
+                                                                      <FieldRef Name='{0}'  LookupId='True'/>
+                                                                      <Value Type='Lookup'>{1}</Value>
+                                                                    </Eq>
+                                                                    <Eq>
+                                                                      <FieldRef Name='{2}' />
+                                                                      <Value Type='Boolean'>1</Value>
+                                                                    </Eq>
+                                                                  </And>
+                                                                </Where>";
+
         public static string[] projectLibrarieUrls = { "Marketing", "Drawings", "GeneralInformation", "Logistic", "Pictures", "Evaluation" };
 
         /// <summary>
@@ -56,11 +69,6 @@
             }
         }
 
-        /// <summary>
-        /// Remove project. WARNNING! After delete fire ER!
-        /// </summary>
-        /// <param name="web">Busines dev web</param>
-        /// <param name="itemId">Project item id</param>
         public static void RemoveProject(SPWeb web, int itemId)
         {
             try
@@ -74,6 +82,46 @@
             catch (Exception e)
             {
                 Logger.WriteLog(Logger.Category.Unexpected, "RemoveProject", e.Message);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Remove project root task from taks list.
+        /// </summary>
+        /// <param name="web">Busines dev web</param>
+        /// <param name="itemId">Project item id</param>
+        public static void RemoveProjectRootTask(SPWeb web, int itemId)
+        {
+            SPList list = web.GetList(SPUrlUtility.CombineUrl(web.Url, ListUtilities.Urls.ProjectTasks));
+            RemoveProjectRootTask(list, itemId);
+        }
+
+        /// <summary>
+        /// Remove project root task from taks list.
+        /// </summary>
+        /// <param name="web">Project tasks lists</param>
+        /// <param name="itemId">Project item id</param>
+        public static void RemoveProjectRootTask(SPList list, int itemId)
+        {
+            try
+            {
+                SPListItem projectRootTask = GetStoreOpeningRootTask(list, itemId);
+                if (projectRootTask != null)
+                {
+                    Logger.WriteLog(Logger.Category.Information, "RemoveProjectRootTask", string.Format("Remove project rootTask:{0} from {1}", itemId, list.RootFolder.Url));
+                    using (DisableEventFiring scope = new DisableEventFiring())
+                    {
+                        projectRootTask.Delete();
+                        list.Update();
+                    }
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                Logger.WriteLog(Logger.Category.Unexpected, "RemoveProjectRootTask", e.Message);
                 throw;
             }
         }
@@ -187,6 +235,19 @@
                 Logger.WriteLog(Logger.Category.Unexpected, "ArchiveProjectFolder", "List not found");
                 return;
             }
+        }
+
+        public static SPListItem GetStoreOpeningRootTask(SPList projectTasksList, int storeOpeningItemId)
+        {
+            SPQuery findProjectTask = new SPQuery();
+            findProjectTask.Query = string.Format(GET_STORE_OPENING_TASK, Fields.StoreOpening, storeOpeningItemId, Fields.StoreOpeningTask);
+            SPListItemCollection items = projectTasksList.GetItems(findProjectTask);
+            if (items.Count == 1)
+            {
+                return items[0];
+            }
+
+            return null;
         }
     }
 

@@ -11,19 +11,7 @@
     /// </summary>
     public class TaskListEventReceiver : SPItemEventReceiver
     {
-        private const string GET_STORE_OPENING_TASK = @"<Where>
-                                                                  <And>
-                                                                    <Eq>
-                                                                      <FieldRef Name='{0}'  LookupId='True'/>
-                                                                      <Value Type='Lookup'>{1}</Value>
-                                                                    </Eq>
-                                                                    <Eq>
-                                                                      <FieldRef Name='{2}' />
-                                                                      <Value Type='Boolean'>1</Value>
-                                                                    </Eq>
-                                                                  </And>
-                                                                </Where>";
-
+        
         /// <summary>
         /// Ein Element wurde hinzugefügt..
         /// </summary>
@@ -62,12 +50,13 @@
                     }
                     else if (!Convert.ToBoolean(item[Fields.StoreOpeningTask]))
                     {
-                        SPQuery findProjectTask = new SPQuery();
-                        findProjectTask.Query = string.Format(GET_STORE_OPENING_TASK, Fields.StoreOpening, project.LookupId, Fields.StoreOpeningTask);
-                        SPListItemCollection items = item.ParentList.GetItems(findProjectTask);
-                        if (items.Count == 1)
+                        //SPQuery findProjectTask = new SPQuery();
+                        //findProjectTask.Query = string.Format(GET_STORE_OPENING_TASK, Fields.StoreOpening, project.LookupId, Fields.StoreOpeningTask);
+                        //SPListItemCollection items = item.ParentList.GetItems(findProjectTask);
+                        SPListItem storeOpeningRootTask = ProjectHelper.GetStoreOpeningRootTask(item.ParentList, project.LookupId);
+                        if (storeOpeningRootTask  !=  null)
                         {
-                            item[SPBuiltInFieldId.ParentID] = items[0].ID;
+                            item[SPBuiltInFieldId.ParentID] = storeOpeningRootTask.ID;
                         }
                     }
 

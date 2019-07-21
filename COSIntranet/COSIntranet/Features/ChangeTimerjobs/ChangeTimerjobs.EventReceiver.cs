@@ -62,8 +62,11 @@ namespace Change.Intranet.Features.ChangeTimerjobs
 
             SPDailySchedule schedule = new SPDailySchedule();
             schedule.BeginSecond = 0;
+            schedule.EndSecond = 0;
             schedule.BeginHour = 23;
+            schedule.EndHour = 23;
             schedule.BeginMinute = 0;
+            schedule.EndMinute = 30;
 
             job.Schedule = schedule;
             job.Update();

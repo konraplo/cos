@@ -62,6 +62,7 @@
     <Compile Include="Common\CommonUtilities.cs" />
     <Compile Include="Common\ContentOrganizerUtilities.cs" />
     <Compile Include="Common\ContentTypeIds.cs" />
+    <Compile Include="Common\DisableEventFiring.cs" />
     <Compile Include="Common\Fields.cs" />
     <Compile Include="Common\ListUtilities.cs" />
     <Compile Include="Common\Logger.cs" />
@@ -501,7 +502,9 @@
     <Content Include="Resources\COSIntranet.sv-se.resx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\COSIntranet.da-dk.resx" />
+    <Content Include="Resources\COSIntranet.da-dk.resx">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

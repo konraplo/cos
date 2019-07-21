@@ -38,6 +38,11 @@
         /// </summary>
         private const string ChangeContractOverdueBody = "ChangeContractOverdueBody";
 
+        /// <summary>
+        /// Data Analysis mail
+        /// </summary>
+        private const string DataAnalysisMail = "dataanalysis@change.com";
+
         internal void Execute(ChangeContractsNotificationTimerJob notificationTimerJob)
         {
             SPWebApplication webApplication = notificationTimerJob.WebApplication;
@@ -77,7 +82,7 @@
         {
             foreach (SPListItem taskItem in projectTasks)
             {
-                string mailAddress = "konrad.plocharski@wp.pl";//Convert.ToString(taskItem[SPBuiltInFieldId.AssignedTo]);
+                string mailAddress = DataAnalysisMail;//Convert.ToString(taskItem[SPBuiltInFieldId.AssignedTo]);
                 string conractName = taskItem.Title;
                 DateTime warnDate = Convert.ToDateTime(taskItem[Fields.ChangeContractWarnDate]);
                 DateTime endDate = Convert.ToDateTime(taskItem[Fields.ChangeContractEndDate]);
@@ -91,7 +96,7 @@
                 if (!string.IsNullOrEmpty(mailAddress))
                 {
                     mailBody = string.Format(mailBody, conractName, customer.LookupValue, vendor.LookupValue, diffMonth, itemUrl);
-                    //CommonUtilities.SendEmail(web, user.User.Email, string.Format(mailBody, taskItem.Title, dueDate.ToShortDateString()), mailTitle);
+                    CommonUtilities.SendEmail(web, mailAddress, mailBody, mailTitle);
                 }
 
             }
