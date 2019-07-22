@@ -2712,10 +2712,9 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to First reminder
-        ///Please be aware for the deadline for your task {0} is tomorrow ({1}). Please remember to register in the system when the task is completed.
-        /// 
-        ///Have a nice day.
+        ///   Looks up a localized string similar to First reminder&lt;br/&gt;
+        ///Please be aware for the deadline for your task {0} is tomorrow ({1}). Please remember to register in the system when the task is completed. &lt;br/&gt;
+        ///Have a nice day
         ///.
         /// </summary>
         internal static string ChangeTaskOverdueFirstReminderBody {
@@ -2734,9 +2733,10 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Second reminder
-        ///Please be aware that the deadline for your task {0} is overdue. Please solve the task immediately and register in the system when the task is completed. If you have questions or challenges, please contact your project coordinator.
-        ///Have a nice day.
+        ///   Looks up a localized string similar to Second reminder&lt;br/&gt;
+        ///Please be aware that the deadline for your task {0} is overdue. Please solve the task immediately and register in the system when the task is completed. If you have questions or challenges, please contact your project coordinator. &lt;br/&gt;
+        ///Have a nice day
+        ///.
         /// </summary>
         internal static string ChangeTaskOverdueSecondReminderBody {
             get {

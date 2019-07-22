@@ -962,10 +962,9 @@
     <value>Task reminder</value>
   </data>
   <data name="ChangeTaskOverdueFirstReminderBody" xml:space="preserve">
-    <value>First reminder
-Please be aware for the deadline for your task {0} is tomorrow ({1}). Please remember to register in the system when the task is completed.
- 
-Have a nice day.
+    <value>First reminder&lt;br/&gt;
+Please be aware for the deadline for your task {0} is tomorrow ({1}). Please remember to register in the system when the task is completed. &lt;br/&gt;
+Have a nice day
 </value>
   </data>
   <data name="ChangeProjectCreatedMailSubject" xml:space="preserve">
@@ -987,9 +986,10 @@ Expected opening:
     <value>Task reminder</value>
   </data>
   <data name="ChangeTaskOverdueSecondReminderBody" xml:space="preserve">
-    <value>Second reminder
-Please be aware that the deadline for your task {0} is overdue. Please solve the task immediately and register in the system when the task is completed. If you have questions or challenges, please contact your project coordinator.
-Have a nice day</value>
+    <value>Second reminder&lt;br/&gt;
+Please be aware that the deadline for your task {0} is overdue. Please solve the task immediately and register in the system when the task is completed. If you have questions or challenges, please contact your project coordinator. &lt;br/&gt;
+Have a nice day
+</value>
   </data>
   <data name="ChangeFolderTitleSalesAdmDistanceTools" xml:space="preserve">
     <value>1.Sales Coach administrative tools to follow up from distanace</value>

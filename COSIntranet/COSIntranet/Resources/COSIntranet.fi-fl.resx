@@ -955,8 +955,9 @@
     <value>Stock count</value>
   </data>
   <data name="ChangeTaskOverdueFirstReminderBody" xml:space="preserve">
-    <value>First reminder
-Please be aware for the deadline for your task {0} is tomorrow ({1}). Please remember to register in the system when the task is completed.</value>
+    <value>First reminder&lt;br/&gt;
+Please be aware for the deadline for your task {0} is tomorrow ({1}). Please remember to register in the system when the task is completed. &lt;br/&gt;
+Have a nice day</value>
   </data>
   <data name="ChangeTaskOverdueFirstReminderTitle" xml:space="preserve">
     <value>Task reminder</value>
@@ -976,8 +977,8 @@ Expected opening:
     <value>{0} in {1}</value>
   </data>
   <data name="ChangeTaskOverdueSecondReminderBody" xml:space="preserve">
-    <value>Second reminder
-Please be aware that the deadline for your task {0} is overdue. Please solve the task immediately and register in the system when the task is completed. If you have questions or challenges, please contact your project coordinator.
+    <value>Second reminder&lt;br/&gt;
+Please be aware that the deadline for your task {0} is overdue. Please solve the task immediately and register in the system when the task is completed. If you have questions or challenges, please contact your project coordinator. &lt;br/&gt;
 Have a nice day</value>
   </data>
   <data name="ChangeTaskOverdueSecondReminderTitle" xml:space="preserve">
