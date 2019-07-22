@@ -553,6 +553,7 @@
             messageHeaders.Add("from", from);
             messageHeaders.Add("to", pTo);
             messageHeaders.Add("subject", pSubject);
+            messageHeaders.Add("content-type", "text/html");
 
             bool isOK = false;
             SPSecurity.RunWithElevatedPrivileges(delegate

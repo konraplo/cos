@@ -385,11 +385,11 @@ namespace Change.Contracts.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Good morning, 
+        ///   Looks up a localized string similar to Good morning, &lt;br/&gt;
         ///I would like to inform you that contract {0} concluded between {1} and {2} will expire in {3} months.
-        ///See contract documents under the link:
+        ///See contract documents under the link:&lt;br/&gt;
         ///{4}
-        ///  
+        ///&lt;br/&gt;
         ///Best regards
         ///.
         /// </summary>
