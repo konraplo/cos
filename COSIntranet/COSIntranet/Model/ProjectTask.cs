@@ -6,6 +6,18 @@
     public class ProjectTask
     {
         /// <summary>
+        /// Gets or sets the task id.
+        /// </summary>
+        /// <value>
+        /// Task Id.
+        /// </value>
+        public int Id
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Gets or sets the Duration.
         /// </summary>
         /// <value>

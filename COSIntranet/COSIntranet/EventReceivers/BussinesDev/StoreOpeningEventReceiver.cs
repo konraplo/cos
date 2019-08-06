@@ -72,7 +72,7 @@
                     DateTime secondDelivery = grandOpening.AddDays(-7);
                     body = string.Format(body, projectName, string.Format(GrandOpeningDateFormat, grandOpening), string.Format(DeliveryDateFormat, firstDelivery), string.Format(DeliveryDateFormat, secondDelivery));
 
-                    //CommonUtilities.SendEmail(storeOpeningItem.Web, user.User.Email, body, subject);
+                    CommonUtilities.SendEmail(storeOpeningItem.Web, user.User.Email, body, subject);
                 }
             }
         }
