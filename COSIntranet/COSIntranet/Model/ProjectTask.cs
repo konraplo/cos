@@ -18,6 +18,18 @@
         }
 
         /// <summary>
+        /// Gets or sets the StoreOpeningTask flag.
+        /// </summary>
+        /// <value>
+        /// true if this task is StoreOpeningTask.
+        /// </value>
+        public bool IsStoreOpeningTask
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Gets or sets the Duration.
         /// </summary>
         /// <value>

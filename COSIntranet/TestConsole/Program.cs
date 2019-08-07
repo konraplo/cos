@@ -1,4 +1,5 @@
 ﻿using Change.Contracts.Common;
+using Change.Intranet.Model;
 using Microsoft.SharePoint;
 using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Utilities;
@@ -30,6 +31,15 @@ namespace TestConsole
                                     </And>
                                    </Where>";
 
+        private const string queryProjectTasks =
+                                   @"<Where>
+                                      <Eq>
+                                                                      <FieldRef Name='{0}'  LookupId='True'/>
+                                                                      <Value Type='Lookup'>{1}</Value>
+                                                                    </Eq>
+                                   </Where>";
+
+
         public static Guid ChangeContractContractStatus = new Guid("{8c222fe8-f4a9-4e59-a75c-bf111672c947}");
 
         static void Main(string[] args)
@@ -51,10 +61,50 @@ namespace TestConsole
             //DateTime secondDelivery = grandOpening.AddDays(-7);
             //Console.WriteLine(string.Format("{0},{1},{2}", string.Format("{0:MMMM dd, yyyy}", grandOpening), string.Format("{0:dd-MM-yyyy}", firstDelivery), string.Format("{0:dd-MM-yyyy}", secondDelivery)));
 
-            TestSetContractStatus(@"http://sharcha-p15/sites/contracts");
+            //TestSetContractStatus(@"http://sharcha-p15/sites/contracts");
+            TestCreateProjectTemplate(@"http://sharcha-p15/sites/cos/bd", 1);
 
             //CreateZipFile();
         }
+
+        private static List<ProjectTask> ExportProjectTasks(SPWeb web, int projectItemId)
+        {
+            List<ProjectTask> result = new List<ProjectTask>();
+            SPList projectList = web.GetList(SPUtility.ConcatUrls(web.Url, Change.Intranet.Common.ListUtilities.Urls.StoreOpenings));
+            SPListItem project = projectList.GetItemById(projectItemId);
+            DateTime grandOpening = Convert.ToDateTime(project[SPBuiltInFieldId.TaskDueDate]);
+
+            SPList tasksList = web.GetList(SPUtility.ConcatUrls(web.Url, Change.Intranet.Common.ListUtilities.Urls.ProjectTasks));
+            SPQuery query = new SPQuery();
+
+            // late contracts
+            query.Query = string.Format(queryProjectTasks, Change.Intranet.Common.Fields.StoreOpening, projectItemId); ;
+            SPListItemCollection tasks = tasksList.GetItems(query);
+            foreach (SPListItem taskItem in tasks)
+            {
+                DateTime endDate = Convert.ToDateTime(taskItem[SPBuiltInFieldId.TaskDueDate]);
+                DateTime startDate = Convert.ToDateTime(taskItem[SPBuiltInFieldId.StartDate]);
+                ProjectTask task = new ProjectTask();
+                task.Id = taskItem.ID;
+                task.Title = taskItem.Title;
+                task.IsStoreOpeningTask = Convert.ToBoolean(taskItem[Change.Intranet.Common.Fields.StoreOpeningTask]);
+                SPFieldLookupValue department = new SPFieldLookupValue(Convert.ToString(taskItem[Change.Intranet.Common.Fields.Department]));
+                task.ResponsibleDepartment = department.LookupValue;
+                task.Responsible = Convert.ToString(taskItem[SPBuiltInFieldId.AssignedTo]);
+                task.Duration = (endDate - startDate).Days;
+                task.TimeBeforeGrandOpening = (grandOpening - startDate).Days;
+
+                SPFieldLookupValue parent = new SPFieldLookupValue(Convert.ToString(taskItem[SPBuiltInFieldId.ParentID]));
+                if(parent.LookupId > 0)
+                {
+                    task.ParentId = parent.LookupId;
+                    task.ParentTitle = parent.LookupValue;
+                }
+                result.Add(task);
+            }
+            return result;
+        }
+
 
         private static void TestSetContractStatus(string siteUrl)
         {
@@ -63,6 +113,17 @@ namespace TestConsole
                 using (SPWeb web = site.OpenWeb())
                 {
                     SetContractStatus(web);
+                }
+            }
+        }
+
+        private static void TestCreateProjectTemplate(string siteUrl, int projectItemId)
+        {
+            using (SPSite site = new SPSite(siteUrl))
+            {
+                using (SPWeb web = site.OpenWeb())
+                {
+                    List<ProjectTask> result = ExportProjectTasks(web, projectItemId);
                 }
             }
         }
