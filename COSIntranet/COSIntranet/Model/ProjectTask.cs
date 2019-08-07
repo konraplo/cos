@@ -1,4 +1,6 @@
-﻿namespace Change.Intranet.Model
+﻿using System.Collections.Generic;
+
+namespace Change.Intranet.Model
 {
     /// <summary>
     /// Represents project task
@@ -111,6 +113,26 @@
         {
             get;
             set;
+        }
+
+        /// <summary>
+        /// Gets or sets subtasks.
+        /// </summary>
+        /// <value>
+        /// Subtasks list.
+        /// </value>
+        public List<ProjectTask> Subtasks
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// constructor
+        /// </summary>
+        public ProjectTask()
+        {
+            this.Subtasks = new List<ProjectTask>();
         }
     }
 }

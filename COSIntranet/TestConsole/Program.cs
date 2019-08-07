@@ -105,6 +105,24 @@ namespace TestConsole
             return result;
         }
 
+        private static ProjectTask ExportProjectTasksTree(SPWeb web, int projectItemId)
+        {
+            List<ProjectTask> tasks = ExportProjectTasks(web, projectItemId);
+            ProjectTask projectRootTask = tasks.FirstOrDefault(x=> x.IsStoreOpeningTask == true);
+            FillProjectTasksTree(projectRootTask, tasks);
+
+            return projectRootTask;
+        }
+
+        private static void FillProjectTasksTree(ProjectTask parentTask, List<ProjectTask> tasks)
+        {
+            List<ProjectTask> subtasks = tasks.Where(x => x.ParentId.Equals(parentTask.Id)).ToList();
+            parentTask.Subtasks = subtasks;
+            foreach (ProjectTask task in subtasks)
+            {
+                FillProjectTasksTree(task, tasks);
+            }
+        }
 
         private static void TestSetContractStatus(string siteUrl)
         {
@@ -123,7 +141,7 @@ namespace TestConsole
             {
                 using (SPWeb web = site.OpenWeb())
                 {
-                    List<ProjectTask> result = ExportProjectTasks(web, projectItemId);
+                    ProjectTask result = ExportProjectTasksTree(web, projectItemId);
                 }
             }
         }
