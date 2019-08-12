@@ -1,5 +1,6 @@
 ﻿using Change.Contracts.Common;
 using Change.Intranet.Model;
+using Change.Intranet.Projects;
 using Microsoft.SharePoint;
 using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Utilities;
@@ -9,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using static Change.Contracts.Common.ListUtilities;
 
 namespace TestConsole
@@ -62,7 +64,7 @@ namespace TestConsole
             //Console.WriteLine(string.Format("{0},{1},{2}", string.Format("{0:MMMM dd, yyyy}", grandOpening), string.Format("{0:dd-MM-yyyy}", firstDelivery), string.Format("{0:dd-MM-yyyy}", secondDelivery)));
 
             //TestSetContractStatus(@"http://sharcha-p15/sites/contracts");
-            TestCreateProjectTemplate(@"http://sharcha-p15/sites/cos/bd", 1);
+            TestCreateProjectTemplate(@"http://sharcha-p15/sites/cos/bd", 11);
 
             //CreateZipFile();
         }
@@ -73,11 +75,26 @@ namespace TestConsole
             SPList projectList = web.GetList(SPUtility.ConcatUrls(web.Url, Change.Intranet.Common.ListUtilities.Urls.StoreOpenings));
             SPListItem project = projectList.GetItemById(projectItemId);
             DateTime grandOpening = Convert.ToDateTime(project[SPBuiltInFieldId.TaskDueDate]);
+            SPFieldLookupValue store = new SPFieldLookupValue(Convert.ToString(project[Change.Intranet.Common.Fields.Store]));
+            SPFieldLookupValue storeCountry = new SPFieldLookupValue(ProjectUtilities.GetStoreCountry(web, store.LookupId));
+
+            string countryUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), Change.Intranet.Common.ListUtilities.Urls.Countries);
+            SPList countryList = web.GetList(countryUrl);
+            List<Country> regions = new List<Country>();
+            foreach (SPListItem regionIem in countryList.GetItems(new SPQuery()))
+            {
+                regions.Add(new Country { Id = regionIem.ID, Title = regionIem.Title, Manager = Convert.ToString(regionIem[Change.Intranet.Common.Fields.ChangeCountrymanager]) });
+            }
+
+            string storeMgr = ProjectUtilities.GetStoreManager(web, store.LookupId);
+
+            string projectCoordinator = Convert.ToString(project[SPBuiltInFieldId.AssignedTo]);
+            string regionalMgr = regions.FirstOrDefault(x => x.Id.Equals(storeCountry.LookupId)).Manager;
 
             SPList tasksList = web.GetList(SPUtility.ConcatUrls(web.Url, Change.Intranet.Common.ListUtilities.Urls.ProjectTasks));
             SPQuery query = new SPQuery();
 
-            // late contracts
+            // tasks
             query.Query = string.Format(queryProjectTasks, Change.Intranet.Common.Fields.StoreOpening, projectItemId); ;
             SPListItemCollection tasks = tasksList.GetItems(query);
             foreach (SPListItem taskItem in tasks)
@@ -102,6 +119,26 @@ namespace TestConsole
                 }
                 result.Add(task);
             }
+
+            foreach (ProjectTask projectTask in result.Where(x => !string.IsNullOrEmpty(x.Responsible) && x.Responsible.Equals(storeMgr)))
+            {
+                projectTask.Responsible = DepartmentUtilities.StoreManager;
+            }
+            foreach (ProjectTask projectTask in result.Where(x => !string.IsNullOrEmpty(x.Responsible) && x.Responsible.Equals(projectCoordinator)))
+            {
+                projectTask.Responsible = DepartmentUtilities.ProjectCoordinator;
+            }
+            foreach (ProjectTask projectTask in result.Where(x => !string.IsNullOrEmpty(x.Responsible) && x.Responsible.Equals(regionalMgr)))
+            {
+                projectTask.Responsible = DepartmentUtilities.RegionalManager;
+            }
+
+            //clean up other responsibilities
+            foreach (ProjectTask projectTask in result.Where(x => !string.IsNullOrEmpty(x.Responsible) && x.Responsible.Contains(";#")))
+            {
+                projectTask.Responsible = string.Empty;
+            }
+
             return result;
         }
 
@@ -124,6 +161,75 @@ namespace TestConsole
             }
         }
 
+        private static void ImportProjectTasksTree(SPWeb web, int projectItemId)
+        {
+            string path = @"D:\kpl\template1.json";
+            string template = File.ReadAllText(path);
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            ProjectTask rootTask = (ProjectTask)serializer.Deserialize(template, typeof(ProjectTask));
+            List<ProjectTask> tasksToCreate = new List<ProjectTask>();
+
+            SPList projectList = web.GetList(SPUtility.ConcatUrls(web.Url, Change.Intranet.Common.ListUtilities.Urls.StoreOpenings));
+            SPListItem project = projectList.GetItemById(projectItemId);
+            SPList tasksList = web.GetList(SPUtility.ConcatUrls(web.Url, Change.Intranet.Common.ListUtilities.Urls.ProjectTasks));
+            SPContentType foundedProjectTaskCT = tasksList.ContentTypes[tasksList.ContentTypes.BestMatch(Change.Intranet.Common.ContentTypeIds.ProjectTask)];
+            SPFieldLookupValue store = new SPFieldLookupValue(Convert.ToString(project[Change.Intranet.Common.Fields.Store]));
+            SPFieldLookupValue storeCountry = new SPFieldLookupValue(ProjectUtilities.GetStoreCountry(web, store.LookupId));
+
+            // todo: fill root task values from created project taks in ER
+            rootTask.Id = 0; // only for test
+            FillTasksToCreate(tasksList, foundedProjectTaskCT, rootTask, storeCountry, store, project, tasksToCreate);
+        }
+
+        private static void FillTasksToCreate(SPList tasksList, SPContentType foundedProjectTaskCT, ProjectTask task, SPFieldLookupValue storeCountry, SPFieldLookupValue store, SPListItem project,List<ProjectTask> tasks)
+        {
+            if (task.Subtasks.Count > 0)
+            {
+                // create task, read Id
+                if (!task.IsStoreOpeningTask)
+                {
+                    SPListItem projectTask = tasksList.AddItem();
+                    projectTask[SPBuiltInFieldId.Title] = task.Title;
+                    projectTask[SPBuiltInFieldId.ContentTypeId] = foundedProjectTaskCT.Id;
+                    projectTask[Change.Intranet.Common.Fields.Country] = storeCountry;
+                    projectTask[Change.Intranet.Common.Fields.StoreOpening] = string.Format("{0};#{1}", project.ID, project.Title);
+                    projectTask[Change.Intranet.Common.Fields.Store] = string.Format("{0};#{1}", store.LookupId, store.LookupValue);
+                    if (task.ParentId > 0)
+                    {
+                        projectTask[SPBuiltInFieldId.ParentID] = new SPFieldLookupValue(string.Format("{0};#{1}", task.ParentId, task.ParentTitle));
+
+                    }
+                    projectTask[Change.Intranet.Common.Fields.ChangeTaskDisplayNameId] = string.Format("({0}) {1}", project.Title, task.Title);
+                    projectTask.Update();
+                    task.Id = projectTask.ID;
+                }
+
+
+                // check all subtasks
+                foreach (ProjectTask subTask in task.Subtasks)
+                {
+                    // set parent id
+                    subTask.ParentId = task.Id;
+                    subTask.ParentTitle = task.Title;
+                    FillTasksToCreate(tasksList, foundedProjectTaskCT, subTask, storeCountry, store, project, tasks);
+                }
+            }
+            else
+            {
+                tasks.Add(task);
+            }
+            
+        }
+
+        private static void SaveProjectTemplate(ProjectTask projectRootTask)
+        {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            string json = serializer.Serialize(projectRootTask);
+            var template = serializer.Deserialize(json, typeof(ProjectTask));
+            string path = @"D:\kpl\template1.json";
+            File.WriteAllText(path, json);
+        }
+
         private static void TestSetContractStatus(string siteUrl)
         {
             using (SPSite site = new SPSite(siteUrl))
@@ -141,7 +247,9 @@ namespace TestConsole
             {
                 using (SPWeb web = site.OpenWeb())
                 {
-                    ProjectTask result = ExportProjectTasksTree(web, projectItemId);
+                    //ProjectTask result = ExportProjectTasksTree(web, projectItemId);
+                    //SaveProjectTemplate(result);
+                    ImportProjectTasksTree(web, projectItemId);
                 }
             }
         }
