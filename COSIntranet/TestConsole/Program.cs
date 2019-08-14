@@ -109,7 +109,7 @@ namespace TestConsole
                 task.ResponsibleDepartment = department.LookupValue;
                 task.Responsible = Convert.ToString(taskItem[SPBuiltInFieldId.AssignedTo]);
                 task.Duration = (endDate - startDate).Days;
-                task.TimeBeforeGrandOpening = (grandOpening - startDate).Days;
+                task.TimeBeforeGrandOpening = (grandOpening - endDate).Days;
 
                 SPFieldLookupValue parent = new SPFieldLookupValue(Convert.ToString(taskItem[SPBuiltInFieldId.ParentID]));
                 if(parent.LookupId > 0)
@@ -176,19 +176,36 @@ namespace TestConsole
             SPFieldLookupValue store = new SPFieldLookupValue(Convert.ToString(project[Change.Intranet.Common.Fields.Store]));
             SPFieldLookupValue storeCountry = new SPFieldLookupValue(ProjectUtilities.GetStoreCountry(web, store.LookupId));
 
+            string countryUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), Change.Intranet.Common.ListUtilities.Urls.Countries);
+            SPList countryList = web.GetList(countryUrl);
+            List<Country> regions = new List<Country>();
+            foreach (SPListItem regionIem in countryList.GetItems(new SPQuery()))
+            {
+                regions.Add(new Country { Id = regionIem.ID, Title = regionIem.Title, Manager = Convert.ToString(regionIem[Change.Intranet.Common.Fields.ChangeCountrymanager]) });
+            }
+
+            string storeMgr = ProjectUtilities.GetStoreManager(web, store.LookupId);
+            string projectCoordinator = Convert.ToString(project[SPBuiltInFieldId.AssignedTo]);
+            DateTime grandOpening = Convert.ToDateTime(project[SPBuiltInFieldId.TaskDueDate]);
+
             // todo: fill root task values from created project taks in ER
             rootTask.Id = 0; // only for test
-            FillTasksToCreate(tasksList, foundedProjectTaskCT, rootTask, storeCountry, store, project, tasksToCreate);
+            List<Department> departments = DepartmentUtilities.GetDepartments(web);
+
+            CreateMainTasks(grandOpening, projectCoordinator, storeMgr, regions, departments, tasksList, foundedProjectTaskCT, rootTask, storeCountry, store, project, tasksToCreate);
+
+            // create subtasks
         }
 
-        private static void FillTasksToCreate(SPList tasksList, SPContentType foundedProjectTaskCT, ProjectTask task, SPFieldLookupValue storeCountry, SPFieldLookupValue store, SPListItem project,List<ProjectTask> tasks)
+        private static void CreateMainTasks(DateTime grandOpening, string projectCoordinator, string storeMgr, List<Country> regions, List<Department> departments, SPList tasksList, SPContentType foundedProjectTaskCT, ProjectTask task, SPFieldLookupValue storeCountry, SPFieldLookupValue store, SPListItem project,List<ProjectTask> tasks)
         {
             if (task.Subtasks.Count > 0)
             {
                 // create task, read Id
+                SPListItem projectTask = null;
                 if (!task.IsStoreOpeningTask)
                 {
-                    SPListItem projectTask = tasksList.AddItem();
+                    projectTask = tasksList.AddItem();
                     projectTask[SPBuiltInFieldId.Title] = task.Title;
                     projectTask[SPBuiltInFieldId.ContentTypeId] = foundedProjectTaskCT.Id;
                     projectTask[Change.Intranet.Common.Fields.Country] = storeCountry;
@@ -200,7 +217,43 @@ namespace TestConsole
 
                     }
                     projectTask[Change.Intranet.Common.Fields.ChangeTaskDisplayNameId] = string.Format("({0}) {1}", project.Title, task.Title);
-                    projectTask.Update();
+
+                    if (!string.IsNullOrEmpty(task.ResponsibleDepartment))
+                    {
+                        Department responsibleDepartment = departments.FirstOrDefault(x => x.Title.Equals(task.ResponsibleDepartment));
+                        if (responsibleDepartment != null)
+                        {
+                            projectTask[Change.Intranet.Common.Fields.Department] = string.Format("{0};#{1}", responsibleDepartment.Id, responsibleDepartment.Title);
+                            projectTask[Change.Intranet.Common.Fields.ChangeDeparmentmanager] = responsibleDepartment.Manager;
+                           
+                            if (responsibleDepartment.Title.Equals(DepartmentUtilities.Retail))
+                            {
+                                task.Responsible = DepartmentUtilities.RegionalManager;
+                            }
+                        }
+                    }
+                    string responsible = string.Empty;
+                    if (task.Responsible != null)
+                    {
+                        if (task.Responsible.Equals(DepartmentUtilities.StoreManager))
+                        {
+                            responsible = storeMgr;
+                        }
+                        else if (task.Responsible.Equals(DepartmentUtilities.RegionalManager))
+                        {
+                            responsible = regions.FirstOrDefault(x => x.Id.Equals(storeCountry.LookupId)).Manager;
+                        }
+                        else if (task.Responsible.Equals(DepartmentUtilities.ProjectCoordinator))
+                        {
+                            responsible = projectCoordinator;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(responsible))
+                    {
+                        projectTask[SPBuiltInFieldId.AssignedTo] = responsible;
+                    }
+
                     task.Id = projectTask.ID;
                 }
 
@@ -211,14 +264,155 @@ namespace TestConsole
                     // set parent id
                     subTask.ParentId = task.Id;
                     subTask.ParentTitle = task.Title;
-                    FillTasksToCreate(tasksList, foundedProjectTaskCT, subTask, storeCountry, store, project, tasks);
+                    CreateMainTasks(grandOpening, projectCoordinator, storeMgr, regions, departments, tasksList, foundedProjectTaskCT, subTask, storeCountry, store, project, tasks);
                 }
+
+                if (projectTask != null)
+                {
+                    int lastTaskTBGO = task.Subtasks.Min(x => x.TimeBeforeGrandOpening);
+                    DateTime dueDate = grandOpening.AddDays(-lastTaskTBGO);
+                    DateTime startDate = dueDate.AddDays(-task.Duration);
+                    projectTask[SPBuiltInFieldId.StartDate] = startDate;
+                    projectTask[SPBuiltInFieldId.TaskDueDate] = dueDate;
+                    projectTask.Update();
+                }
+
+
             }
             else
             {
                 tasks.Add(task);
             }
             
+        }
+
+        private static void CreateSubTasks(SPList tasksList, SPContentType foundedProjectTaskCT, SPFieldLookupValue storeCountry, SPFieldLookupValue store, string projectCoordinator, string storeMgr, List<Country> regions, List<ProjectTask> tasks, DateTime projectStartDate, DateTime projectDueDate, DateTime grandOpening, SPListItem projectItem)
+        {
+            List<string> formatedUpdateBatchCommands = new List<string>();
+
+            List<Department> departments = DepartmentUtilities.GetDepartments(projectItem.Web);
+
+            int counter = 1;
+            foreach (ProjectTask task in tasks)
+            {
+                DateTime dueDate = grandOpening.AddDays(-task.TimeBeforeGrandOpening);
+                DateTime startDate = dueDate.AddDays(-task.Duration);
+
+                if (projectStartDate.Equals(DateTime.MinValue))
+                {
+                    projectStartDate = startDate;
+                }
+                else if (DateTime.Compare(projectStartDate, startDate) > 0)
+                {
+                    projectStartDate = startDate;
+                }
+
+                if (projectDueDate.Equals(DateTime.MaxValue))
+                {
+                    projectDueDate = grandOpening.AddDays(-task.TimeBeforeGrandOpening);
+                }
+                else if (DateTime.Compare(projectDueDate, grandOpening.AddDays(-task.TimeBeforeGrandOpening)) < 0)
+                {
+                    projectDueDate = grandOpening.AddDays(-task.TimeBeforeGrandOpening);
+                }
+
+                StringBuilder batchItemSetVar = new StringBuilder();
+                batchItemSetVar.Append(string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                                                    projectItem.ParentList.Fields[SPBuiltInFieldId.Title].InternalName,
+                                                    task.Title));
+                batchItemSetVar.Append(
+                       string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                       tasksList.Fields[Change.Intranet.Common.Fields.ChangeTaskDisplayNameId].InternalName,
+                       string.Format("({0}) {1}", projectItem.Title, task.Title)));
+
+                batchItemSetVar.Append(
+                        string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                        projectItem.ParentList.Fields[SPBuiltInFieldId.ContentTypeId].InternalName,
+                        Convert.ToString(foundedProjectTaskCT.Id)));
+                batchItemSetVar.Append(
+                       string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                       Change.Intranet.Common.Fields.StoreOpening,
+                       string.Format("{0};#{1}", projectItem.ID, projectItem.Title)));
+                batchItemSetVar.Append(
+                       string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                       Change.Intranet.Common.Fields.Store,
+                       string.Format("{0};#{1}", store.LookupId, store.LookupValue)));
+
+                if (!string.IsNullOrEmpty(task.ResponsibleDepartment))
+                {
+                    Department responsibleDepartment = departments.FirstOrDefault(x => x.Title.Equals(task.ResponsibleDepartment));
+                    if (responsibleDepartment != null)
+                    {
+                        batchItemSetVar.Append(
+                          string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                          Change.Intranet.Common.Fields.Department,
+                          string.Format("{0};#{1}", responsibleDepartment.Id, responsibleDepartment.Title)));
+                        batchItemSetVar.Append(
+                          string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                          tasksList.Fields[Change.Intranet.Common.Fields.ChangeDeparmentmanager].InternalName,
+                          responsibleDepartment.Manager));
+                        if (responsibleDepartment.Title.Equals(DepartmentUtilities.Retail))
+                        {
+                            task.Responsible = DepartmentUtilities.RegionalManager;
+                        }
+                    }
+                }
+
+                batchItemSetVar.Append(
+                       string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                       Change.Intranet.Common.Fields.Country,
+                       storeCountry));
+                batchItemSetVar.Append(
+                       string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                       tasksList.Fields[Change.Intranet.Common.Fields.ChangeTaskDurationId].InternalName,
+                       task.Duration));
+                string responsible = string.Empty;
+
+                if (task.Responsible != null)
+                {
+                    if (task.Responsible.Equals(DepartmentUtilities.StoreManager))
+                    {
+                        responsible = storeMgr;
+                    }
+                    else if (task.Responsible.Equals(DepartmentUtilities.RegionalManager))
+                    {
+                        responsible = regions.FirstOrDefault(x => x.Id.Equals(storeCountry.LookupId)).Manager;
+                    }
+                    else if (task.Responsible.Equals(DepartmentUtilities.ProjectCoordinator))
+                    {
+                        responsible = projectCoordinator;
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(responsible))
+                {
+                    batchItemSetVar.Append(
+                    string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                    tasksList.Fields[SPBuiltInFieldId.AssignedTo].InternalName,
+                    responsible));
+                }
+
+                batchItemSetVar.Append(
+                  string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                  tasksList.Fields[SPBuiltInFieldId.TaskDueDate].InternalName,
+                  SPUtility.CreateISO8601DateTimeFromSystemDateTime(dueDate)));
+
+                batchItemSetVar.Append(
+                  string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                  tasksList.Fields[SPBuiltInFieldId.StartDate].InternalName,
+                  SPUtility.CreateISO8601DateTimeFromSystemDateTime(startDate)));
+
+                if (task.ParentId > 0)
+                {
+                    batchItemSetVar.Append(
+                       string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                       tasksList.Fields[SPBuiltInFieldId.ParentID].InternalName,
+                       string.Format("{0};#{1}", task.ParentId, task.ParentTitle)));
+                }
+
+                formatedUpdateBatchCommands.Add(string.Format(CommonUtilities.BATCH_ADD_ITEM_CMD, counter, tasksList.ID.ToString(), batchItemSetVar));
+                counter++;
+            }
         }
 
         private static void SaveProjectTemplate(ProjectTask projectRootTask)
@@ -249,7 +443,10 @@ namespace TestConsole
                 {
                     //ProjectTask result = ExportProjectTasksTree(web, projectItemId);
                     //SaveProjectTemplate(result);
-                    ImportProjectTasksTree(web, projectItemId);
+                    using (DisableEventFiringScope scope = new DisableEventFiringScope())
+                    {
+                        ImportProjectTasksTree(web, projectItemId);
+                    }
                 }
             }
         }
