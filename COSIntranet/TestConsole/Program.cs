@@ -195,6 +195,12 @@ namespace TestConsole
             CreateMainTasks(grandOpening, projectCoordinator, storeMgr, regions, departments, tasksList, foundedProjectTaskCT, rootTask, storeCountry, store, project, tasksToCreate);
 
             // create subtasks
+            DateTime projectStartDate = DateTime.MinValue;
+            DateTime projectDueDate = DateTime.MaxValue;
+            List<string> formatedUpdateBatchCommands = SubTasksToCreate(tasksList, foundedProjectTaskCT, storeCountry, store, projectCoordinator, storeMgr, regions, tasksToCreate, projectStartDate, projectDueDate, grandOpening, project);
+            string result = CommonUtilities.BatchAddListItems(web, formatedUpdateBatchCommands);
+
+
         }
 
         private static void CreateMainTasks(DateTime grandOpening, string projectCoordinator, string storeMgr, List<Country> regions, List<Department> departments, SPList tasksList, SPContentType foundedProjectTaskCT, ProjectTask task, SPFieldLookupValue storeCountry, SPFieldLookupValue store, SPListItem project,List<ProjectTask> tasks)
@@ -254,6 +260,8 @@ namespace TestConsole
                         projectTask[SPBuiltInFieldId.AssignedTo] = responsible;
                     }
 
+                    projectTask.Update();
+
                     task.Id = projectTask.ID;
                 }
 
@@ -286,7 +294,7 @@ namespace TestConsole
             
         }
 
-        private static void CreateSubTasks(SPList tasksList, SPContentType foundedProjectTaskCT, SPFieldLookupValue storeCountry, SPFieldLookupValue store, string projectCoordinator, string storeMgr, List<Country> regions, List<ProjectTask> tasks, DateTime projectStartDate, DateTime projectDueDate, DateTime grandOpening, SPListItem projectItem)
+        private static List<string> SubTasksToCreate(SPList tasksList, SPContentType foundedProjectTaskCT, SPFieldLookupValue storeCountry, SPFieldLookupValue store, string projectCoordinator, string storeMgr, List<Country> regions, List<ProjectTask> tasks, DateTime projectStartDate, DateTime projectDueDate, DateTime grandOpening, SPListItem projectItem)
         {
             List<string> formatedUpdateBatchCommands = new List<string>();
 
@@ -413,6 +421,8 @@ namespace TestConsole
                 formatedUpdateBatchCommands.Add(string.Format(CommonUtilities.BATCH_ADD_ITEM_CMD, counter, tasksList.ID.ToString(), batchItemSetVar));
                 counter++;
             }
+
+            return formatedUpdateBatchCommands;
         }
 
         private static void SaveProjectTemplate(ProjectTask projectRootTask)
