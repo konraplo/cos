@@ -1010,4 +1010,10 @@ Have a nice day</value>
   <data name="ChangeExportProjectLongOpTitle" xml:space="preserve">
     <value>Export Project</value>
   </data>
+  <data name="ChangeCTProjectTemplate" xml:space="preserve">
+    <value>Project template</value>
+  </data>
+  <data name="ChangeCTProjectTemplateDescr" xml:space="preserve">
+    <value>Project schedule template</value>
+  </data>
 </root>

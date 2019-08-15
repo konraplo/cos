@@ -367,6 +367,24 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Project template.
+        /// </summary>
+        internal static string ChangeCTProjectTemplate {
+            get {
+                return ResourceManager.GetString("ChangeCTProjectTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project schedule template.
+        /// </summary>
+        internal static string ChangeCTProjectTemplateDescr {
+            get {
+                return ResourceManager.GetString("ChangeCTProjectTemplateDescr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Store.
         /// </summary>
         internal static string ChangeCTStore {

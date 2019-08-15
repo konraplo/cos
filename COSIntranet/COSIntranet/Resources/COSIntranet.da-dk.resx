@@ -1016,4 +1016,10 @@ Have a nice day
   <data name="ChangeExportProjectLongOpDesc" xml:space="preserve">
     <value>The export project process may take some time...Please be patient.</value>
   </data>
+  <data name="ChangeCTProjectTemplate" xml:space="preserve">
+    <value>Project template</value>
+  </data>
+  <data name="ChangeCTProjectTemplateDescr" xml:space="preserve">
+    <value>Project schedule template</value>
+  </data>
 </root>
