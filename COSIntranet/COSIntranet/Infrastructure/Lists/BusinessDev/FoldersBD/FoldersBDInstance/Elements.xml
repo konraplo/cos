@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <ListInstance Title="FoldersBD" OnQuickLaunch="FALSE" TemplateType="10100" Url="Lists/FoldersBD" Description="My List Instance"></ListInstance>
+  <Field ID="{26c49b5f-fdf7-4cb8-b986-aef0d4e65eb3}" Name="COSFoldersBD" DisplayName="Folders" Type="LookupMulti" Mult="TRUE" List="Lists/FoldersBD" ShowField="Title" Required="True" Group="Custom Site Columns"></Field>
+</Elements>

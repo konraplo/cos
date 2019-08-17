@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <ListInstance Title="Inbox BD" OnQuickLaunch="FALSE" TemplateType="10103" Url="InboxBD" Description="My List Instance"></ListInstance>
+</Elements>

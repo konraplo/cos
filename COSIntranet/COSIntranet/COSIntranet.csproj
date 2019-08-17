@@ -15,6 +15,7 @@
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <MinimumOfficeToolsVersion>14.0</MinimumOfficeToolsVersion>
     <SandboxedSolution>False</SandboxedSolution>
+    <ActiveDeploymentConfiguration>No Activation</ActiveDeploymentConfiguration>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -80,6 +81,7 @@
     </Compile>
     <Compile Include="CONTROLTEMPLATES\COSIntranet\Common\IFormBaseView.cs" />
     <Compile Include="CONTROLTEMPLATES\COSIntranet\Common\UIHelper.cs" />
+    <Compile Include="EventReceivers\BussinesDev\InboxBDEventReceiver\InboxBDEventReceiver.cs" />
     <Compile Include="EventReceivers\BussinesDev\StoreOpeningEventReceiver.cs" />
     <Compile Include="EventReceivers\BussinesDev\DeptListEventReceiver.cs" />
     <Compile Include="EventReceivers\BussinesDev\StoreListEventReceiver.cs" />
@@ -91,6 +93,9 @@
     </Compile>
     <Compile Include="Features\ChangeComposedLook\ChangeComposedLook.EventReceiver.cs">
       <DependentUpon>ChangeComposedLook.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\ChangeContentOrganizerBD\ChangeContentOrganizerBD.EventReceiver.cs">
+      <DependentUpon>ChangeContentOrganizerBD.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\ChangeContentOrganizer\ChangeContentOrganizer.EventReceiver.cs">
       <DependentUpon>ChangeContentOrganizer.feature</DependentUpon>
@@ -167,6 +172,9 @@
     <None Include="DocumentTemplates\MarketingTemplates\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{51065ff0-acd4-4dd9-bfcd-c79805d02d31}</SharePointProjectItemId>
     </None>
+    <None Include="EventReceivers\BussinesDev\InboxBDEventReceiver\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{0eff83e7-787a-414c-bf45-b319240852ac}</SharePointProjectItemId>
+    </None>
     <None Include="EventReceivers\InboxEventReceiver\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{16579f80-edd5-4554-9529-2ea9fac4d437}</SharePointProjectItemId>
     </None>
@@ -203,6 +211,9 @@
     <None Include="Features\ChangeBusinessDevUIActions\ChangeBusinessDevUIActions.feature">
       <FeatureId>{25a6f7eb-817b-425a-b2dd-5fac68843eaf}</FeatureId>
     </None>
+    <None Include="Features\ChangeContentOrganizerBD\ChangeContentOrganizerBD.feature">
+      <FeatureId>{d3bca9f5-49ed-4c7b-a7a2-a8472b250a43}</FeatureId>
+    </None>
     <None Include="Infrastructure\ContentTypes\CorporateNews\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{56ed91e7-59d0-4551-a7ef-10c9cf8db858}</SharePointProjectItemId>
     </None>
@@ -230,6 +241,9 @@
     <None Include="Infrastructure\Fields\COSFieldsBD\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{8d5334f4-33c3-4bfe-b006-5e15f3afd129}</SharePointProjectItemId>
     </None>
+    <None Include="Infrastructure\Fields\COSFieldsInboxBD\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{93fd0ab4-a15f-42b4-99c4-1e09d7e04b93}</SharePointProjectItemId>
+    </None>
     <None Include="Infrastructure\Fields\COSFields\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{c5860291-3df1-422f-a737-5e5dcc07bef3}</SharePointProjectItemId>
     </None>
@@ -251,8 +265,20 @@
     <None Include="Infrastructure\Lists\BusinessDev\Evaluation\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{2dd80967-a291-4cfb-b327-99cc0a1ad940}</SharePointProjectItemId>
     </None>
+    <None Include="Infrastructure\Lists\BusinessDev\FoldersBD\FoldersBDInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{9b27a211-f618-4c2a-8b76-7f748374e7c1}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\BusinessDev\FoldersBD\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{068ee436-68ac-4dd9-be8d-c520f601e9c4}</SharePointProjectItemId>
+    </None>
     <None Include="Infrastructure\Lists\BusinessDev\GeneralInformation\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{1cf1e00d-642f-4677-901e-ea00a653c3f4}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\BusinessDev\InboxBD\InboxBDInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{caff1f68-537b-4ff2-93f1-9e4d40074c8e}</SharePointProjectItemId>
+    </None>
+    <None Include="Infrastructure\Lists\BusinessDev\InboxBD\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{08af069a-bfc5-401d-984a-12064c4c1e40}</SharePointProjectItemId>
     </None>
     <None Include="Infrastructure\Lists\BusinessDev\Logistic\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{0c6fa871-e767-477d-962f-0b2a722575b0}</SharePointProjectItemId>
@@ -361,6 +387,7 @@
     <Content Include="DocumentTemplates\GeneralInformationTemplates\Elements.xml" />
     <Content Include="DocumentTemplates\LogisticTemplates\Elements.xml" />
     <Content Include="DocumentTemplates\MarketingTemplates\Elements.xml" />
+    <Content Include="EventReceivers\BussinesDev\InboxBDEventReceiver\Elements.xml" />
     <Content Include="EventReceivers\InboxEventReceiver\Elements.xml" />
     <Content Include="Features\ChangeWebTemplates\ChangeWebTemplates.Template.xml">
       <DependentUpon>ChangeWebTemplates.feature</DependentUpon>
@@ -392,6 +419,9 @@
     <Content Include="Features\ChangeBusinessDevUIActions\ChangeBusinessDevUIActions.Template.xml">
       <DependentUpon>ChangeBusinessDevUIActions.feature</DependentUpon>
     </Content>
+    <Content Include="Features\ChangeContentOrganizerBD\ChangeContentOrganizerBD.Template.xml">
+      <DependentUpon>ChangeContentOrganizerBD.feature</DependentUpon>
+    </Content>
     <Content Include="Infrastructure\ContentTypes\CorporateNews\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\Country\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\Department\Elements.xml" />
@@ -401,6 +431,7 @@
     <Content Include="Infrastructure\ContentTypes\Project\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\Store\Elements.xml" />
     <Content Include="Infrastructure\Fields\COSFieldsBD\Elements.xml" />
+    <Content Include="Infrastructure\Fields\COSFieldsInboxBD\Elements.xml" />
     <Content Include="Infrastructure\Fields\COSFields\Elements.xml" />
     <Content Include="Infrastructure\InfrastructureFiles\Elements.xml" />
     <Content Include="Infrastructure\InfrastructureFiles\Images\AddItem.jpg" />
@@ -424,7 +455,17 @@
     <Content Include="Infrastructure\Lists\BusinessDev\Departments\Elements.xml" />
     <Content Include="Infrastructure\Lists\BusinessDev\Drawings\Elements.xml" />
     <Content Include="Infrastructure\Lists\BusinessDev\Evaluation\Elements.xml" />
+    <Content Include="Infrastructure\Lists\BusinessDev\FoldersBD\Elements.xml" />
+    <Content Include="Infrastructure\Lists\BusinessDev\FoldersBD\FoldersBDInstance\Elements.xml" />
+    <Content Include="Infrastructure\Lists\BusinessDev\FoldersBD\Schema.xml" />
     <Content Include="Infrastructure\Lists\BusinessDev\GeneralInformation\Elements.xml" />
+    <Content Include="Infrastructure\Lists\BusinessDev\InboxBD\EditDlg.htm" />
+    <Content Include="Infrastructure\Lists\BusinessDev\InboxBD\Elements.xml" />
+    <Content Include="Infrastructure\Lists\BusinessDev\InboxBD\FileDlg.htm" />
+    <Content Include="Infrastructure\Lists\BusinessDev\InboxBD\InboxBDInstance\Elements.xml" />
+    <Content Include="Infrastructure\Lists\BusinessDev\InboxBD\Repair.aspx" />
+    <Content Include="Infrastructure\Lists\BusinessDev\InboxBD\Schema.xml" />
+    <Content Include="Infrastructure\Lists\BusinessDev\InboxBD\Upload.aspx" />
     <Content Include="Infrastructure\Lists\BusinessDev\Logistic\Elements.xml" />
     <Content Include="Infrastructure\Lists\BusinessDev\ManualandInstructions\Elements.xml" />
     <Content Include="Infrastructure\Lists\BusinessDev\Pictures\Elements.xml" />
