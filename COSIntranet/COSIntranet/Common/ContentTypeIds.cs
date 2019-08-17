@@ -31,5 +31,10 @@
         /// SPContentTypeId of the Change Project Task ContentType
         /// </summary>
         public static SPContentTypeId ProjectTask = new SPContentTypeId("0x0108000A97F48EEC134ECAA96C4B4BF455953F");
+
+        /// <summary>
+        /// SPContentTypeId of the Change Project Template ContentType
+        /// </summary>
+        public static SPContentTypeId ProjectTemplate = new SPContentTypeId("0x0100FDEA0E9393B04B4F80C728BC49FDED36");
     }
 }

@@ -232,6 +232,9 @@
     <None Include="Infrastructure\ContentTypes\ProjectTask\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{384dfe21-05b9-4dda-b395-01c29e75756a}</SharePointProjectItemId>
     </None>
+    <None Include="Infrastructure\ContentTypes\ProjectTemplate\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{853b90b6-df0f-4abc-aa44-8fac7080874f}</SharePointProjectItemId>
+    </None>
     <None Include="Infrastructure\ContentTypes\Project\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{e0569878-f0da-4af8-bd8e-96e24aedf83b}</SharePointProjectItemId>
     </None>
@@ -428,6 +431,7 @@
     <Content Include="Infrastructure\ContentTypes\NationalNews\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\News\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\ProjectTask\Elements.xml" />
+    <Content Include="Infrastructure\ContentTypes\ProjectTemplate\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\Project\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\Store\Elements.xml" />
     <Content Include="Infrastructure\Fields\COSFieldsBD\Elements.xml" />

@@ -1,3 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Feature xmlns="http://schemas.microsoft.com/sharepoint/">
+ <UpgradeActions>
+    <VersionRange EndVersion="1.1.1.0">
+      <ApplyElementManifests>
+        <ElementManifest Location="ProjectTemplate\Elements.xml" />        
+      </ApplyElementManifests>
+      
+    </VersionRange>
+  </UpgradeActions>
 </Feature>

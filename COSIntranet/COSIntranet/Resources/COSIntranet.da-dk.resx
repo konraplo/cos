@@ -971,16 +971,17 @@ Have a nice day
     <value>{0} in {1}</value>
   </data>
   <data name="ChangeProjectCreatedMailBody" xml:space="preserve">
-    <value>Dear All,                                                          
+    <value>Dear All, &lt;br/&gt;                                                      
 Please be informed that we are opening a new store in “{0}”
-Front Page is ready on Intranet → General information
-Expected opening:
-{1}
-1st delivery to store (furniture): 
-{2}
-2nd delivery to store (merchandise + store supply + fittings + mannequins + marketing materials + POS): 
-{3}
-</value>
+Front Page is ready on Intranet → General information&lt;br/&gt;
+Expected opening: &lt;br/&gt;
+{1}&lt;br/&gt;
+1st delivery to store (furniture): &lt;br/&gt;
+{2}&lt;br/&gt;
+2nd delivery to store (merchandise + store supply + fittings + mannequins + marketing materials + POS): &lt;br/&gt;
+{3}&lt;br/&gt;
+
+Have a nice day.</value>
   </data>
   <data name="ChangeTaskOverdueSecondReminderTitle" xml:space="preserve">
     <value>Task reminder</value>
@@ -1014,5 +1015,11 @@ Have a nice day
   </data>
   <data name="ChangeExportProjectLongOpDesc" xml:space="preserve">
     <value>The export project process may take some time...Please be patient.</value>
+  </data>
+  <data name="ChangeCTProjectTemplate" xml:space="preserve">
+    <value>Project template</value>
+  </data>
+  <data name="ChangeCTProjectTemplateDescr" xml:space="preserve">
+    <value>Project schedule template</value>
   </data>
 </root>

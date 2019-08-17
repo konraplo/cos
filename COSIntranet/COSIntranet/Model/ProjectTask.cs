@@ -1,10 +1,36 @@
-﻿namespace Change.Intranet.Model
+﻿using System.Collections.Generic;
+
+namespace Change.Intranet.Model
 {
     /// <summary>
     /// Represents project task
     /// </summary>
     public class ProjectTask
     {
+        /// <summary>
+        /// Gets or sets the task id.
+        /// </summary>
+        /// <value>
+        /// Task Id.
+        /// </value>
+        public int Id
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the StoreOpeningTask flag.
+        /// </summary>
+        /// <value>
+        /// true if this task is StoreOpeningTask.
+        /// </value>
+        public bool IsStoreOpeningTask
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// Gets or sets the Duration.
         /// </summary>
@@ -87,6 +113,26 @@
         {
             get;
             set;
+        }
+
+        /// <summary>
+        /// Gets or sets subtasks.
+        /// </summary>
+        /// <value>
+        /// Subtasks list.
+        /// </value>
+        public List<ProjectTask> Subtasks
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// constructor
+        /// </summary>
+        public ProjectTask()
+        {
+            this.Subtasks = new List<ProjectTask>();
         }
     }
 }
