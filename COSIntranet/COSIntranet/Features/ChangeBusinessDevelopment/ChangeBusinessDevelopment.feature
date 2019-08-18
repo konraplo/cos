@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<feature xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="a3417bcf-d184-4f79-be16-a23c50462fa8" description="Deploy Change of Scandinavia business development artifacts (lists, event receivers...)" featureId="a3417bcf-d184-4f79-be16-a23c50462fa8" imageUrl="" receiverAssembly="$SharePoint.Project.AssemblyFullName$" receiverClass="$SharePoint.Type.313988d9-d9fa-436a-9711-7405c5680067.FullName$" solutionId="00000000-0000-0000-0000-000000000000" title="Change of Scandinavia business development artifacts" version="" deploymentPath="$SharePoint.Project.FileNameWithoutExtension$_$SharePoint.Feature.FileNameWithoutExtension$" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/FeatureModel">
+<feature xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="a3417bcf-d184-4f79-be16-a23c50462fa8" description="Deploy Change of Scandinavia business development artifacts (lists, event receivers...)" featureId="a3417bcf-d184-4f79-be16-a23c50462fa8" imageUrl="" receiverAssembly="$SharePoint.Project.AssemblyFullName$" receiverClass="$SharePoint.Type.313988d9-d9fa-436a-9711-7405c5680067.FullName$" solutionId="00000000-0000-0000-0000-000000000000" title="Change of Scandinavia business development artifacts" version="AAEAAAD/////AQAAAAAAAAAEAQAAAA5TeXN0ZW0uVmVyc2lvbgQAAAAGX01ham9yBl9NaW5vcgZfQnVpbGQJX1JldmlzaW9uAAAAAAgICAgBAAAAAQAAAAEAAAAAAAAACw==" deploymentPath="$SharePoint.Project.FileNameWithoutExtension$_$SharePoint.Feature.FileNameWithoutExtension$" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/FeatureModel">
   <projectItems>
     <projectItemReference itemId="851960c8-e714-478e-95bf-3b0555a1114d" />
     <projectItemReference itemId="8ccbe49c-de21-4630-82c1-d67e4b6dce5b" />
@@ -19,5 +19,6 @@
     <projectItemReference itemId="8a6e99ac-6358-413d-8bab-395e82f55c4a" />
     <projectItemReference itemId="7814065f-e0c1-4af1-bb86-fcad81ec5848" />
     <projectItemReference itemId="51065ff0-acd4-4dd9-bfcd-c79805d02d31" />
+    <projectItemReference itemId="4c95541d-24d8-4086-87e2-4c8c98005ae2" />
   </projectItems>
 </feature>

@@ -1025,4 +1025,10 @@ Have a nice day
   <data name="ChangeCTProjectTemplateDescr" xml:space="preserve">
     <value>Project schedule template</value>
   </data>
+  <data name="ChangeLibTitleProjectTemplates" xml:space="preserve">
+    <value>Project Templates</value>
+  </data>
+  <data name="ChangeLibDescriptionProjectTemplates" xml:space="preserve">
+    <value>Templates used for project creation</value>
+  </data>
 </root>

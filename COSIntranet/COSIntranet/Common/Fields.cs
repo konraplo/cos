@@ -17,6 +17,7 @@
         public const string Title = "Title";
         public const string StoreOpeningTask = "StoreOpeningTask";
         public const string ChangeTaskDisplayName = "ChangeTaskDisplayName";
+        public const string ProjectTemplate = "ChangeProjectTemplate";
 
         /// <summary>
         /// GUID of ChangeTaskDisplayName
