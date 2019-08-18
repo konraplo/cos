@@ -33,6 +33,8 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
                 Logger.WriteLog(Logger.Category.Information, "ChangeBusinessDevelopmentEventReceiver", "add folder strucure");
                 LogisticLib(web);
                 MarketingLib(web);
+
+                Upgradeto11(web);
             }
         }
 
@@ -188,8 +190,44 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
 
         // Uncomment the method below to handle the event raised when a feature is upgrading.
 
-        //public override void FeatureUpgrading(SPFeatureReceiverProperties properties, string upgradeActionName, System.Collections.Generic.IDictionary<string, string> parameters)
-        //{
-        //}
+        public override void FeatureUpgrading(SPFeatureReceiverProperties properties, string upgradeActionName, System.Collections.Generic.IDictionary<string, string> parameters)
+        {
+            SPWeb web = properties.Feature.Parent as SPWeb;
+            Logger.WriteLog(Logger.Category.Medium, "ChangeBusinessDevelopmentEventReceiver - FeatureUpgrading", string.Format("upgrading - web:{0}, action:{1}", web.Url, upgradeActionName));
+
+            switch (upgradeActionName)
+            {
+
+                case "UpgradeToV1.1":
+                    Upgradeto11(web);
+                    break;
+
+            }
+        }
+
+        private void Upgradeto11(SPWeb web)
+        {
+            Logger.WriteLog(Logger.Category.Medium, "ChangeBusinessDevelopmentEventReceiver - Upgradeto11", string.Format("web:{0}", web.Url));
+            if (web != null)
+            {
+                // add project template ct
+                Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "add project template ct");
+                string projectTemplatesUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.ProjectTemplates);
+                SPList projectTemplatesList = web.GetList(projectTemplatesUrl);
+                SPContentType projectTemplateContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.ProjectTemplate];
+
+                CommonUtilities.AttachContentTypeToList(projectTemplatesList, projectTemplateContentType, true, false);
+
+                string projectsUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.StoreOpenings);
+                SPList projectsList = web.GetList(projectsUrl);
+                Logger.WriteLog(Logger.Category.Information, "ChangeBusinessDevelopmentEventReceiver", string.Format("add Lookups to:{0}", projectsUrl));
+                SPFieldLookup projecttemplateLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.ProjectTemplate, "$Resources:COSIntranet,ChangeColProjectTemplate", Fields.Title, projectTemplatesList, false, false);
+
+                projectsList.Fields[Fields.ProjectTemplate].ShowInEditForm = false;
+                projectsList.Update();
+            }
+
+            Logger.WriteLog(Logger.Category.Medium, "Upgradeto11 fnished", string.Format("web:{0}", web.Url));
+        }
     }
 }

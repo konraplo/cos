@@ -2397,6 +2397,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Templates used for project creation.
+        /// </summary>
+        internal static string ChangeLibDescriptionProjectTemplates {
+            get {
+                return ResourceManager.GetString("ChangeLibDescriptionProjectTemplates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sales Calendar.
         /// </summary>
         internal static string ChangeLibDescriptionSalesCalendar {
@@ -2600,6 +2609,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeLibTitleProjectTasks {
             get {
                 return ResourceManager.GetString("ChangeLibTitleProjectTasks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project Templates.
+        /// </summary>
+        internal static string ChangeLibTitleProjectTemplates {
+            get {
+                return ResourceManager.GetString("ChangeLibTitleProjectTemplates", resourceCulture);
             }
         }
         
