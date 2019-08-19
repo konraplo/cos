@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using static Change.Contracts.Common.ListUtilities;
@@ -49,9 +50,19 @@ namespace TestConsole
             DateTime warningDate = DateTime.Parse("7/23/2019 8:33:21 AM");
             DateTime endDate = DateTime.Parse("8/19/2019 10:10:11 AM");
             int diffMonth = ((endDate.Year - warningDate.Year) * 12) + endDate.Month - warningDate.Month;
+            Console.WriteLine("Months: " + diffMonth);
+            string testString = "<Lists/Drawings>/Center before opening";
+            Regex regex = new Regex("<([^>]+)>");
+            Match match = regex.Match(testString);
+            if (match.Success)
+            {
+                string cleanString = regex.Replace(testString, "$1/dupa");
+                Console.WriteLine("MATCH VALUE: " + regex.Replace(match.Value, "$1") );
+                Console.WriteLine(cleanString);
+
+            }
             //var dateSpan = DateTimeSpan.CompareDates(compareTo, now);
             //Console.WriteLine("Years: " + dateSpan.Years);
-            Console.WriteLine("Months: " + diffMonth);
             //Console.WriteLine("Days: " + dateSpan.Days);
             //Console.WriteLine("Hours: " + dateSpan.Hours);
             //Console.WriteLine("Minutes: " + dateSpan.Minutes);
@@ -64,7 +75,7 @@ namespace TestConsole
             //Console.WriteLine(string.Format("{0},{1},{2}", string.Format("{0:MMMM dd, yyyy}", grandOpening), string.Format("{0:dd-MM-yyyy}", firstDelivery), string.Format("{0:dd-MM-yyyy}", secondDelivery)));
 
             //TestSetContractStatus(@"http://sharcha-p15/sites/contracts");
-            TestCreateProjectTemplate(@"http://sharcha-p15/sites/cos/bd", 11);
+            //TestCreateProjectTemplate(@"http://sharcha-p15/sites/cos/bd", 11);
 
             //CreateZipFile();
         }

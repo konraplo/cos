@@ -8,6 +8,8 @@ using System.IO;
 using System.Text;
 using System.Collections.Generic;
 using Change.Intranet.Projects;
+using System.Text.RegularExpressions;
+using System.Collections;
 
 namespace Change.Intranet.EventReceivers.BussinesDev.InboxBDEventReceiver
 {
@@ -46,13 +48,14 @@ namespace Change.Intranet.EventReceivers.BussinesDev.InboxBDEventReceiver
             Logger.WriteLog(Logger.Category.Medium, "InboxEventReceiver - Itemupdated", string.Format("item id:{0}", properties.ListItem.ID));
             SPListItem item = properties.ListItem;
             SPFile file = item.File;
-            if ((item[statusId] == null) || (item[statusId].ToString() != "1"))
+            //if ((item[statusId] == null) || (item[statusId].ToString() != "1"))
+            if (item[statusId] == null)
             {
                 EventFiring eventFiring = new EventFiring();
 
                 eventFiring.DisableHandleEventFiring();
                 item[statusId] = 1;
-                item.Update();
+                item.SystemUpdate();
                 eventFiring.EnableHandleEventFiring();
                 
                 StringBuilder sb = new StringBuilder();
@@ -105,7 +108,7 @@ namespace Change.Intranet.EventReceivers.BussinesDev.InboxBDEventReceiver
                     }
                     eventFiring.DisableHandleEventFiring();
                     item[logId] = sb.ToString();
-                    item.Update();
+                    item.SystemUpdate();
                     eventFiring.EnableHandleEventFiring();
                 }
             }
@@ -117,48 +120,50 @@ namespace Change.Intranet.EventReceivers.BussinesDev.InboxBDEventReceiver
             bool sucess = true;
             Logger.WriteLog(Logger.Category.Medium, "InboxEventReceiver - CopyFileToDetinations", string.Format("web:{0}, opened - start provision file:{1}", web.Url, filename));
             SPListItem folderItem = folderList.GetItemById(destUrl.LookupId);
-            string docliburl = Convert.ToString(folderItem[folderUrlId]);
+            string destUrlValue = Convert.ToString(folderItem[folderUrlId]);
+            string docliburl = string.Empty;
+            Regex regex = new Regex("<([^>]+)>");
+            Match match = regex.Match(destUrlValue);
+            if (match.Success)
+            {
+                docliburl = regex.Replace(match.Value, "$1");
+            }
+            else
+            {
+                sucess = false;
+                sb.AppendLine(string.Format("error while copying file to {0} - wrong destination folder syntax", destUrlValue));
+                return sucess;
+            }
 
             foreach (var subfolder in subfolders)
             {
+                string targetUrl = regex.Replace(destUrlValue, subfolder);
                 try
                 {
-                    Logger.WriteLog(Logger.Category.Medium, "InboxEventReceiver - CopyFileToDetinations", string.Format("copy to dest:{0}/{1} file:{2}", destUrl, subfolder, filename));
-                    int counter = 0;
-                    SPList destinationList = null;
-                    SPFolder destinationFolder = null;
+                    Logger.WriteLog(Logger.Category.Medium, "InboxEventReceiver - CopyFileToDetinations", string.Format("copy to dest:{0}/{1} file:{2}", docliburl, targetUrl, filename));
 
-                    foreach (string folderUrlToken in destUrl.LookupValue.Split('/'))
+                    string listUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl, docliburl);
+                    SPList destinationList = web.GetList(listUrl);
+                    using (MemoryStream ms = new MemoryStream())
                     {
-                        string listUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl, docliburl);
-                        destinationList = web.GetList(listUrl);
-
-                        if (counter == 0)
-                        {
-                            destinationFolder = destinationList.RootFolder;
-                        }
-                        else
-                        {
-                            destinationFolder = destinationFolder.SubFolders[folderUrlToken];
-                        }
-                        counter++;
+                        stream.CopyTo(ms);
+                        CommonUtilities.AddDocumentToLibrary((SPDocumentLibrary)destinationList, targetUrl, ms.ToArray(), filename, new Hashtable());
                     }
-                    destinationFolder = destinationFolder.SubFolders[subfolder];
-                    var file = destinationFolder.Files.Add(filename, stream, true);
-                    sb.AppendLine(file.Url);
+
+                    sb.AppendLine(string.Format("{0}/{1}/{2}", docliburl, targetUrl, filename));
                 }
                 catch (Exception ex)
                 {
                     Logger.WriteLog(Logger.Category.Unexpected, "InboxEventReceiver - CopyFileToDetinations", string.Format("Errory by copy to File:{0} - {1}", filename, ex.Message));
                     // handle error
                     sucess = false;
-                    sb.AppendLine(string.Format("error while copying file to {0}/{1}. {2}", docliburl, subfolder, ex.Message));
+                    sb.AppendLine(string.Format("error while copying file to {0}/{1}. {2}", docliburl, targetUrl, ex.Message));
                 }
             }
             if (subfolders.Count == 0)
             {
                 sucess = false;
-                sb.AppendLine(string.Format("error while copying file to {0}. {1}", docliburl, "No projects defined"));
+                sb.AppendLine(string.Format("error while copying file to {0}. No projects defined", destUrlValue));
             }
             return sucess;
         }
