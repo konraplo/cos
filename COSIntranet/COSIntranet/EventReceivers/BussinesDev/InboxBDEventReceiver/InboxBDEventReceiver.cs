@@ -31,7 +31,6 @@ namespace Change.Intranet.EventReceivers.BussinesDev.InboxBDEventReceiver
             }
         }
 
-
         private Guid folderlLookupId = new Guid("{26c49b5f-fdf7-4cb8-b986-aef0d4e65eb3}");
         private Guid folderUrlId = new Guid("{5B0F68F2-8B2E-4C9D-B2B4-157BB8205052}");
         private Guid logId = new Guid("{f9cdeded-c94e-4fd7-8cea-b32cd6d4924c}");
@@ -46,15 +45,22 @@ namespace Change.Intranet.EventReceivers.BussinesDev.InboxBDEventReceiver
             Logger.WriteLog(Logger.Category.Medium, "InboxEventReceiver - Itemupdated", string.Format("item id:{0}", properties.ListItem.ID));
             SPListItem item = properties.ListItem;
             SPFile file = item.File;
-            if ((item[statusId] == null) || (item[statusId].ToString() != "1"))
+            string status = Convert.ToString(item[statusId]);
+            EventFiring eventFiring = new EventFiring();
+            if (status == "4")
             {
-                EventFiring eventFiring = new EventFiring();
-
+                eventFiring.DisableHandleEventFiring();
+                item[statusId] = null;
+                item.Update();
+                eventFiring.EnableHandleEventFiring();
+            }
+            else if (status != "1")
+            {
                 eventFiring.DisableHandleEventFiring();
                 item[statusId] = 1;
                 item.Update();
                 eventFiring.EnableHandleEventFiring();
-                
+
                 StringBuilder sb = new StringBuilder();
                 if (file != null)
                 {
@@ -110,6 +116,39 @@ namespace Change.Intranet.EventReceivers.BussinesDev.InboxBDEventReceiver
                 }
             }
             base.ItemUpdated(properties);
+        }
+
+        public override void ItemUpdating(SPItemEventProperties properties)
+        {
+            string fileUrl = properties.BeforeUrl;
+
+            string fileName = fileUrl.Substring(fileUrl.LastIndexOf('/') + 1);
+            if (IsUploaded(properties.List, fileName))
+            {
+                properties.AfterProperties["Status"] = 4;
+            }
+            base.ItemUpdating(properties);
+        }
+
+        private bool IsUploaded(SPList list, string fileName)
+
+        {
+            bool isExisted = false;
+            SPQuery query = new SPQuery();
+            query.Query = string.Format("<Where><Eq><FieldRef Name='FileLeafRef'></FieldRef><Value Type='Text'>{0}</Value></Eq></Where>", fileName);
+            query.ViewAttributes = "Scope=\"Recursive\"";
+            SPListItemCollection itemColl = list.GetItems(query);
+            if (itemColl.Count > 0)
+            {
+                string status = Convert.ToString(itemColl[0][statusId]);
+                if (status != "")
+                {
+                    isExisted = true;
+                }
+            }
+
+            return isExisted;
+
         }
 
         private bool CopyFileToDetinations(SPWeb web, SPFieldLookupValue destUrl, List<string> subfolders, string filename, Stream stream, SPList folderList, ref StringBuilder sb)

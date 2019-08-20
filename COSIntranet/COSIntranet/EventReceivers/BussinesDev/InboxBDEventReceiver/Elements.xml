@@ -1,7 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Receivers ListTemplateId="10103">
-      <Receiver>
+    <Receiver>
+      <Name>InboxBDEventReceiverItemUpdating</Name>
+      <Type>ItemUpdating</Type>
+      <Assembly>$SharePoint.Project.AssemblyFullName$</Assembly>
+      <Class>Change.Intranet.EventReceivers.BussinesDev.InboxBDEventReceiver.InboxBDEventReceiver</Class>
+      <SequenceNumber>10000</SequenceNumber>
+    </Receiver>
+    <Receiver>
         <Name>InboxBDEventReceiverItemUpdated</Name>
         <Type>ItemUpdated</Type>
         <Assembly>$SharePoint.Project.AssemblyFullName$</Assembly>
