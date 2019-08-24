@@ -174,6 +174,48 @@
         }
 
         /// <summary>
+        /// Create list (if not exists with specified title)
+        /// </summary>
+        /// <param name="web"></param>
+        /// <param name="listUrlName"></param>
+        /// <param name="title"></param>
+        /// <param name="desc"></param>
+        /// <param name="lstTemplateType"></param>
+        /// <param name="pOnQuickLaunch"></param>
+        /// <param name="hidden"> </param>
+        /// <returns></returns>
+        public static SPList CreateList(SPWeb web, string listUrlName, string title, string desc, SPListTemplateType lstTemplateType, bool pOnQuickLaunch, bool hidden)
+        {
+            if (listUrlName.StartsWith("Lists/"))
+            {
+                listUrlName = listUrlName.Substring("Lists/".Length);
+            }
+
+            SPList lstObj = web.Lists.TryGetList(title);
+
+            if (lstObj != null)
+            {
+                return lstObj;
+            }
+
+            Guid lstGuid = web.Lists.Add(listUrlName, desc, lstTemplateType);
+            try
+            {
+                SPList newList = web.Lists.GetList(lstGuid, true);
+                newList.OnQuickLaunch = pOnQuickLaunch;
+                newList.Title = title;
+                newList.Hidden = hidden;
+                newList.Update();
+                return newList;
+            }
+            catch (Exception exception)
+            {
+                Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName, exception.Message);
+                throw;
+            }
+        }
+
+        /// <summary>
         /// Attach specified content type to the specified list
         /// </summary>
         /// <param name="list"></param>

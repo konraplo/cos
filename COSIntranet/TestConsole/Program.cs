@@ -76,7 +76,7 @@ namespace TestConsole
 
             //TestSetContractStatus(@"http://sharcha-p15/sites/contracts");
             //TestCreateProjectTemplate(@"http://sharcha-p15/sites/cos/bd", 11);
-
+            TestCopyFolderStrcutre(@"http://sharcha-p15/sites/cos/bd");
             //CreateZipFile();
         }
 
@@ -468,6 +468,19 @@ namespace TestConsole
                     {
                         ImportProjectTasksTree(web, projectItemId);
                     }
+                }
+            }
+        }
+
+        private static void TestCopyFolderStrcutre(string siteUrl)
+        {
+            using (SPSite site = new SPSite(siteUrl))
+            {
+                using (SPWeb web = site.OpenWeb())
+                {
+                    string srcUrl = SPUtility.ConcatUrls(web.Url,string.Format(@"Lists/Marketing/{0}", @"11_tst01_Canada_Opening/From Marketing to partner"));
+                    string destUrl = SPUtility.ConcatUrls(web.Url, @"tests/11_tst01_Canada_Opening");
+                    SPMoveCopyUtil.CopyFolder(srcUrl, destUrl);
                 }
             }
         }
