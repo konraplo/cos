@@ -160,6 +160,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Project template.
+        /// </summary>
+        internal static string ChangeColProjectTemplate {
+            get {
+                return ResourceManager.GetString("ChangeColProjectTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Responsible Department.
         /// </summary>
         internal static string ChangeColResponsibleDepartment {

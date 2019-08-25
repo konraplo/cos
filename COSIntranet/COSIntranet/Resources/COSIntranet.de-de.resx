@@ -1031,4 +1031,7 @@ Have a nice day
   <data name="ChangeLibDescriptionProjectTemplates" xml:space="preserve">
     <value>Templates used for project creation</value>
   </data>
+  <data name="ChangeColProjectTemplate" xml:space="preserve">
+    <value>Project template</value>
+  </data>
 </root>

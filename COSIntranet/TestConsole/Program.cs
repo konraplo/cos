@@ -76,8 +76,20 @@ namespace TestConsole
 
             //TestSetContractStatus(@"http://sharcha-p15/sites/contracts");
             //TestCreateProjectTemplate(@"http://sharcha-p15/sites/cos/bd", 11);
-            TestCopyFolderStrcutre(@"http://sharcha-p15/sites/cos/bd");
+            //TestCopyFolderStrcutre(@"http://sharcha-p15/sites/cos/bd");
+            Upgradeto12Test(@"http://sharcha-p15/sites/cos/bd");
             //CreateZipFile();
+        }
+
+        private static void Upgradeto12Test(string siteUrl)
+        {
+            using (SPSite site = new SPSite(siteUrl))
+            {
+                using (SPWeb web = site.OpenWeb())
+                {
+                    Upgradeto12(web);
+                }
+            }
         }
 
         private static List<ProjectTask> ExportProjectTasks(SPWeb web, int projectItemId)
@@ -522,6 +534,24 @@ namespace TestConsole
             //zipUtility.AddFile("DUPA2_Folder\\testdupa", file);
 
             zipUtility.SavePackageToFile(Directory.GetCurrentDirectory());
+        }
+
+        private static void Upgradeto12(SPWeb web)
+        {
+            if (web != null)
+            {
+                // add project template ct
+                string projectsUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), Change.Intranet.Common.ListUtilities.Urls.StoreOpenings);
+                //web.GetList(SPUtility.ConcatUrls(web.Url, Change.Intranet.Common.ListUtilities.Urls.StoreOpenings));
+                SPList projectsList = web.GetList(SPUtility.ConcatUrls(web.Url, Change.Intranet.Common.ListUtilities.Urls.StoreOpenings));//web.GetList(projectsUrl);
+                SPContentType projectContentType = web.Site.RootWeb.ContentTypes[Change.Intranet.Common.ContentTypeIds.Project];
+                SPField prjectTemplateLookup = web.Site.RootWeb.Fields.GetFieldByInternalName(Change.Intranet.Common.Fields.ProjectTemplate);
+                CommonUtilities.AddFieldToContentType(web, projectContentType, prjectTemplateLookup, false, false, string.Empty);
+
+                
+            }
+
+            Logger.WriteLog(Logger.Category.Medium, "Upgradeto12 finished", string.Format("web:{0}", web.Url));
         }
     }
 }

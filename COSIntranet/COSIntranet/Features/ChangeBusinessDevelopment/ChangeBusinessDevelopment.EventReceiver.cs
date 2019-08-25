@@ -207,7 +207,7 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
 
         private void Upgradeto12(SPWeb web)
         {
-            Logger.WriteLog(Logger.Category.Medium, "ChangeBusinessDevelopmentEventReceiver - Upgradeto11", string.Format("web:{0}", web.Url));
+            Logger.WriteLog(Logger.Category.Medium, this.GetType().Name, string.Format("Upgradeto12 web:{0}", web.Url));
             if (web != null)
             {
                 // add project template ct
@@ -218,16 +218,17 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
 
                 CommonUtilities.AttachContentTypeToList(projectTemplatesList, projectTemplateContentType, true, false);
 
+                Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "create/add project template lookup to project ct");
                 string projectsUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.StoreOpenings);
                 SPList projectsList = web.GetList(projectsUrl);
                 Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add Lookups to:{0}", projectsUrl));
                 SPFieldLookup projecttemplateLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.ProjectTemplate, "$Resources:COSIntranet,ChangeColProjectTemplate", Fields.Title, projectTemplatesList, false, false);
 
-                projectsList.Fields[Fields.ProjectTemplate].ShowInEditForm = false;
-                projectsList.Update();
+                SPContentType projectContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.Project];
+                CommonUtilities.AddFieldToContentType(web, projectContentType, projecttemplateLookup, false, false, string.Empty);
             }
 
-            Logger.WriteLog(Logger.Category.Medium, "Upgradeto11 fnished", string.Format("web:{0}", web.Url));
+            Logger.WriteLog(Logger.Category.Medium, "Upgradeto12 finished", string.Format("web:{0}", web.Url));
         }
 
        
