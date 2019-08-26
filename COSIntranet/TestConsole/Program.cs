@@ -77,7 +77,8 @@ namespace TestConsole
             //TestSetContractStatus(@"http://sharcha-p15/sites/contracts");
             //TestCreateProjectTemplate(@"http://sharcha-p15/sites/cos/bd", 11);
             //TestCopyFolderStrcutre(@"http://sharcha-p15/sites/cos/bd");
-            Upgradeto12Test(@"http://sharcha-p15/sites/cos/bd");
+            TestUpdateFolderStrucutreMarketingLib(@"http://sharcha-p15/sites/cos/bd");
+            //Upgradeto12Test(@"http://sharcha-p15/sites/cos/bd");
             //CreateZipFile();
         }
 
@@ -497,6 +498,19 @@ namespace TestConsole
             }
         }
 
+        private static void TestUpdateFolderStrucutreMarketingLib(string siteUrl)
+        {
+            using (SPSite site = new SPSite(siteUrl))
+            {
+                using (SPWeb web = site.OpenWeb())
+                {
+                    SPList list = web.GetList(SPUtility.ConcatUrls(web.Url,"tests"));//web.GetList(projectsUrl);
+
+                    UpdateFolderStrucutreMarketingLib(list);
+                }
+            }
+        }
+
         private static void SetContractStatus(SPWeb web)
         {
             SPList list = web.GetList(SPUtility.ConcatUrls(web.Url, Urls.Contracts));
@@ -552,6 +566,43 @@ namespace TestConsole
             }
 
             Logger.WriteLog(Logger.Category.Medium, "Upgradeto12 finished", string.Format("web:{0}", web.Url));
+        }
+
+        private static void UpdateFolderStrucutreMarketingLib(SPList list)
+        {
+            // Marketing
+            Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutreMarketingLib", "Start update Marketing");
+            SPFolderCollection folderColl = list.RootFolder.SubFolders;
+
+            string folderUrl = "Marketing";
+            SPFolder projectFolderObj = folderColl.Add(folderUrl);
+
+            string fromMarketingToPartnerFolderUrl = "From Marketing to partner";
+            SPFolder fromMarketingToPartner = projectFolderObj.SubFolders.Add(fromMarketingToPartnerFolderUrl);
+            folderUrl = "Center Channels";
+            fromMarketingToPartner.SubFolders.Add(folderUrl);
+            folderUrl = "Own Channels";
+            fromMarketingToPartner.SubFolders.Add(folderUrl);
+            folderUrl = "External Channels";
+            fromMarketingToPartner.SubFolders.Add(folderUrl);
+
+            string fromPartnerToMarketingFolderUrl = "From partner to Marketing";
+            SPFolder fromPartnerToMarketing = projectFolderObj.SubFolders.Add(fromPartnerToMarketingFolderUrl);
+            folderUrl = "Center information";
+            fromPartnerToMarketing.SubFolders.Add(folderUrl);
+            list.Update();
+
+            string rootDirectory = SPUtility.GetCurrentGenericSetupPath(@"TEMPLATE\FEATURES\COSIntranet_ChangeBusinessDevelopment\MarketingTemplates");
+            string docPath = string.Format(@"{0}\{1}", rootDirectory, @"Marketin_order.xlsx".TrimStart('\\'));
+            string trargetFolderRelativeUrl = string.Format(@"Marketing/{0}/{1}", fromPartnerToMarketingFolderUrl, folderUrl);
+            Change.Intranet.Common.CommonUtilities.AddDocumentToLibrary(list, trargetFolderRelativeUrl, docPath);
+            docPath = string.Format(@"{0}\{1}", rootDirectory, @"Marketing_Timeline.xlsx".TrimStart('\\'));
+            Change.Intranet.Common.CommonUtilities.AddDocumentToLibrary(list, trargetFolderRelativeUrl, docPath);
+            docPath = string.Format(@"{0}\{1}", rootDirectory, @"Marketing_overview.xlsx".TrimStart('\\'));
+            Change.Intranet.Common.CommonUtilities.AddDocumentToLibrary(list, trargetFolderRelativeUrl, docPath);
+
+
+            Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutreMarketingLib", "End update Marketing");
         }
     }
 }

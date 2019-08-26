@@ -3,6 +3,7 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.IO;
     using System.Text;
     using Microsoft.SharePoint;
     using Microsoft.SharePoint.Administration;
@@ -170,6 +171,29 @@
             {
                 Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).FullName, string.Format("Helper.AddDocumentToLibrary: Error during  document adding:{0}", exception.Message));
                 throw;
+            }
+        }
+
+        /// <summary>
+        /// Add doc to library
+        /// </summary>
+        /// <param name="list">Traget list</param>
+        /// <param name="libraryRelativeFolderUrl">target relatibe url</param>
+        /// <param name="docPath">File path</param>
+        public static void AddDocumentToLibrary(SPList list, string libraryRelativeFolderUrl, string docPath)
+        {
+            if (File.Exists(docPath))
+            {
+                Logger.WriteLog(Logger.Category.Information, "AddDocumentToLibrary", string.Format("library:{0} folder:{1} file{2}", list.Title, libraryRelativeFolderUrl, docPath));
+
+                string fileName = Path.GetFileName(docPath);
+                FileStream stream = new FileStream(docPath, FileMode.Open, FileAccess.Read);
+                BinaryReader myReader = new BinaryReader(stream);
+                byte[] content = myReader.ReadBytes((int)stream.Length);
+                myReader.Close();
+                stream.Close();
+
+                CommonUtilities.AddDocumentToLibrary((SPDocumentLibrary)list, libraryRelativeFolderUrl, content, fileName, new Hashtable());
             }
         }
 

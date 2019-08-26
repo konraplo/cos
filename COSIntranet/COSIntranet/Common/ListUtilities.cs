@@ -57,6 +57,7 @@ namespace Change.Intranet.Common
             public const string ProjectTasks = "Lists/ProjectTasks";
             public const string StoreOpenings = "Lists/StoreOpenings";
             public const string ProjectTemplates = "ProjectTemplates";
+            public const string ProjectTemplatesDocuments = "ProjectTemplatesDocuments";
             public const string Countries = "Lists/Countries";
         }
 

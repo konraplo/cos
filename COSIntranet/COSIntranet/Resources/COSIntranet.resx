@@ -1062,4 +1062,10 @@ Have a nice day
   <data name="ChangeColProjectTemplate" xml:space="preserve">
     <value>Project template</value>
   </data>
+  <data name="ChangeLibTitleProjectTemplatesDocuments" xml:space="preserve">
+    <value>Project template documents</value>
+  </data>
+  <data name="ChangeLibDescriptionProjectTemplatesDocuments" xml:space="preserve">
+    <value>Folders and documents used in project creation</value>
+  </data>
 </root>
