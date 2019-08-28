@@ -302,7 +302,7 @@
 
         private static void UpdateFolderStrucutrePicturesLib(SPWeb web, string projectFolder, int itemId)
         {
-            // Marketing
+            // Pictures
             Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutrePicturesLib", "Start update Pictures");
             SPList list = null;
             try

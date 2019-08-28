@@ -76,6 +76,11 @@ namespace Change.Intranet.Features.ChangeContentOrganizerBD
                 string projectTemplatesUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.ProjectTemplatesDocuments);
                 SPList projectTemplatesList = web.GetList(projectTemplatesUrl);
                 UpdateFolderStrucutreMarketingLib(projectTemplatesList);
+                UpdateFolderStrucutreDrawingsLib(projectTemplatesList);
+                UpdateFolderStrucutreGeneralInformationLib(projectTemplatesList);
+                UpdateFolderStrucutreLogisticLib(projectTemplatesList);
+                UpdateFolderStrucutrePicturesLib(projectTemplatesList);
+                UpdateFolderStrucutreEvaluationLib(projectTemplatesList);
             }
 
             Logger.WriteLog(Logger.Category.Medium, typeof(ChangeContentOrganizerBDEventReceiver).FullName, string.Format("Upgradeto11 fnished web:{0}", web.Url));
@@ -116,6 +121,114 @@ namespace Change.Intranet.Features.ChangeContentOrganizerBD
 
 
             Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutreMarketingLib", "End update Marketing");
+        }
+
+        private static void UpdateFolderStrucutreDrawingsLib(SPList list)
+        {
+            // Drawings
+            Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutreDrawingsLib", "Start update Drawings");
+
+            SPFolderCollection folderColl = list.RootFolder.SubFolders;
+
+            string folderUrl = "Drawings";
+            SPFolder projectFolderObj = folderColl.Add(folderUrl);
+            folderUrl = "Center before opening";
+            projectFolderObj.SubFolders.Add(folderUrl);
+            folderUrl = "Recieved from center";
+            projectFolderObj.SubFolders.Add(folderUrl);
+            folderUrl = "Final - PDF";
+            SPFolder finalPDF = projectFolderObj.SubFolders.Add(folderUrl);
+            folderUrl = "Final - CAD";
+            projectFolderObj.SubFolders.Add(folderUrl);
+            folderUrl = "Not approved";
+            finalPDF.SubFolders.Add(folderUrl);
+
+            list.Update();
+
+            Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutreDrawingsLib", "End update Drawings");
+        }
+
+        private static void UpdateFolderStrucutreGeneralInformationLib(SPList list)
+        {
+            // GeneralInformation
+            Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutreGeneralInformationLib", "Start update GeneralInformation");
+
+
+            SPFolderCollection folderColl = list.RootFolder.SubFolders;
+
+            string folderUrl = "GeneralInformation";
+            SPFolder projectFolderObj = folderColl.Add(folderUrl);
+            string rootDirectory = SPUtility.GetCurrentGenericSetupPath(@"TEMPLATE\FEATURES\COSIntranet_ChangeBusinessDevelopment\GeneralInformationTemplates");
+            list.Update();
+
+            string docPath = string.Format(@"{0}\{1}", rootDirectory, @"Costruction_Scope_of_Work.docx".TrimStart('\\'));
+            Change.Intranet.Common.CommonUtilities.AddDocumentToLibrary(list, folderUrl, docPath);
+            docPath = string.Format(@"{0}\{1}", rootDirectory, @"Frontpage.xlsx".TrimStart('\\'));
+            Change.Intranet.Common.CommonUtilities.AddDocumentToLibrary(list, folderUrl, docPath);
+
+            Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutreGeneralInformationLib", "End update GeneralInformation");
+        }
+
+        private static void UpdateFolderStrucutreLogisticLib(SPList list)
+        {
+            // Logistic
+            Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutreLogisticLib", "Start update Logistic");
+
+
+            SPFolderCollection folderColl = list.RootFolder.SubFolders;
+
+            string folderUrl = "Logistic";
+            SPFolder projectFolderObj = folderColl.Add(folderUrl);
+            folderUrl = "Order";
+            projectFolderObj.SubFolders.Add(folderUrl);
+            folderUrl = "Order confirmation";
+            projectFolderObj.SubFolders.Add(folderUrl);
+
+            list.Update();
+            Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutreLogisticLib", "End update Logistic");
+        }
+
+        private static void UpdateFolderStrucutrePicturesLib(SPList list)
+        {
+            // Pictures
+            Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutrePicturesLib", "Start update Pictures");
+
+
+            SPFolderCollection folderColl = list.RootFolder.SubFolders;
+
+            string folderUrl = "Pictures";
+            SPFolder projectFolderObj = folderColl.Add(folderUrl);
+            folderUrl = "From Warehouse";
+            projectFolderObj.SubFolders.Add(folderUrl);
+            folderUrl = "Center, after opening";
+            projectFolderObj.SubFolders.Add(folderUrl);
+
+            list.Update();
+            Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutrePicturesLib", "End update Pictures");
+        }
+
+        private static void UpdateFolderStrucutreEvaluationLib(SPList list)
+        {
+            // Evaluation
+            Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutreEvaluationLib", "Start update Evaluation");
+
+
+            SPFolderCollection folderColl = list.RootFolder.SubFolders;
+
+            string folderUrl = "Evaluation";
+            SPFolder projectFolderObj = folderColl.Add(folderUrl);
+
+            list.Update();
+
+            string rootDirectory = SPUtility.GetCurrentGenericSetupPath(@"TEMPLATE\FEATURES\COSIntranet_ChangeBusinessDevelopment\EvaluationTemplates");
+
+            string docPath = string.Format(@"{0}\{1}", rootDirectory, @"Quality_report_contractor.doc".TrimStart('\\'));
+            Change.Intranet.Common.CommonUtilities.AddDocumentToLibrary(list, folderUrl, docPath);
+            docPath = string.Format(@"{0}\{1}", rootDirectory, @"Quality_report_departments.xls".TrimStart('\\'));
+            Change.Intranet.Common.CommonUtilities.AddDocumentToLibrary(list, folderUrl, docPath);
+
+            list.Update();
+            Logger.WriteLog(Logger.Category.Information, "UpdateFolderStrucutreEvaluationLib", "End update Evaluation");
         }
 
     }
