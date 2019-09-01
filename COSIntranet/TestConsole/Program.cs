@@ -77,7 +77,8 @@ namespace TestConsole
             //TestSetContractStatus(@"http://sharcha-p15/sites/contracts");
             //TestCreateProjectTemplate(@"http://sharcha-p15/sites/cos/bd", 11);
             //TestCopyFolderStrcutre(@"http://sharcha-p15/sites/cos/bd");
-            TestUpdateFolderStrucutreProjectTemplate(@"http://sharcha-p15/sites/cos/bd");
+            //TestUpdateFolderStrucutreProjectTemplate(@"http://sharcha-p15/sites/cos/bd");
+            CreateFolderStructure(@"http://sharcha-p15/sites/cos/bd", "11_tst01_Canada_Opening");
             //Upgradeto12Test(@"http://sharcha-p15/sites/cos/bd");
             //CreateZipFile();
         }
@@ -506,12 +507,56 @@ namespace TestConsole
                 {
                     SPList list = web.GetList(SPUtility.ConcatUrls(web.Url,"tests"));//web.GetList(projectsUrl);
 
-                    //UpdateFolderStrucutreMarketingLib(list);
-                    //UpdateFolderStrucutreDrawingsLib(list);
-                    //UpdateFolderStrucutreGeneralInformationLib(list);
-                    //UpdateFolderStrucutreLogisticLib(list);
+                    UpdateFolderStrucutreMarketingLib(list);
+                    UpdateFolderStrucutreDrawingsLib(list);
+                    UpdateFolderStrucutreGeneralInformationLib(list);
+                    UpdateFolderStrucutreLogisticLib(list);
                     UpdateFolderStrucutrePicturesLib(list);
                     UpdateFolderStrucutreEvaluationLib(list);
+                }
+            }
+        }
+
+        private static void CreateFolderStructure(string siteUrl,string projectName)
+        {
+            using (SPSite site = new SPSite(siteUrl))
+            {
+                using (SPWeb web = site.OpenWeb())
+                {
+                    SPList list = web.GetList(SPUtility.ConcatUrls(web.Url, "tests"));//web.GetList(projectsUrl);
+                    SPFolderCollection folderColl = list.RootFolder.SubFolders;
+                    foreach (SPFolder folder in folderColl)
+                    {
+                        SPList projectDocumentList = null;
+                        string listUrl = folder.Name;
+                        try
+                        {
+                            projectDocumentList = web.GetList(SPUrlUtility.CombineUrl(web.Url, listUrl));
+                        }
+                        catch (Exception)
+                        {
+                            Logger.WriteLog(Logger.Category.Information, "CreateFolderStructure", string.Format("List:{0} not found", listUrl));
+                        }
+
+                        if (projectDocumentList == null)
+                        {
+                            listUrl = string.Format("Lists/{0}", folder.Name);
+                            try
+                            {
+                                projectDocumentList = web.GetList(SPUrlUtility.CombineUrl(web.Url, listUrl));
+                            }
+                            catch (Exception)
+                            {
+                                Logger.WriteLog(Logger.Category.Information, "CreateFolderStructure", string.Format("List:{0} not found", listUrl));
+
+                                return;
+                            }
+                        }
+
+                        // copy folder structure
+                        string srcUrl = SPUtility.ConcatUrls(web.Url, folder.Url);
+                        string destUrl = SPUtility.ConcatUrls(web.Url, string.Format(@"{0}/{1}",projectDocumentList.RootFolder.Url, projectName));
+                    }
                 }
             }
         }

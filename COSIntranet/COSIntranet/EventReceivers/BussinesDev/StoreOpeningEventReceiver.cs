@@ -84,15 +84,67 @@
             SPFieldLookupValue storeCountry = new SPFieldLookupValue(ProjectUtilities.GetStoreCountry(item.Web, store.LookupId));
             string type = Convert.ToString(item[Fields.ChangeProjectCategory]);
             string projectFolderName = string.Format("{0}_{1}_{2}_{3}", item.ID, store.LookupValue, storeCountry.LookupValue, type);
-            UpdateFolderStrucutreMarketingLib(item.Web, projectFolderName, item.ID);
-            UpdateFolderStrucutreDrawingsLib(item.Web, projectFolderName, item.ID);
-            UpdateFolderStrucutreGeneralInformationLib(item.Web, projectFolderName, item.ID);
-            UpdateFolderStrucutreLogisticLib(item.Web, projectFolderName, item.ID);
-            UpdateFolderStrucutrePicturesLib(item.Web, projectFolderName, item.ID);
-            UpdateFolderStrucutreEvaluationLib(item.Web, projectFolderName, item.ID);
+            CreateFolderStructure(item.Web, projectFolderName, item.ID);
+            //UpdateFolderStrucutreMarketingLib(item.Web, projectFolderName, item.ID);
+            //UpdateFolderStrucutreDrawingsLib(item.Web, projectFolderName, item.ID);
+            //UpdateFolderStrucutreGeneralInformationLib(item.Web, projectFolderName, item.ID);
+            //UpdateFolderStrucutreLogisticLib(item.Web, projectFolderName, item.ID);
+            //UpdateFolderStrucutrePicturesLib(item.Web, projectFolderName, item.ID);
+            //UpdateFolderStrucutreEvaluationLib(item.Web, projectFolderName, item.ID);
         }
 
-        
+        private void CreateFolderStructure(SPWeb web, string projectFolderName, int itemId)
+        {
+            SPList list = web.GetList(SPUtility.ConcatUrls(web.Url, ListUtilities.Urls.ProjectTemplatesDocuments));//web.GetList(projectsUrl);
+            SPFolderCollection folderColl = list.RootFolder.SubFolders;
+            foreach (SPFolder folder in folderColl)
+            {
+                SPList projectDocumentList = null;
+                string listUrl = folder.Name;
+                try
+                {
+                    projectDocumentList = web.GetList(SPUrlUtility.CombineUrl(web.Url, listUrl));
+                }
+                catch (Exception)
+                {
+                    Logger.WriteLog(Logger.Category.Information, "CreateFolderStructure", string.Format("List:{0} not found", listUrl));
+                }
+
+                if (projectDocumentList == null)
+                {
+                    listUrl = string.Format("Lists/{0}", folder.Name);
+                    try
+                    {
+                        projectDocumentList = web.GetList(SPUrlUtility.CombineUrl(web.Url, listUrl));
+                    }
+                    catch (Exception)
+                    {
+                        Logger.WriteLog(Logger.Category.Unexpected, "CreateFolderStructure", string.Format("List:{0} not found", listUrl));
+
+                        continue;
+                    }
+                }
+
+                SPListItemCollection items = CommonUtilities.GetFoldersByPrefix(web, list, string.Format("{0}_", itemId));
+
+                //Get the name and Url for the folder 
+                if (items.Count > 0)
+                {
+                    SPListItem firstItem = items[0];
+                    firstItem[SPBuiltInFieldId.FileLeafRef] = projectFolderName;
+                    firstItem.Update();
+                }
+                else
+                {
+                    // copy folder structure
+                    string srcUrl = SPUtility.ConcatUrls(web.Url, folder.Url);
+                    string destUrl = SPUtility.ConcatUrls(web.Url, string.Format(@"{0}/{1}", projectDocumentList.RootFolder.Url, projectFolderName));
+                    SPMoveCopyUtil.CopyFolder(srcUrl, destUrl);
+                }
+                
+            }
+        }
+
         private static void UpdateFolderStrucutreMarketingLib(SPWeb web, string projectFolder,int itemId)
         {
             // Marketing
