@@ -5,6 +5,7 @@ using Microsoft.SharePoint;
 using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Utilities;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -75,10 +76,11 @@ namespace TestConsole
             //Console.WriteLine(string.Format("{0},{1},{2}", string.Format("{0:MMMM dd, yyyy}", grandOpening), string.Format("{0:dd-MM-yyyy}", firstDelivery), string.Format("{0:dd-MM-yyyy}", secondDelivery)));
 
             //TestSetContractStatus(@"http://sharcha-p15/sites/contracts");
-            //TestCreateProjectTemplate(@"http://sharcha-p15/sites/cos/bd", 11);
+            TestProjectTemplate();
+            TestCreateProjectTemplate(@"http://sharcha-p15/sites/cos/bd", 16);
             //TestCopyFolderStrcutre(@"http://sharcha-p15/sites/cos/bd");
             //TestUpdateFolderStrucutreProjectTemplate(@"http://sharcha-p15/sites/cos/bd");
-            CreateFolderStructure(@"http://sharcha-p15/sites/cos/bd", "11_tst01_Canada_Opening");
+            //CreateFolderStructure(@"http://sharcha-p15/sites/cos/bd", "11_tst01_Canada_Opening");
             //Upgradeto12Test(@"http://sharcha-p15/sites/cos/bd");
             //CreateZipFile();
         }
@@ -171,7 +173,10 @@ namespace TestConsole
         {
             List<ProjectTask> tasks = ExportProjectTasks(web, projectItemId);
             ProjectTask projectRootTask = tasks.FirstOrDefault(x=> x.IsStoreOpeningTask == true);
-            FillProjectTasksTree(projectRootTask, tasks);
+            if (projectRootTask != null)
+            {
+                FillProjectTasksTree(projectRootTask, tasks);
+            }
 
             return projectRootTask;
         }
@@ -450,15 +455,28 @@ namespace TestConsole
             return formatedUpdateBatchCommands;
         }
 
-        private static void SaveProjectTemplate(ProjectTask projectRootTask)
+        private static void SaveProjectTemplate(SPWeb web, ProjectTask projectRootTask)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             string json = serializer.Serialize(projectRootTask);
             var template = serializer.Deserialize(json, typeof(ProjectTask));
-            string path = @"D:\kpl\template1.json";
-            File.WriteAllText(path, json);
+            byte[] content = System.Text.Encoding.ASCII.GetBytes(json);
+            string fileName = "template1.json";
+            string projectTemplatesUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), Change.Intranet.Common.ListUtilities.Urls.ProjectTemplatesDocuments);
+            SPList projectTemplatesList = web.GetList(projectTemplatesUrl);
+            CommonUtilities.AddDocumentToLibrary((SPDocumentLibrary)projectTemplatesList, string.Empty, content, fileName, new Hashtable());
+            //string path = @"D:\kpl\template1.json";
+            //File.WriteAllText(path, json);
         }
 
+        private static void TestProjectTemplate()
+        {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            string path = @"D:\kpl\template1aa.json";
+            string json = File.ReadAllText(path);
+            var template = serializer.Deserialize(json, typeof(ProjectTask));
+
+        }
         private static void TestSetContractStatus(string siteUrl)
         {
             using (SPSite site = new SPSite(siteUrl))
@@ -476,12 +494,12 @@ namespace TestConsole
             {
                 using (SPWeb web = site.OpenWeb())
                 {
-                    //ProjectTask result = ExportProjectTasksTree(web, projectItemId);
-                    //SaveProjectTemplate(result);
-                    using (DisableEventFiringScope scope = new DisableEventFiringScope())
-                    {
-                        ImportProjectTasksTree(web, projectItemId);
-                    }
+                    ProjectTask result = ExportProjectTasksTree(web, projectItemId);
+                    SaveProjectTemplate(web, result);
+                    //using (DisableEventFiringScope scope = new DisableEventFiringScope())
+                    //{
+                    //    ImportProjectTasksTree(web, projectItemId);
+                    //}
                 }
             }
         }

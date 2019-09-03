@@ -439,6 +439,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The save project template process may take some time...Please be patient..
+        /// </summary>
+        internal static string ChangeExportProjectTemplarelateLongOpDesc {
+            get {
+                return ResourceManager.GetString("ChangeExportProjectTemplarelateLongOpDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Follow up hour and salary spendings
         ///.
         /// </summary>

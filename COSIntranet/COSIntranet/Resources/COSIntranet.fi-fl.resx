@@ -1031,4 +1031,7 @@ Have a nice day</value>
   <data name="ChangeLibDescriptionProjectTemplatesDocuments" xml:space="preserve">
     <value>Folders and documents used in project creation</value>
   </data>
+  <data name="ChangeExportProjectTemplarelateLongOpDesc" xml:space="preserve">
+    <value>The save project template process may take some time...Please be patient.</value>
+  </data>
 </root>

@@ -30,6 +30,7 @@
                     "<SetVar Name=\"ID\">{2}</SetVar>" +
                     "{3}" +
                     "</Method>";
+
         /// <summary>
         /// batch row used to update items
         /// </summary>
@@ -50,6 +51,7 @@
                                                         "<Eq><FieldRef Name='FSObjType'/><Value Type='Lookup'>1</Value></Eq>" +
                                                         "<BeginsWith><FieldRef Name='FileLeafRef'/><Value Type='File'>{0}</Value></BeginsWith>" +
                                                     "</And></Where>";
+       
         /// <summary>
         /// This method creates a lookup site column if not exists.
         /// </summary>
@@ -127,7 +129,7 @@
         public static SPListItemCollection GetFoldersByPrefix(SPWeb web, SPList list, string prefix)
         {
             SPQuery query = new SPQuery();
-            query.Query = string.Format(CommonUtilities.GetFolderByPrefix, prefix);
+            query.Query = string.Format(GetFolderByPrefix, prefix);
             query.ViewAttributes = "Scope='RecursiveAll'";
             return list.GetItems(query);
 
@@ -193,7 +195,7 @@
                 myReader.Close();
                 stream.Close();
 
-                CommonUtilities.AddDocumentToLibrary((SPDocumentLibrary)list, libraryRelativeFolderUrl, content, fileName, new Hashtable());
+                AddDocumentToLibrary((SPDocumentLibrary)list, libraryRelativeFolderUrl, content, fileName, new Hashtable());
             }
         }
 

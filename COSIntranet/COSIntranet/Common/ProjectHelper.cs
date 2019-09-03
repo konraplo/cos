@@ -6,6 +6,11 @@
     using Change.Intranet.Projects;
     using System.IO;
     using Change.Intranet.CONTROLTEMPLATES.COSIntranet.Common;
+    using Change.Intranet.Model;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web.Script.Serialization;
+    using System.Collections;
 
     /// <summary>
     /// Functionality connteced with projects opereations
@@ -24,6 +29,17 @@
                                                                     </Eq>
                                                                   </And>
                                                                 </Where>";
+        /// <summary>
+        /// Get all tasks for specified project
+        /// </summary>
+        private const string QueryProjectTasks =
+                                  @"<Where>
+                                      <Eq>
+                                                                      <FieldRef Name='{0}'  LookupId='True'/>
+                                                                      <Value Type='Lookup'>{1}</Value>
+                                                                    </Eq>
+                                   </Where>";
+
 
         public static string[] projectLibrarieUrls = { "Marketing", "Drawings", "GeneralInformation", "Logistic", "Pictures", "Evaluation" };
 
@@ -249,6 +265,124 @@
 
             return null;
         }
+
+        /// <summary>
+        /// Save project plan (all project tasks) as template
+        /// </summary>
+        /// <param name="web">Web with project template lib</param>
+        /// <param name="projectItemId"></param>
+        /// <param name="templateName"></param>
+        public static void SaveProjectTemplate(SPWeb web, int projectItemId, string templateName)
+        {
+            ProjectTask projectRootTask = ExportProjectTasksTree(web, projectItemId);
+            templateName = string.Format("{0}.json", templateName);
+            SaveProjectTemplate(web, projectRootTask, templateName);
+        }
+
+        private static List<ProjectTask> ExportProjectTasks(SPWeb web, int projectItemId)
+        {
+            List<ProjectTask> result = new List<ProjectTask>();
+            SPList projectList = web.GetList(SPUtility.ConcatUrls(web.Url, ListUtilities.Urls.StoreOpenings));
+            SPListItem project = projectList.GetItemById(projectItemId);
+            DateTime grandOpening = Convert.ToDateTime(project[SPBuiltInFieldId.TaskDueDate]);
+            SPFieldLookupValue store = new SPFieldLookupValue(Convert.ToString(project[Fields.Store]));
+            SPFieldLookupValue storeCountry = new SPFieldLookupValue(ProjectUtilities.GetStoreCountry(web, store.LookupId));
+
+            string countryUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.Countries);
+            SPList countryList = web.GetList(countryUrl);
+            List<Country> regions = new List<Country>();
+            foreach (SPListItem regionIem in countryList.GetItems(new SPQuery()))
+            {
+                regions.Add(new Country { Id = regionIem.ID, Title = regionIem.Title, Manager = Convert.ToString(regionIem[Fields.ChangeCountrymanager]) });
+            }
+
+            string storeMgr = ProjectUtilities.GetStoreManager(web, store.LookupId);
+
+            string projectCoordinator = Convert.ToString(project[SPBuiltInFieldId.AssignedTo]);
+            string regionalMgr = regions.FirstOrDefault(x => x.Id.Equals(storeCountry.LookupId)).Manager;
+
+            SPList tasksList = web.GetList(SPUtility.ConcatUrls(web.Url, ListUtilities.Urls.ProjectTasks));
+            SPQuery query = new SPQuery();
+
+            // tasks
+            query.Query = string.Format(QueryProjectTasks, Fields.StoreOpening, projectItemId); ;
+            SPListItemCollection tasks = tasksList.GetItems(query);
+            foreach (SPListItem taskItem in tasks)
+            {
+                DateTime endDate = Convert.ToDateTime(taskItem[SPBuiltInFieldId.TaskDueDate]);
+                DateTime startDate = Convert.ToDateTime(taskItem[SPBuiltInFieldId.StartDate]);
+                ProjectTask task = new ProjectTask();
+                task.Id = taskItem.ID;
+                task.Title = taskItem.Title;
+                task.IsStoreOpeningTask = Convert.ToBoolean(taskItem[Fields.StoreOpeningTask]);
+                SPFieldLookupValue department = new SPFieldLookupValue(Convert.ToString(taskItem[Fields.Department]));
+                task.ResponsibleDepartment = department.LookupValue;
+                task.Responsible = Convert.ToString(taskItem[SPBuiltInFieldId.AssignedTo]);
+                task.Duration = (endDate - startDate).Days;
+                task.TimeBeforeGrandOpening = (grandOpening - endDate).Days;
+
+                SPFieldLookupValue parent = new SPFieldLookupValue(Convert.ToString(taskItem[SPBuiltInFieldId.ParentID]));
+                if (parent.LookupId > 0)
+                {
+                    task.ParentId = parent.LookupId;
+                    task.ParentTitle = parent.LookupValue;
+                }
+                result.Add(task);
+            }
+
+            foreach (ProjectTask projectTask in result.Where(x => !string.IsNullOrEmpty(x.Responsible) && x.Responsible.Equals(storeMgr)))
+            {
+                projectTask.Responsible = DepartmentUtilities.StoreManager;
+            }
+            foreach (ProjectTask projectTask in result.Where(x => !string.IsNullOrEmpty(x.Responsible) && x.Responsible.Equals(projectCoordinator)))
+            {
+                projectTask.Responsible = DepartmentUtilities.ProjectCoordinator;
+            }
+            foreach (ProjectTask projectTask in result.Where(x => !string.IsNullOrEmpty(x.Responsible) && x.Responsible.Equals(regionalMgr)))
+            {
+                projectTask.Responsible = DepartmentUtilities.RegionalManager;
+            }
+
+            //clean up other responsibilities
+            foreach (ProjectTask projectTask in result.Where(x => !string.IsNullOrEmpty(x.Responsible) && x.Responsible.Contains(";#")))
+            {
+                projectTask.Responsible = string.Empty;
+            }
+
+            return result;
+        }
+
+        private static void SaveProjectTemplate(SPWeb web, ProjectTask projectRootTask, string fileName)
+        {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            string json = serializer.Serialize(projectRootTask);
+            var template = serializer.Deserialize(json, typeof(ProjectTask));
+            byte[] content = System.Text.Encoding.ASCII.GetBytes(json);
+            string projectTemplatesUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.ProjectTemplates);
+            SPList projectTemplatesList = web.GetList(projectTemplatesUrl);
+            CommonUtilities.AddDocumentToLibrary((SPDocumentLibrary)projectTemplatesList, string.Empty, content, fileName, new Hashtable());
+        }
+
+        private static ProjectTask ExportProjectTasksTree(SPWeb web, int projectItemId)
+        {
+            List<ProjectTask> tasks = ExportProjectTasks(web, projectItemId);
+            ProjectTask projectRootTask = tasks.FirstOrDefault(x => x.IsStoreOpeningTask == true);
+            FillProjectTasksTree(projectRootTask, tasks);
+
+            return projectRootTask;
+        }
+
+        private static void FillProjectTasksTree(ProjectTask parentTask, List<ProjectTask> tasks)
+        {
+            List<ProjectTask> subtasks = tasks.Where(x => x.ParentId.Equals(parentTask.Id)).ToList();
+            parentTask.Subtasks = subtasks;
+            foreach (ProjectTask task in subtasks)
+            {
+                FillProjectTasksTree(task, tasks);
+            }
+        }
+
+
     }
 
 }

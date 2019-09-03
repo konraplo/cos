@@ -69,6 +69,13 @@
     <Compile Include="Common\Logger.cs" />
     <Compile Include="Common\ProjectHelper.cs" />
     <Compile Include="Common\ZipUtility.cs" />
+    <Compile Include="CONTROLTEMPLATES\COSIntranet\BusinessDev\Project\CreateProjectTemplateUC.ascx.cs">
+      <DependentUpon>CreateProjectTemplateUC.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CONTROLTEMPLATES\COSIntranet\BusinessDev\Project\CreateProjectTemplateUC.ascx.designer.cs">
+      <DependentUpon>CreateProjectTemplateUC.ascx.cs</DependentUpon>
+    </Compile>
     <Compile Include="CONTROLTEMPLATES\COSIntranet\BusinessDev\Project\ProjectExportUC.ascx.cs">
       <DependentUpon>ProjectExportUC.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -109,6 +116,13 @@
     <Compile Include="Features\ChangeTimerjobs\ChangeTimerjobs.EventReceiver.cs">
       <DependentUpon>ChangeTimerjobs.feature</DependentUpon>
     </Compile>
+    <Compile Include="Layouts\COSIntranet\BusinessDev\CreateProjectTemplate.aspx.cs">
+      <DependentUpon>CreateProjectTemplate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\COSIntranet\BusinessDev\CreateProjectTemplate.aspx.designer.cs">
+      <DependentUpon>CreateProjectTemplate.aspx.cs</DependentUpon>
+    </Compile>
     <Compile Include="Layouts\COSIntranet\BusinessDev\ExportProject.aspx.cs">
       <DependentUpon>ExportProject.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -135,6 +149,7 @@
     <None Include="ComposedLook\Theme\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{0c5a1f1c-450a-451d-9ffb-cdb58e264074}</SharePointProjectItemId>
     </None>
+    <Content Include="CONTROLTEMPLATES\COSIntranet\BusinessDev\Project\CreateProjectTemplateUC.ascx" />
     <Content Include="CONTROLTEMPLATES\COSIntranet\BusinessDev\Project\ProjectExportUC.ascx" />
     <Content Include="DocumentTemplates\BusinessDevDocTemplates\Alarm_gate_Manual.pdf" />
     <None Include="CONTROLTEMPLATES\SharePointProjectItem.spdata">
@@ -519,6 +534,7 @@
     <Content Include="Infrastructure\Lists\RootLevel\Sites\Elements.xml" />
     <Content Include="Infrastructure\Lists\RootLevel\Sites\Schema.xml" />
     <Content Include="Infrastructure\Lists\RootLevel\Sites\SitesInstance\Elements.xml" />
+    <Content Include="Layouts\COSIntranet\BusinessDev\CreateProjectTemplate.aspx" />
     <Content Include="Layouts\COSIntranet\BusinessDev\ExportProject.aspx" />
     <Content Include="Resources\COSIntranet.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -554,7 +570,9 @@
     <Content Include="Resources\COSIntranet.nb-no.resx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\COSIntranet.sv-se.resx" />
+    <Content Include="Resources\COSIntranet.sv-se.resx">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\COSIntranet.da-dk.resx">
