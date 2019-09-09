@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -76,9 +77,10 @@ namespace TestConsole
             //Console.WriteLine(string.Format("{0},{1},{2}", string.Format("{0:MMMM dd, yyyy}", grandOpening), string.Format("{0:dd-MM-yyyy}", firstDelivery), string.Format("{0:dd-MM-yyyy}", secondDelivery)));
 
             //TestSetContractStatus(@"http://sharcha-p15/sites/contracts");
-            TestProjectTemplate();
-            TestCreateProjectTemplate(@"http://sharcha-p15/sites/cos/bd", 16);
+            //TestProjectTemplate();
+            //TestCreateProjectTemplate(@"http://sharcha-p15/sites/cos/bd", 16);
             //TestCopyFolderStrcutre(@"http://sharcha-p15/sites/cos/bd");
+            TestCopyFolderStrcutreRef(@"http://spvm/sites/kplmain");
             //TestUpdateFolderStrucutreProjectTemplate(@"http://sharcha-p15/sites/cos/bd");
             //CreateFolderStructure(@"http://sharcha-p15/sites/cos/bd", "11_tst01_Canada_Opening");
             //Upgradeto12Test(@"http://sharcha-p15/sites/cos/bd");
@@ -510,13 +512,31 @@ namespace TestConsole
             {
                 using (SPWeb web = site.OpenWeb())
                 {
-                    string srcUrl = SPUtility.ConcatUrls(web.Url,string.Format(@"Lists/Marketing/{0}", @"11_tst01_Canada_Opening/From Marketing to partner"));
-                    string destUrl = SPUtility.ConcatUrls(web.Url, @"tests/11_tst01_Canada_Opening");
-                    SPMoveCopyUtil.CopyFolder(srcUrl, destUrl);
+                    //string srcUrl = SPUtility.ConcatUrls(web.Url,string.Format(@"Lists/Marketing/{0}", @"11_tst01_Canada_Opening/From Marketing to partner"));
+                    //string destUrl = SPUtility.ConcatUrls(web.Url, @"tests/11_tst01_Canada_Opening");
+                    //SPMoveCopyUtil.CopyFolder(srcUrl, destUrl);
                 }
             }
         }
+        private static void TestCopyFolderStrcutreRef(string siteUrl)
+        {
+            using (SPSite site = new SPSite(siteUrl))
+            {
+                using (SPWeb web = site.OpenWeb())
+                {
+                    string srcUrl = SPUtility.ConcatUrls(web.Url, string.Format(@"Marketing/{0}", @"dupa"));
+                    string destUrl = SPUtility.ConcatUrls(web.Url, @"Shared Documents/dupa");
 
+                    string pathToDomain = @" C:\Program Files\Common Files\Microsoft Shared\Web Server Extensions\16\ISAPI\Microsoft.SharePoint.dll";
+                    Assembly domainAssembly = Assembly.LoadFrom(pathToDomain);
+                    Type customerType = domainAssembly.GetType("Microsoft.SharePoint.SPMoveCopyUtil");
+
+
+                    MethodInfo copyFolder = customerType.GetMethod("CopyFolder", BindingFlags.Static | BindingFlags.NonPublic); //Type.GetType("Microsoft.SharePoint.SPMoveCopyUtil").GetMethod("CopyFolder");
+                    copyFolder.Invoke(null, new object[] { srcUrl, destUrl });
+                }
+            }
+        }
         private static void TestUpdateFolderStrucutreProjectTemplate(string siteUrl)
         {
             using (SPSite site = new SPSite(siteUrl))
