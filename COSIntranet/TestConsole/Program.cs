@@ -528,7 +528,8 @@ namespace TestConsole
                     string destUrl = SPUtility.ConcatUrls(web.Url, @"Shared Documents/dupa");
 
                     string pathToDomain = @" C:\Program Files\Common Files\Microsoft Shared\Web Server Extensions\16\ISAPI\Microsoft.SharePoint.dll";
-                    Assembly domainAssembly = Assembly.LoadFrom(pathToDomain);
+                    //Assembly domainAssembly = Assembly.LoadFrom(pathToDomain);
+                    Assembly domainAssembly = Assembly.Load("Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c");
                     Type customerType = domainAssembly.GetType("Microsoft.SharePoint.SPMoveCopyUtil");
 
 
