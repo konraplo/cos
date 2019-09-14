@@ -4,6 +4,7 @@
     using System.Collections;
     using System.Collections.Generic;
     using System.IO;
+    using System.Reflection;
     using System.Text;
     using Microsoft.SharePoint;
     using Microsoft.SharePoint.Administration;
@@ -709,6 +710,22 @@
             }
 
             return string.Empty;
+        }
+
+        /// <summary>
+        /// Copy folder structure using Microsoft.SharePoint.SPMoveCopyUtil.CopyFolder by reflection
+        /// </summary>
+        /// <param name="web">Target and source web web</param>
+        /// <param name="srcUrl">target folder URL</param>
+        /// <param name="destUrl">destination folder URL</param>
+        public static void CopyFolderStrcutre(SPWeb web, string srcUrl, string destUrl)
+        {
+            Assembly domainAssembly = Assembly.Load("Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c");
+            Type customerType = domainAssembly.GetType("Microsoft.SharePoint.SPMoveCopyUtil");
+
+
+            MethodInfo copyFolder = customerType.GetMethod("CopyFolder", BindingFlags.Static | BindingFlags.NonPublic); 
+            copyFolder.Invoke(null, new object[] { srcUrl, destUrl });
         }
     }
 }
