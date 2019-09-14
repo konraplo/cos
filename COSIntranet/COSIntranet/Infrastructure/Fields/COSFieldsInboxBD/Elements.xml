@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
-  <Field ID="{26c49b5f-fdf7-4cb8-b986-aef0d4e65eb3}" Name="COSFoldersBD" DisplayName="Libraries" Type="LookupMulti" Mult="TRUE" List="Lists/FoldersBD" ShowField="Title" Required="True" Group="CHANGE Fields"></Field>
+  
   <Field Name="Log" ID="{f9cdeded-c94e-4fd7-8cea-b32cd6d4924c}" DisplayName="Log" Type="Note" ShowInNewForm="FALSE"  ShowInEditForm="FALSE" ShowInViewForms="FALSE" Sortable="TRUE" Filterable="TRUE" Group="CHANGE Fields"/>
   <Field Name="Status" ID="{a2a6f77f-5d45-4830-a0e5-7e86e94b7ad1}" DisplayName="Status" Type="Number" ShowInNewForm="FALSE"  ShowInEditForm="FALSE" ShowInViewForms="FALSE" Group="CHANGE Fields"/>
 </Elements>
