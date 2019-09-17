@@ -11,6 +11,7 @@
     using System.Linq;
     using System.Web.Script.Serialization;
     using System.Collections;
+    using System.Text;
 
     /// <summary>
     /// Functionality connteced with projects opereations
@@ -384,6 +385,248 @@
             }
         }
 
+        public static void ImportProjectTasksTree(SPWeb web, SPListItem project, int projectTemplateItemId, int rootTaskId,DateTime grandOpening, string projectCoordinator, string storeMgr, List<Country> regions, List<Department> departments, SPContentType foundedProjectTaskCT, SPFieldLookupValue storeCountry, SPFieldLookupValue store, ref DateTime projectStartDate, ref DateTime projectDueDate)
+        {
+            string templatesUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.ProjectTemplates);
+            SPList templatesList = web.GetList(templatesUrl);
+            SPListItem templateItem = templatesList.GetItemById(projectTemplateItemId);
+            string content = Encoding.UTF8.GetString(templateItem.File.OpenBinary());
+
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            ProjectTask rootTask = (ProjectTask)serializer.Deserialize(content, typeof(ProjectTask));
+            List<ProjectTask> tasksToCreate = new List<ProjectTask>();
+
+            SPList tasksList = web.GetList(SPUtility.ConcatUrls(web.Url, Change.Intranet.Common.ListUtilities.Urls.ProjectTasks));
+
+            rootTask.Id = rootTaskId; 
+            CreateMainTasks(grandOpening, projectCoordinator, storeMgr, regions, departments, tasksList, foundedProjectTaskCT, rootTask, storeCountry, store, project, tasksToCreate);
+
+            // create subtasks
+            List<string> formatedUpdateBatchCommands = SubTasksToCreate(tasksList, foundedProjectTaskCT, storeCountry, store, projectCoordinator, storeMgr, regions, tasksToCreate, projectStartDate, projectDueDate, grandOpening, project);
+            string result = CommonUtilities.BatchAddListItems(web, formatedUpdateBatchCommands);
+        }
+
+        private static void CreateMainTasks(DateTime grandOpening, string projectCoordinator, string storeMgr, List<Country> regions, List<Department> departments, SPList tasksList, SPContentType foundedProjectTaskCT, ProjectTask task, SPFieldLookupValue storeCountry, SPFieldLookupValue store, SPListItem project, List<ProjectTask> tasks)
+        {
+            if (task.Subtasks.Count > 0)
+            {
+                // create task, read Id
+                SPListItem projectTask = null;
+                if (!task.IsStoreOpeningTask)
+                {
+                    projectTask = tasksList.AddItem();
+                    projectTask[SPBuiltInFieldId.Title] = task.Title;
+                    projectTask[SPBuiltInFieldId.ContentTypeId] = foundedProjectTaskCT.Id;
+                    projectTask[Change.Intranet.Common.Fields.Country] = storeCountry;
+                    projectTask[Change.Intranet.Common.Fields.StoreOpening] = string.Format("{0};#{1}", project.ID, project.Title);
+                    projectTask[Change.Intranet.Common.Fields.Store] = string.Format("{0};#{1}", store.LookupId, store.LookupValue);
+                    if (task.ParentId > 0)
+                    {
+                        projectTask[SPBuiltInFieldId.ParentID] = new SPFieldLookupValue(string.Format("{0};#{1}", task.ParentId, task.ParentTitle));
+
+                    }
+                    projectTask[Change.Intranet.Common.Fields.ChangeTaskDisplayNameId] = string.Format("({0}) {1}", project.Title, task.Title);
+
+                    if (!string.IsNullOrEmpty(task.ResponsibleDepartment))
+                    {
+                        Department responsibleDepartment = departments.FirstOrDefault(x => x.Title.Equals(task.ResponsibleDepartment));
+                        if (responsibleDepartment != null)
+                        {
+                            projectTask[Change.Intranet.Common.Fields.Department] = string.Format("{0};#{1}", responsibleDepartment.Id, responsibleDepartment.Title);
+                            projectTask[Change.Intranet.Common.Fields.ChangeDeparmentmanager] = responsibleDepartment.Manager;
+
+                            if (responsibleDepartment.Title.Equals(DepartmentUtilities.Retail))
+                            {
+                                task.Responsible = DepartmentUtilities.RegionalManager;
+                            }
+                        }
+                    }
+                    string responsible = string.Empty;
+                    if (task.Responsible != null)
+                    {
+                        if (task.Responsible.Equals(DepartmentUtilities.StoreManager))
+                        {
+                            responsible = storeMgr;
+                        }
+                        else if (task.Responsible.Equals(DepartmentUtilities.RegionalManager))
+                        {
+                            responsible = regions.FirstOrDefault(x => x.Id.Equals(storeCountry.LookupId)).Manager;
+                        }
+                        else if (task.Responsible.Equals(DepartmentUtilities.ProjectCoordinator))
+                        {
+                            responsible = projectCoordinator;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(responsible))
+                    {
+                        projectTask[SPBuiltInFieldId.AssignedTo] = responsible;
+                    }
+
+                    projectTask.Update();
+
+                    task.Id = projectTask.ID;
+                }
+
+
+                // check all subtasks
+                foreach (ProjectTask subTask in task.Subtasks)
+                {
+                    // set parent id
+                    subTask.ParentId = task.Id;
+                    subTask.ParentTitle = task.Title;
+                    CreateMainTasks(grandOpening, projectCoordinator, storeMgr, regions, departments, tasksList, foundedProjectTaskCT, subTask, storeCountry, store, project, tasks);
+                }
+
+                if (projectTask != null)
+                {
+                    int lastTaskTBGO = task.Subtasks.Min(x => x.TimeBeforeGrandOpening);
+                    DateTime dueDate = grandOpening.AddDays(-lastTaskTBGO);
+                    DateTime startDate = dueDate.AddDays(-task.Duration);
+                    projectTask[SPBuiltInFieldId.StartDate] = startDate;
+                    projectTask[SPBuiltInFieldId.TaskDueDate] = dueDate;
+                    projectTask.Update();
+                }
+
+
+            }
+            else
+            {
+                tasks.Add(task);
+            }
+
+        }
+
+        private static List<string> SubTasksToCreate(SPList tasksList, SPContentType projectTaskCT, SPFieldLookupValue storeCountry, SPFieldLookupValue store, string projectCoordinator, string storeMgr, List<Country> regions, List<ProjectTask> tasks, DateTime projectStartDate, DateTime projectDueDate, DateTime grandOpening, SPListItem projectItem)
+        {
+            List<string> formatedUpdateBatchCommands = new List<string>();
+
+            List<Department> departments = DepartmentUtilities.GetDepartments(projectItem.Web);
+
+            int counter = 1;
+            foreach (ProjectTask task in tasks)
+            {
+                DateTime dueDate = grandOpening.AddDays(-task.TimeBeforeGrandOpening);
+                DateTime startDate = dueDate.AddDays(-task.Duration);
+
+                if (projectStartDate.Equals(DateTime.MinValue))
+                {
+                    projectStartDate = startDate;
+                }
+                else if (DateTime.Compare(projectStartDate, startDate) > 0)
+                {
+                    projectStartDate = startDate;
+                }
+
+                if (projectDueDate.Equals(DateTime.MaxValue))
+                {
+                    projectDueDate = grandOpening.AddDays(-task.TimeBeforeGrandOpening);
+                }
+                else if (DateTime.Compare(projectDueDate, grandOpening.AddDays(-task.TimeBeforeGrandOpening)) < 0)
+                {
+                    projectDueDate = grandOpening.AddDays(-task.TimeBeforeGrandOpening);
+                }
+
+                StringBuilder batchItemSetVar = new StringBuilder();
+                batchItemSetVar.Append(string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                                                    projectItem.ParentList.Fields[SPBuiltInFieldId.Title].InternalName,
+                                                    task.Title));
+                batchItemSetVar.Append(
+                       string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                       tasksList.Fields[Change.Intranet.Common.Fields.ChangeTaskDisplayNameId].InternalName,
+                       string.Format("({0}) {1}", projectItem.Title, task.Title)));
+
+                batchItemSetVar.Append(
+                        string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                        projectItem.ParentList.Fields[SPBuiltInFieldId.ContentTypeId].InternalName,
+                        Convert.ToString(projectTaskCT.Id)));
+                batchItemSetVar.Append(
+                       string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                       Change.Intranet.Common.Fields.StoreOpening,
+                       string.Format("{0};#{1}", projectItem.ID, projectItem.Title)));
+                batchItemSetVar.Append(
+                       string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                       Change.Intranet.Common.Fields.Store,
+                       string.Format("{0};#{1}", store.LookupId, store.LookupValue)));
+
+                if (!string.IsNullOrEmpty(task.ResponsibleDepartment))
+                {
+                    Department responsibleDepartment = departments.FirstOrDefault(x => x.Title.Equals(task.ResponsibleDepartment));
+                    if (responsibleDepartment != null)
+                    {
+                        batchItemSetVar.Append(
+                          string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                          Change.Intranet.Common.Fields.Department,
+                          string.Format("{0};#{1}", responsibleDepartment.Id, responsibleDepartment.Title)));
+                        batchItemSetVar.Append(
+                          string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                          tasksList.Fields[Change.Intranet.Common.Fields.ChangeDeparmentmanager].InternalName,
+                          responsibleDepartment.Manager));
+                        if (responsibleDepartment.Title.Equals(DepartmentUtilities.Retail))
+                        {
+                            task.Responsible = DepartmentUtilities.RegionalManager;
+                        }
+                    }
+                }
+
+                batchItemSetVar.Append(
+                       string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                       Change.Intranet.Common.Fields.Country,
+                       storeCountry));
+                batchItemSetVar.Append(
+                       string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                       tasksList.Fields[Change.Intranet.Common.Fields.ChangeTaskDurationId].InternalName,
+                       task.Duration));
+                string responsible = string.Empty;
+
+                if (task.Responsible != null)
+                {
+                    if (task.Responsible.Equals(DepartmentUtilities.StoreManager))
+                    {
+                        responsible = storeMgr;
+                    }
+                    else if (task.Responsible.Equals(DepartmentUtilities.RegionalManager))
+                    {
+                        responsible = regions.FirstOrDefault(x => x.Id.Equals(storeCountry.LookupId)).Manager;
+                    }
+                    else if (task.Responsible.Equals(DepartmentUtilities.ProjectCoordinator))
+                    {
+                        responsible = projectCoordinator;
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(responsible))
+                {
+                    batchItemSetVar.Append(
+                    string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                    tasksList.Fields[SPBuiltInFieldId.AssignedTo].InternalName,
+                    responsible));
+                }
+
+                batchItemSetVar.Append(
+                  string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                  tasksList.Fields[SPBuiltInFieldId.TaskDueDate].InternalName,
+                  SPUtility.CreateISO8601DateTimeFromSystemDateTime(dueDate)));
+
+                batchItemSetVar.Append(
+                  string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                  tasksList.Fields[SPBuiltInFieldId.StartDate].InternalName,
+                  SPUtility.CreateISO8601DateTimeFromSystemDateTime(startDate)));
+
+                if (task.ParentId > 0)
+                {
+                    batchItemSetVar.Append(
+                       string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
+                       tasksList.Fields[SPBuiltInFieldId.ParentID].InternalName,
+                       string.Format("{0};#{1}", task.ParentId, task.ParentTitle)));
+                }
+
+                formatedUpdateBatchCommands.Add(string.Format(CommonUtilities.BATCH_ADD_ITEM_CMD, counter, tasksList.ID.ToString(), batchItemSetVar));
+                counter++;
+            }
+
+            return formatedUpdateBatchCommands;
+        }
 
     }
 

@@ -80,8 +80,9 @@ namespace TestConsole
             //TestSetContractStatus(@"http://sharcha-p15/sites/contracts");
             //TestProjectTemplate();
             //TestCreateProjectTemplate(@"http://sharcha-p15/sites/cos/bd", 16);
+            TestCreateProjectTemplate(@"http://spvm/sites/cos/bd", 1);
             //TestCopyFolderStrcutre(@"http://sharcha-p15/sites/cos/bd");
-            TestCopyFolderStrcutreRef(@"http://spvm/sites/kplmain");
+            //TestCopyFolderStrcutreRef(@"http://spvm/sites/kplmain");
             //TestUpdateFolderStrucutreProjectTemplate(@"http://sharcha-p15/sites/cos/bd");
             //CreateFolderStructure(@"http://sharcha-p15/sites/cos/bd", "11_tst01_Canada_Opening");
             //Upgradeto12Test(@"http://sharcha-p15/sites/cos/bd");
@@ -196,6 +197,12 @@ namespace TestConsole
 
         private static void ImportProjectTasksTree(SPWeb web, int projectItemId)
         {
+            string templatesUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), Change.Intranet.Common.ListUtilities.Urls.ProjectTemplates);
+            SPList templatesList = web.GetList(templatesUrl);
+            SPListItem templateItem = templatesList.GetItemById(2);
+            templateItem.File.OpenBinary();
+            string content = Encoding.UTF8.GetString(templateItem.File.OpenBinary());
+
             string path = @"D:\kpl\template1.json";
             string template = File.ReadAllText(path);
             JavaScriptSerializer serializer = new JavaScriptSerializer();
@@ -497,12 +504,13 @@ namespace TestConsole
             {
                 using (SPWeb web = site.OpenWeb())
                 {
-                    ProjectTask result = ExportProjectTasksTree(web, projectItemId);
-                    SaveProjectTemplate(web, result);
-                    //using (DisableEventFiringScope scope = new DisableEventFiringScope())
-                    //{
-                    //    ImportProjectTasksTree(web, projectItemId);
-                    //}
+
+                    //ProjectTask result = ExportProjectTasksTree(web, projectItemId);
+                    //SaveProjectTemplate(web, result);
+                    using (DisableEventFiringScope scope = new DisableEventFiringScope())
+                    {
+                        ImportProjectTasksTree(web, projectItemId);
+                    }
                 }
             }
         }

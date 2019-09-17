@@ -205,9 +205,7 @@
                     SPFieldLookupValue templateValue = new SPFieldLookupValue(customTemplate);
                     if (templateValue.LookupId > 0)
                     {
-                        string templatesUrl = SPUrlUtility.CombineUrl(item.Web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.ProjectTemplates);
-                        SPList templatesList = item.Web.GetList(templatesUrl);
-                        SPListItem template = templatesList.GetItemById(templateValue.LookupId);
+                        ProjectHelper.ImportProjectTasksTree(item.Web, item, templateValue.LookupId, projectTask.ID, grandOpening, projectCoordinator, storeMgr, regions, departments, foundedProjectTaskCT, storeCountry, store, ref projectStartDate, ref projectDueDate);
                     }
                 }
                 else
