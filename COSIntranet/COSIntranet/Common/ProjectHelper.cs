@@ -360,7 +360,9 @@
             byte[] content = System.Text.Encoding.ASCII.GetBytes(json);
             string projectTemplatesUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.ProjectTemplates);
             SPList projectTemplatesList = web.GetList(projectTemplatesUrl);
-            CommonUtilities.AddDocumentToLibrary((SPDocumentLibrary)projectTemplatesList, string.Empty, content, fileName, new Hashtable());
+            Hashtable prop = new Hashtable(1);
+            prop["Title"] = Path.GetFileNameWithoutExtension(fileName);
+            CommonUtilities.AddDocumentToLibrary((SPDocumentLibrary)projectTemplatesList, string.Empty, content, fileName, prop);
         }
 
         private static ProjectTask ExportProjectTasksTree(SPWeb web, int projectItemId)

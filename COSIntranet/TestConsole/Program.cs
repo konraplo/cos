@@ -49,6 +49,7 @@ namespace TestConsole
 
         static void Main(string[] args)
         {
+            string test = Path.GetFileNameWithoutExtension("dupa.json");
             DateTime warningDate = DateTime.Parse("7/23/2019 8:33:21 AM");
             DateTime endDate = DateTime.Parse("8/19/2019 10:10:11 AM");
             int diffMonth = ((endDate.Year - warningDate.Year) * 12) + endDate.Month - warningDate.Month;
