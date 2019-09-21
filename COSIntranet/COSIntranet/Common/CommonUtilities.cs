@@ -165,7 +165,12 @@
                 }
 
                 SPFile file = folder.Files.Add(pFileName, pContent, pDocProperties, true);
-
+                if(pDocProperties.ContainsKey("Title"))
+                {
+                    file.Item[SPBuiltInFieldId.Title] = pDocProperties["Title"];
+                    file.Item.SystemUpdate();
+                }
+                
                 file.Update();
 
                 return file.ListItemAllFields.ID;

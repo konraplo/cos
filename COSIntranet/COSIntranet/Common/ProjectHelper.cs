@@ -357,7 +357,6 @@
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             string json = serializer.Serialize(projectRootTask);
-            var template = serializer.Deserialize(json, typeof(ProjectTask));
             byte[] content = System.Text.Encoding.ASCII.GetBytes(json);
             string projectTemplatesUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.ProjectTemplates);
             SPList projectTemplatesList = web.GetList(projectTemplatesUrl);
