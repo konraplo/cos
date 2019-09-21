@@ -35,6 +35,7 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
                 MarketingLib(web);
 
                 Upgradeto12(web);
+                Upgradeto13(web);
             }
         }
 
@@ -201,6 +202,9 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
                 case "UpgradeToV1.2":
                     Upgradeto12(web);
                     break;
+                case "UpgradeToV1.3":
+                    Upgradeto13(web);
+                    break;
 
             }
         }
@@ -231,6 +235,20 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
             Logger.WriteLog(Logger.Category.Medium, "Upgradeto12 finished", string.Format("web:{0}", web.Url));
         }
 
-       
+        private void Upgradeto13(SPWeb web)
+        {
+            Logger.WriteLog(Logger.Category.Medium, this.GetType().Name, string.Format("Upgradeto13 web:{0}", web.Url));
+            if (web != null)
+            {
+                // add project tasks link to project ct
+                SPContentType projectContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.Project];
+                SPField projectTasksLink = web.Site.RootWeb.Fields[Fields.ChangeProjectTasksLink];
+                Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add fild:{0} to ct:{1}", projectTasksLink.Title, projectContentType.Name));
+                CommonUtilities.AddFieldToContentType(web, projectContentType, projectTasksLink, false, false, string.Empty);
+            }
+
+            Logger.WriteLog(Logger.Category.Medium, "Upgradeto13 finished", string.Format("web:{0}", web.Url));
+        }
+
     }
 }

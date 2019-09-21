@@ -12,5 +12,10 @@
        </CustomUpgradeAction>
       
     </VersionRange>
+ <VersionRange EndVersion="1.1.3.0">
+       <CustomUpgradeAction Name="UpgradeToV1.3">     
+       </CustomUpgradeAction>
+      
+    </VersionRange>
   </UpgradeActions>
 </Feature>

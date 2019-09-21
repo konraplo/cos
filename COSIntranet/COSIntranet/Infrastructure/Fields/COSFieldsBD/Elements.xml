@@ -96,6 +96,7 @@
          Group="CHANGE Fields">
     <Default>Opening</Default>
     <CHOICES>
+      <CHOICE>Template</CHOICE>
       <CHOICE>Closing</CHOICE>
       <CHOICE>Opening</CHOICE>
       <CHOICE>Relocation</CHOICE>

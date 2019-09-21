@@ -199,7 +199,7 @@
                 {
                     customTemplate = Convert.ToString(item[Fields.ProjectTemplate]);
                 }
-
+                string category = Convert.ToString(item[Fields.ChangeProjectCategory]);
                 if (!string.IsNullOrEmpty(customTemplate))
                 {
                     SPFieldLookupValue templateValue = new SPFieldLookupValue(customTemplate);
@@ -208,7 +208,7 @@
                         ProjectHelper.ImportProjectTasksTree(item.Web, item, templateValue.LookupId, projectTask.ID, grandOpening, projectCoordinator, storeMgr, regions, departments, foundedProjectTaskCT, storeCountry, store, ref projectStartDate, ref projectDueDate);
                     }
                 }
-                else
+                else if(category.Equals("Opening", StringComparison.InvariantCultureIgnoreCase))
                 {
                     CreateStoreOpeningSchedule(item, store, storeCountry, grandOpening, storeMgr, projectCoordinator, tasksList, foundedProjectTaskCT, projectTask, projectTaskValue, departments, regions, ref projectStartDate, ref projectDueDate);
                 }
