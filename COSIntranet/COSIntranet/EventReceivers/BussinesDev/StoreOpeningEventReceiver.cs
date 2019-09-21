@@ -146,12 +146,22 @@
             if (item.ContentType.Parent.Id == ContentTypeIds.Project)
             {
                 EventFiringEnabled = false;
+                string tasksUrl = SPUrlUtility.CombineUrl(item.Web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.ProjectTasks);
+                SPList tasksList = item.Web.GetList(tasksUrl);
 
                 // update project country
                 Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("update project store for id:{0}, title:{1}", item.ID, item.Title));
                 SPFieldLookupValue store = new SPFieldLookupValue(Convert.ToString(item[Fields.Store]));
                 SPFieldLookupValue storeCountry = new SPFieldLookupValue(ProjectUtilities.GetStoreCountry(item.Web, store.LookupId));
                 item[Fields.Country] = storeCountry;
+
+                // update project taks link
+                string allTaskViewUrl = tasksList.Views["All Tasks"].Url;
+
+                SPFieldUrlValue hyper = new SPFieldUrlValue();
+                hyper.Description = "Tasks";
+                hyper.Url = allTaskViewUrl;
+
                 item.Update();
 
                 // create project plan
@@ -160,10 +170,8 @@
                 string storeMgr = ProjectUtilities.GetStoreManager(item.Web, store.LookupId);
                 string projectCoordinator = Convert.ToString(item[SPBuiltInFieldId.AssignedTo]);
 
-                string tasksUrl = SPUrlUtility.CombineUrl(item.Web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.ProjectTasks);
-                SPList tasksList = item.Web.GetList(tasksUrl);
+               
                 SPContentType foundedProjectTaskCT = tasksList.ContentTypes[tasksList.ContentTypes.BestMatch(ContentTypeIds.ProjectTask)];
-
                 // create store opening task
                 SPListItem projectTask = tasksList.AddItem();
                 projectTask[SPBuiltInFieldId.Title] = item.Title;

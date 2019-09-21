@@ -80,7 +80,8 @@ namespace TestConsole
             //TestSetContractStatus(@"http://sharcha-p15/sites/contracts");
             //TestProjectTemplate();
             //TestCreateProjectTemplate(@"http://sharcha-p15/sites/cos/bd", 16);
-            TestCreateProjectTemplate(@"http://spvm/sites/cos/bd", 1);
+            //TestCreateProjectTemplate(@"http://spvm/sites/cos/bd", 1);
+            SetTaskLink(@"http://spvm/sites/cos/bd");
             //TestCopyFolderStrcutre(@"http://sharcha-p15/sites/cos/bd");
             //TestCopyFolderStrcutreRef(@"http://spvm/sites/kplmain");
             //TestUpdateFolderStrucutreProjectTemplate(@"http://sharcha-p15/sites/cos/bd");
@@ -96,6 +97,22 @@ namespace TestConsole
                 using (SPWeb web = site.OpenWeb())
                 {
                     Upgradeto12(web);
+                }
+            }
+        }
+
+        private static void SetTaskLink(string siteUrl)
+        {
+            using (SPSite site = new SPSite(siteUrl))
+            {
+                using (SPWeb web = site.OpenWeb())
+                {
+                    string tasksUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), Change.Intranet.Common.ListUtilities.Urls.ProjectTasks);
+                    SPList tasksList = web.GetList(tasksUrl);
+                    string allTaskViewUrl = tasksList.Views["All Tasks"].Url;
+
+                    SPList projectList = web.GetList(SPUtility.ConcatUrls(web.Url, Change.Intranet.Common.ListUtilities.Urls.StoreOpenings));
+                    SPListItem project = projectList.GetItemById(1);
                 }
             }
         }
