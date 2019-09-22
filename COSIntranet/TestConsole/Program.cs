@@ -110,9 +110,14 @@ namespace TestConsole
                     string tasksUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), Change.Intranet.Common.ListUtilities.Urls.ProjectTasks);
                     SPList tasksList = web.GetList(tasksUrl);
                     string allTaskViewUrl = tasksList.Views["All Tasks"].Url;
-
                     SPList projectList = web.GetList(SPUtility.ConcatUrls(web.Url, Change.Intranet.Common.ListUtilities.Urls.StoreOpenings));
                     SPListItem project = projectList.GetItemById(1);
+                    allTaskViewUrl = string.Format("{0}/{1}?FilterField1=ChangeStoreOpening&FilterValue1={2}",web.Url, allTaskViewUrl, project.Title);
+                    SPFieldUrlValue hyper = new SPFieldUrlValue();
+                    hyper.Description = "Tasks";
+                    hyper.Url = allTaskViewUrl;
+                    project[Change.Intranet.Common.Fields.ChangeProjectTasksLink] = hyper;
+                    project.Update();
                 }
             }
         }

@@ -157,12 +157,15 @@
 
                 // update project taks link
                 string allTaskViewUrl = tasksList.Views["All Tasks"].Url;
+                allTaskViewUrl = string.Format("{0}/{1}?FilterField1=ChangeStoreOpening&FilterValue1={2}", item.Web.Url, allTaskViewUrl, item.Title);
 
                 SPFieldUrlValue hyper = new SPFieldUrlValue();
                 hyper.Description = "Tasks";
                 hyper.Url = allTaskViewUrl;
+                item[Fields.ChangeProjectTasksLink] = hyper;
+                Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("update project task lin for id:{0}, title:{1}", item.ID, item.Title));
 
-                item.Update();
+                item.SystemUpdate();
 
                 // create project plan
                 Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("CreateProjectTasks for id:{0}, title:{1}", item.ID, item.Title));
