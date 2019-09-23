@@ -732,5 +732,26 @@
             MethodInfo copyFolder = customerType.GetMethod("CopyFolder", BindingFlags.Static | BindingFlags.NonPublic); 
             copyFolder.Invoke(null, new object[] { srcUrl, destUrl });
         }
+
+        /// <summary>
+        /// check if specified list has a view
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="viewName"></param>
+        /// <returns></returns>
+        public static bool HasView(SPList list, string viewName)
+        {
+            if (string.IsNullOrEmpty(viewName))
+                return false;
+            foreach (SPView view in list.Views)
+            {
+                if (view.Title.ToLowerInvariant() == viewName.ToLowerInvariant())
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }

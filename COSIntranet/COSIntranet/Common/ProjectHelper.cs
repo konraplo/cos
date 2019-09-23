@@ -280,6 +280,59 @@
             SaveProjectTemplate(web, projectRootTask, templateName);
         }
 
+        /// <summary>
+        /// Add/update view to the project tasks filtered by project
+        /// </summary>
+        /// <param name="projectItem">Project List item</param>
+        /// <param name="tasksList">project tasks view</param>
+        /// <returns>created/updated view</returns>
+        public static SPView AddProjectTaskView(SPListItem projectItem, SPList tasksList)
+        {
+            string ViewDecisionsName = string.Format("project_{0}_tasks", projectItem.ID);
+
+            //create view
+            //SPList projects = projectItem.ParentList;
+            SPViewCollection allviews = tasksList.Views;
+            SPView viewProjectTasks = null;
+            if (CommonUtilities.HasView(tasksList, ViewDecisionsName))
+            {
+                Logger.WriteLog(Logger.Category.Unexpected, "AddProjectTaskView", string.Format("Remove fields from View:{0} from list: {1}", ViewDecisionsName, tasksList.Title));
+
+                viewProjectTasks = allviews[ViewDecisionsName];
+                //remove all fields from default view
+                viewProjectTasks.ViewFields.DeleteAll();
+            }
+
+            System.Collections.Specialized.StringCollection viewFields = new System.Collections.Specialized.StringCollection();
+            viewFields.Add("Checkmark");
+            viewFields.Add("LinkTitle");
+            viewFields.Add("DueDate");
+            viewFields.Add("AssignedTo");
+            viewFields.Add("ChangeStoreOpening");
+            string myquery = string.Format(QueryProjectTasks, Fields.StoreOpening, projectItem.ID);
+
+            if (viewProjectTasks != null)
+            {
+                Logger.WriteLog(Logger.Category.Unexpected, "AddProjectTaskView", string.Format("Add Fields to View:{0} to list: {1}", ViewDecisionsName, tasksList.Title));
+
+                for (int i = 0; i < viewFields.Count; i++)
+                {
+                    viewProjectTasks.ViewFields.Add(viewFields[i]);
+                }
+
+                viewProjectTasks.Query = myquery;
+                viewProjectTasks.Update();
+            }
+            else
+            {
+                Logger.WriteLog(Logger.Category.Unexpected, "AddProjectTaskView", string.Format("Add View:{0} to list: {1}", ViewDecisionsName, tasksList.Title));
+
+                viewProjectTasks = allviews.Add(ViewDecisionsName, viewFields, myquery, 100, true, false);
+            }
+
+            return viewProjectTasks;
+        }
+
         private static List<ProjectTask> ExportProjectTasks(SPWeb web, int projectItemId)
         {
             List<ProjectTask> result = new List<ProjectTask>();

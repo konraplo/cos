@@ -107,12 +107,14 @@ namespace TestConsole
             {
                 using (SPWeb web = site.OpenWeb())
                 {
-                    string tasksUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), Change.Intranet.Common.ListUtilities.Urls.ProjectTasks);
-                    SPList tasksList = web.GetList(tasksUrl);
-                    string allTaskViewUrl = tasksList.Views["All Tasks"].Url;
                     SPList projectList = web.GetList(SPUtility.ConcatUrls(web.Url, Change.Intranet.Common.ListUtilities.Urls.StoreOpenings));
                     SPListItem project = projectList.GetItemById(1);
-                    allTaskViewUrl = string.Format("{0}/{1}?FilterField1=ChangeStoreOpening&FilterValue1={2}",web.Url, allTaskViewUrl, project.Title);
+
+                    string tasksUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), Change.Intranet.Common.ListUtilities.Urls.ProjectTasks);
+                    SPList tasksList = web.GetList(tasksUrl);
+                    SPView view = Change.Intranet.Common.ProjectHelper.AddProjectTaskView(project, tasksList);
+                    string allTaskViewUrl = view.Url;
+                    allTaskViewUrl = string.Format("{0}/{1}",web.Url, allTaskViewUrl);
                     SPFieldUrlValue hyper = new SPFieldUrlValue();
                     hyper.Description = "Tasks";
                     hyper.Url = allTaskViewUrl;
