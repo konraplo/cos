@@ -244,7 +244,7 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
                 SPContentType projectContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.Project];
                 SPField projectTasksLink = web.Site.RootWeb.Fields[Fields.ChangeProjectTasksLink];
                 Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add fild:{0} to ct:{1}", projectTasksLink.Title, projectContentType.Name));
-                CommonUtilities.AddFieldToContentType(web, projectContentType, projectTasksLink, false, false, string.Empty);
+                CommonUtilities.AddFieldToContentType(web, projectContentType, projectTasksLink, false, true, string.Empty);
             }
 
             Logger.WriteLog(Logger.Category.Medium, "Upgradeto13 finished", string.Format("web:{0}", web.Url));

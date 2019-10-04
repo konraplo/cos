@@ -454,7 +454,7 @@
             CreateMainTasks(grandOpening, projectCoordinator, storeMgr, regions, departments, tasksList, foundedProjectTaskCT, rootTask, storeCountry, store, project, tasksToCreate);
 
             // create subtasks
-            List<string> formatedUpdateBatchCommands = SubTasksToCreate(tasksList, foundedProjectTaskCT, storeCountry, store, projectCoordinator, storeMgr, regions, tasksToCreate, projectStartDate, projectDueDate, grandOpening, project);
+            List<string> formatedUpdateBatchCommands = SubTasksToCreate(tasksList, foundedProjectTaskCT, storeCountry, store, projectCoordinator, storeMgr, regions, tasksToCreate, ref projectStartDate, ref projectDueDate, grandOpening, project);
             string result = CommonUtilities.BatchAddListItems(web, formatedUpdateBatchCommands);
         }
 
@@ -549,7 +549,7 @@
 
         }
 
-        private static List<string> SubTasksToCreate(SPList tasksList, SPContentType projectTaskCT, SPFieldLookupValue storeCountry, SPFieldLookupValue store, string projectCoordinator, string storeMgr, List<Country> regions, List<ProjectTask> tasks, DateTime projectStartDate, DateTime projectDueDate, DateTime grandOpening, SPListItem projectItem)
+        private static List<string> SubTasksToCreate(SPList tasksList, SPContentType projectTaskCT, SPFieldLookupValue storeCountry, SPFieldLookupValue store, string projectCoordinator, string storeMgr, List<Country> regions, List<ProjectTask> tasks, ref DateTime projectStartDate, ref DateTime projectDueDate, DateTime grandOpening, SPListItem projectItem)
         {
             List<string> formatedUpdateBatchCommands = new List<string>();
 
