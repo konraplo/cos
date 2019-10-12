@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <!-- Parent ContentType: Item (0x01) -->
+  <ContentType ID="0x010044B8CD0E2F1142B9B9943EBE2BE14EA6"
+               Name="$Resources:COSIntranet,ChangeCTProjectMGMT"
+               Group="CHANGE Content Types"
+               Description="$Resources:COSIntranet,ChangeCTProjectMGMTDescr"
+               Inherits="TRUE"
+               Version="0">
+    <FieldRefs>
+      <FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" DisplayName="$Resources:COSIntranet,ChangeProjectTitle" Required="TRUE" />
+      <FieldRef ID="{64cd368d-2f95-4bfc-a1f9-8d4324ecb007}" Name="StartDate" Required="TRUE" />
+      <FieldRef ID="{cd21b4c2-6841-4f9e-a23a-738a65f99889}" Name="DueDate" DisplayName="$Resources:COSIntranet,ChangeLaunchInStoreDate" Required="TRUE" />
+      <FieldRef ID="{53101f38-dd2e-458c-b245-0c236cc13d1a}" Name="AssignedTo" DisplayName="$Resources:COSIntranet,ChangeProjectResponsible" />
+      <FieldRef ID="{d2311440-1ed6-46ea-b46d-daa643dc3886}" Name="PercentComplete" />
+      <FieldRef ID="{7662cd2c-f069-4dba-9e35-082cf976e170}" Name="Description" />
+      <FieldRef ID="{56587AA8-12EB-43D0-B4DA-83FB0B92CF0B}" ReadOnly="TRUE" Name="ChangeTasksLink" />
+    </FieldRefs>
+  </ContentType>
+</Elements>

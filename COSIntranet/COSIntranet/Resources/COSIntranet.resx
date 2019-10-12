@@ -1071,4 +1071,16 @@ Have a nice day
   <data name="ChangeExportProjectTemplarelateLongOpDesc" xml:space="preserve">
     <value>The save project template process may take some time...Please be patient.</value>
   </data>
+  <data name="ChangeCTProjectMGMT" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="ChangeColProject" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="ChangeLaunchInStoreDate" xml:space="preserve">
+    <value>Launch in store</value>
+  </data>
+  <data name="ChangeProjectResponsible" xml:space="preserve">
+    <value>Project responsible</value>
+  </data>
 </root>

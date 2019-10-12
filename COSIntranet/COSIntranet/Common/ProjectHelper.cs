@@ -42,7 +42,8 @@
                                    </Where>";
 
 
-        public static string[] projectLibrarieUrls = { "Marketing", "Drawings", "GeneralInformation", "Logistic", "Pictures", "Evaluation" };
+        private static string[] storeOpeningLibrarieUrls = { "Marketing", "Drawings", "GeneralInformation", "Logistic", "Pictures", "Evaluation" };
+        public static string[] projectLibrarieUrls = { "Finance", "HR", "Marketing"};
 
         /// <summary>
         /// Remove project releted folder from list
@@ -74,9 +75,22 @@
         }
 
         /// <summary>
-        /// Remove all project releted folders form libs
+        /// Remove all store opening releted folders form libs
         /// </summary>
         /// <param name="web">Busines dev web</param>
+        /// <param name="itemId">Project item id</param>
+        public static void RemoveAllStoreOpeningReletedFolder(SPWeb web, int itemId)
+        {
+            foreach (string listUrl in storeOpeningLibrarieUrls)
+            {
+                RemoveProjectFolder(web, listUrl, itemId);
+            }
+        }
+
+        // <summary>
+        /// Remove all project releted folders form libs
+        /// </summary>
+        /// <param name="web">Project web</param>
         /// <param name="itemId">Project item id</param>
         public static void RemoveAllProjectFolder(SPWeb web, int itemId)
         {
@@ -168,7 +182,7 @@
                         string projectFolderName = ProjectUtilities.GetProjectsFolderName(elevWeb, itemId);
                         ZipUtility zip = new ZipUtility(projectFolderName);
 
-                        foreach (string listUrl in projectLibrarieUrls)
+                        foreach (string listUrl in storeOpeningLibrarieUrls)
                         {
                             ArchiveProjectData(elevWeb, listUrl, itemId, zip);
                         }

@@ -95,6 +95,8 @@
     <Compile Include="EventReceivers\BussinesDev\TaskListEventReceiver.cs" />
     <Compile Include="EventReceivers\InboxEventReceiver\InboxEventReceiver.cs" />
     <Compile Include="EventReceivers\PreventFolderDeleteEventReceiver\PreventFolderDeleteEventReceiver.cs" />
+    <Compile Include="EventReceivers\ProjectMGMT\ProjecTaskListEventReceiver.cs" />
+    <Compile Include="EventReceivers\ProjectMGMT\ProjectEventReceiver.cs" />
     <Compile Include="Features\ChangeBusinessDevelopment\ChangeBusinessDevelopment.EventReceiver.cs">
       <DependentUpon>ChangeBusinessDevelopment.feature</DependentUpon>
     </Compile>
@@ -250,6 +252,9 @@
     <None Include="Infrastructure\ContentTypes\News\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{d4320103-af9c-4511-ab2e-4eb4fe1f9f01}</SharePointProjectItemId>
     </None>
+    <None Include="Infrastructure\ContentTypes\ProjectMGMT\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{fdff1dcb-fd19-4882-9596-21c8cec4e6a5}</SharePointProjectItemId>
+    </None>
     <None Include="Infrastructure\ContentTypes\ProjectTask\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{384dfe21-05b9-4dda-b395-01c29e75756a}</SharePointProjectItemId>
     </None>
@@ -361,6 +366,9 @@
     <None Include="Infrastructure\Lists\DivisionLevel\SalesTraining\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{e11a311d-f764-4ff6-a499-59c3ef996eae}</SharePointProjectItemId>
     </None>
+    <None Include="Infrastructure\Lists\ProjectsManagement\Projects\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{1d3bc618-5725-48b2-a16f-586a41c6b377}</SharePointProjectItemId>
+    </None>
     <None Include="Infrastructure\Lists\RootLevel\Folders\FoldersInstance\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{ba62b06b-e0f1-492c-978a-102dec87a8d5}</SharePointProjectItemId>
     </None>
@@ -460,6 +468,7 @@
     <Content Include="Infrastructure\ContentTypes\Department\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\NationalNews\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\News\Elements.xml" />
+    <Content Include="Infrastructure\ContentTypes\ProjectMGMT\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\ProjectTask\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\ProjectTemplate\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\Project\Elements.xml" />
@@ -528,6 +537,7 @@
     </Content>
     <Content Include="Infrastructure\Lists\DivisionLevel\VisualMerchandise\Elements.xml" />
     <Content Include="Infrastructure\Lists\DivisionLevel\SalesTraining\Elements.xml" />
+    <Content Include="Infrastructure\Lists\ProjectsManagement\Projects\Elements.xml" />
     <Content Include="Infrastructure\Lists\RootLevel\Folders\Elements.xml" />
     <Content Include="Infrastructure\Lists\RootLevel\Folders\FoldersInstance\Elements.xml">
       <SubType>Designer</SubType>

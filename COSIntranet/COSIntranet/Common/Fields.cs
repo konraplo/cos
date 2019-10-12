@@ -11,6 +11,7 @@
         public const string Department = "ChangeDepartment";
         public const string ProjectTask = "ChangeProjectTask";
         public const string StoreOpening = "ChangeStoreOpening";
+        public const string Project = "ChangeProject";
         public const string Store = "ChangeStore";
         public const string Country = "ChangeCountry";
         public const string StoreId = "Storeid";

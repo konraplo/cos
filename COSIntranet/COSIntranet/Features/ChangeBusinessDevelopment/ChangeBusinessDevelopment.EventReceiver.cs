@@ -121,17 +121,17 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
             SPContentType deptListContentType = CommonUtilities.AttachContentTypeToList(deptList, deptContentType, true, false);
             CommonUtilities.AddFieldToContentType(web, deptListContentType, deptLookup, false, false, "$Resources:COSIntranet,ChangeColParentdeparment");
 
-            SPContentType projectContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.Project];
-            projectContentType.FieldLinks.Delete(SPBuiltInFieldId.Predecessors);
-            projectContentType.FieldLinks[SPBuiltInFieldId.Title].DisplayName = "$Resources:COSIntranet,ChangeProjectTitle";
-            projectContentType.FieldLinks[SPBuiltInFieldId.TaskDueDate].DisplayName = "$Resources:COSIntranet,ChangeOpeningDate";
-            projectContentType.FieldLinks[SPBuiltInFieldId.AssignedTo].DisplayName = "$Resources:COSIntranet,ChangeProjectCoordinator";
-            projectContentType.FieldLinks[SPBuiltInFieldId.StartDate].ReadOnly = true;
+            SPContentType storeOpeningContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.ProjectStoreOpening];
+            storeOpeningContentType.FieldLinks.Delete(SPBuiltInFieldId.Predecessors);
+            storeOpeningContentType.FieldLinks[SPBuiltInFieldId.Title].DisplayName = "$Resources:COSIntranet,ChangeProjectTitle";
+            storeOpeningContentType.FieldLinks[SPBuiltInFieldId.TaskDueDate].DisplayName = "$Resources:COSIntranet,ChangeOpeningDate";
+            storeOpeningContentType.FieldLinks[SPBuiltInFieldId.AssignedTo].DisplayName = "$Resources:COSIntranet,ChangeProjectCoordinator";
+            storeOpeningContentType.FieldLinks[SPBuiltInFieldId.StartDate].ReadOnly = true;
 
-            CommonUtilities.AddFieldToContentType(web, projectContentType, storeLookup, true, false, string.Empty);        
-            CommonUtilities.AddFieldToContentType(web, projectContentType, countryLookup, false, true, string.Empty);
-            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", projectContentType.Name, projectsUrl));
-            CommonUtilities.AttachContentTypeToList(projectsList, projectContentType, true, false);
+            CommonUtilities.AddFieldToContentType(web, storeOpeningContentType, storeLookup, true, false, string.Empty);        
+            CommonUtilities.AddFieldToContentType(web, storeOpeningContentType, countryLookup, false, true, string.Empty);
+            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", storeOpeningContentType.Name, projectsUrl));
+            CommonUtilities.AttachContentTypeToList(projectsList, storeOpeningContentType, true, false);
             //projectsList.Fields[Fields.ChangeShippingDays].ShowInEditForm = false;
             //projectsList.Fields[Fields.ChangeProjectCategory].ShowInEditForm = false;
             //projectsList.Fields[SPBuiltInFieldId.PercentComplete].ShowInNewForm = false;
@@ -224,11 +224,10 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
 
                 Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "create/add project template lookup to project ct");
                 string projectsUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.StoreOpenings);
-                SPList projectsList = web.GetList(projectsUrl);
                 Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add Lookups to:{0}", projectsUrl));
                 SPFieldLookup projecttemplateLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.ProjectTemplate, "$Resources:COSIntranet,ChangeColProjectTemplate", Fields.Title, projectTemplatesList, false, false);
 
-                SPContentType projectContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.Project];
+                SPContentType projectContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.ProjectStoreOpening];
                 CommonUtilities.AddFieldToContentType(web, projectContentType, projecttemplateLookup, false, false, string.Empty);
             }
 
@@ -241,7 +240,7 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
             if (web != null)
             {
                 // add project tasks link to project ct
-                SPContentType projectContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.Project];
+                SPContentType projectContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.ProjectStoreOpening];
                 SPField projectTasksLink = web.Site.RootWeb.Fields[Fields.ChangeProjectTasksLink];
                 Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add fild:{0} to ct:{1}", projectTasksLink.Title, projectContentType.Name));
                 CommonUtilities.AddFieldToContentType(web, projectContentType, projectTasksLink, false, true, string.Empty);

@@ -24,7 +24,7 @@ namespace Change.Intranet.Model
         /// <summary>
         /// Project coordinator
         /// </summary>
-        public const string ProjectCoordinator = "Project coordinator";
+        public const string ProjectCoordinator = "ProjectStoreOpening coordinator";
 
         /// <summary>
         /// Contractorr

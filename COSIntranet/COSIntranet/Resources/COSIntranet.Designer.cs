@@ -19,7 +19,7 @@ namespace Change.Intranet.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class COSIntranet {
@@ -138,6 +138,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeColParentProject {
             get {
                 return ResourceManager.GetString("ChangeColParentProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project.
+        /// </summary>
+        internal static string ChangeColProject {
+            get {
+                return ResourceManager.GetString("ChangeColProject", resourceCulture);
             }
         }
         
@@ -354,6 +363,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeCTProjectDescr {
             get {
                 return ResourceManager.GetString("ChangeCTProjectDescr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project.
+        /// </summary>
+        internal static string ChangeCTProjectMGMT {
+            get {
+                return ResourceManager.GetString("ChangeCTProjectMGMT", resourceCulture);
             }
         }
         
@@ -2284,6 +2302,15 @@ namespace Change.Intranet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Launch in store.
+        /// </summary>
+        internal static string ChangeLaunchInStoreDate {
+            get {
+                return ResourceManager.GetString("ChangeLaunchInStoreDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Business development promoted links.
         /// </summary>
         internal static string ChangeLibDescriptionBusiDevFavorites {
@@ -2754,6 +2781,15 @@ namespace Change.Intranet.Resources {
         internal static string ChangeProjectCreatedMailSubject {
             get {
                 return ResourceManager.GetString("ChangeProjectCreatedMailSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project responsible.
+        /// </summary>
+        internal static string ChangeProjectResponsible {
+            get {
+                return ResourceManager.GetString("ChangeProjectResponsible", resourceCulture);
             }
         }
         

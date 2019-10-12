@@ -25,7 +25,12 @@
         /// <summary>
         /// SPContentTypeId of the Change Project ContentType
         /// </summary>
-        public static SPContentTypeId Project = new SPContentTypeId("0x01000FE9FB11C1CD4CBDBD91C777F61D0FC7");
+        public static SPContentTypeId ProjectStoreOpening = new SPContentTypeId("0x01000FE9FB11C1CD4CBDBD91C777F61D0FC7");
+
+        /// <summary>
+        /// SPContentTypeId of the Change ProjectMGMT ContentType
+        /// </summary>
+        public static SPContentTypeId Project = new SPContentTypeId("0x010044B8CD0E2F1142B9B9943EBE2BE14EA6");
 
         /// <summary>
         /// SPContentTypeId of the Change Project Task ContentType
