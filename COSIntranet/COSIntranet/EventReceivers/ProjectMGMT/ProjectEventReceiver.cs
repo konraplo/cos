@@ -142,9 +142,9 @@
                 DateTime projectDueDate = DateTime.MaxValue;
 
                 string customTemplate = string.Empty;
-                if (item.ParentList.Fields.ContainsField(Fields.ProjectTemplate))
+                if (item.ParentList.Fields.ContainsField(Fields.StoreOpeningTemplate))
                 {
-                    customTemplate = Convert.ToString(item[Fields.ProjectTemplate]);
+                    customTemplate = Convert.ToString(item[Fields.StoreOpeningTemplate]);
                 }
 
                 if (!string.IsNullOrEmpty(customTemplate))

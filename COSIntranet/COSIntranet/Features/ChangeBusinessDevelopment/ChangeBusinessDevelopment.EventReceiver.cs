@@ -225,7 +225,7 @@ namespace Change.Intranet.Features.ChangeBusinessDevelopment
                 Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "create/add project template lookup to project ct");
                 string projectsUrl = SPUrlUtility.CombineUrl(web.ServerRelativeUrl.TrimEnd('/'), ListUtilities.Urls.StoreOpenings);
                 Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add Lookups to:{0}", projectsUrl));
-                SPFieldLookup projecttemplateLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.ProjectTemplate, "$Resources:COSIntranet,ChangeColProjectTemplate", Fields.Title, projectTemplatesList, false, false);
+                SPFieldLookup projecttemplateLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.StoreOpeningTemplate, "$Resources:COSIntranet,ChangeColProjectTemplate", Fields.Title, projectTemplatesList, false, false);
 
                 SPContentType projectContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.ProjectStoreOpening];
                 CommonUtilities.AddFieldToContentType(web, projectContentType, projecttemplateLookup, false, false, string.Empty);

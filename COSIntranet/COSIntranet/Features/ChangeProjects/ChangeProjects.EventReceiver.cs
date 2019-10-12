@@ -28,11 +28,7 @@ namespace Change.Intranet.Features.ChangeProjects
             if (web != null)
             {
                 Logger.WriteLog(Logger.Category.Information, "ChangeProjectsEventReceiver", "add CT and ER");
-                //AddFieldsCtErToLists(web);
-
-                
-                //Upgradeto12(web);
-                //Upgradeto13(web);
+                AddFieldsCtErToLists(web);
             }
         }
 
@@ -61,11 +57,11 @@ namespace Change.Intranet.Features.ChangeProjects
             Logger.WriteLog(Logger.Category.Information, "ChangeBusinessDevelopmentEventReceiver", "Add lookups");
 
             Logger.WriteLog(Logger.Category.Information, "ChangeBusinessDevelopmentEventReceiver", string.Format("add Lookups to:{0}", deptUrl));
-            SPFieldLookup deptLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.Department, "$Resources:COSIntranet,ChangeColDeparment", Fields.Title, deptList, false, false);
+            SPFieldLookup deptLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.ProjectDepartment, "$Resources:COSIntranet,ChangeColDeparment", Fields.Title, deptList, false, false);
             Logger.WriteLog(Logger.Category.Information, "ChangeBusinessDevelopmentEventReceiver", string.Format("add Lookups to:{0}", projectsUrl));
             SPFieldLookup projectLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.Project, "$Resources:COSIntranet,ChangeColProject", Fields.Title, projectsList, false, false);
             Logger.WriteLog(Logger.Category.Information, "ChangeBusinessDevelopmentEventReceiver", string.Format("add Lookups to:{0}", projectTemplatesUrl));
-            SPFieldLookup projecttemplateLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.ProjectTemplate, "$Resources:COSIntranet,ChangeColProjectTemplate", Fields.Title, projectTemplatesList, false, false);
+            SPFieldLookup projecttemplateLookup = CommonUtilities.CreateLookupField(web, Fields.ChangeFieldsGroup, Fields.ProjectMgmtTemplate, "$Resources:COSIntranet,ChangeColProjectTemplate", Fields.Title, projectTemplatesList, false, false);
 
             // add ct to lists
             SPContentType deptContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.Department];
@@ -73,7 +69,7 @@ namespace Change.Intranet.Features.ChangeProjects
             SPContentType deptListContentType = CommonUtilities.AttachContentTypeToList(deptList, deptContentType, true, false);
             CommonUtilities.AddFieldToContentType(web, deptListContentType, deptLookup, false, false, "$Resources:COSIntranet,ChangeColParentdeparment");
 
-            SPContentType projectContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.Project];
+            SPContentType projectContentType = web.ContentTypes[ContentTypeIds.Project];
             projectContentType.FieldLinks.Delete(SPBuiltInFieldId.Predecessors);
             projectContentType.FieldLinks[SPBuiltInFieldId.Title].DisplayName = "$Resources:COSIntranet,ChangeProjectTitle";
             projectContentType.FieldLinks[SPBuiltInFieldId.TaskDueDate].DisplayName = "$Resources:COSIntranet,ChangeOpeningDate";

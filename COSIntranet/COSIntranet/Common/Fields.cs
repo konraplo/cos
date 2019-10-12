@@ -9,6 +9,7 @@
     {
         public const string ChangeFieldsGroup = "CHANGE Fields";
         public const string Department = "ChangeDepartment";
+        public const string ProjectDepartment = "ChangeProjectDepartment";
         public const string ProjectTask = "ChangeProjectTask";
         public const string StoreOpening = "ChangeStoreOpening";
         public const string Project = "ChangeProject";
@@ -18,7 +19,8 @@
         public const string Title = "Title";
         public const string StoreOpeningTask = "StoreOpeningTask";
         public const string ChangeTaskDisplayName = "ChangeTaskDisplayName";
-        public const string ProjectTemplate = "ChangeProjectTemplate";
+        public const string StoreOpeningTemplate = "ChangeProjectTemplate";
+        public const string ProjectMgmtTemplate = "ChangeProjectMgmtTemplate";
 
         /// <summary>
         /// GUID of ChangeTaskDisplayName
