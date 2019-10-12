@@ -113,6 +113,9 @@
     <Compile Include="Features\ChangeListsForHQ\ChangeListsForHQ.EventReceiver.cs">
       <DependentUpon>ChangeListsForHQ.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\ChangeProjects\ChangeProjects.EventReceiver.cs">
+      <DependentUpon>ChangeProjects.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\ChangeTimerjobs\ChangeTimerjobs.EventReceiver.cs">
       <DependentUpon>ChangeTimerjobs.feature</DependentUpon>
     </Compile>
@@ -228,6 +231,9 @@
     </None>
     <None Include="Features\ChangeContentOrganizerBD\ChangeContentOrganizerBD.feature">
       <FeatureId>{d3bca9f5-49ed-4c7b-a7a2-a8472b250a43}</FeatureId>
+    </None>
+    <None Include="Features\ChangeProjects\ChangeProjects.feature">
+      <FeatureId>{5dad9a64-c1ee-49df-853c-73a0a4412261}</FeatureId>
     </None>
     <None Include="Infrastructure\ContentTypes\CorporateNews\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{56ed91e7-59d0-4551-a7ef-10c9cf8db858}</SharePointProjectItemId>
@@ -446,6 +452,9 @@
     <Content Include="Features\ChangeContentOrganizerBD\ChangeContentOrganizerBD.Template.xml">
       <DependentUpon>ChangeContentOrganizerBD.feature</DependentUpon>
     </Content>
+    <Content Include="Features\ChangeProjects\ChangeProjects.Template.xml">
+      <DependentUpon>ChangeProjects.feature</DependentUpon>
+    </Content>
     <Content Include="Infrastructure\ContentTypes\CorporateNews\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\Country\Elements.xml" />
     <Content Include="Infrastructure\ContentTypes\Department\Elements.xml" />
@@ -539,6 +548,7 @@
     <Content Include="Resources\COSIntranet.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>COSIntranet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="UIActions\BusinessDev\StoreProjectActions\Elements.xml">
       <SubType>Designer</SubType>
