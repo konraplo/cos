@@ -49,6 +49,7 @@
             base.ItemDeleted(properties);
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "ItemDeleted");
             ProjectHelper.RemoveAllStoreOpeningReletedFolder(properties.Web, properties.ListItemId);
+            ProjectHelper.RemoveProjectRootTask(properties.Web, properties.ListItemId);
         }
 
         private void SendNotification(SPListItem storeOpeningItem)

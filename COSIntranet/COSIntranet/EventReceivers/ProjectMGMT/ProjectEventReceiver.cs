@@ -43,6 +43,7 @@
             base.ItemDeleted(properties);
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "ItemDeleted");
             ProjectHelper.RemoveAllProjectFolder(properties.Web, properties.ListItemId);
+            ProjectHelper.RemoveProjectRootTask(properties.Web, properties.ListItemId);
         }
 
         private void UpdateFolderStrucutre(SPListItem item)

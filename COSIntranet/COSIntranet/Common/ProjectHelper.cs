@@ -556,7 +556,7 @@
 
 
             }
-            else
+            else if (!task.IsStoreOpeningTask)
             {
                 tasks.Add(task);
             }
