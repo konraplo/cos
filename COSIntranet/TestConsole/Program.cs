@@ -15,6 +15,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using static Change.Contracts.Common.ListUtilities;
+using System.Xml;
 
 namespace TestConsole
 {
@@ -50,6 +51,7 @@ namespace TestConsole
         static void Main(string[] args)
         {
             string test = Path.GetFileNameWithoutExtension("dupa.json");
+            string testBool = Convert.ToString(true);
             DateTime warningDate = DateTime.Parse("7/23/2019 8:33:21 AM");
             DateTime endDate = DateTime.Parse("8/19/2019 10:10:11 AM");
             int diffMonth = ((endDate.Year - warningDate.Year) * 12) + endDate.Month - warningDate.Month;
@@ -81,7 +83,7 @@ namespace TestConsole
             //TestProjectTemplate();
             //TestCreateProjectTemplate(@"http://sharcha-p15/sites/cos/bd", 16);
             //TestCreateProjectTemplate(@"http://spvm/sites/cos/bd", 1);
-            SetTaskLink(@"http://spvm/sites/cos/bd");
+            SetFieldSchema(@"http://spvm/sites/cos/");
             //TestCopyFolderStrcutre(@"http://sharcha-p15/sites/cos/bd");
             //TestCopyFolderStrcutreRef(@"http://spvm/sites/kplmain");
             //TestUpdateFolderStrucutreProjectTemplate(@"http://sharcha-p15/sites/cos/bd");
@@ -97,6 +99,26 @@ namespace TestConsole
                 using (SPWeb web = site.OpenWeb())
                 {
                     Upgradeto12(web);
+                }
+            }
+        }
+
+        private static void SetFieldSchema(string siteUrl)
+        {
+            using (SPSite site = new SPSite(siteUrl))
+            {
+                using (SPWeb web = site.OpenWeb())
+                {
+                    SPFieldLookup lookUp = (SPFieldLookup)web.Fields.GetFieldByInternalName("ChangeProjectDepartment");
+                    string bla = "<Field DisplayName='Department' Type='Lookup' Required='FALSE' List='{eae5405f-dbe5-4cc4-9f55-012aadcb3822}' WebId='a7915e2d-0e70-4538-9d51-aae67e9cfc56' ID='{23e58fe2-e13e-4bf6-bee5-c99b44921b9e}' SourceID='{ec7597cd-5b09-472f-b510-c95decd8b857}' StaticName='ChangeProjectDepartment' Name='ChangeProjectDepartment' Version='4' Group='CHANGE Fields' ShowField='Title' />";
+                    bla = lookUp.SchemaXml;
+                    XmlDocument xDoc = new XmlDocument();
+                    xDoc.LoadXml(bla);
+                    xDoc.DocumentElement.Attributes["DisplayName"].Value = "Dupa";
+                    bla = xDoc.OuterXml;
+
+                    lookUp.SchemaXml = bla;
+                    //lookUp.Update(true);
                 }
             }
         }

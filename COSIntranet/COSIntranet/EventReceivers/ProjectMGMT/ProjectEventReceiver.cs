@@ -49,7 +49,7 @@
         private void UpdateFolderStrucutre(SPListItem item)
         {
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "UpdateFolderStrucutre");
-            SPFieldLookupValue dept = new SPFieldLookupValue(Convert.ToString(item[Fields.Department]));
+            SPFieldLookupValue dept = new SPFieldLookupValue(Convert.ToString(item[Fields.ProjectDepartment]));
             string type = string.Format(LaunchInStoreDateFormat, Convert.ToDateTime(item[SPBuiltInFieldId.TaskDueDate])); 
             string projectFolderName = string.Format("{0}_{1}_{2}_{3}", item.ID, dept.LookupValue, item.Title, type);
             // todo: create project folders in libs
@@ -129,7 +129,7 @@
                 projectTask[SPBuiltInFieldId.StartDate] = item[SPBuiltInFieldId.StartDate];
                 projectTask[SPBuiltInFieldId.TaskDueDate] = item[SPBuiltInFieldId.TaskDueDate];
                 projectTask[Fields.Project] = string.Format("{0};#{1}", item.ID, item.Title);
-                projectTask[Fields.Department] = item[Fields.Department];
+                projectTask[Fields.ProjectDepartment] = item[Fields.ProjectDepartment];
                 projectTask[Fields.ChangeTaskDisplayNameId] = item.Title;
                 projectTask.Update();
                 Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("created project root task id:{0}, title:{1}", projectTask.ID, projectTask.Title));
@@ -143,9 +143,9 @@
                 DateTime projectDueDate = DateTime.MaxValue;
 
                 string customTemplate = string.Empty;
-                if (item.ParentList.Fields.ContainsField(Fields.StoreOpeningTemplate))
+                if (item.ParentList.Fields.ContainsField(Fields.ProjectMgmtTemplate))
                 {
-                    customTemplate = Convert.ToString(item[Fields.StoreOpeningTemplate]);
+                    customTemplate = Convert.ToString(item[Fields.ProjectMgmtTemplate]);
                 }
 
                 if (!string.IsNullOrEmpty(customTemplate))

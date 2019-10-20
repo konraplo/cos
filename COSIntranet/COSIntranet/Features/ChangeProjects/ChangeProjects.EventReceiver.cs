@@ -72,9 +72,10 @@ namespace Change.Intranet.Features.ChangeProjects
             SPContentType projectContentType = web.ContentTypes[ContentTypeIds.Project];
             projectContentType.FieldLinks.Delete(SPBuiltInFieldId.Predecessors);
             projectContentType.FieldLinks[SPBuiltInFieldId.Title].DisplayName = "$Resources:COSIntranet,ChangeProjectTitle";
-            projectContentType.FieldLinks[SPBuiltInFieldId.TaskDueDate].DisplayName = "$Resources:COSIntranet,ChangeOpeningDate";
-            projectContentType.FieldLinks[SPBuiltInFieldId.AssignedTo].DisplayName = "$Resources:COSIntranet,ChangeProjectCoordinator";
-            projectContentType.FieldLinks[SPBuiltInFieldId.StartDate].ReadOnly = true;
+            projectContentType.FieldLinks[SPBuiltInFieldId.TaskDueDate].DisplayName = "$Resources:COSIntranet,ChangeLaunchInStoreDate";
+            projectContentType.FieldLinks[SPBuiltInFieldId.AssignedTo].DisplayName = "$Resources:COSIntranet,ChangeProjectResponsible";
+            projectContentType.FieldLinks[SPBuiltInFieldId.StartDate].ReadOnly = false;
+
             CommonUtilities.AddFieldToContentType(web, projectContentType, deptLookup, true, false, string.Empty);
             CommonUtilities.AddFieldToContentType(web, projectContentType, projecttemplateLookup, false, false, string.Empty);
 
@@ -84,14 +85,18 @@ namespace Change.Intranet.Features.ChangeProjects
             SPContentType projectTaskContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.ProjectTask];
             projectTaskContentType.FieldLinks[Fields.ChangeDeparmentmanager].ReadOnly = true;
 
-            CommonUtilities.AddFieldToContentType(web, projectTaskContentType, projectLookup, true, false, "$Resources:COSIntranet,ChangeColParentProject");
-            CommonUtilities.AddFieldToContentType(web, projectTaskContentType, deptLookup, false, false, "$Resources:COSIntranet,ChangeColResponsibleDepartment");
-
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", projectTaskContentType.Name, tasksUrl));
-            CommonUtilities.AttachContentTypeToList(tasksList, projectTaskContentType, true, false);
+            SPContentType projectTaskListContentType = CommonUtilities.AttachContentTypeToList(tasksList, projectTaskContentType, true, false);
+
+            CommonUtilities.AddFieldToContentType(web, projectTaskListContentType, projectLookup, true, false, "$Resources:COSIntranet,ChangeColParentProject");
+            CommonUtilities.AddFieldToContentType(web, projectTaskListContentType, deptLookup, false, false, "$Resources:COSIntranet,ChangeColResponsibleDepartment");
+
+            SPContentType projectTemplateContentType = web.Site.RootWeb.ContentTypes[ContentTypeIds.ProjectTemplate];
+            Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ct:{0} to:{1}", projectTemplateContentType.Name, projectTemplatesUrl));
+            CommonUtilities.AttachContentTypeToList(projectTemplatesList, projectTemplateContentType, true, false);
 
             //add ER to Lists
-            
+
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("add ER to List, {0}", tasksUrl));
             CommonUtilities.AddListEventReceiver(tasksList, SPEventReceiverType.ItemAdded, Assembly.GetExecutingAssembly().FullName, "Change.Intranet.EventReceivers.ProjectMGMT.ProjecTaskListEventReceiver", false);
             CommonUtilities.AddListEventReceiver(tasksList, SPEventReceiverType.ItemUpdated, Assembly.GetExecutingAssembly().FullName, "Change.Intranet.EventReceivers.ProjectMGMT.ProjecTaskListEventReceiver", false);

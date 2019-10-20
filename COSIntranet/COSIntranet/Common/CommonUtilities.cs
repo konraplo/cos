@@ -6,6 +6,7 @@
     using System.IO;
     using System.Reflection;
     using System.Text;
+    using System.Xml;
     using Microsoft.SharePoint;
     using Microsoft.SharePoint.Administration;
     using Microsoft.SharePoint.Utilities;
@@ -104,13 +105,28 @@
                         if (!rootWeb.Fields.ContainsField(fieldName))
                         {
                             fieldName = rootWeb.Fields.AddLookup(fieldName, lookupList.ID, lookupList.ParentWeb.ID, required);
+                           
                         }
-
+                      
                         lookUp = (SPFieldLookup)rootWeb.Fields.GetFieldByInternalName(fieldName);
+
+                        string fieldSchema = lookUp.SchemaXml;
+                        XmlDocument xDoc = new XmlDocument();
+                        xDoc.LoadXml(fieldSchema);
+                        xDoc.DocumentElement.Attributes["Type"].Value = allowMultipleValues? "LookupMulti" : "Lookup";
+                        xDoc.DocumentElement.Attributes["Group"].Value = groupName;
+                        xDoc.DocumentElement.Attributes["DisplayName"].Value = lookupFieldDisplayName;
+                        xDoc.DocumentElement.Attributes["ShowField"].Value = lookupFieldName;
+                        xDoc.DocumentElement.Attributes["List"].Value = lookupList.ID.ToString("B");
+                        xDoc.DocumentElement.Attributes["WebId"].Value = lookupList.ParentWeb.ID.ToString("D");
+                        fieldSchema = xDoc.OuterXml;
+                        lookUp.SchemaXml = fieldSchema;
                         lookUp.AllowMultipleValues = allowMultipleValues;
-                        lookUp.Group = groupName;
-                        lookUp.Title = lookupFieldDisplayName;
-                        lookUp.LookupField = lookupFieldName;//rootWeb.Fields[SPBuiltInFieldId.Title].Title;
+                        //lookUp.Group = groupName;
+                        //lookUp.Title = lookupFieldDisplayName;
+                        //lookUp.LookupField = lookupFieldName;//rootWeb.Fields[SPBuiltInFieldId.Title].Title;
+                        //lookUp.LookupList = lookupList.ID.ToString("B");
+                        //lookUp.LookupWebId = lookupList.ParentWeb.ID;
                         lookUp.Update(true);
 
                         Logger.WriteLog(Logger.Category.Information, typeof(CommonUtilities).FullName, string.Format("Lookupfield {0} created and updated.lookUp.LookupField = {1}", lookUp.Title, lookUp.LookupField));
