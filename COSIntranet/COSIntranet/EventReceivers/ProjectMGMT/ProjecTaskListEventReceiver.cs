@@ -37,36 +37,18 @@
                     Logger.WriteLog(Logger.Category.Information, this.GetType().Name, string.Format("update project dept mgr for id:{0}, title:{1}", item.ID, item.Title));
                     EventFiringEnabled = false;
                     SPFieldLookupValue project = new SPFieldLookupValue(Convert.ToString(item[Fields.Project]));
-                    SPFieldLookupValue dept;
-
-                    if (item.ParentList.Fields.ContainsField(Fields.ProjectDepartment))
-                    {
-                        dept = new SPFieldLookupValue(Convert.ToString(item[Fields.ProjectDepartment]));
-                    }
-                    else
-                    {
-                        dept = new SPFieldLookupValue(Convert.ToString(item[Fields.Department]));
-                    }
+                    SPFieldLookupValue dept = new SPFieldLookupValue(Convert.ToString(item[Fields.ProjectDepartment]));
 
                     SPFieldLookupValue parent = new SPFieldLookupValue(Convert.ToString(item[SPBuiltInFieldId.ParentID]));
                     if (parent.LookupId > 0)
                     {
                         SPListItem parentItem = item.ParentList.GetItemById(parent.LookupId);
                         project = new SPFieldLookupValue(Convert.ToString(parentItem[Fields.Project]));
-                        //dept = new SPFieldLookupValue(Convert.ToString(parentItem[Fields.Department]));
-
-                        if (item.ParentList.Fields.ContainsField(Fields.ProjectDepartment))
-                        {
-                            dept = new SPFieldLookupValue(Convert.ToString(parentItem[Fields.ProjectDepartment]));
-                        }
-                        else
-                        {
-                            dept = new SPFieldLookupValue(Convert.ToString(parentItem[Fields.Department]));
-                        }
+                        dept = new SPFieldLookupValue(Convert.ToString(parentItem[Fields.ProjectDepartment]));
                     }
                     else if (!Convert.ToBoolean(item[Fields.StoreOpeningTask]))
                     {
-                        SPListItem projectRootTask = ProjectHelper.GetStoreOpeningRootTask(item.ParentList, project.LookupId);
+                        SPListItem projectRootTask = ProjectHelper.GetProjectRootTask(item.ParentList, project.LookupId);
                         if (projectRootTask != null)
                         {
                             item[SPBuiltInFieldId.ParentID] = projectRootTask.ID;
@@ -79,15 +61,7 @@
                         SPList deptList = item.Web.GetList(deptUrl);
                         SPListItem deptItem = deptList.GetItemById(dept.LookupId);
                         item[Fields.ChangeDeparmentmanager] = deptItem[Fields.ChangeDeparmentmanager];
-
-                        if (item.ParentList.Fields.ContainsField(Fields.ProjectDepartment))
-                        {
-                            item[Fields.ProjectDepartment] = dept;
-                        }
-                        else
-                        {
-                            item[Fields.Department] = dept;
-                        }
+                        item[Fields.ProjectDepartment] = dept;
                     }
 
                     item[Fields.ChangeTaskDisplayNameId] = string.Format("({0}) {1}", project.LookupValue, item.Title);

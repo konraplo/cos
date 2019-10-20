@@ -122,6 +122,17 @@
         /// </summary>
         /// <param name="web">Busines dev web</param>
         /// <param name="itemId">Project item id</param>
+        public static void RemoveStoreOpeningRootTask(SPWeb web, int itemId)
+        {
+            SPList list = web.GetList(SPUrlUtility.CombineUrl(web.Url, ListUtilities.Urls.ProjectTasks));
+            RemoveStoreOpeningRootTask(list, itemId);
+        }
+
+        /// <summary>
+        /// Remove project root task from taks list.
+        /// </summary>
+        /// <param name="web">Busines dev web</param>
+        /// <param name="itemId">Project item id</param>
         public static void RemoveProjectRootTask(SPWeb web, int itemId)
         {
             SPList list = web.GetList(SPUrlUtility.CombineUrl(web.Url, ListUtilities.Urls.ProjectTasks));
@@ -131,9 +142,9 @@
         /// <summary>
         /// Remove project root task from taks list.
         /// </summary>
-        /// <param name="web">Project tasks lists</param>
+        /// <param name="list">Project tasks lists</param>
         /// <param name="itemId">Project item id</param>
-        public static void RemoveProjectRootTask(SPList list, int itemId)
+        public static void RemoveStoreOpeningRootTask(SPList list, int itemId)
         {
             try
             {
@@ -157,6 +168,34 @@
             }
         }
 
+        /// <summary>
+        /// Remove project root task from taks list.
+        /// </summary>
+        /// <param name="list">Project tasks lists</param>
+        /// <param name="itemId">Project item id</param>
+        public static void RemoveProjectRootTask(SPList list, int itemId)
+        {
+            try
+            {
+                SPListItem projectRootTask = GetProjectRootTask(list, itemId);
+                if (projectRootTask != null)
+                {
+                    Logger.WriteLog(Logger.Category.Information, "RemoveProjectRootTask", string.Format("Remove project rootTask:{0} from {1}", itemId, list.RootFolder.Url));
+                    using (DisableEventFiring scope = new DisableEventFiring())
+                    {
+                        projectRootTask.Delete();
+                        list.Update();
+                    }
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                Logger.WriteLog(Logger.Category.Unexpected, "RemoveProjectRootTask", e.Message);
+                throw;
+            }
+        }
         /// <summary>
         /// Archive project. Create ziped project file and save in Assets library
         /// </summary>
@@ -281,6 +320,18 @@
             return null;
         }
 
+        public static SPListItem GetProjectRootTask(SPList projectTasksList, int projectItemId)
+        {
+            SPQuery findProjectTask = new SPQuery();
+            findProjectTask.Query = string.Format(GET_STORE_OPENING_TASK, Fields.Project, projectItemId, Fields.StoreOpeningTask);
+            SPListItemCollection items = projectTasksList.GetItems(findProjectTask);
+            if (items.Count == 1)
+            {
+                return items[0];
+            }
+
+            return null;
+        }
         /// <summary>
         /// Save project plan (all project tasks) as template
         /// </summary>
