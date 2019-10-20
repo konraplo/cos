@@ -18,6 +18,6 @@
                RegistrationType="ContentType"
                ImageUrl="~/_layouts/15/IMAGES/DOCLINK.GIF"
                Sequence="13">
-    <UrlAction Url="javascript:OpenDialogFromLayout('/COSIntranet/BusinessDev/CreateProjectTemplate.aspx?ProjectId=' + {ItemId}, 300, 400)" />
+    <UrlAction Url="javascript:OpenDialogFromLayout('/COSIntranet/BusinessDev/CreateProjectTemplate.aspx?ProjectId={ItemId}&amp;ListUrlDir={ListUrlDir}', 300, 400)" />
   </CustomAction>  
 </Elements>

@@ -218,7 +218,7 @@
                     SPFieldLookupValue templateValue = new SPFieldLookupValue(customTemplate);
                     if (templateValue.LookupId > 0)
                     {
-                        ProjectHelper.ImportProjectTasksTree(item.Web, item, templateValue.LookupId, projectTask.ID, grandOpening, projectCoordinator, storeMgr, regions, departments, foundedProjectTaskCT, storeCountry, store, ref projectStartDate, ref projectDueDate);
+                        ProjectHelper.ImportStoreOpeningProjectTasksTree(item.Web, item, templateValue.LookupId, projectTask.ID, grandOpening, projectCoordinator, storeMgr, regions, departments, foundedProjectTaskCT, storeCountry, store, ref projectStartDate, ref projectDueDate);
                     }
                 }
                 else if(category.Equals("Opening", StringComparison.InvariantCultureIgnoreCase))

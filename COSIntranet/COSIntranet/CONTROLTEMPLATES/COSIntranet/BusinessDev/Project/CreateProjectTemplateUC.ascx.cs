@@ -14,10 +14,12 @@
     {
         private int projectItemID = 0;
         private string templateName = string.Empty;
+        private string projectListUrlDir = string.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             string projectId = Request["ProjectId"];
+            projectListUrlDir = Request["ListUrlDir"];
             if (!string.IsNullOrEmpty(projectId))
             {
                 projectItemID = Convert.ToInt32(projectId);
@@ -75,7 +77,16 @@
                             templateName = project.Title;
                         }
 
-                        ProjectHelper.SaveProjectTemplate(SPContext.Current.Web, this.projectItemID, this.templateName);
+                       
+                        if (projectListUrlDir.Contains(ListUtilities.Urls.StoreOpenings))
+                        {
+                            ProjectHelper.SaveStoreOpeningProjectTemplate(SPContext.Current.Web, this.projectItemID, this.templateName);
+
+                        }
+                        else
+                        {
+                            ProjectHelper.SaveProjectTemplate(SPContext.Current.Web, this.projectItemID, this.templateName);
+                        }
                     }
 
                     //---------------------

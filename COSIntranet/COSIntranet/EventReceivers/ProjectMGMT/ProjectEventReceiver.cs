@@ -152,7 +152,7 @@
                     SPFieldLookupValue templateValue = new SPFieldLookupValue(customTemplate);
                     if (templateValue.LookupId > 0)
                     {
-                        //ProjectHelper.ImportProjectTasksTree(item.Web, item, templateValue.LookupId, projectTask.ID, launchInStore, projectCoordinator, storeMgr, regions, departments, foundedProjectTaskCT, storeCountry, store, ref projectStartDate, ref projectDueDate);
+                        ProjectHelper.ImportProjectTasksTree(item.Web, item, templateValue.LookupId, projectTask.ID, launchInStore, projectCoordinator, departments, foundedProjectTaskCT, ref projectStartDate, ref projectDueDate);
                     }
                 }
                 
