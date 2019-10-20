@@ -15,10 +15,12 @@
     public partial class ProjectExportUC : UserControl, IFormBaseView
     {
         private int projectItemID = 0;
+        private string projectListUrlDir = string.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             string projectId = Request["ProjectId"];
+            projectListUrlDir = Request["ListUrlDir"];
             if (!string.IsNullOrEmpty(projectId))
             {
                 projectItemID = Convert.ToInt32(projectId);
@@ -89,25 +91,27 @@
                         if (cbExportProject.Checked)
                         {
                             // Export project documentation
-                            zipPackageName = ProjectHelper.ArchiveProject(SPContext.Current.Web, this.projectItemID, UIHelper.ZipFileSavingPlace.LocalServerTempFolder);
+                            zipPackageName = ProjectHelper.ArchiveProject(SPContext.Current.Web, this.projectItemID, UIHelper.ZipFileSavingPlace.LocalServerTempFolder, projectListUrlDir);
                             callBackUrl = string.Concat(SPContext.Current.Web.Url, Request.Url.PathAndQuery, "&success=1", string.Format("&packagename={0}", zipPackageName));
                         }
 
                         if (cbRemoveProject.Checked)
                         {
                             // remove project and all project releted stuff
-                            ProjectHelper.RemoveProject(SPContext.Current.Web, this.projectItemID);
+                            if (projectListUrlDir.Contains(ListUtilities.Urls.StoreOpenings))
+                            {
+                                ProjectHelper.RemoveStoreOpeningProject(SPContext.Current.Web, this.projectItemID);
+
+                            }
+                            else {
+                                ProjectHelper.RemoveProject(SPContext.Current.Web, this.projectItemID);
+                            }
                         }
                     }
 
 
                     //---------------------
-                    //((DialogLayoutsPageBase)this.Page).EndOperation(1, string.Concat(Request.Url.ToString(), "&success=1", string.Format("&packagename={0}", zipPackageName)));
                     ((DialogLayoutsPageBase)this.Page).EndOperation(1, callBackUrl);
-                    //EndOperationWriteBinaryData(zipPackageName, UIHelper.ZipFileSavingPlace.LocalServerTempFolder);
-                    //longOp.End(Request.Url.ToString(), SPRedirectFlags.DoNotEndResponse, HttpContext.Current, "success=1");
-                    //longOp.End(@"http://sharcha-p15/_layouts/15/COSIntranet/BusinessDev/ExportProject.aspx?ProjectId=3&success=1", SPRedirectFlags.Default, HttpContext.Current, "success=1");
-                    //EndOperationWriteBinaryData();
                 }
             }
             catch (ThreadAbortException)

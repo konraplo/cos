@@ -404,6 +404,9 @@
     <None Include="UIActions\BusinessDev\StoreProjectActions\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{5b9b35aa-f1e5-4f60-a1d6-11ec277e311f}</SharePointProjectItemId>
     </None>
+    <None Include="UIActions\ProjectMGMT\ProjectActions\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{c0d448cc-6e96-42e2-ba6e-cda7734426a4}</SharePointProjectItemId>
+    </None>
     <None Include="WebTemplates\ChangeBusinessDevelopmentWeb\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{d110c909-d550-461d-8ab2-51e6cf789504}</SharePointProjectItemId>
     </None>
@@ -563,6 +566,7 @@
     <Content Include="UIActions\BusinessDev\StoreProjectActions\Elements.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="UIActions\ProjectMGMT\ProjectActions\Elements.xml" />
     <Content Include="WebTemplates\ChangeBusinessDevelopmentWeb\Elements.xml" />
     <Content Include="WebTemplates\ChangeBusinessDevelopmentWeb\ONET.XML" />
     <Content Include="WebTemplates\ChangeDivisionWeb\Elements.xml" />

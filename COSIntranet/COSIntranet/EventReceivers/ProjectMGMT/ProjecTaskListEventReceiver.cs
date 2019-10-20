@@ -64,6 +64,7 @@
                         item[Fields.ProjectDepartment] = dept;
                     }
 
+                    item[Fields.Project] = project;
                     item[Fields.ChangeTaskDisplayNameId] = string.Format("({0}) {1}", project.LookupValue, item.Title);
                     item.Update();
                 }

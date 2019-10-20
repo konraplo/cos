@@ -18,6 +18,8 @@
     /// </summary>
     public static class ProjectHelper
     {
+        public const string LaunchInStoreDateFormat = "{0:dd.MM.yyyy}";
+
         public const string GET_STORE_OPENING_TASK = @"<Where>
                                                                   <And>
                                                                     <Eq>
@@ -42,7 +44,7 @@
                                    </Where>";
 
 
-        private static string[] storeOpeningLibrarieUrls = { "Marketing", "Drawings", "GeneralInformation", "Logistic", "Pictures", "Evaluation" };
+        private static string[] storeOpeningLibrariesUrls = { "Marketing", "Drawings", "GeneralInformation", "Logistic", "Pictures", "Evaluation" };
         public static string[] projectLibrarieUrls = { "Finance", "HR", "Marketing"};
 
         /// <summary>
@@ -81,7 +83,7 @@
         /// <param name="itemId">Project item id</param>
         public static void RemoveAllStoreOpeningReletedFolder(SPWeb web, int itemId)
         {
-            foreach (string listUrl in storeOpeningLibrarieUrls)
+            foreach (string listUrl in storeOpeningLibrariesUrls)
             {
                 RemoveProjectFolder(web, listUrl, itemId);
             }
@@ -100,11 +102,28 @@
             }
         }
 
-        public static void RemoveProject(SPWeb web, int itemId)
+        public static void RemoveStoreOpeningProject(SPWeb web, int itemId)
         {
             try
             {
                 SPList list = web.GetList(SPUrlUtility.CombineUrl(web.Url, ListUtilities.Urls.StoreOpenings));
+                Logger.WriteLog(Logger.Category.Information, "RemoveProject", string.Format("Remove project :{0} from {1}", itemId, list.RootFolder.Url));
+                SPListItem project = list.GetItemById(itemId);
+                project.Delete();
+                list.Update();
+            }
+            catch (Exception e)
+            {
+                Logger.WriteLog(Logger.Category.Unexpected, "RemoveProject", e.Message);
+                throw;
+            }
+        }
+
+        public static void RemoveProject(SPWeb web, int itemId)
+        {
+            try
+            {
+                SPList list = web.GetList(SPUrlUtility.CombineUrl(web.Url, ListUtilities.Urls.Projects));
                 Logger.WriteLog(Logger.Category.Information, "RemoveProject", string.Format("Remove project :{0} from {1}", itemId, list.RootFolder.Url));
                 SPListItem project = list.GetItemById(itemId);
                 project.Delete();
@@ -203,7 +222,7 @@
         /// <param name="itemId">Project item id</param>
         /// <param name="fileSavingPlace">Place where the archiv file is saved</param>
         /// <returns>Name of created zip file</returns>
-        public static string ArchiveProject(SPWeb web, int itemId, UIHelper.ZipFileSavingPlace fileSavingPlace)
+        public static string ArchiveProject(SPWeb web, int itemId, UIHelper.ZipFileSavingPlace fileSavingPlace, string projectListUrlDir)
         {
             string createdZipName = string.Empty;
 
@@ -216,15 +235,35 @@
                         elevWeb.AllowUnsafeUpdates = true;
                         Logger.WriteLog(Logger.Category.Information, "ArchiveProject", string.Format("Archive project for project id: {0} from web: {1}", itemId, web.Url));
 
-                        SPList list = web.GetList(SPUrlUtility.CombineUrl(elevWeb.Url, ListUtilities.Urls.StoreOpenings));
-                        SPListItem project = list.GetItemById(itemId);
-                        string projectFolderName = ProjectUtilities.GetProjectsFolderName(elevWeb, itemId);
+                        string projectFolderName = string.Empty;
+                        if (projectListUrlDir.Contains(ListUtilities.Urls.StoreOpenings))
+                        {
+                            projectFolderName = ProjectUtilities.GetStoreOpeningProjectsFolderName(elevWeb, itemId);
+
+                        }
+                        else
+                        {
+                            projectFolderName = ProjectUtilities.GetProjectsFolderName(elevWeb, itemId);
+                        }
+
                         ZipUtility zip = new ZipUtility(projectFolderName);
 
-                        foreach (string listUrl in storeOpeningLibrarieUrls)
+                        if (projectListUrlDir.Contains(ListUtilities.Urls.StoreOpenings))
                         {
-                            ArchiveProjectData(elevWeb, listUrl, itemId, zip);
+                            foreach (string listUrl in storeOpeningLibrariesUrls)
+                            {
+                                ArchiveProjectData(elevWeb, listUrl, itemId, zip);
+                            }
+
                         }
+                        else
+                        {
+                            foreach (string listUrl in projectLibrarieUrls)
+                            {
+                                ArchiveProjectData(elevWeb, listUrl, itemId, zip);
+                            }
+                        }
+                        
 
                         if (fileSavingPlace == UIHelper.ZipFileSavingPlace.LocalServerTempFolder)
                         {

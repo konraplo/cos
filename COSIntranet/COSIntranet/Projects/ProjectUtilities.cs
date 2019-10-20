@@ -540,7 +540,7 @@
         /// </summary>
         /// <param name="web">Busines dev web</param>
         /// <param name="itemId">Project item id</param>
-        public static string GetProjectsFolderName(SPWeb web, int projectId)
+        public static string GetStoreOpeningProjectsFolderName(SPWeb web, int projectId)
         {
             string projectFolderName = string.Empty;
             SPList list = web.GetList(SPUrlUtility.CombineUrl(web.ServerRelativeUrl, ListUtilities.Urls.StoreOpenings));
@@ -550,6 +550,24 @@
             SPFieldLookupValue storeCountry = new SPFieldLookupValue(Projects.ProjectUtilities.GetStoreCountry(projectItem.Web, store.LookupId));
             string type = Convert.ToString(projectItem[Fields.ChangeProjectCategory]);
             projectFolderName = string.Format("{0}_{1}_{2}_{3}", projectItem.ID, store.LookupValue, storeCountry.LookupValue, type);
+
+            return projectFolderName;
+        }
+
+        /// <summary>
+        /// Compute project folder name
+        /// </summary>
+        /// <param name="web">Busines dev web</param>
+        /// <param name="itemId">Project item id</param>
+        public static string GetProjectsFolderName(SPWeb web, int projectId)
+        {
+            string projectFolderName = string.Empty;
+            SPList list = web.GetList(SPUrlUtility.CombineUrl(web.ServerRelativeUrl, ListUtilities.Urls.Projects));
+            SPListItem projectItem = list.GetItemById(projectId);
+
+            SPFieldLookupValue dept = new SPFieldLookupValue(Convert.ToString(projectItem[Fields.ProjectDepartment]));
+            string type = string.Format(ProjectHelper.LaunchInStoreDateFormat, Convert.ToDateTime(projectItem[SPBuiltInFieldId.TaskDueDate]));
+            projectFolderName = string.Format("{0}_{1}_{2}_{3}", projectItem.ID, dept.LookupValue, projectItem.Title, type);
 
             return projectFolderName;
         }

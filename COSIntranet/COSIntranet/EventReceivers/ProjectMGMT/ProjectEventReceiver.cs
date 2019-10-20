@@ -15,7 +15,6 @@
     /// </summary>
     public class ProjectEventReceiver : SPItemEventReceiver
     {
-        private const string LaunchInStoreDateFormat = "{0:dd.MM.yyyy}";
         public delegate List<ProjectTask> CreateProjectTasksList(int parentTaskId, string parentTitle, int shippingDays);
 
         /// <summary>
@@ -50,7 +49,7 @@
         {
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "UpdateFolderStrucutre");
             SPFieldLookupValue dept = new SPFieldLookupValue(Convert.ToString(item[Fields.ProjectDepartment]));
-            string type = string.Format(LaunchInStoreDateFormat, Convert.ToDateTime(item[SPBuiltInFieldId.TaskDueDate])); 
+            string type = string.Format(ProjectHelper.LaunchInStoreDateFormat, Convert.ToDateTime(item[SPBuiltInFieldId.TaskDueDate])); 
             string projectFolderName = string.Format("{0}_{1}_{2}_{3}", item.ID, dept.LookupValue, item.Title, type);
             // todo: create project folders in libs
             foreach (string listUrl in ProjectHelper.projectLibrarieUrls)
