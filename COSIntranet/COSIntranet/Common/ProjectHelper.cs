@@ -45,7 +45,7 @@
 
 
         private static string[] storeOpeningLibrariesUrls = { "Marketing", "Drawings", "GeneralInformation", "Logistic", "Pictures", "Evaluation" };
-        public static string[] projectLibrarieUrls = { "Finance", "HR", "Marketing"};
+        public static string[] projectLibrarieUrls = { "Finance", "HR", "Marketing", "DataAndAnalyse", "DesignAndProduction", "Directors", "Ecommerce", "ITandIS", "OrderManagement", "Planning", "RetailOperations", "StoreDevelopment", "Warehouse" };
 
         /// <summary>
         /// Remove project releted folder from list
