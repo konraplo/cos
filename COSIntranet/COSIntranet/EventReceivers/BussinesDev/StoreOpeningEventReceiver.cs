@@ -136,8 +136,8 @@
                     // copy folder structure
                     string srcUrl = SPUtility.ConcatUrls(web.Url, folder.Url);
                     string destUrl = SPUtility.ConcatUrls(web.Url, string.Format(@"{0}/{1}", projectDocumentList.RootFolder.Url, projectFolderName));
-                    CommonUtilities.CopyFolderStrcutre(web, srcUrl, destUrl);
-                    //SPMoveCopyUtil.CopyFolder(srcUrl, destUrl);
+                    //CommonUtilities.CopyFolderStrcutre(web, srcUrl, destUrl);
+                    SPMoveCopyUtil.CopyFolder(srcUrl, destUrl);
                 }
                 
             }

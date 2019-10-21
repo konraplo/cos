@@ -367,37 +367,37 @@
       <SharePointProjectItemId>{e11a311d-f764-4ff6-a499-59c3ef996eae}</SharePointProjectItemId>
     </None>
     <None Include="Infrastructure\Lists\ProjectsManagement\DataAndAnalyse\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{5be4a3d9-42bf-4645-b0d7-123cf0d5b575}</SharePointProjectItemId>
+      <SharePointProjectItemId>{6b212fcd-6a57-4e2e-83d0-f18e636deb55}</SharePointProjectItemId>
     </None>
     <None Include="Infrastructure\Lists\ProjectsManagement\DesignAndProduction\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{a50dc9de-6709-43df-a890-6b3246c4c927}</SharePointProjectItemId>
+      <SharePointProjectItemId>{2d6b6664-29ca-4271-8ea5-3f221728efbd}</SharePointProjectItemId>
     </None>
     <None Include="Infrastructure\Lists\ProjectsManagement\Directors\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{8b963b0d-7cbd-404e-b8a2-9581bb90f270}</SharePointProjectItemId>
+      <SharePointProjectItemId>{fc93dd49-f035-4cec-9b0e-8978667748b6}</SharePointProjectItemId>
     </None>
     <None Include="Infrastructure\Lists\ProjectsManagement\Ecommerce\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{8c71944e-e5cc-4ce5-8675-0d119327ac38}</SharePointProjectItemId>
+      <SharePointProjectItemId>{798497f4-b1ec-4683-8805-b0a153224e11}</SharePointProjectItemId>
     </None>
     <None Include="Infrastructure\Lists\ProjectsManagement\ITandIS\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{4cdfe879-67a4-4060-a5d5-128f411b63b3}</SharePointProjectItemId>
+      <SharePointProjectItemId>{ab7dafdf-8f85-4df0-918a-0addc887388d}</SharePointProjectItemId>
     </None>
     <None Include="Infrastructure\Lists\ProjectsManagement\OrderManagement\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{6bec50cb-f76b-467b-9e2a-66a4ebad2322}</SharePointProjectItemId>
+      <SharePointProjectItemId>{f5868627-0ce9-4225-a3a1-6f08e88dce7d}</SharePointProjectItemId>
     </None>
     <None Include="Infrastructure\Lists\ProjectsManagement\Planning\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{62a05ae6-0fc8-4d04-8882-5d44ca554a33}</SharePointProjectItemId>
+      <SharePointProjectItemId>{cb40fd4d-1166-499b-aa91-6206adb07fc2}</SharePointProjectItemId>
     </None>
     <None Include="Infrastructure\Lists\ProjectsManagement\Projects\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{1d3bc618-5725-48b2-a16f-586a41c6b377}</SharePointProjectItemId>
     </None>
     <None Include="Infrastructure\Lists\ProjectsManagement\RetailOperations\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{46242d11-5bcb-4d77-9794-25812c5646ac}</SharePointProjectItemId>
+      <SharePointProjectItemId>{0151eccd-4d1f-4de1-a25b-ef8fec38a507}</SharePointProjectItemId>
     </None>
     <None Include="Infrastructure\Lists\ProjectsManagement\StoreDevelopment\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{a170f5e7-4071-42ad-abac-4dd86145f0fd}</SharePointProjectItemId>
+      <SharePointProjectItemId>{ee128ae5-f1b5-4f2d-a6c0-51e53178474e}</SharePointProjectItemId>
     </None>
     <None Include="Infrastructure\Lists\ProjectsManagement\Warehouse\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{6e1292e2-9946-463d-a434-4bfe7bc3ea38}</SharePointProjectItemId>
+      <SharePointProjectItemId>{94a425bb-8045-4820-b0ce-154ca25aec1d}</SharePointProjectItemId>
     </None>
     <None Include="Infrastructure\Lists\RootLevel\Folders\FoldersInstance\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{ba62b06b-e0f1-492c-978a-102dec87a8d5}</SharePointProjectItemId>
