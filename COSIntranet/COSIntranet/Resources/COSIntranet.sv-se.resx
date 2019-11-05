@@ -1083,4 +1083,7 @@ Have a nice day
   <data name="ChangeProjectResponsible" xml:space="preserve">
     <value>Project responsible</value>
   </data>
+  <data name="ChangeCTProjectMGMTDescr" xml:space="preserve">
+    <value>CHANGE Project</value>
+  </data>
 </root>
