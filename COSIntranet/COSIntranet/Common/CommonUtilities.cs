@@ -670,6 +670,7 @@
             return isOK;
         }
 
+        /// <summary>
         /// Iterates through all site collections od the WebApplication and returns the ID of the Site, where the "Core Lists"-Feature is activated
         /// </summary>
         /// <param name="webApp">SPWebApplication to search for the SiteCollection</param>
@@ -697,6 +698,7 @@
             return retval;
         }
 
+        /// <summary>
         /// Iterates through all site collections od the WebApplication and returns the ID of the Site, where the "Core Lists"-Feature is activated
         /// </summary>
         /// <param name="webApp">SPWebApplication to search for the SiteCollection</param>
@@ -733,6 +735,42 @@
             return string.Empty;
         }
 
+        /// <summary>
+        /// Iterates through all site collections of the WebApplication and returns the ID of the Site, where the "Core Lists"-Feature is activated
+        /// </summary>
+        /// <param name="webApp">SPWebApplication to search for the SiteCollection</param>
+        /// <returns>url of the projects site. Returns string.Empty if not found</returns>
+        public static string FindProjectsSiteId(SPWebApplication webApp)
+        {
+            if (webApp == null) throw new ArgumentNullException("WebApplication must be not NULL! (FindBusinessDevelopmentSiteId)");
+
+            Guid siteId = FindChangeSiteId(webApp);
+            if (!siteId.Equals(Guid.Empty))
+            {
+                try
+                {
+                    Guid projectMgmntArtifactsFeatureGuid = new Guid("74017d62-845c-4f81-8f54-f3ba5e33f309");
+                    using (SPSite site = new SPSite(siteId))
+                    {
+                        foreach (SPWeb web in site.AllWebs)
+                        {
+                            bool featureFound = (web.Features[projectMgmntArtifactsFeatureGuid] != null);
+                            string url = web.Url;
+                            web.Dispose();
+                            if (featureFound) return url;
+
+                        }
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Logger.WriteLog(Logger.Category.Unexpected, typeof(CommonUtilities).Name, string.Format("FindProjectsSiteId error:{0}", ex.Message));
+                }
+            }
+
+            return string.Empty;
+        }
         /// <summary>
         /// Copy folder structure using Microsoft.SharePoint.SPMoveCopyUtil.CopyFolder by reflection
         /// </summary>

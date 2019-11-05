@@ -78,12 +78,12 @@ namespace TestConsole
             //DateTime firstDelivery = grandOpening.AddDays(-13);
             //DateTime secondDelivery = grandOpening.AddDays(-7);
             //Console.WriteLine(string.Format("{0},{1},{2}", string.Format("{0:MMMM dd, yyyy}", grandOpening), string.Format("{0:dd-MM-yyyy}", firstDelivery), string.Format("{0:dd-MM-yyyy}", secondDelivery)));
-
+            ReadCsv();
             //TestSetContractStatus(@"http://sharcha-p15/sites/contracts");
             //TestProjectTemplate();
             //TestCreateProjectTemplate(@"http://sharcha-p15/sites/cos/bd", 16);
             //TestCreateProjectTemplate(@"http://spvm/sites/cos/bd", 1);
-            SetFieldSchema(@"http://spvm/sites/cos/");
+            //SetFieldSchema(@"http://spvm/sites/cos/");
             //TestCopyFolderStrcutre(@"http://sharcha-p15/sites/cos/bd");
             //TestCopyFolderStrcutreRef(@"http://spvm/sites/kplmain");
             //TestUpdateFolderStrucutreProjectTemplate(@"http://sharcha-p15/sites/cos/bd");
@@ -91,6 +91,67 @@ namespace TestConsole
             //Upgradeto12Test(@"http://sharcha-p15/sites/cos/bd");
             //CreateZipFile();
         }
+
+        private static void ReadCsv()
+        {
+            using (StreamReader sr = new StreamReader(@"D:\kpl\commodities.csv"))
+            {
+                Regex regex = new Regex(@"\d{4}");
+                string currentLine;
+                Dictionary<string, Comm> values = new Dictionary<string, Comm>();
+                // currentLine will be null when the StreamReader reaches the end of file
+                while ((currentLine = sr.ReadLine()) != null)
+                {
+                    string[] coulumns = currentLine.Split(new char[] { ';' });
+                    Match match = regex.Match(coulumns[1]);
+                    if (match.Success)
+                    {
+                        string id = match.Value;
+                        Comm comm;
+                        if (values.ContainsKey(id))
+                        {
+                            comm = values[id];
+                        }
+                        else {
+                            comm = new Comm();
+                            values.Add(id, comm);
+                        }
+
+                        comm.Id = id;
+                        if (coulumns[2].Equals("US", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            comm.Us = coulumns[3];
+                        }
+                        else if (coulumns[2].Equals("D", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            comm.De = coulumns[3];
+                        }
+                    }
+                }
+
+                StringBuilder sb = new StringBuilder();
+                foreach (Comm item in values.Values)
+                {
+                    if (string.IsNullOrEmpty(item.Us))
+                    {
+                        continue;
+                    }
+
+                    string commodityLine = string.Empty;
+                    if (string.IsNullOrEmpty(item.De)) {
+                     commodityLine = string.Format("{0};{1}", item.Us, item.Id);
+                    }
+                    else
+                    {
+                        commodityLine = string.Format("{0}[de]{1};{2}", item.Us, item.De, item.Id);
+                    }
+                    sb.AppendLine(commodityLine);
+                }
+
+                File.WriteAllText(@"D:\kpl\commoditiesFile.txt",sb.ToString());
+            }
+        }
+
 
         private static void Upgradeto12Test(string siteUrl)
         {

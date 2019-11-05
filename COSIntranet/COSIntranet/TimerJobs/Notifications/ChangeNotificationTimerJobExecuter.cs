@@ -80,6 +80,14 @@
         {
             SPWebApplication webApplication = notificationTimerJob.WebApplication;
             string siteUrl = CommonUtilities.FindBusinessDevelopmentSiteId(webApplication);
+            SendTasksNotifications(siteUrl);
+
+            siteUrl = CommonUtilities.FindProjectsSiteId(webApplication);
+            SendTasksNotifications(siteUrl);
+        }
+
+        private static void SendTasksNotifications(string siteUrl)
+        {
             if (!string.IsNullOrEmpty(siteUrl))
             {
                 try
