@@ -14,5 +14,7 @@ namespace TestConsole
         public string De { get; set; }
 
         public string Us { get; set; }
+
+        public string Translation { get; set; }
     }
 }
