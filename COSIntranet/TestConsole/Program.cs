@@ -55,6 +55,14 @@ namespace TestConsole
         private const string BN = "New Product Launches[de]Neue Produktanlaeufe";
         private const string BP = "Powertrain[de]Antriebswelle[es]Tren motriz[hu]Erőátvitel[pl]Powertrain[ru]Силовой агрегат[zh]动力总成[cs]Hnací ústrojí[fr]Groupe motopropulseur[it]Powertrain[pt]Powertrain[sk]Powertrai";
         private const string BX = "Exterior[de]Exterieur[es]exterior[hu]külső[pl]powierzchowność[ru]экстерьер[zh]外观[cs]exteriér[fr]extérieur[it]esterno[pt]exterior[sk]exteriér";
+
+        private static class SineqaEventType
+        {
+            public const string SearchText = "search.text";
+            public const string SearchResultLink = "click.resultlink";
+            public const string DocPreview = "doc.preview";
+        }
+
         static void Main(string[] args)
         {
             string test = Path.GetFileNameWithoutExtension("dupa.json");
@@ -85,7 +93,7 @@ namespace TestConsole
             //DateTime firstDelivery = grandOpening.AddDays(-13);
             //DateTime secondDelivery = grandOpening.AddDays(-7);
             //Console.WriteLine(string.Format("{0},{1},{2}", string.Format("{0:MMMM dd, yyyy}", grandOpening), string.Format("{0:dd-MM-yyyy}", firstDelivery), string.Format("{0:dd-MM-yyyy}", secondDelivery)));
-            ReadCsvCommodities();
+            ReadCsvSearchDocs();
             //TestSetContractStatus(@"http://sharcha-p15/sites/contracts");
             //TestProjectTemplate();
             //TestCreateProjectTemplate(@"http://sharcha-p15/sites/cos/bd", 16);
@@ -182,79 +190,42 @@ namespace TestConsole
         {
             using (StreamReader sr = new StreamReader(@"C:\kpl\SearchDocId.csv"))
             {
-                Regex regex = new Regex(@"\d{4}");
-                string currentLine;
-                Dictionary<string, Comm> values = new Dictionary<string, Comm>();
-                Dictionary<string, string> commodities = new Dictionary<string, string>();
-                commodities.Add("BA", BA);
-                commodities.Add("BC", BC);
-                commodities.Add("BI", BI);
-                commodities.Add("BE", BE);
-                commodities.Add("BM", BM);
-                commodities.Add("BN", BN);
-                commodities.Add("BP", BP);
-                commodities.Add("BX", BX);
                 // currentLine will be null when the StreamReader reaches the end of file
+
+                List<SinequaProfile> profiles = new List<SinequaProfile>();
+                string currentLine;
+                int i = 0;
                 while ((currentLine = sr.ReadLine()) != null)
                 {
-                    string[] coulumns = currentLine.Split(new char[] { ';' });
-                    Match match = regex.Match(coulumns[1]);
-                    if (match.Success)
+                    if (i == 0)
                     {
-                        string commValue = coulumns[0];
-                        if (!commodities.ContainsKey(commValue))
-                        {
-                            continue;
-                        }
-
-
-                        string id = match.Value;
-                        Comm comm;
-                        if (values.ContainsKey(id))
-                        {
-                            comm = values[id];
-                        }
-                        else
-                        {
-                            comm = new Comm();
-                            values.Add(id, comm);
-                        }
-
-                        comm.Id = id;
-                        comm.Translation = commodities[commValue];
-                        //if (coulumns[2].Equals("US", StringComparison.InvariantCultureIgnoreCase))
-                        //{
-                        //    comm.Us = coulumns[3];
-                        //}
-                        //else if (coulumns[2].Equals("D", StringComparison.InvariantCultureIgnoreCase))
-                        //{
-                        //    comm.De = coulumns[3];
-                        //}
+                        continue;
                     }
+
+                    string[] coulumns = currentLine.Split(new char[] { ',' });
+                    string profile = coulumns[0];
+                    SinequaProfile profileItem = profiles.FirstOrDefault(x => x.Title.Equals(profile, StringComparison.InvariantCultureIgnoreCase));
+                    if (profileItem == null)
+                    {
+                        profileItem = new SinequaProfile();
+                        profileItem.Title = profile;
+                        profiles.Add(profileItem);
+                    }
+                    i++;
                 }
 
                 StringBuilder sb = new StringBuilder();
-                foreach (Comm item in values.Values)
+                foreach (SinequaProfile item in profiles)
                 {
-                    //if (string.IsNullOrEmpty(item.Us))
-                    //{
-                    //    continue;
-                    //}
 
                     string commodityLine = string.Empty;
-                    //if (string.IsNullOrEmpty(item.De)) {
-                    // commodityLine = string.Format("{0};{1}", item.Us, item.Id);
-                    //}
-                    //else
-                    //{
-                    //    commodityLine = string.Format("{0}[de]{1};{2}", item.Us, item.De, item.Id);
-                    //}
-                    commodityLine = string.Format("{0};{1}", item.Translation, item.Id);
+
+                    //commodityLine = string.Format("{0};{1}", item.Translation, item.Id);
 
                     sb.AppendLine(commodityLine);
                 }
 
-                File.WriteAllText(@"C:\kpl\commoditiesFile.txt", sb.ToString());
+                File.WriteAllText(@"C:\kpl\searchFile.txt", sb.ToString());
             }
         }
 

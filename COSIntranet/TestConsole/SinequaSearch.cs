@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace TestConsole
 {
-    public class SinequaDcoument
+    public class SinequaSearch
     {
         public string ResultId { get; set; }
-        public string DocId { get; set; }
-        public string Url { get; set; }
-        public int ItemCount { get; set; }
+
+        public List<SinequaDcoument> DocumentItems { get; } = new List<SinequaDcoument>();
+
     }
 }
