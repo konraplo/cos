@@ -199,17 +199,34 @@ namespace TestConsole
                 {
                     if (i == 0)
                     {
+                        i++;
                         continue;
                     }
 
                     string[] coulumns = currentLine.Split(new char[] { ',' });
-                    string profile = coulumns[0];
+                    string profile = CleanInput(coulumns[0]);
                     SinequaProfile profileItem = profiles.FirstOrDefault(x => x.Title.Equals(profile, StringComparison.InvariantCultureIgnoreCase));
                     if (profileItem == null)
                     {
                         profileItem = new SinequaProfile();
                         profileItem.Title = profile;
                         profiles.Add(profileItem);
+                    }
+
+                    string eventType = CleanInput(coulumns[4]);
+                    if (eventType.Equals(SineqaEventType.SearchText))
+                    {
+                        string queryText = CleanInput(coulumns[1]);
+                        string resultId = CleanInput(coulumns[2]);
+                        SinequaSearch searchItem = profileItem.SearchItems.FirstOrDefault(x => x.ResultId.Equals(resultId, StringComparison.InvariantCultureIgnoreCase));
+                        if (searchItem == null)
+                        {
+
+                            searchItem = new SinequaSearch();
+                            searchItem.QueryText = queryText;
+                            searchItem.ResultId = resultId;
+                            profileItem.SearchItems.Add(searchItem);
+                        }
                     }
                     i++;
                 }
@@ -225,7 +242,23 @@ namespace TestConsole
                     sb.AppendLine(commodityLine);
                 }
 
-                File.WriteAllText(@"C:\kpl\searchFile.txt", sb.ToString());
+                //File.WriteAllText(@"C:\kpl\searchFile.txt", sb.ToString());
+            }
+        }
+
+        static string CleanInput(string strIn)
+        {
+            // Replace invalid characters with empty strings.
+            try
+            {
+                return Regex.Replace(strIn, @"[^\w\.@-]", "",
+                                     RegexOptions.None, TimeSpan.FromSeconds(1.5));
+            }
+            // If we timeout when replacing invalid characters, 
+            // we should return Empty.
+            catch (RegexMatchTimeoutException)
+            {
+                return string.Empty;
             }
         }
 
