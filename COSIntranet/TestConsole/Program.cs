@@ -214,10 +214,10 @@ namespace TestConsole
                     }
 
                     string eventType = CleanInput(coulumns[4]);
+                    string resultId = CleanInput(coulumns[2]);
                     if (eventType.Equals(SineqaEventType.SearchText))
                     {
                         string queryText = CleanInput(coulumns[1]);
-                        string resultId = CleanInput(coulumns[2]);
                         SinequaSearch searchItem = profileItem.SearchItems.FirstOrDefault(x => x.ResultId.Equals(resultId, StringComparison.InvariantCultureIgnoreCase));
                         if (searchItem == null)
                         {
@@ -228,6 +228,27 @@ namespace TestConsole
                             profileItem.SearchItems.Add(searchItem);
                         }
                     }
+                    else if (eventType.Equals(SineqaEventType.SearchResultLink) || eventType.Equals(SineqaEventType.DocPreview))
+                    {
+                        SinequaSearch searchItem = profileItem.SearchItems.FirstOrDefault(x => x.ResultId.Equals(resultId, StringComparison.InvariantCultureIgnoreCase));
+                        string documentId = CleanInput(coulumns[3]);
+                        SinequaDcoument documentItem = searchItem.DocumentItems.FirstOrDefault(x => x.DocId.Equals(documentId, StringComparison.InvariantCultureIgnoreCase));
+                        if (documentItem == null)
+                        {
+
+                            documentItem = new SinequaDcoument();
+                            documentItem.DocId = documentId;
+                            documentItem.ResultId = resultId;
+                            documentItem.ItemCount = 1;
+                            searchItem.DocumentItems.Add(documentItem);
+                        }
+                        else
+                        {
+                            documentItem.ItemCount = ++documentItem.ItemCount;
+                        }
+
+                    }
+
                     i++;
                 }
 
