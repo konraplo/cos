@@ -225,6 +225,7 @@ namespace TestConsole
                             searchItem = new SinequaSearch();
                             searchItem.QueryText = queryText;
                             searchItem.ResultId = resultId;
+                            searchItem.ItemCount = 1;
                             profileItem.SearchItems.Add(searchItem);
                         }
                     }
@@ -251,6 +252,60 @@ namespace TestConsole
 
                     i++;
                 }
+
+                // group by text query and documents
+                foreach (SinequaProfile profileItem in profiles)
+                {
+                    if(profileItem.SearchItems.Count() == 0)
+                    {
+                        continue;
+                    }
+
+                    List<SinequaSearch> groupedSarchItems  = new List<SinequaSearch>();
+                    foreach (SinequaSearch searchItem in profileItem.SearchItems)
+                    {
+                        if (groupedSarchItems.FirstOrDefault(x => x.QueryText.Equals(searchItem.QueryText, StringComparison.InvariantCultureIgnoreCase)) != null)
+                        {
+                            continue;
+                        }
+
+
+                        List<SinequaSearch> groupedByText = profileItem.SearchItems.FindAll(x => x.QueryText.Equals(searchItem.QueryText, StringComparison.InvariantCultureIgnoreCase));
+                        if (groupedByText.Count() == 1)
+                        {
+                            groupedSarchItems.Add(searchItem);
+
+                            continue;
+                        }
+
+                        SinequaSearch searchItemCumulated = new SinequaSearch();
+                        searchItemCumulated.QueryText = searchItem.QueryText;
+                        searchItemCumulated.ItemCount = groupedByText.Count();
+                        foreach (SinequaSearch searchItemFound in groupedByText)
+                        {
+                            foreach (SinequaDcoument doc in searchItemFound.DocumentItems)
+                            {
+                                SinequaDcoument docCheck = searchItemCumulated.DocumentItems.FirstOrDefault(x => x.DocId.Equals(doc.DocId, StringComparison.InvariantCultureIgnoreCase));
+                                if (docCheck == null)
+                                {
+                                    searchItemCumulated.DocumentItems.Add(doc);
+                                }
+                                else
+                                {
+                                    docCheck.ItemCount = docCheck.ItemCount + doc.ItemCount;
+                                }
+                            }
+                        }
+
+                        groupedSarchItems.Add(searchItemCumulated);
+
+                    }
+
+                    profileItem.SearchItems.Clear();
+                    profileItem.SearchItems.AddRange(groupedSarchItems);
+
+                }
+
 
                 StringBuilder sb = new StringBuilder();
                 foreach (SinequaProfile item in profiles)

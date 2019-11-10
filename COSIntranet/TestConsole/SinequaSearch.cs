@@ -10,6 +10,7 @@ namespace TestConsole
     {
         public string QueryText { get; set; }
         public string ResultId { get; set; }
+        public int ItemCount { get; set; }
 
         public List<SinequaDcoument> DocumentItems { get; } = new List<SinequaDcoument>();
 
