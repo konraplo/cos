@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COSIntranet", "COSIntranet\COSIntranet.csproj", "{448B9039-A71C-4A06-AB2A-72DEB5D30A48}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COSContracts", "COSContracts\COSContracts.csproj", "{4E1E10CE-9079-43CC-96AE-B69927E71699}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{940D1CCA-9585-4B35-B9F5-9652A3535B60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryTextDocReportGenerator", "QueryTextDocReportGenerator\QueryTextDocReportGenerator.csproj", "{EECFFC19-CFF5-48D3-B91F-6E91502C9770}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{940D1CCA-9585-4B35-B9F5-9652A3535B60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{940D1CCA-9585-4B35-B9F5-9652A3535B60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{940D1CCA-9585-4B35-B9F5-9652A3535B60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EECFFC19-CFF5-48D3-B91F-6E91502C9770}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EECFFC19-CFF5-48D3-B91F-6E91502C9770}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EECFFC19-CFF5-48D3-B91F-6E91502C9770}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EECFFC19-CFF5-48D3-B91F-6E91502C9770}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
