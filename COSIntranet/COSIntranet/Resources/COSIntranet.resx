@@ -1086,4 +1086,7 @@ Have a nice day
   <data name="ChangeCTProjectMGMTDescr" xml:space="preserve">
     <value>CHANGE Project</value>
   </data>
+  <data name="ChangeProjectMGMTCreatedMailSubject" xml:space="preserve">
+    <value>Project name ({0})</value>
+  </data>
 </root>

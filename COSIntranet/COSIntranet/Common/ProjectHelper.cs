@@ -451,6 +451,23 @@
             return viewProjectTasks;
         }
 
+        /// <summary>
+        /// Get list of all project tasks
+        /// </summary>
+        /// <param name="web">Change Project web</param>
+        /// <param name="projectItemId">Project item id</param>
+        /// <returns>list of all project tasks</returns>
+        public static SPListItemCollection GetAllProjectTasks(SPWeb web, int projectItemId)
+        {
+            SPList tasksList = web.GetList(SPUtility.ConcatUrls(web.Url, ListUtilities.Urls.ProjectTasks));
+            SPQuery query = new SPQuery();
+
+            query.Query = string.Format(QueryProjectTasks, Fields.Project, projectItemId); ;
+            SPListItemCollection tasks = tasksList.GetItems(query);
+
+            return tasks;
+        }
+
         private static List<ProjectTask> ExportStoreOpeningProjectTasks(SPWeb web, int projectItemId)
         {
             List<ProjectTask> result = new List<ProjectTask>();

@@ -1049,4 +1049,13 @@ Have a nice day</value>
   <data name="ChangeProjectResponsible" xml:space="preserve">
     <value>Project responsible</value>
   </data>
+  <data name="ChangeProjectMGMTCreatedMailSubject" xml:space="preserve">
+    <value>Project name ({0})</value>
+  </data>
+  <data name="ChangeProjectMGMTCreatedMailBody" xml:space="preserve">
+    <value>Dear, &lt;br/&gt;                                                          
+Please be informed that you have been assigned to a project “{0}”. Please log in to the Intranet and see more details about the tasks assigned to you.&lt;br/&gt; 
+{1}&lt;br/&gt; 
+If any questions please contact the project responsible:{2} &lt;br/&gt;</value>
+  </data>
 </root>

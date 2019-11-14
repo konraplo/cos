@@ -176,5 +176,41 @@
             }
 
         }
+
+        private void SendNotification(SPListItem projectItem)
+        {
+            string projectCoordinator = Convert.ToString(projectItem[SPBuiltInFieldId.AssignedTo]);
+            string projectName = projectItem.Title;
+
+
+            if (!string.IsNullOrEmpty(projectCoordinator))
+            {
+                SPFieldUserValue user = new SPFieldUserValue(projectItem.Web, projectCoordinator);
+                projectCoordinator = user.LoginName;
+            }
+
+            SPListItemCollection tasks = ProjectHelper.GetAllProjectTasks(projectItem.Web, projectItem.ID);
+            foreach (SPListItem taskItem in tasks)
+            {
+                string responsible = Convert.ToString(taskItem[SPBuiltInFieldId.AssignedTo]);
+
+                if (!string.IsNullOrEmpty(responsible))
+                {
+                    SPFieldUserValue user = new SPFieldUserValue(projectItem.Web, responsible);
+                    if (!string.IsNullOrEmpty(user.User.Email))
+                    {
+                        // send notification
+                        Logger.WriteLog(Logger.Category.Information, typeof(ProjectEventReceiver).FullName, string.Format("send notification to :{0}", user.User.Email));
+                        string subject = SPUtility.GetLocalizedString(string.Format("$Resources:COSIntranet,{0}", ListUtilities.ChangeProjectMGMTCreatedMailSubject), "COSIntranet", projectItem.Web.Language);
+                        string body = SPUtility.GetLocalizedString(string.Format("$Resources:COSIntranet,{0}", ListUtilities.ChangeProjectMGMTCreatedMailBody), "COSIntranet", projectItem.Web.Language);
+
+                        subject = string.Format(body, subject);
+                        body = string.Format(body, projectName, projectItem.Web.Url, projectCoordinator);
+
+                        CommonUtilities.SendEmail(projectItem.Web, user.User.Email, body, subject);
+                    }
+                }
+            }
+        }
     }
 }

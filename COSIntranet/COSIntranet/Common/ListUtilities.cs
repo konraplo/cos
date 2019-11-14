@@ -21,7 +21,17 @@ namespace Change.Intranet.Common
         public const string ChangeProjectCreatedMailBody = "ChangeProjectCreatedMailBody";
 
         /// <summary>
-        /// Dictionrary with mapping ListTitleResxKey - List url
+        /// resx key for project created notification subject
+        /// </summary>
+        public const string ChangeProjectMGMTCreatedMailSubject = "ChangeProjectMGMTCreatedMailSubject";
+
+        /// <summary>
+        /// resx key for project created notification body
+        /// </summary>
+        public const string ChangeProjectMGMTCreatedMailBody = "ChangeProjectMGMTCreatedMailBody";
+
+        /// <summary>
+        ///  Dictionrary with mapping ListTitleResxKey - List url
         /// </summary>
         public static Dictionary<string, string> ListUrlMappings =  new Dictionary<string, string>
                                                                     {
