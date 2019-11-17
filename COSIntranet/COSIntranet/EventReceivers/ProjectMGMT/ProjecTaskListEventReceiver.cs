@@ -44,7 +44,7 @@
                     {
                         SPListItem parentItem = item.ParentList.GetItemById(parent.LookupId);
                         project = new SPFieldLookupValue(Convert.ToString(parentItem[Fields.Project]));
-                        dept = new SPFieldLookupValue(Convert.ToString(parentItem[Fields.ProjectDepartment]));
+                        //dept = new SPFieldLookupValue(Convert.ToString(parentItem[Fields.ProjectDepartment]));
                     }
                     else if (!Convert.ToBoolean(item[Fields.StoreOpeningTask]))
                     {
@@ -61,7 +61,7 @@
                         SPList deptList = item.Web.GetList(deptUrl);
                         SPListItem deptItem = deptList.GetItemById(dept.LookupId);
                         item[Fields.ChangeDeparmentmanager] = deptItem[Fields.ChangeDeparmentmanager];
-                        item[Fields.ProjectDepartment] = dept;
+                        //item[Fields.ProjectDepartment] = dept;
                     }
 
                     item[Fields.Project] = project;

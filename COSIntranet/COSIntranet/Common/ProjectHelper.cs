@@ -586,10 +586,10 @@
             }
             
             //clean up other responsibilities
-            foreach (ProjectTask projectTask in result.Where(x => !string.IsNullOrEmpty(x.Responsible) && x.Responsible.Contains(";#")))
-            {
-                projectTask.Responsible = string.Empty;
-            }
+            //foreach (ProjectTask projectTask in result.Where(x => !string.IsNullOrEmpty(x.Responsible) && x.Responsible.Contains(";#")))
+            //{
+            //    projectTask.Responsible = string.Empty;
+            //}
 
             return result;
         }
@@ -796,7 +796,7 @@
 
                         }
                     }
-                    string responsible = string.Empty;
+                    string responsible = task.Responsible;
                     if (task.Responsible != null)
                     {
                         if (task.Responsible.Equals(DepartmentUtilities.ProjectCoordinator))
@@ -1044,7 +1044,7 @@
                        string.Format(CommonUtilities.BATCH_ITEM_SET_VAR,
                        tasksList.Fields[Change.Intranet.Common.Fields.ChangeTaskDurationId].InternalName,
                        task.Duration));
-                string responsible = string.Empty;
+                string responsible = task.Responsible;
 
                 if (task.Responsible != null)
                 {

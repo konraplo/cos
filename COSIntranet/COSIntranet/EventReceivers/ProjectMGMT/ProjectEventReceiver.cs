@@ -25,6 +25,8 @@
             Logger.WriteLog(Logger.Category.Information, this.GetType().Name, "ItemAdded");
             CreateProjectTasks(properties.ListItem);
             this.UpdateFolderStrucutre(properties.ListItem);
+
+            this.SendNotification(properties.ListItem);
         }
 
         /// <summary>
@@ -186,7 +188,7 @@
             if (!string.IsNullOrEmpty(projectCoordinator))
             {
                 SPFieldUserValue user = new SPFieldUserValue(projectItem.Web, projectCoordinator);
-                projectCoordinator = user.LoginName;
+                projectCoordinator = user.LookupValue;
             }
 
             SPListItemCollection tasks = ProjectHelper.GetAllProjectTasks(projectItem.Web, projectItem.ID);
@@ -204,7 +206,7 @@
                         string subject = SPUtility.GetLocalizedString(string.Format("$Resources:COSIntranet,{0}", ListUtilities.ChangeProjectMGMTCreatedMailSubject), "COSIntranet", projectItem.Web.Language);
                         string body = SPUtility.GetLocalizedString(string.Format("$Resources:COSIntranet,{0}", ListUtilities.ChangeProjectMGMTCreatedMailBody), "COSIntranet", projectItem.Web.Language);
 
-                        subject = string.Format(body, subject);
+                        subject = string.Format(subject, projectName);
                         body = string.Format(body, projectName, projectItem.Web.Url, projectCoordinator);
 
                         CommonUtilities.SendEmail(projectItem.Web, user.User.Email, body, subject);

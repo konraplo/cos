@@ -19,7 +19,7 @@ namespace Change.Intranet.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class COSIntranet {
@@ -2790,6 +2790,19 @@ namespace Change.Intranet.Resources {
         internal static string ChangeProjectCreatedMailSubject {
             get {
                 return ResourceManager.GetString("ChangeProjectCreatedMailSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dear, &lt;br/&gt;                                                          
+        ///Please be informed that you have been assigned to a project “{0}”. Please log in to the Intranet and see more details about the tasks assigned to you.&lt;br/&gt; 
+        ///{1}&lt;br/&gt; 
+        ///If any questions please contact the project responsible:{2} &lt;br/&gt; 
+        ///.
+        /// </summary>
+        internal static string ChangeProjectMGMTCreatedMailBody {
+            get {
+                return ResourceManager.GetString("ChangeProjectMGMTCreatedMailBody", resourceCulture);
             }
         }
         
