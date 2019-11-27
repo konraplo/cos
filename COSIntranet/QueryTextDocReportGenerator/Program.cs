@@ -47,6 +47,11 @@ namespace QueryTextDocReportGenerator
                     int i = 0;
                     while ((currentLine = sr.ReadLine()) != null)
                     {
+                        if (string.IsNullOrEmpty(currentLine))
+                        {
+                            continue;
+                        }
+
                         if (i == 0)
                         {
                             i++;
@@ -54,6 +59,11 @@ namespace QueryTextDocReportGenerator
                         }
 
                         string[] coulumns = currentLine.Split(new char[] { ',' });
+                        if (coulumns.Length < 5)
+                        {
+                            continue;
+                        }
+
                         string profile = CleanInput(coulumns[0]);
                         SinequaProfile profileItem = profiles.FirstOrDefault(x => x.Title.Equals(profile, StringComparison.InvariantCultureIgnoreCase));
                         if (profileItem == null)
