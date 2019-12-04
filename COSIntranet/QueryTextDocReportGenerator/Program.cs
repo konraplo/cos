@@ -42,7 +42,7 @@ namespace QueryTextDocReportGenerator
                     // currentLine will be null when the StreamReader reaches the end of file
 
                     List<SinequaProfile> profiles = new List<SinequaProfile>();
-                    Dictionary<string, List<SinequaDcoument>> queryDocs = new Dictionary<string, List<SinequaDcoument>>();
+                    Dictionary<string, List<SinequaDcoument>> queryDocsById = new Dictionary<string, List<SinequaDcoument>>();
                     string currentLine;
                     int i = 0;
                     while ((currentLine = sr.ReadLine()) != null)
@@ -75,9 +75,9 @@ namespace QueryTextDocReportGenerator
 
                         string eventType = CleanInput(coulumns[4]);
                         string resultId = CleanInput(coulumns[2]);
+                        string queryText = CleanInput(coulumns[1]);
                         if (eventType.Equals(SineqaEventType.SearchText))
                         {
-                            string queryText = CleanInput(coulumns[1]);
                             SinequaSearch searchItem = profileItem.SearchItems.FirstOrDefault(x => x.ResultId.Equals(resultId, StringComparison.InvariantCultureIgnoreCase));
                             if (searchItem == null)
                             {
@@ -92,20 +92,20 @@ namespace QueryTextDocReportGenerator
                         else if (eventType.Equals(SineqaEventType.SearchResultLink) || eventType.Equals(SineqaEventType.DocPreview))
                         {
 
-                            List<SinequaDcoument> documents;
-                            if (!queryDocs.ContainsKey(resultId))
+                            List<SinequaDcoument> documentsById;
+                            if (!queryDocsById.ContainsKey(resultId))
                             {
-                                documents = new List<SinequaDcoument>();
-                                queryDocs.Add(resultId, documents);
+                                documentsById = new List<SinequaDcoument>();
+                                queryDocsById.Add(resultId, documentsById);
                             }
                             else
                             {
-                                documents = queryDocs[resultId];
+                                documentsById = queryDocsById[resultId];
                             }
 
-
+                            
                             string documentId = CleanInput(coulumns[3]);
-                            SinequaDcoument documentItem = documents.FirstOrDefault(x => x.DocId.Equals(documentId, StringComparison.InvariantCultureIgnoreCase));
+                            SinequaDcoument documentItem = documentsById.FirstOrDefault(x => x.DocId.Equals(documentId, StringComparison.InvariantCultureIgnoreCase));
                             if (documentItem == null)
                             {
 
@@ -115,13 +115,44 @@ namespace QueryTextDocReportGenerator
                                 sourceEnv = sourceEnv.EndsWith("/") ? sourceEnv.Remove(sourceEnv.Length - 1) : sourceEnv;
                                 documentItem.Url = string.Format("{0}/docresult?id={1}", sourceEnv, documentId);
                                 documentItem.ItemCount = 1;
-                                documents.Add(documentItem);
+                                documentsById.Add(documentItem);
                             }
                             else
                             {
                                 documentItem.ItemCount = ++documentItem.ItemCount;
                             }
 
+                            if (eventType.Equals(SineqaEventType.SearchResultLink))
+                            {
+                                List<SinequaDcoument> documentsByText;
+                                if (!profileItem.QueryDocsByText.ContainsKey(queryText))
+                                {
+                                    documentsByText = new List<SinequaDcoument>();
+                                    profileItem.QueryDocsByText.Add(queryText, documentsByText);
+                                }
+                                else
+                                {
+                                    documentsByText = profileItem.QueryDocsByText[queryText];
+                                }
+
+
+                                SinequaDcoument documentItemText = documentsByText.FirstOrDefault(x => x.DocId.Equals(documentId, StringComparison.InvariantCultureIgnoreCase));
+                                if (documentItemText == null)
+                                {
+
+                                    documentItemText = new SinequaDcoument();
+                                    documentItemText.DocId = documentId;
+                                    documentItemText.ResultId = resultId;
+                                    sourceEnv = sourceEnv.EndsWith("/") ? sourceEnv.Remove(sourceEnv.Length - 1) : sourceEnv;
+                                    documentItemText.Url = string.Format("{0}/docresult?id={1}", sourceEnv, documentId);
+                                    documentItemText.ItemCount = 1;
+                                    documentsByText.Add(documentItemText);
+                                }
+                                else
+                                {
+                                    documentItemText.ItemCount = ++documentItemText.ItemCount;
+                                }
+                            }
                         }
 
                         i++;
@@ -135,10 +166,10 @@ namespace QueryTextDocReportGenerator
                             continue;
                         }
 
-                        List<SinequaSearch> groupedSarchItems = new List<SinequaSearch>();
+                        //profileItem.GroupedSarchItems = new List<SinequaSearch>();
                         foreach (SinequaSearch searchItem in profileItem.SearchItems)
                         {
-                            if (groupedSarchItems.FirstOrDefault(x => x.QueryText.Equals(searchItem.QueryText, StringComparison.InvariantCultureIgnoreCase)) != null)
+                            if (profileItem.GroupedSarchItems.FirstOrDefault(x => x.QueryText.Equals(searchItem.QueryText, StringComparison.InvariantCultureIgnoreCase)) != null)
                             {
                                 continue;
                             }
@@ -147,7 +178,7 @@ namespace QueryTextDocReportGenerator
                             List<SinequaSearch> groupedByText = profileItem.SearchItems.FindAll(x => x.QueryText.Equals(searchItem.QueryText, StringComparison.InvariantCultureIgnoreCase));
                             if (groupedByText.Count() == 1)
                             {
-                                groupedSarchItems.Add(searchItem);
+                                profileItem.GroupedSarchItems.Add(searchItem);
 
                                 continue;
                             }
@@ -155,41 +186,22 @@ namespace QueryTextDocReportGenerator
                             SinequaSearch searchItemCumulated = new SinequaSearch();
                             searchItemCumulated.QueryText = searchItem.QueryText;
                             searchItemCumulated.ItemCount = groupedByText.Count();
-                            //foreach (SinequaSearch searchItemFound in groupedByText)
-                            //{
-                            //    if (!queryDocs.ContainsKey(searchItemFound.ResultId))
-                            //    {
-                            //        continue;
-                            //    }
-                            //    foreach (SinequaDcoument doc in queryDocs[searchItemFound.ResultId])
-                            //    {
-                            //        SinequaDcoument docCheck = searchItemCumulated.DocumentItems.FirstOrDefault(x => x.DocId.Equals(doc.DocId, StringComparison.InvariantCultureIgnoreCase));
-                            //        if (docCheck == null)
-                            //        {
-                            //            searchItemCumulated.DocumentItems.Add(doc);
-                            //        }
-                            //        else
-                            //        {
-                            //            docCheck.ItemCount = docCheck.ItemCount + doc.ItemCount;
-                            //        }
-                            //    }
-                            //}
 
-                            groupedSarchItems.Add(searchItemCumulated);
+                            profileItem.GroupedSarchItems.Add(searchItemCumulated);
 
                         }
 
                         foreach (SinequaSearch searchItem in profileItem.SearchItems)
                         {
-                            if (!queryDocs.ContainsKey(searchItem.ResultId))
+                            if (!queryDocsById.ContainsKey(searchItem.ResultId))
                             {
                                 continue;
                             }
-                            SinequaSearch searchItemFound = groupedSarchItems.FirstOrDefault(x => x.QueryText.Equals(searchItem.QueryText, StringComparison.InvariantCultureIgnoreCase));
+                            SinequaSearch searchItemFound = profileItem.GroupedSarchItems.FirstOrDefault(x => x.QueryText.Equals(searchItem.QueryText, StringComparison.InvariantCultureIgnoreCase));
                             if(searchItemFound != null)
                             {
-                                
-                                foreach (SinequaDcoument doc in queryDocs[searchItem.ResultId])
+
+                                foreach (SinequaDcoument doc in queryDocsById[searchItem.ResultId]) //check by id
                                 {
                                     SinequaDcoument docCheck = searchItemFound.DocumentItems.FirstOrDefault(x => x.DocId.Equals(doc.DocId, StringComparison.InvariantCultureIgnoreCase));
                                     if (docCheck == null)
@@ -203,8 +215,40 @@ namespace QueryTextDocReportGenerator
                                 }
                             }
                         }
+
+                        //check doc by text
+                        foreach (string searchText in profileItem.QueryDocsByText.Keys)
+                        {
+                            SinequaSearch groupedSearchItemFound = profileItem.GroupedSarchItems.FirstOrDefault(x => x.QueryText.Equals(searchText, StringComparison.InvariantCultureIgnoreCase));
+                            if (groupedSearchItemFound == null)
+                            {
+                                continue;
+                            }
+
+
+                            foreach (SinequaDcoument doc in profileItem.QueryDocsByText[searchText])
+                            {
+                                // check if result it fit
+                                SinequaSearch searchItem = profileItem.SearchItems.FirstOrDefault(x => x.ResultId.Equals(doc.ResultId, StringComparison.InvariantCultureIgnoreCase));
+                                if (searchItem != null)
+                                {
+                                    continue;
+                                }
+
+                                SinequaDcoument docCheck = groupedSearchItemFound.DocumentItems.FirstOrDefault(x => x.DocId.Equals(doc.DocId, StringComparison.InvariantCultureIgnoreCase));
+                                if (docCheck == null)
+                                {
+                                    groupedSearchItemFound.DocumentItems.Add(doc);
+                                }
+                                else
+                                {
+                                    docCheck.ItemCount = docCheck.ItemCount + doc.ItemCount;
+                                }
+                            }
+                        }
+
                         profileItem.SearchItems.Clear();
-                        profileItem.SearchItems.AddRange(groupedSarchItems);
+                        profileItem.SearchItems.AddRange(profileItem.GroupedSarchItems);
 
                     }
 
