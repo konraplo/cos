@@ -12,11 +12,12 @@
     /// </summary>
     public class ChangeContractsNotificationTimerJobExecutor
     {
+        private const string warningDateFieldName = "Warning_x0020_date";
         private const string queryLateContracts =
                                     @"<Where>
                                      <And>
                                       <Lt>
-                                        <FieldRef Name='ChangeContractWarnDate' />
+                                        <FieldRef Name='{0}' />
                                         <Value Type='DateTime'>
                                           <Today/>
                                         </Value>
@@ -60,7 +61,7 @@
                             SPQuery query = new SPQuery();
 
                             // late contracts
-                            query.Query = queryLateContracts;
+                            query.Query = string.Format(queryLateContracts, warningDateFieldName);
                             SPListItemCollection projectTasks = list.GetItems(query);
                             string subject = SPUtility.GetLocalizedString(string.Format("$Resources:COSContracts,{0}", ChangeContractOverdueTitle), "COSContracts", web.Language);
                             string body = SPUtility.GetLocalizedString(string.Format("$Resources:COSContracts,{0}", ChangeContractOverdueBody), "COSContracts", web.Language);
@@ -84,7 +85,9 @@
             {
                 string mailAddress = DataAnalysisMail;//Convert.ToString(taskItem[SPBuiltInFieldId.AssignedTo]);
                 string conractName = taskItem.Title;
-                DateTime warnDate = Convert.ToDateTime(taskItem[Fields.ChangeContractWarnDate]);
+                string customWarnDate = Convert.ToString(taskItem[warningDateFieldName]);
+                string[] customWarnDateValue = customWarnDate.Split(new char[] { ';', '#' }, StringSplitOptions.RemoveEmptyEntries);
+                DateTime warnDate = Convert.ToDateTime(customWarnDateValue[1]);
                 DateTime endDate = Convert.ToDateTime(taskItem[Fields.ChangeContractEndDate]);
                 int diffMonth = ((endDate.Year - warnDate.Year) * 12) + endDate.Month - warnDate.Month;
                 SPFieldLookupValue customer = new SPFieldLookupValue(Convert.ToString(taskItem[Fields.Customer]));

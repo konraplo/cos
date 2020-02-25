@@ -65,9 +65,12 @@ namespace TestConsole
 
         static void Main(string[] args)
         {
+            string customWarnDate = "datetime;#2020-02-06 00:00:00";
+            string[] customWarnDateValue = customWarnDate.Split(new char[] { ';','#' },StringSplitOptions.RemoveEmptyEntries);
+            FormatDuns(new string[] { "123456789"});
             string test = Path.GetFileNameWithoutExtension("dupa.json");
             string testBool = Convert.ToString(true);
-            DateTime warningDate = DateTime.Parse("7/23/2019 8:33:21 AM");
+            DateTime warningDate = DateTime.Parse(customWarnDate);
             DateTime endDate = DateTime.Parse("8/19/2019 10:10:11 AM");
             int diffMonth = ((endDate.Year - warningDate.Year) * 12) + endDate.Month - warningDate.Month;
             Console.WriteLine("Months: " + diffMonth);
@@ -184,6 +187,37 @@ namespace TestConsole
 
                 File.WriteAllText(@"C:\kpl\commoditiesFile.txt",sb.ToString());
             }
+        }
+
+        private static string FormatDuns(params string[] values)
+        {
+            string result = string.Empty;
+            try
+            {
+                string duns = values[0] ?? string.Empty;
+                if(string.IsNullOrEmpty(duns))
+                {
+                    return result;
+                }
+
+                Regex regex = new Regex("^[0-9]{9}$");
+                Match match = regex.Match(duns);
+                if (match.Success)
+                {
+                    // convert to 12-345-6789 
+                    string cleanString = string.Format("{0}-{1}-{2}", duns.Substring(0, 2), duns.Substring(2, 3), duns.Substring(5));
+                    Console.WriteLine(cleanString);
+
+                }
+                else {
+                    return result;
+                }
+            }
+            catch(Exception ex)
+            {
+                result = $"Exception: {ex.ToString()}";
+            }
+            return result;
         }
 
         private static void ReadCsvSearchDocs()
