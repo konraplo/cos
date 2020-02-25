@@ -15,7 +15,7 @@ namespace QueryTextDocReportGenerator
         {
             public const string SearchText = "search.text";
             public const string SearchResultLink = "click.resultlink";
-            public const string DocPreview = "doc.preview";
+            //public const string DocPreview = "doc.preview";
         }
 
         public static void Main(string[] args)
@@ -89,7 +89,7 @@ namespace QueryTextDocReportGenerator
                                 profileItem.SearchItems.Add(searchItem);
                             }
                         }
-                        else if (eventType.Equals(SineqaEventType.SearchResultLink) || eventType.Equals(SineqaEventType.DocPreview))
+                        else if (eventType.Contains(SineqaEventType.SearchResultLink))
                         {
 
                             List<SinequaDcoument> documentsById;
@@ -122,36 +122,33 @@ namespace QueryTextDocReportGenerator
                                 documentItem.ItemCount = ++documentItem.ItemCount;
                             }
 
-                            if (eventType.Equals(SineqaEventType.SearchResultLink))
+                            List<SinequaDcoument> documentsByText;
+                            if (!profileItem.QueryDocsByText.ContainsKey(queryText))
                             {
-                                List<SinequaDcoument> documentsByText;
-                                if (!profileItem.QueryDocsByText.ContainsKey(queryText))
-                                {
-                                    documentsByText = new List<SinequaDcoument>();
-                                    profileItem.QueryDocsByText.Add(queryText, documentsByText);
-                                }
-                                else
-                                {
-                                    documentsByText = profileItem.QueryDocsByText[queryText];
-                                }
+                                documentsByText = new List<SinequaDcoument>();
+                                profileItem.QueryDocsByText.Add(queryText, documentsByText);
+                            }
+                            else
+                            {
+                                documentsByText = profileItem.QueryDocsByText[queryText];
+                            }
 
 
-                                SinequaDcoument documentItemText = documentsByText.FirstOrDefault(x => x.DocId.Equals(documentId, StringComparison.InvariantCultureIgnoreCase));
-                                if (documentItemText == null)
-                                {
+                            SinequaDcoument documentItemText = documentsByText.FirstOrDefault(x => x.DocId.Equals(documentId, StringComparison.InvariantCultureIgnoreCase));
+                            if (documentItemText == null)
+                            {
 
-                                    documentItemText = new SinequaDcoument();
-                                    documentItemText.DocId = documentId;
-                                    documentItemText.ResultId = resultId;
-                                    sourceEnv = sourceEnv.EndsWith("/") ? sourceEnv.Remove(sourceEnv.Length - 1) : sourceEnv;
-                                    documentItemText.Url = string.Format("{0}/docresult?id={1}", sourceEnv, documentId);
-                                    documentItemText.ItemCount = 1;
-                                    documentsByText.Add(documentItemText);
-                                }
-                                else
-                                {
-                                    documentItemText.ItemCount = ++documentItemText.ItemCount;
-                                }
+                                documentItemText = new SinequaDcoument();
+                                documentItemText.DocId = documentId;
+                                documentItemText.ResultId = resultId;
+                                sourceEnv = sourceEnv.EndsWith("/") ? sourceEnv.Remove(sourceEnv.Length - 1) : sourceEnv;
+                                documentItemText.Url = string.Format("{0}/docresult?id={1}", sourceEnv, documentId);
+                                documentItemText.ItemCount = 1;
+                                documentsByText.Add(documentItemText);
+                            }
+                            else
+                            {
+                                documentItemText.ItemCount = ++documentItemText.ItemCount;
                             }
                         }
 

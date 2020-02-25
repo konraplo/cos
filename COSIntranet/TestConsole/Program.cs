@@ -49,12 +49,12 @@ namespace TestConsole
         public static Guid ChangeContractContractStatus = new Guid("{8c222fe8-f4a9-4e59-a75c-bf111672c947}");
         private const string BA = "Procurement General[de]Allgemeiner Einkauf";
         private const string BC = "Connectivity, eMobility&Fahrerassistenz[de]Connectivitaet, eMobilitaet&Fahrerassistenz";
-        private const string BI = "Interior[de]Interieur[es]Interior[hu]belső[pl]wnętrze[ru]интерьер[zh]室内[cs]interiér[fr]intérieur[it]interno[pt]interior[sk]interié";
-        private const string BE = "Electric[de]Elektrik[es]Eléctrico[hu]Elektromos[pl]Elektryczny[ru]электрический[zh]电动[cs]Elektrický[fr]électrique[it]elettrico[pt]elétrico[sk]elektrický";
-        private const string BM = "Metal[de]Metall[es]metal[hu]fém[pl]metal[ru]металл[zh]金属[cs]kov[fr]métal[it]metallo[pt]metal[sk]kov";
+        private const string BI = "Interior[de]Interieur[es]Interior[pl]wnętrze[ru]интерьер[zh]室内[fr]intérieur[it]interno[pt]interior";
+        private const string BE = "Electric[de]Elektrik[es]Eléctrico[pl]Elektryczny[ru]электрический[zh]电动[fr]électrique[it]elettrico[pt]elétrico";
+        private const string BM = "Metal[de]Metall[es]metal[pl]metal[ru]металл[zh]金属[fr]métal[it]metallo[pt]metal";
         private const string BN = "New Product Launches[de]Neue Produktanlaeufe";
-        private const string BP = "Powertrain[de]Antriebswelle[es]Tren motriz[hu]Erőátvitel[pl]Powertrain[ru]Силовой агрегат[zh]动力总成[cs]Hnací ústrojí[fr]Groupe motopropulseur[it]Powertrain[pt]Powertrain[sk]Powertrai";
-        private const string BX = "Exterior[de]Exterieur[es]exterior[hu]külső[pl]powierzchowność[ru]экстерьер[zh]外观[cs]exteriér[fr]extérieur[it]esterno[pt]exterior[sk]exteriér";
+        private const string BP = "Powertrain[de]Antriebswelle[es]Tren motriz[pl]Powertrain[ru]Силовой агрегат[zh]动力总成[fr]Groupe motopropulseur[it]Powertrain[pt]Powertrain";
+        private const string BX = "Exterior[de]Exterieur[es]exterior[pl]powierzchowność[ru]экстерьер[zh]外观[fr]extérieur[it]esterno[pt]exterior";
 
         private static class SineqaEventType
         {
@@ -96,7 +96,9 @@ namespace TestConsole
             //DateTime firstDelivery = grandOpening.AddDays(-13);
             //DateTime secondDelivery = grandOpening.AddDays(-7);
             //Console.WriteLine(string.Format("{0},{1},{2}", string.Format("{0:MMMM dd, yyyy}", grandOpening), string.Format("{0:dd-MM-yyyy}", firstDelivery), string.Format("{0:dd-MM-yyyy}", secondDelivery)));
-            ReadCsvSearchDocs();
+            //ReadCsvSearchDocs();
+            //ReadCsvCommodities();
+            CheckCsvCommodities();
             //TestSetContractStatus(@"http://sharcha-p15/sites/contracts");
             //TestProjectTemplate();
             //TestCreateProjectTemplate(@"http://sharcha-p15/sites/cos/bd", 16);
@@ -218,6 +220,91 @@ namespace TestConsole
                 result = $"Exception: {ex.ToString()}";
             }
             return result;
+        }
+
+
+        private static void CheckCsvCommodities()
+        {
+            Regex regex = new Regex(@"\d{4}");
+            Dictionary<string, Comm> values = new Dictionary<string, Comm>();
+            Dictionary<string, string> commodities = new Dictionary<string, string>();
+            commodities.Add("BA", BA);
+            commodities.Add("BC", BC);
+            commodities.Add("BI", BI);
+            commodities.Add("BE", BE);
+            commodities.Add("BM", BM);
+            commodities.Add("BN", BN);
+            commodities.Add("BP", BP);
+            commodities.Add("BX", BX);
+            StringBuilder sb = new StringBuilder();
+            List<string> matGroup = new List<string>();
+
+            using (StreamReader sr = new StreamReader(@"C:\kpl\commodities.csv"))
+            {
+                string currentLine;
+
+                // currentLine will be null when the StreamReader reaches the end of file
+                while ((currentLine = sr.ReadLine()) != null)
+                {
+                    string[] coulumns = currentLine.Split(new char[] { ';' });
+                    if (coulumns.Length> 1)
+                    {
+                        string commValue = coulumns[0];
+                        string id = coulumns[1];
+
+                        if (!commodities.ContainsKey(commValue))
+                        {
+                            //sb.AppendLine(string.Format("unknown KONZ_COMMODITY:{0}", commValue));
+                            continue;
+                        }
+
+
+                        Comm comm;
+                        if (values.ContainsKey(id))
+                        {
+                            comm = values[id];
+                        }
+                        else
+                        {
+                            comm = new Comm();
+                            values.Add(id, comm);
+                        }
+
+                        comm.Id = id;
+                        comm.Translation = commodities[commValue];
+                       
+                    }
+                }
+            }
+
+
+            using (StreamReader sr = new StreamReader(@"C:\kpl\sourcecsv28Group.csv"))
+            {
+                string currentLine;
+
+                // currentLine will be null when the StreamReader reaches the end of file
+                while ((currentLine = sr.ReadLine()) != null)
+                {
+                    if (!matGroup.Contains(currentLine))
+                    {
+                        matGroup.Add(currentLine);
+                    }
+                }
+            }
+
+            foreach (string item in matGroup)
+            {
+
+                if (!values.ContainsKey(item))
+                {
+                   string commodityLine = string.Format("group:{0} not found in commodity file", item);
+
+                    sb.AppendLine(commodityLine);
+                }
+                
+            }
+
+            File.WriteAllText(@"C:\kpl\missingCommodities.txt", sb.ToString());
         }
 
         private static void ReadCsvSearchDocs()
