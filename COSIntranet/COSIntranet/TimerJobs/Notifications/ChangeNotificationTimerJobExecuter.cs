@@ -126,7 +126,7 @@
             }
         }
 
-        private static void SendNotificationForTasksOwners(SPWeb web, SPListItemCollection projectTasks, string mailTitle, string mailBody, int reminderCount)
+        private static void SendNotificationForTasksOwners(SPWeb web, SPListItemCollection projectTasks, string mailTitle, string mailBodyTemplate, int reminderCount)
         {
             foreach (SPListItem taskItem in projectTasks)
             {
@@ -143,11 +143,13 @@
                         Logger.WriteLog(Logger.Category.Information, typeof(ChangeNotificationTimerJobExecuter).FullName, string.Format("send reminder to :{0}", user.User.Email));
                         if (reminderCount == 1) //first reminder
                         {
-                            CommonUtilities.SendEmail(web, user.User.Email, string.Format(mailBody, taskItem.Title, dueDate.ToShortDateString()), mailTitle);
+                            string mailBody = string.Format(mailBodyTemplate, taskItem.Title, dueDate.ToShortDateString());
+                            CommonUtilities.SendEmail(web, user.User.Email, mailBody, mailTitle);
                         }
                         else //second reminder
                         {
-                            CommonUtilities.SendEmail(web, user.User.Email, string.Format(mailBody, taskItem.Title), mailTitle);
+                            string mailBody = string.Format(mailBodyTemplate, taskItem.Title);
+                            CommonUtilities.SendEmail(web, user.User.Email, mailBody, mailTitle);
                         }
                     }
                 }
