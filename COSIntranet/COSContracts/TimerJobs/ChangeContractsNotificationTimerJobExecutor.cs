@@ -12,7 +12,8 @@
     /// </summary>
     public class ChangeContractsNotificationTimerJobExecutor
     {
-        private const string warningDateFieldName = "Warning_x0020_date";
+        private const string warningDateFieldName = "Warning_x0020_date"; //prod
+        //private const string warningDateFieldName = "Warning_x0020_date1"; //test
         private const string queryLateContracts =
                                     @"<Where>
                                      <And>
@@ -79,7 +80,7 @@
             }
         }
 
-        private static void SendNotificationForLateContracts(SPWeb web, SPListItemCollection projectTasks, string mailTitle, string mailBody)
+        private static void SendNotificationForLateContracts(SPWeb web, SPListItemCollection projectTasks, string mailTitle, string mailBodyTemplate)
         {
             foreach (SPListItem taskItem in projectTasks)
             {
@@ -98,7 +99,7 @@
                 Logger.WriteLog(Logger.Category.Information, typeof(ChangeContractsNotificationTimerJobExecutor).FullName, string.Format("contract:{0}, warndate date:{1}", conractName, warnDate.ToShortDateString()));
                 if (!string.IsNullOrEmpty(mailAddress))
                 {
-                    mailBody = string.Format(mailBody, conractName, customer.LookupValue, vendor.LookupValue, diffMonth, itemUrl);
+                    string mailBody = string.Format(mailBodyTemplate, conractName, customer.LookupValue, vendor.LookupValue, diffMonth, itemUrl);
                     CommonUtilities.SendEmail(web, mailAddress, mailBody, mailTitle);
                 }
 
