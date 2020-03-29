@@ -14,15 +14,31 @@
     {
         private const string warningDateFieldName = "Warning_x0020_date"; //prod
         //private const string warningDateFieldName = "Warning_x0020_date1"; //test
+        //private const string queryLateContracts =
+        //                            @"<Where>
+        //                             <And>
+        //                              <Lt>
+        //                                <FieldRef Name='{0}' />
+        //                                <Value Type='DateTime'>
+        //                                  <Today/>
+        //                                </Value>
+        //                              </Lt>
+        //                              <Eq>
+        //                                <FieldRef Name='ChangeContractContractStatus' />
+        //                                <Value Type='Text'>Active</Value>
+        //                              </Eq>
+        //                            </And>
+        //                           </Where>";
+
         private const string queryLateContracts =
-                                    @"<Where>
+                                   @"<Where>
                                      <And>
-                                      <Lt>
+                                      <Eq>
                                         <FieldRef Name='{0}' />
                                         <Value Type='DateTime'>
                                           <Today/>
                                         </Value>
-                                      </Lt>
+                                      </Eq>
                                       <Eq>
                                         <FieldRef Name='ChangeContractContractStatus' />
                                         <Value Type='Text'>Active</Value>
