@@ -1065,4 +1065,7 @@ Please be informed that you have been assigned to a project “{0}”. Please lo
 If any questions please contact the project responsible:{2} &lt;br/&gt; 
 </value>
   </data>
+  <data name="ChangeFolderTitleShippingReport" xml:space="preserve">
+    <value>Shipping report</value>
+  </data>
 </root>
