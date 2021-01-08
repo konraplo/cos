@@ -19,7 +19,7 @@ namespace Change.Contracts.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class COSContracts {
@@ -386,12 +386,12 @@ namespace Change.Contracts.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to Good morning, &lt;br/&gt;
-        ///I would like to inform you that contract {0} concluded between {1} and {2} will expire in {3} months.
-        ///See contract documents under the link:&lt;br/&gt;
+        ///We would like to remind you that the contract {0} concluded between {1} and {2} will expire on {3}. For more information please see the contract documents under the link:
+        ///&lt;br/&gt;
         ///{4}
         ///&lt;br/&gt;
-        ///Best regards
-        ///.
+        ///Best regards&lt;br/&gt;
+        ///Data Analysis and Legal Compliance Team.
         /// </summary>
         internal static string ChangeContractOverdueBody {
             get {
@@ -400,7 +400,7 @@ namespace Change.Contracts.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Contract information.
+        ///   Looks up a localized string similar to Contract expiration notification.
         /// </summary>
         internal static string ChangeContractOverdueTitle {
             get {

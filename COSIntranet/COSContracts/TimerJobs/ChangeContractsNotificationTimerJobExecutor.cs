@@ -5,6 +5,7 @@
     using Microsoft.SharePoint.Administration;
     using Microsoft.SharePoint.Utilities;
     using System;
+    using System.Collections.Generic;
     using static Change.Contracts.Common.ListUtilities;
 
     /// <summary>
@@ -12,8 +13,15 @@
     /// </summary>
     public class ChangeContractsNotificationTimerJobExecutor
     {
+        private static Guid ChangeContractCustContactPersonId = Guid.Parse("{69f46885-7a38-4b33-97bd-dfbb1476fd3f}");
+        private static Guid ChangeContractVendorContactPersonId = Guid.Parse("{9e8c992b-83e4-4833-b873-d89a6c432650}");
+        private const string severName = "intracha-p04";//prod
+        // private const string severName = "intracha-p04";//test
+        private const string severAliasName = "intranet.change.com";
+
         private const string warningDateFieldName = "Warning_x0020_date"; //prod
         //private const string warningDateFieldName = "Warning_x0020_date1"; //test
+        //test
         //private const string queryLateContracts =
         //                            @"<Where>
         //                             <And>
@@ -29,7 +37,7 @@
         //                              </Eq>
         //                            </And>
         //                           </Where>";
-
+        //prod
         private const string queryLateContracts =
                                    @"<Where>
                                      <And>
@@ -100,22 +108,44 @@
         {
             foreach (SPListItem taskItem in projectTasks)
             {
-                string mailAddress = DataAnalysisMail;//Convert.ToString(taskItem[SPBuiltInFieldId.AssignedTo]);
+                List<string> mails = new List<string>();
+                mails.Add(DataAnalysisMail);
+                string changeContractCustContactPerson = Convert.ToString(taskItem[ChangeContractCustContactPersonId]);
+                if (!string.IsNullOrEmpty(changeContractCustContactPerson))
+                {
+                    SPFieldUserValue user = new SPFieldUserValue(web, changeContractCustContactPerson);
+                    if (!string.IsNullOrEmpty(user.User.Email))
+                    {
+                        mails.Add(user.User.Email);
+                    }
+                }
+                string changeContractVendorContactPerson = Convert.ToString(taskItem[ChangeContractVendorContactPersonId]);
+                if (!string.IsNullOrEmpty(changeContractVendorContactPerson))
+                {
+                    SPFieldUserValue user = new SPFieldUserValue(web, changeContractVendorContactPerson);
+                    if (!string.IsNullOrEmpty(user.User.Email))
+                    {
+                        mails.Add(user.User.Email);
+                    }
+                }
+
                 string conractName = taskItem.Title;
                 string customWarnDate = Convert.ToString(taskItem[warningDateFieldName]);
                 string[] customWarnDateValue = customWarnDate.Split(new char[] { ';', '#' }, StringSplitOptions.RemoveEmptyEntries);
                 DateTime warnDate = Convert.ToDateTime(customWarnDateValue[1]);
                 DateTime endDate = Convert.ToDateTime(taskItem[Fields.ChangeContractEndDate]);
-                int diffMonth = ((endDate.Year - warnDate.Year) * 12) + endDate.Month - warnDate.Month;
+                //int diffMonth = ((endDate.Year - warnDate.Year) * 12) + endDate.Month - warnDate.Month;
                 SPFieldLookupValue customer = new SPFieldLookupValue(Convert.ToString(taskItem[Fields.Customer]));
                 SPFieldLookupValue vendor = new SPFieldLookupValue(Convert.ToString(taskItem[Fields.Vendor]));
 
-                string itemUrl = string.Format("{0}/{1}?ID={2}", web.Url, taskItem.ParentList.Forms[PAGETYPE.PAGE_DISPLAYFORM].Url, taskItem.ID);
+                string itemUrl = string.Format("{0}/{1}?ID={2}", web.Url.Replace(severName, severAliasName), taskItem.ParentList.Forms[PAGETYPE.PAGE_DISPLAYFORM].Url, taskItem.ID);
 
                 Logger.WriteLog(Logger.Category.Information, typeof(ChangeContractsNotificationTimerJobExecutor).FullName, string.Format("contract:{0}, warndate date:{1}", conractName, warnDate.ToShortDateString()));
+                string mailAddress = string.Join(";", mails);
                 if (!string.IsNullOrEmpty(mailAddress))
                 {
-                    string mailBody = string.Format(mailBodyTemplate, conractName, customer.LookupValue, vendor.LookupValue, diffMonth, itemUrl);
+                    Logger.WriteLog(Logger.Category.Information, typeof(ChangeContractsNotificationTimerJobExecutor).FullName, string.Format("send reminder to :{0}", mailAddress));
+                    string mailBody = string.Format(mailBodyTemplate, conractName, customer.LookupValue, vendor.LookupValue, endDate.ToShortDateString(), itemUrl);
                     CommonUtilities.SendEmail(web, mailAddress, mailBody, mailTitle);
                 }
 

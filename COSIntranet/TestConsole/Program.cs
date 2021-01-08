@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using static Change.Contracts.Common.ListUtilities;
 using System.Xml;
+using System.Globalization;
 
 namespace TestConsole
 {
@@ -65,15 +66,26 @@ namespace TestConsole
 
         static void Main(string[] args)
         {
+            DateTime dateValue;
+            string dateString = "January 22, 2018";
+            if (DateTime.TryParse(dateString, out dateValue))
+                Console.WriteLine("  Converted '{0}' to {1} ({2}).", dateString,
+                                  dateValue.ToString("MMMM dd, yyyy"), dateValue.Kind);
+            else
+                Console.WriteLine("  Unable to parse '{0}'.", dateString);
+
+            string testNorm = "Thomas Müller";
+            "Thomas Müller".Normalize(NormalizationForm.FormC);
+            testNorm = RemoveDiacritics(testNorm);
             string customWarnDate = "datetime;#2020-02-06 00:00:00";
             string[] customWarnDateValue = customWarnDate.Split(new char[] { ';','#' },StringSplitOptions.RemoveEmptyEntries);
             FormatDuns(new string[] { "123456789"});
             string test = Path.GetFileNameWithoutExtension("dupa.json");
             string testBool = Convert.ToString(true);
-            DateTime warningDate = DateTime.Parse(customWarnDate);
-            DateTime endDate = DateTime.Parse("8/19/2019 10:10:11 AM");
-            int diffMonth = ((endDate.Year - warningDate.Year) * 12) + endDate.Month - warningDate.Month;
-            Console.WriteLine("Months: " + diffMonth);
+            //DateTime warningDate = DateTime.Parse(customWarnDate);
+            //DateTime endDate = DateTime.Parse("8/19/2019 10:10:11 AM");
+            //int diffMonth = ((endDate.Year - warningDate.Year) * 12) + endDate.Month - warningDate.Month;
+            //Console.WriteLine("Months: " + diffMonth);
             string testString = "<Lists/Drawings>/Center before opening";
             Regex regex = new Regex("<([^>]+)>");
             Match match = regex.Match(testString);
@@ -98,7 +110,7 @@ namespace TestConsole
             //Console.WriteLine(string.Format("{0},{1},{2}", string.Format("{0:MMMM dd, yyyy}", grandOpening), string.Format("{0:dd-MM-yyyy}", firstDelivery), string.Format("{0:dd-MM-yyyy}", secondDelivery)));
             //ReadCsvSearchDocs();
             //ReadCsvCommodities();
-            CheckCsvCommodities();
+            //CheckCsvCommodities();
             //TestSetContractStatus(@"http://sharcha-p15/sites/contracts");
             //TestProjectTemplate();
             //TestCreateProjectTemplate(@"http://sharcha-p15/sites/cos/bd", 16);
@@ -110,6 +122,23 @@ namespace TestConsole
             //CreateFolderStructure(@"http://sharcha-p15/sites/cos/bd", "11_tst01_Canada_Opening");
             //Upgradeto12Test(@"http://sharcha-p15/sites/cos/bd");
             //CreateZipFile();
+
+            TestUpdateTilesViewQuery(@"http://intracha-p04/sites/cosintranet");
+        }
+
+        public static String RemoveDiacritics(String s)
+        {
+            String normalizedString = s.Normalize(NormalizationForm.FormD);
+            StringBuilder stringBuilder = new StringBuilder();
+
+            for (int i = 0; i < normalizedString.Length; i++)
+            {
+                Char c = normalizedString[i];
+                if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
+                    stringBuilder.Append(c);
+            }
+
+            return stringBuilder.ToString();
         }
 
         private static void ReadCsvCommodities()
@@ -536,6 +565,19 @@ namespace TestConsole
                 using (SPWeb web = site.OpenWeb())
                 {
                     Upgradeto12(web);
+                }
+            }
+        }
+
+        private static void TestUpdateTilesViewQuery(string siteUrl)
+        {
+            using (SPSite site = new SPSite(siteUrl))
+            {
+                using (SPWeb web = site.OpenWeb())
+                {
+                    SPList list = web.GetList(SPUtility.ConcatUrls(web.Url, "Lists/StoreFavorites"));
+                    SPView view = list.Views["Tiles"];
+                    string query = view.Query;
                 }
             }
         }
