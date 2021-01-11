@@ -16,11 +16,14 @@
         private static Guid ChangeContractCustContactPersonId = Guid.Parse("{69f46885-7a38-4b33-97bd-dfbb1476fd3f}");
         private static Guid ChangeContractVendorContactPersonId = Guid.Parse("{9e8c992b-83e4-4833-b873-d89a6c432650}");
         private const string severName = "intracha-p04";//prod
-        // private const string severName = "intracha-p04";//test
+        // private const string severName = "sharcha-p15";//test
         private const string severAliasName = "intranet.change.com";
+        private const int firstWarningOffset = 0; // warning date = today + days
+        private const int secondWarningOffset = 42; // warning date = today + days
 
         private const string warningDateFieldName = "Warning_x0020_date"; //prod
         //private const string warningDateFieldName = "Warning_x0020_date1"; //test
+
         //test
         //private const string queryLateContracts =
         //                            @"<Where>
@@ -37,6 +40,7 @@
         //                              </Eq>
         //                            </And>
         //                           </Where>";
+
         //prod
         private const string queryLateContracts =
                                    @"<Where>
@@ -44,7 +48,7 @@
                                       <Eq>
                                         <FieldRef Name='{0}' />
                                         <Value Type='DateTime'>
-                                          <Today/>
+                                          <Today OffsetDays='{1}'/>
                                         </Value>
                                       </Eq>
                                       <Eq>
@@ -86,12 +90,22 @@
                             SPQuery query = new SPQuery();
 
                             // late contracts
-                            query.Query = string.Format(queryLateContracts, warningDateFieldName);
+                            query.Query = string.Format(queryLateContracts, warningDateFieldName, firstWarningOffset);
                             SPListItemCollection projectTasks = list.GetItems(query);
                             string subject = SPUtility.GetLocalizedString(string.Format("$Resources:COSContracts,{0}", ChangeContractOverdueTitle), "COSContracts", web.Language);
                             string body = SPUtility.GetLocalizedString(string.Format("$Resources:COSContracts,{0}", ChangeContractOverdueBody), "COSContracts", web.Language);
 
+                            // first notification
+                            Logger.WriteLog(Logger.Category.Information, typeof(ChangeContractsNotificationTimerJobExecutor).FullName, string.Format("first notification date:{0}", DateTime.Now.ToShortDateString()));
                             SendNotificationForLateContracts(web, projectTasks, subject, body);
+
+                            // second notification
+                            Logger.WriteLog(Logger.Category.Information, typeof(ChangeContractsNotificationTimerJobExecutor).FullName, string.Format("second notification date:{0}", DateTime.Now.AddDays(secondWarningOffset).ToShortDateString()));
+                            SPQuery queryWarning2 = new SPQuery();
+                            queryWarning2.Query = string.Format(queryLateContracts, warningDateFieldName, secondWarningOffset);
+                            SPListItemCollection projectTasksWarning2 = list.GetItems(queryWarning2);
+                            SendNotificationForLateContracts(web, projectTasksWarning2, subject, body);
+
                             //SetContractStatus(web, Fields.StatusExpired);
                         }
                     }
